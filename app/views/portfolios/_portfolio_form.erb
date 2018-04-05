@@ -1,0 +1,25 @@
+<div class = 'form-group'>
+  <fieldset >
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Picture:</label>
+       <%= p.file_field :image, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Hairstyle<span style="color:red;">*</span>:</label>
+      <%= p.select :service_id, @service.map {|s| [s.name, s.id]}, :include_blank => true, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Details:</label>
+      <%= p.text_area :details, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group' style = 'display:none;'>
+      <label class = 'form-control-label'>Stylist:</label>
+        <%= p.text_field :stylist_id , class: 'form-control' %>
+    </div>
+
+  </fieldset>
+</div>

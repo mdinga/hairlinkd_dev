@@ -1,0 +1,45 @@
+<div>
+  <%= link_to("<< Back to Stylists", index_stylists_admins_path) %>
+</div>
+
+<div>
+  <h2><%= @stylist.username %>'s profile</h2>
+</div>
+
+<div>
+    <%= link_to("Edit Profile", '#')%>,
+    <%= link_to("Delete Profile", '#')%>
+</div>
+
+<%= render(:partial => 'stylists/show_stylist_profile', :html => {:multiport => true}, :locals => {:stylist => @stylist} ) %>
+
+<hr><hr>
+
+<div>
+  <h3><%= @stylist.username %>'s Reviews</h3>
+    <% @rating.each do |rating| %>
+      <%= render(:partial => 'ratings/index_stylist_ratings', :html => {:multiport => true}, :locals => {:rating => rating} ) %>
+      <div>
+        <%= link_to("View Review", show_rating_admin_path(rating, :stylist_id => @stylist.id))%> <!--view this particular rating -->
+      </div>
+    <hr>
+  <% end %>
+</div>
+
+<hr><hr>
+
+<div>
+  <h3><%= @stylist.username %>'s Porfolio </h3>
+
+    <div>
+      <%= link_to("Add to Portfolio", '#')%> <!--view this particular rating -->
+    </div>
+
+    <% @portfolio.each do |portfolio| %>
+        <%= render(:partial => 'portfolios/index_portfolio', :html => {:multiport => true}, :locals => {:portfolio => portfolio})%>
+      <div>
+        <%= link_to("View Item", '#')%>
+      </div>
+    <hr>
+  <% end %>
+</div>

@@ -1,0 +1,17 @@
+<h2>Reviews</h2>
+
+
+<hr>
+
+<% @rating.each do |rating| %>
+
+<%= render(:partial => 'index_ratings', :html => {:multiport => true}, :locals => {:rating => rating})%>
+
+<br />
+
+<%= link_to("View Review", rating_path(rating, :admin_id => current_admin.id))%>
+
+<hr>
+<% end %>
+
+</div>

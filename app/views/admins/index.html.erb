@@ -1,0 +1,30 @@
+
+<h3>Admin Users</h3>
+
+<%= link_to("Add Admin", new_admin_path)%>
+<hr>
+
+
+<% @admin.each do |admin| %>
+<table>
+    <th>Fullname:</th>
+    <td><%= admin.name %> <%= admin.surname %></td>
+  </tr>
+
+    <th>Email: </th>
+    <td><%= admin.email %></td>
+  </tr>
+  <tr>
+    <th>Date Joined:</th>
+    <td><%= admin.created_at.strftime("%d %B %Y") %></td>
+  </tr>
+</table>
+
+<br />
+  <%= link_to("Edit Admin", edit_admin_path(admin))%><br />
+  <%= link_to("Delete Admin", delete_admin_path(admin))%><br />
+<hr>
+
+<% end %>
+
+</div>

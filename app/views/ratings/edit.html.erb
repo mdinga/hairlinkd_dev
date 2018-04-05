@@ -1,0 +1,17 @@
+<%= link_to("<< Back to Rating", show_client_rating_path(@rating, :stylist_id => @rating.stylist.id, :client_id => current_client.id)) %>
+
+
+<div>
+  <h2>Update Ratings</h2>
+
+  <%= form_for(@rating) do |f| %>
+
+ <%= render(:partial => 'ratings_form', :locals => {:f => f}) %>
+
+
+    <div>
+      <%= f.submit("Update Ratings") %>
+    </div>
+
+  <% end %>
+</div>

@@ -1,0 +1,30 @@
+<h2>List of Services</h2>
+<%= link_to("Add a Service", new_service_path)%>
+<hr>
+
+<div class = "container">
+<table class = 'table table-hover'>
+
+  <tr>
+    <th>Service Name</th>
+    <th>Service Category</th>
+    <th>Description</th>
+    <th>Action </th>
+  </tr>
+<% @services.each do |s| %>
+  <tr>
+    <td><%= s.name %></td>
+    <td><%= s.category %></td>
+    <td><%= s.description %></td>
+
+    <td><%= link_to("View", service_path(s))%>
+    <%= link_to("Edit", edit_service_path(s))%>
+    <%= link_to("Delete", delete_service_path(s))%></td>
+  </tr>
+  <% end %>
+</table>
+</div><!--container-->
+
+<div>
+  <%= link_to("Add a Service", new_service_path)%>
+</div>

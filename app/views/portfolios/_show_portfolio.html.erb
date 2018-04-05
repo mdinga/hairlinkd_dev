@@ -1,0 +1,20 @@
+<table>
+
+  <%= image_tag @portfolio.image.url(:display).to_s %>
+
+  <tr>
+    <th>Hairstyle:</th>
+    <td><%= @portfolio.service.name %></td>
+  </tr>
+
+  <tr>
+    <th>Category:</th>
+    <td><%= @portfolio.service.category %></td>
+  </tr>
+
+  <tr>
+    <th>Details:</th>
+    <td><%= @portfolio.details %></td>
+  </tr>
+
+</table>

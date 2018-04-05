@@ -1,0 +1,18 @@
+<table>
+    <th>Username:</th>
+    <td><%= client.username %></td>
+  </tr>
+  <tr>
+    <th>Full Name: </th>
+    <td><%= client.name %> <%= client.surname %></td>
+  </tr>
+  <tr>
+    <th>Email: </th>
+    <td><%= client.email %></td>
+  </tr>
+  <tr>
+    <th>Date Joined:</th>
+    <td><%= client.created_at.strftime("%d %B %Y") %></td>
+  </tr>
+
+</table>

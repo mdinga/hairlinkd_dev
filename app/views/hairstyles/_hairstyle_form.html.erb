@@ -1,0 +1,15 @@
+
+<table class = 'table'>
+  <tr>
+    <th>Hairstyle Name</th>
+    <td><%= h.select(:hairstyle, @style_name) %></td>
+  </tr>
+  <tr>
+    <th>Category</th>
+    <td><%= h.select(:style_category, @style_cat) %></td>
+  </tr>
+  <tr>
+    <th>Short Description</th>
+    <td><%= h.text_area(:style_description) %></td>
+  </tr>
+</table>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hairlinkd-Admin</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', href="http://fonts.googleapis.com/css?family=Lato", media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <% if !flash[:notice].blank? %>
+      <div class="notice">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <nav class="navbar navbar-light nav-menu navbar-expand-sm sticky-top bg-light">
+      <div class="container">
+          <div class = 'navbar-brand'><img src="/assets/Hairlinkd-Logo.png" style = "width: 80px;" alt ="hairlinkd logo"/><span class ="hairlinkd_logo">Hairlinkd</div>
+
+
+            <button class = 'navbar-toggler' type = 'button' data-toggle = 'collapse'
+              data-target = '#adminToggler' aria-controls="adminToggler"
+              aria-expanded ='false' aria-label="Toggle navigation">
+              <span class = 'navbar-toggler-icon'></span>
+            </button>
+
+
+              <div class = 'collapse navbar-collapse' id = 'adminToggler'>
+                <div class = "nav navbar-nav ml-auto">
+                      <%= link_to("Admins", admins_path, class: "nav-item nav-link" ) %>
+                      <%= link_to("Clients", index_clients_admins_path, class: "nav-item nav-link")%>
+                      <%= link_to("Stylists", index_stylists_admins_path, class: "nav-item nav-link") %>
+                      <%= link_to("Reviews", ratings_path, class: "nav-item nav-link") %>
+                      <%= link_to("Portfolios", portfolios_path, class: "nav-item nav-link") %>
+                      <%= link_to("Admin Styles", styles_path, class: "nav-item nav-link") %>
+                      <%= link_to("Hairstyles", hairstyles_path, class: "nav-item nav-link") %>
+                      <%= link_to("Services", services_path, class: "nav-item nav-link") %>
+                      <%= link_to("Products", "#", class: "nav-item nav-link") %>
+                      <%= link_to("Cities", cities_path , class: "nav-item nav-link") %>
+                      <%= link_to("Area", areas_path , class: "nav-item nav-link") %>
+                      <%= link_to("Log Out", admin_access_logout_path, class: "nav-item nav-link") %>
+                  </div><!--nav navbar-nav-->
+                </div><!--collapse navbar-collapse-->
+
+
+        </div><!--container-->
+      </nav>
+
+        <%= yield %>
+
+  </body>
+
+</html>

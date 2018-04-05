@@ -1,0 +1,131 @@
+/* Primary stylesheet */
+
+/* Colors */
+$red: #993120;
+$green: #94B26F;
+$light_green: #B6D491;
+$yellow: #F2DC87;
+$dark_brown: #332318;
+$light_brown: #4C2516;
+$white: #FFFFFF;
+$gold: #D4AF37;
+
+
+.notice {
+  height: 2em;
+  padding: 0.5em;
+  text-align: center;
+  background: $gold;
+  color: $dark_brown;
+}
+
+.nav-menu{
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.hairlinkd_logo{
+  font-size: 2em;
+  font-weight: bold;
+  //font-family: 'Dancing Script', cursive;
+  //font-family: 'Berkshire Swash', cursive;
+  //font-family: 'Raleway', sans-serif;
+  //font-family: 'Indie Flower', cursive;
+  //font-family: 'Great Vibes', cursive;
+  //font-family: 'Kaushan Script', cursive;
+  //font-family: 'Sacramento', cursive;
+  //font-family: 'Handlee', cursive;
+  //font-family: 'Caveat', cursive;
+  font-family: 'Bad Script', cursive;
+  margin-left: 20px;
+
+}
+.info_paragraph{
+  font-size: 1.4em;
+  font-family: 'Lato', Helvetica, sans-serif;
+  width: 100%;
+  height: auto;
+  line-height: 2em;
+  padding: 15px, 0, 15px, 0;
+}
+
+.background_home {
+
+    /* Set a specific height */
+    height: 100%;
+    width: 100%;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 10px;
+    color:#FFFAF0;
+}
+
+.register_form{
+  width: 100%;
+}
+
+/* Stylist SASS*/
+
+.background_stylist{
+    height: auto;
+    background-image: url(/assets/background/background_4.jpg);
+    //background-color:black;
+    border: 2px groove $dark_brown;
+    border-radius: 2px;
+    background-size: cover;
+    margin-bottom: 10px;
+}
+
+.stylist_info{
+  height: auto;
+  width: 100%;
+  border: 2px solid grey;
+
+  padding: 5px;
+  margin-bottom: 2px;
+  h4{
+    text-decoration: underline;
+  }
+}
+
+#stylist-tab{
+   position:absolute;
+   bottom:0;
+   left:0;
+}
+
+
+
+/*Stylist Show Pagination CSS*/
+.apple_pagination {
+  background: #f1f1f1;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  padding: 1em;
+  cursor: default; }
+  .apple_pagination a, .apple_pagination span {
+    padding: 0.2em 0.3em; }
+  .apple_pagination .disabled {
+    color: #aaaaaa; }
+  .apple_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background-color: #bebebe;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
+  .apple_pagination a {
+    text-decoration: none;
+    color: black; }
+    .apple_pagination a:hover, .apple_pagination a:focus {
+      text-decoration: underline; }

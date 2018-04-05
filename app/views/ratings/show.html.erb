@@ -1,0 +1,11 @@
+<%= link_to("<< Back Reviews", ratings_path(:admin_id => current_admin.id)) %>
+
+<div>
+  <h2>Review Details</h2>
+</div>
+
+<div>
+  <%= render(:partial => 'show_rating', :hmtl => {:multiport => true}, :locals => {:rating => @rating}) %>
+  <%= link_to("Edit", '#') %>,
+  <%= link_to("Delete", '#') %>
+</div>

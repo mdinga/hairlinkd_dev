@@ -1,0 +1,17 @@
+<%= link_to("<< Back to Profile", client_path(@client)) %>
+
+<div>
+  <h2>Delete Client</h2>
+
+  <%= form_for(@client, :method => 'delete') do |f| %>
+
+    <p>Are you sure you want to permanently delete <%= f.object.name %>?</p>
+
+
+
+    <div class="form-buttons">
+      <%= f.submit("Delete Client") %>
+    </div>
+
+  <% end %>
+</div>

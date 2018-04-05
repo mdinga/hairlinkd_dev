@@ -1,0 +1,155 @@
+<!-- All HTML for the front page comes here-->
+
+<section class="mb-0 background_home" style = "background-image: url(/assets/background/Salon-Pic-1.jpg);">
+
+    <div class = 'container text-center info_paragraph' style = "padding-top:10vh; padding-bottom:10vh;">
+      <h3> Our Goal</h3>
+          <p>Finding that perfect stylist does not have to be a struggle!!</p>
+          <p>Lets help you browse through hundreds of stylists out there, to find the most ideal stylist for your desired hairstyle. </p>
+          <hr>
+
+          <p>Register now and start your search!!</p>
+          <div>
+            <div style="float:left;">
+              <%= button_to "Register as a Client", new_client_path, class: "btn btn-secondary ", style: "display: inline-block;",:method => :get %>
+            </div>
+            <div style="float:right;">
+              <%= button_to("Register as a Stylist", new_stylist_path, class: "btn btn-secondary", style: "display: inline-block;", :method => :get) %>
+            </div>
+            <div style="clear:both;"></div>
+          </div>
+    </div>
+
+</section>
+
+<section>
+  <div class = "container-fluid row" style = "margin:30px 0px 30px;">
+    <sub-section class = " col col-md-4 text-center offset-sm-1" style = "font-size:1.4em;">
+
+        <div class = "m-3">
+          <img src="/assets/web-deco/Icon-2.png" />
+        </div>
+
+        <div>
+          <h2 style = 'text-decoration:underline; margin-bottom:15px;'>Hairlinkd for Clients</h2>
+          <p>Browse various stylists' profiles</p><hr>
+          <p>Read and submit reviews</p><hr>
+          <p>View stylist's gallery</p><hr>
+          <p>Follow your favourites</p>
+        </div>
+        <hr>
+
+          <div>
+            <p>Check it Out Now</p>
+            <%= button_to "Register as a Client", new_client_path, class: "btn btn-block btn-secondary ", style: "display: inline-block;",:method => :get %>
+          </div><!--card-footer-->
+
+    </sub-section>
+
+
+      <sub-section class = "card text-center col-md-4 offset-sm-1" style = "border:1px solid grey;">
+
+      </sub-section>
+
+
+  </div>
+
+
+</section>
+
+<section>
+  <div class = "container-fluid row" style = "background-image: url(/assets/background/background_w.jpg); margin:30px 0px 30px 0px; padding-bottom: 20px;">
+    <sub-section class = " col col-md-4 text-center offset-md-6" style = "font-size:1.4em;">
+
+
+              <div class = "m-3">
+                <img src="/assets/web-deco/Icon-1.png" />
+              </div>
+
+              <div>
+                <h2 style = 'text-decoration:underline; margin-bottom:15px;'>Hairlinkd for Stylists</h2>
+                <p>Showcase your skills and talents<p><hr>
+                <p>Access a wider customer base<p><hr>
+                <p>Gain popularity through reviews<p><hr>
+                <p>Build credibility and a strong following<p><hr>
+              </div>
+
+                <div>
+                  <p>Check it Out Now</p>
+                  <%= button_to("Register as a Stylist", new_stylist_path, class: "btn btn-block btn-secondary", style: "display: inline-block;", :method => :get) %>
+                </div>
+
+
+      </sub-section>
+
+  </div>
+</section>
+
+<section>
+  <div class = "row" style = "margin:10px 0px 10px;">
+    <sub-section class = "col text-center background_home">
+      <div>
+
+                <h4 class ="card-title" >Visit Our Gallery</h4>
+                <p class = "card-text">Our gallery is home to the top trending hairstyless.<p>
+                <p class = "card-text">Browse through the gallery to get inspiration for your next style.<p>
+                <p class = "card-text">Or select from available tags and let us recommend something for you.<p>
+
+                <div>
+                  <p>Log in to check it out</p>
+                  <button type="button" class = "btn btn-secondary">Log In</button>
+                </div><!--card-footer-->
+
+              </div><!--card-body-->
+          </sub-section>
+
+  </div>
+</section>
+
+
+<section>
+  <div class = "container-fluid row" style = "background-image: url(/assets/web-deco/contact_us.jpg); color:white;">
+    <div style ='width:100%; text-align:center; padding:10px;'>
+      <h2>Lets Keep In Touch</h2>
+    </div>
+
+
+  <div class = 'col col-sm-6 text-center' style = "font-size:1.4em">
+      <div class = "container">
+        <p>We would love to here from you.</p>
+        <p>Whether its an issue you have, or you just want to say hello!!</p>
+        <p>Drop us a message and we'll come back to you</p>
+      </div>
+  </div>
+
+<div class = 'col col-sm-6 text-center'>
+  <div class = "container">
+    <div class = "form-group">
+      <form style = "color:white;">
+        <%= form_for :contact_form do |f|%>
+
+        <div class ='form-group'>
+          <label class = 'form-control-label'>Name:</label>
+           <%= f.text_field :name %>
+        </div>
+
+        <div class ='form-group'>
+          <label class = 'form-control-label'>Email:</label>
+           <%=  f.text_field :email %>
+        </div>
+
+        <div class ='form-group'>
+          <label class = 'form-control-label'>Message</label>
+           <%= f.text_area :message %>
+        </div>
+
+        <div class = "text-center mb-2"><%= f.submit 'Send', class: 'btn btn-secondary'  %></div>
+
+        <% end %>
+      </form>
+    </div>
+  </div>
+    </div>
+
+  </div>
+</section>

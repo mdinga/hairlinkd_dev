@@ -1,0 +1,17 @@
+<%= link_to("<< Back to Stylist", show_stylists_client_path(@stylist)) %>
+
+
+<div>
+  <h2>Create Ratings</h2>
+
+  <%= form_for(@rating) do |f| %>
+
+    <%= render(:partial => 'ratings_form', :locals => {:f => f}) %>
+
+
+    <div>
+      <%= f.submit("Submit Rating") %>
+    </div>
+
+  <% end %>
+</div>

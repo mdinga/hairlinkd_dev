@@ -1,0 +1,16 @@
+<%= link_to("<< Back to Style", style_path(@style)) %>
+
+<div>
+  <h2>Update a Hairstyle</h2>
+
+  <%= form_for(@style) do |s| %>
+
+    <%= render(:partial => 'style_form', :locals => {:s => s}) %>
+
+
+    <div>
+      <%= s.submit("Update Style") %>
+    </div>
+
+  <% end %>
+</div>

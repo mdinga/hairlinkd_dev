@@ -1,0 +1,14 @@
+<div class = "media w-5">
+
+  <div class ="d-flex align-self-center p-4 mr-3"><h6><%= Client.find(rating.client_id).username %>'s Review:</h5>
+
+  </div>
+
+<div class = "media-body  ">
+      <p><span class = "badge badge-primary badge-pill bg-warning " style = "color:black"><%= rating.total_rating %>/5</span></p>
+      <p><strong>Hairstyle:</strong><%= '#' %>  |
+     <strong>Will you go return?: </strong><%= rating.return? ? "Yes" : "No" %>  |
+     <strong>Will you Recommend?: </strong><%= rating.recommend? ? "Yes" : "No" %></p>
+</div>
+
+</div>

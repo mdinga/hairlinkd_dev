@@ -1,0 +1,11 @@
+<h2>Admin Login</h2>
+
+  <div>
+    <%= form_tag(admin_access_attempt_login_path, :method => :post) do %>
+        <%= label_tag(:email) %>
+        <%= text_field_tag(:email, params[:email]) %>
+        <%= label_tag(:password) %>
+        <%= password_field_tag(:password)%>
+        <%= submit_tag("Log In")%>
+      <% end %>
+  </div>

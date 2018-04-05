@@ -1,0 +1,16 @@
+<div class = "container">
+
+  <div class = "m-3">
+    <%= button_to("<< Back to Profile", stylist_path(current_stylist), method: :get, class: "btn btn-secondary btn-sm") %>
+  </div>
+
+    <div class = "text-center">
+    <h4>Delete Item</h4>
+
+    <%= form_for(@portfolio, :method => 'delete') do |p| %>
+
+      <p>Are you sure you want to permanently delete this item. This action can't be reversed</p>
+        <%= p.submit "Delete Item", class: "btn btn-danger btn-sm" %>
+      <% end %>
+      </div>
+</div>

@@ -1,0 +1,18 @@
+<div class = "container">
+  <%= button_to("<< Back to Profile", client_path(@client), method: :get, class: "btn btn-sm btn-secondary m-3") %>
+
+  <div class = "text-center">
+    <h2>Update Profile</h2>
+  </div>
+
+    <div class = "form-group">
+      <%= form_for(@client) do |c| %>
+        <%= render(:partial => 'client_form', :html => {:multiport => true}, :locals => {:c => c}) %>
+
+        <div class = "text-center">
+          <%= c.submit "Update Profile", class: "btn btn-secondary" %>
+        </div>
+
+    <% end %>
+  </div><!--form-group-->
+</div><!--container-->

@@ -1,0 +1,66 @@
+<div class = "card-body carousel slide" id ="top_3" data-ride = "carousel">
+
+  <h4 class = "card-title">Top Trending Stylists</h4>
+    <div class = "carousel-inner">
+
+      <div class = "carousel-item active">
+        <div class = 'card-header'>
+          <h5 class = 'card-title'><%= @stylist.first.name %></h5>
+        </div>
+
+        <div class="img-thumbnail rounded card-img">
+          <%= image_tag @stylist.first.avatar.url(:thumb).to_s %>
+        </div>
+
+        <p class = 'card-text'> <strong> Rating:</strong> <%=  @stylist.first.overall_rating %> (<%= pluralize(@stylist.first.ratings.count, 'Reviews') %>) <br />
+         <strong>City:</strong> <%= "#" %> </p>
+      </div>
+
+      <div class = "carousel-item">
+        <div class = 'card-header'>
+          <h5 class = 'card-title'><%= @stylist.second.name %></h5>
+        </div>
+
+        <div class="img-thumbnail rounded card-img">
+          <%= image_tag @stylist.second.avatar.url(:thumb).to_s %>
+        </div>
+
+        <p class = 'card-text'> <strong> Rating:</strong> <%=  @stylist.second.overall_rating %> (<%= pluralize(@stylist.first.ratings.count, 'Reviews') %>) <br />
+         <strong>City:</strong> <%= @stylist.second.city %> </p>
+      </div>
+
+      <div class = "carousel-item">
+        <div class = 'card-header'>
+          <h5 class = 'card-title'><%= @stylist.third.name %></h5>
+        </div>
+
+        <div class="img-thumbnail rounded card-img">
+          <%= image_tag @stylist.third.avatar.url(:thumb).to_s %>
+        </div>
+
+        <p class = 'card-text'> <strong> Rating:</strong> <%=  @stylist.third.overall_rating %> (<%= pluralize(@stylist.third.ratings.count, 'Reviews') %>) <br />
+         <strong>City:</strong> <%= @stylist.third.city %> </p>
+      </div>
+
+    </div><!--carousel-inner-->
+
+    <a class = "carousel-control-prev" href = "#top_3" role = "button" data-slide = "prev">
+      <span class = "badge badge-primary badge-pill bg-dark">
+        <span class = "carousel-control-prev-icon" style "text-color:black;" aria-hidden = "true">
+          <span class = "sr-only">Previous</span>
+        </span>
+      </span>
+    </a>
+
+    <a class = "carousel-control-next" href = "#top_3" role = "button" data-slide = "next">
+      <span class = "badge badge-primary badge-pill bg-dark">
+        <span class = "carousel-control-next-icon" style "text-color:black;" aria-hidden = "true">
+          <span class = "sr-only">Next</span>
+        </span>
+      </span>
+    </a>
+
+    <p>Log in to check it out</p>
+    <button type="button" class = "btn btn-secondary">Log In</button>
+
+</div><!--card-body-->

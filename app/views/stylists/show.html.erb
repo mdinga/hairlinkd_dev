@@ -1,0 +1,20 @@
+<div class = "container">
+
+    <div class = "m-2 clearfix">
+      <% if current_stylist.id == @stylist.id %>
+        <%= button_to("Edit Profile", edit_stylist_path(@stylist), method: :get, class: "btn btn-dark btn-sm float-right")%>
+      <% end %>
+        <%= button_to("<< Stylists", stylists_path, method: :get, class: "btn btn-secondary btn-sm float-left")%>
+
+    </div>
+
+    <div>
+      <%= render(:partial => 'show_stylist_profile', :html => {:multiport => true}, :locals => {:stylist => @stylist} ) %>
+    </div>
+
+
+  <div class = "text-center">
+      <%= button_to("Delete Profile", delete_stylist_path(@stylist), method: :get, class: "btn btn-danger btn-sm")%>
+  </div>
+
+</div>

@@ -1,0 +1,88 @@
+<div class = "register_form">
+  <fieldset>
+    <legend>Bio Info</legend>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Load Profile Picture:</label>
+       <%= s.file_field(:avatar) %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Username:</label>
+      <%= s.text_field :username, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Name:</label>
+      <%= s.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Surname:</label>
+      <%= s.text_field :surname, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Email:</label>
+      <%= s.text_field :email, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>City:</label>
+      <%= s.collection_select :city_ids, City.all, :id, :city, :prompt => true, :include_blank => true, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Area:</label>
+      <%= s.grouped_collection_select :area_ids, City.all, :areas, :city, :id, :name, :prompt => true, :include_blank => true, class: 'form-control' %>
+    </div>
+
+  </fieldset>
+
+  <fieldset>
+    <legend>My Services</legend>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>I Offer The Following <strong>Services</strong>:</label>
+        <div class = " bg-light p-2">
+        <%= s.collection_check_boxes :service_ids, Service.all, :id, :name   do |h| %>
+          <span style = "margin-right: 2px;"><%= h.check_box %></span> <%= h.label %>|
+        <% end %>
+      </div>
+    </div>
+
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>I do House Calls:</label>
+        <%= s.check_box :house_calls %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>More About Me:</label>
+      <%= s.text_area :about_me, placeholder: "Anything else that you want us to know about you", class: 'form-control' %>
+    </div>
+
+    <hr>
+  </fieldset>
+
+  <fieldset>
+    <legend>Get Hold of Me</legend>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Cellphone:</label>
+        <%= s.text_field :phone, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Facebook:</label>
+        <%= s.text_field :facebook_link, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Instagram:</label>
+        <%= s.text_field :instagram_link, class: 'form-control' %>
+    </div>
+
+  </fieldset>
+
+</div>

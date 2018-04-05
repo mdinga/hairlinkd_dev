@@ -1,0 +1,16 @@
+<%= link_to("<< Back to Styles", styles_path) %>
+
+<div>
+  <h2>Add a Hairstyle</h2>
+
+  <%= form_for(@style) do |s| %>
+
+    <%= render(:partial => 'style_form', :locals => {:s => s}) %>
+
+
+    <div>
+      <%= s.submit("Add Style") %>
+    </div>
+
+  <% end %>
+</div>

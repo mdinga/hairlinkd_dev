@@ -1,0 +1,9 @@
+<%= link_to("<< Back", show_stylist_admin_path(@rating.stylist)) %>
+
+<div>
+  <h2>Review</h2>
+</div>
+
+<div>
+  <%= render(:partial => 'ratings/show_rating', :hmtl => {:multiport => true}, :locals => {:rating => @rating}) %>
+</div>

@@ -1,0 +1,18 @@
+<h2>Clients</h2>
+<%= link_to("Add a Client", new_client_path)%>
+<h3>List of Clients on Hairlinkd</h3>
+<hr>
+
+
+<% @client.each do |client| %>
+
+<%= render(:partial => 'index_clients', :html => {:multiport => true}, :locals => {:client => client})%>
+
+<br />
+<%= link_to("View Profile", client_path(client))%><br />
+
+<hr>
+
+<% end %>
+
+</div>

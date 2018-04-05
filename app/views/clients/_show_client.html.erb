@@ -1,0 +1,67 @@
+<table class = "table table-sm">
+  <tr>
+    <th>Username:</th>
+    <td><%= @client.username %></td>
+  </tr>
+  <tr>
+    <th>Full Name:</th>
+    <td><%= @client.name %> <%= @client.surname %></td>
+  </tr>
+  <tr>
+    <th>Date Joined</th>
+    <td><%= @client.created_at.strftime("%d %B %Y") %></td>
+  </tr>
+</table>
+
+<hr>
+
+<div class = "container mt-3" style = "border: 2px outset #D3D3D3;">
+  <h5 class = "text-center m-3" style = "text-decoration:underline;">Stylists You Like</h5>
+    <% if @client.stylists.count < 1 %>
+        <div class = "text-center pb-3">
+        <p>There are no Stylists that you like yet!!</p>
+        <p>All the Stylists that you like will appear here</p>
+        <p>Check out the Stylists</p>
+        <%= button_to "View Stylists", index_stylists_clients_path(:client_id => current_client.id), method: :get, class: "btn btn-secondary btn-sm"%>
+      </div>
+
+    <% else %>
+
+      <div class = 'card-group'>
+          <% @client.stylists.each do |stylist|%>
+            <%= render :partial => "stylists/index_stylists", :hmtl => {:multiport => true}, :locals => {:stylist => stylist}%>
+          <% end %>
+      </div><!--card-body-->
+
+    <% end %>
+</div>
+
+<div class = "container mt-3" style = "border: 2px outset #D3D3D3;">
+  <h5 class = "text-center m-3" style = "text-decoration:underline;">Hairstyles You Like</h5>
+      <% if @client.styles.count < 1 %>
+
+          <div class = "text-center pb-3">
+            <p>There are no Hairstyles that you like yet!!</p>
+            <p>All the Hairstyles that you like for the gallery will appear here</p>
+            <p>Check out the gallery now</p>
+            <%= button_to "View Gallery", index_styles_clients_path(:client_id => current_client.id), method: :get, class: "btn btn-secondary btn-sm"%>
+          </div>
+
+      <% else %>
+
+        <div class = 'card-group'>
+          <% @client.styles.each do |style|%>
+          <div class = 'card-body' style = 'width:auto;'>
+            <div class = 'card text-center' style = 'width:200px;'>
+              <%= render :partial => "styles/index_styles", :html => {:multiport => true}, :locals => {:style => style}%>
+              <%= link_to("More Info", show_style_client_path(style, :client_id => current_client.id,  class: 'card-link'))%>
+            </div> <!--card-->
+          </div><!--card-body-->
+
+      <% end %>
+
+
+    <% end %>
+    </div><!--card-group-->
+
+</div><!--container-->

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hairlinkd|Home</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', href="http://fonts.googleapis.com/css?family=Lato|Great+Vibes|Kaushan+Script|Sacramento|Handlee|Caveat|Marck+Script|Bad+Script", media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <% if !flash[:notice].blank? %>
+      <div class="notice">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+
+    <nav class="navbar navbar-light nav-menu navbar-expand-sm sticky-top bg-light">
+          <div class="container">
+            <div class = 'navbar-brand'><img src="/assets/Hairlinkd-Logo.png" style = "width: 80px;" alt ="hairlinkd logo"/><span class ="hairlinkd_logo">Hairlinkd</div>
+
+            <button class = 'navbar-toggler' type = 'button' data-toggle = 'collapse'
+              data-target = '#clientToggler' aria-controls="clientToggler"
+              aria-expanded ='false' aria-label="Toggle navigation">
+              <span class = 'navbar-toggler-icon'></span>
+            </button>
+
+              <div class = 'collapse navbar-collapse' id = 'clientToggler'>
+                <div class="nav navbar-nav ml-auto">
+                    <%= link_to("My Profile", client_path(current_client.id), class: 'nav-item nav-link') %>
+                    <%= link_to("Stylists", index_stylists_clients_path(:client_id => current_client.id), class: 'nav-item nav-link')%>
+                    <%= link_to("Gallery", index_styles_clients_path(:client_id => current_client.id), class: 'nav-item nav-link') %>
+
+                    <%= link_to("Forum", '#', class: 'nav-item nav-link') %>
+                    <%= link_to("Contact Us", '#', class: 'nav-item nav-link') %>
+                    <%= link_to("Logout", client_access_logout_path, class: 'nav-item nav-link') %>
+                </div><!--navbar-nav-->
+              </div><!--collapse-->
+            </div><!--container-->
+          </nav>
+
+      <%= yield %>
+
+  </body>
+
+</html>

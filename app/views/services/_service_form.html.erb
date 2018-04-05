@@ -1,0 +1,17 @@
+<table>
+
+  <tr>
+    <th>Service Name</th>
+    <td><%= s.text_field(:name) %></td>
+  </tr>
+
+  <tr>
+    <th>Category</th>
+    <td><%= s.select(:category, @serv_cat) %></td>
+  </tr>
+
+    <th>Description</th>
+    <td><%= s.text_area(:description, :size => "50x5") %></td>
+  </tr>
+
+</table>

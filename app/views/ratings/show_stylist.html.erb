@@ -1,0 +1,25 @@
+<div class = 'container'>
+
+<div>
+  <%= button_to("<< Back to Profile", stylist_path(@rating.stylist.id, :stylist_id => current_stylist.id), method: :get, class:'btn btn-secondary btn-sm m-3') %>
+</div>
+
+<div>
+
+  <div class = "text-center m-3">
+    <h4><%= Client.find(@rating.client_id).username%>'s Review: <span class = "badge badge-primary badge-pill bg-warning " style = "color:black;"><%= @rating.total_rating %>/5</span></h4>
+  </div>
+
+  <div>
+    <%= render(:partial => 'show_rating', :hmtl => {:multiport => true}, :locals => {:rating => @rating}) %>
+  </div>
+
+</div>
+
+<% if @rating.stylist.id == current_stylist.id%>
+  <div>
+    <%= link_to("Report Review to Admin", '#') %>
+  </div>
+<% end %>
+
+</div>

@@ -1,0 +1,15 @@
+<%= link_to("<< Back to Admins", admins_path) %>
+
+<div>
+  <h2>Delete Admin</h2>
+
+  <%= form_for(@admin, :method => 'delete') do |f| %>
+
+    <p>Are you sure you want to permanently delete <%= @admin.name %>?</p>
+
+    <div class="form-buttons">
+      <%= f.submit("Delete Admin") %>
+    </div>
+
+  <% end %>
+</div>

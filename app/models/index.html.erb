@@ -1,0 +1,27 @@
+
+<h2>List of Stylists</h2>
+<hr>
+
+
+<h3>Quick Search</h3>
+<div class="form-group">
+    <%= form_tag(stylists_path, method: :get) do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag 'Searcha', :name => nil %>
+    <% end %>
+</div>
+
+<hr>
+
+
+<% @stylist.each do |stylist| %>
+
+ <%= render(:partial => 'index_stylists', :html => {:multiport => true}, :locals => {:stylist => stylist}) %>
+
+ <br />
+ <%= link_to("View Profile", stylist_path(stylist))%><br />
+ <hr>
+
+<% end %>
+
+</div>

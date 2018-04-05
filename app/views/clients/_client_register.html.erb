@@ -1,0 +1,26 @@
+<div class = 'container register_form'>
+    <fieldset>
+        <legend class = 'text-center'>Create Profile as a Client</legend>
+
+          <div class ='form-group'>
+            <label class = 'form-control-label'>Username:</label>
+            <%= c.text_field :username, class: 'form-control' %>
+          </div>
+
+          <div class ='form-group'>
+            <label class = 'form-control-label'>Email:</label>
+            <%= c.text_field :email, class: 'form-control' %>
+          </div>
+
+          <div class ='form-group'>
+            <label class = 'form-control-label'>Password:</label>
+            <%= c.password_field :password, class: 'form-control' %>
+          </div>
+
+          <div class ='form-group'>
+            <label class = 'form-control-label'>Confirm Password:</label>
+            <%= c.password_field :password_confirmation, class: 'form-control' %>
+          </div>
+
+    </fieldset>
+</div><!--container-->

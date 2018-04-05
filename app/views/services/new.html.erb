@@ -1,0 +1,13 @@
+<h2>Create Services</h2>
+
+<div>
+  <%= form_for(@service) do |s| %>
+
+    <%= render(:partial => 'service_form', :locals => {:s => s}) %>
+
+    <div>
+      <%= s.submit("Add Service") %>
+    </div>
+
+  <% end %>
+</div>

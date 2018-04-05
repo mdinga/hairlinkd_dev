@@ -1,0 +1,15 @@
+<h2>Portfolios</h2>
+<%= link_to("Add a Portfolio", new_portfolio_path)%>
+<h3>List of Individual Portfolios</h3>
+<hr>
+
+<% @portfolio.each do |portfolio| %>
+
+  <%= render(:partial => 'index_portfolio', :html => {:multiport => true}, :locals => {:portfolio => portfolio})%>
+
+<br />
+
+<hr>
+<% end %>
+
+</div>

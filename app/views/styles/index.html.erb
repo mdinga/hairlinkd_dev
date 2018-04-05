@@ -1,0 +1,8 @@
+<h2> Hairlinkd Gallery </h2>
+
+<%= link_to("Add Hairstyle to Gallery", new_style_path)%>
+
+
+<% @style.each do |style| %>
+  <%= render(:partial => 'index_styles', :html => {:multiport => true}, :locals => {:style => style}) %>
+<% end %>

@@ -1,0 +1,16 @@
+<%= link_to("<< Back Admins", admins_path) %>
+
+<div>
+  <h2>Create Admin</h2>
+
+  <%= form_for(@admin) do |a| %>
+
+ <%= render(:partial => 'admin_form', :html => {:multiport => true}, :locals => {:a => a}) %>
+
+
+    <div>
+      <%= a.submit("Create Admin") %>
+    </div>
+
+  <% end %>
+</div>

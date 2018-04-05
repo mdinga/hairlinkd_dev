@@ -1,0 +1,15 @@
+<%= link_to("<< Back to Profile", stylist_path(@portfolio.stylist_id)) %>
+
+<div>
+  <h2>Create Portfolio</h2>
+
+  <%= form_for(@portfolio) do |p| %>
+
+    <%= render(:partial => 'portfolios/portfolio_form', :locals => {:p => p}) %>
+
+    <div>
+      <%= p.submit("Create Portfolio") %>
+    </div>
+
+  <% end %>
+</div>

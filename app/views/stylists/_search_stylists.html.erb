@@ -1,0 +1,26 @@
+<h5>Search By Name</h5>
+<div class="form-group">
+    <%= form_tag(index_stylists_clients_path(:client_id => current_client.id), method: :get, :id => "stylist_search") do %>
+      <%= hidden_field_tag :direction, params[:direction] %>
+      <%= hidden_field_tag :sort, params[:sort] %>
+      <%= text_field_tag :search, params[:search], class: 'form-control' %>
+      <%= submit_tag 'Search', :name => nil, class: 'btn btn-secondary mt-2' %>
+    <% end %>
+</div><hr>
+<div class = "form group">
+  <h5>Sort by:<h5>
+    <p><%= link_to sortable "overall_rating", "Rating" %></p>
+    <p><%= link_to "- Reviews", "#" %></p>
+</div><hr><!--form group-->
+
+<div class = "form group">
+  <h5>#Tags City<h5>
+    <% @cities.uniq.each do |c| %> 
+    <% end %>
+
+</div><!--form group-->
+
+<div class = "form group">
+  <h5>#Tag Area<h5>
+
+</div><!--form group-->

@@ -1,0 +1,31 @@
+<table>
+  <tr>
+    <th>Rating ID:</th>
+    <td><%= rating.id %></td>
+  </tr>
+  <tr>
+    <th>Stylist:</th>
+    <td><%= Stylist.find(rating.stylist_id).username %></td>
+  </tr>
+  <tr>
+    <th>Client:</th>
+    <td><%= Client.find(rating.client_id).username  %></td>
+  </tr>
+  <tr>
+    <th>Date of Appointment</th>
+    <td><%= rating.date_of_appointment.strftime("%d %B %Y") %></td>
+  </tr>
+  <tr>
+    <th>Total Rating</th>
+    <td><%= rating.total_rating %></td>
+  </tr>
+  <tr>
+    <th>Will you return?</th>
+    <td><%= rating.return ? "Yes" : "No" %></td>
+  </tr>
+  <tr>
+    <th>Will you recommend?</th>
+    <td><%= rating.recommend ? "Yes" : "No" %></td>
+  </tr>
+
+</table>

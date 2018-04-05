@@ -1,0 +1,17 @@
+<%= link_to("<< Back to Style", style_path(@style)) %>
+
+<div>
+  <h2>Delete Hairstyle</h2>
+
+  <%= form_for(@style, :method => 'delete') do |f| %>
+
+    <p>Are you sure you want to permanently delete this hairstyle?</p>
+
+
+
+    <div class="form-buttons">
+      <%= f.submit("Delete Hairstyle") %>
+    </div>
+
+  <% end %>
+</div>

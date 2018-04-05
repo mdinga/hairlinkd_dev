@@ -1,0 +1,27 @@
+<h2>Hairstyle Names</h2>
+<%= link_to("Add a Hairstyle Name", new_hairstyle_path)%>
+<hr>
+
+<div class = "container">
+<table class = 'table table-hover'>
+
+  <tr>
+    <th><%= link_to "Hairstyle", :sort => "hairstyle" %></th>
+    <th><%= link_to "Category", :sort => "style_category" %></th>
+    <th>Action </th>
+  </tr>
+<% @hairstyle.each do |h| %>
+  <tr>
+    <td><%= h.hairstyle %></td>
+    <td><%= h.style_category %></td>
+
+    <td><%= link_to("View", hairstyle_path(h))%>
+    <%= link_to("Edit", edit_hairstyle_path(h))%>
+    <%= link_to("Delete", delete_hairstyle_path(h))%></td>
+  </tr>
+  <% end %>
+</table>
+</div><!--container-->
+<%= link_to("Add a Hairstyle Name", new_hairstyle_path)%>
+
+</div>

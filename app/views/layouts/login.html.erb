@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hairlinkd|Home</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <% if !flash[:notice].blank? %>
+      <div class="notice">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <header>
+          <div class = "container text-center" style="margin-top:5px; margin-bottom:5px;"><img src="/assets/Hairlinkd-Logo.png" alt ="hairlinkd logo"/></div>
+    </header>
+
+      <%= yield %>
+
+  </body>
+
+</html>

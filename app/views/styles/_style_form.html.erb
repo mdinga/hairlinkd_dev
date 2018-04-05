@@ -1,0 +1,28 @@
+<table>
+
+  <tr>
+    <th>Style Picture</th>
+    <td><%= s.file_field(:image) %></td>
+  </tr>
+
+  <tr>
+    <th>Hairstyle</th>
+    <td><%= s.select(:style_name, @style_type) %></td>
+  </tr>
+
+  <tr>
+    <th>Category</th>
+    <td><%= s.select(:category, @style_cat) %></td>
+  </tr>
+
+  <tr>
+    <th>Sub-Category</th>
+    <td><%= s.select(:sub_category, @style_cat) %></td>
+  </tr>
+
+  <tr>
+    <th>Details</th>
+    <td><%= s.text_area(:details, :size => "50x5") %></td>
+  </tr>
+
+</table>

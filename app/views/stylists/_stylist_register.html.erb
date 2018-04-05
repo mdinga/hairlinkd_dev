@@ -1,0 +1,26 @@
+<div class = "container register_form">
+    <fieldset>
+      <legend class = 'text-center'>Create Profile as a Stylist</legend>
+
+          <div class ='form-group'>
+            <label class = 'form-control-label'>Username:</label>
+            <%= s.text_field :username, class: "form-control" %>
+          </div>
+
+          <div class ='form-group'>
+            <label class = 'form-control-label'>Email:</label>
+             <%= s.text_field :email, class: "form-control" %>
+          </div>
+
+          <div class ='form-group'>
+            <label class = 'form-control-label'>Password:</label>
+            <%= s.password_field :password, class: "form-control" %>
+          </div>
+
+          <div class ='form-group'>
+            <label class = 'form-control-label'>Confirm Password:</label>
+            <%= s.password_field :password_confirmation, class: "form-control" %>
+          </div>
+
+      <fieldset>
+</div><!--container-->

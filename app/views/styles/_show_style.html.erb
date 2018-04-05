@@ -1,0 +1,33 @@
+<div class = "media">
+
+<%= image_tag @style.image.url(:display).to_s, class: "d-flex align-self-center img-fluid w-25 rounded mr-3" %>
+
+  <div class = "media-body">
+    <table>
+      <tr>
+        <th>Hairstyle:</th>
+        <td><%= @style.style_name %></td>
+      </tr>
+
+      <tr>
+        <th>Category:</th>
+        <td><%= @style.category %></td>
+      </tr>
+
+      <tr>
+        <th>Sub-Category:</th>
+        <td><%= @style.sub_category %></td>
+      </tr>
+
+      <tr>
+        <th>Details:</th>
+        <td><%= @style.details %></td>
+      </tr>
+
+      <tr>
+        <th>Likes:</th>
+        <td><%= @style.clients.count %></td>
+      </tr>
+    </table>
+  </div><!--media-body-->
+</div><!--media-->

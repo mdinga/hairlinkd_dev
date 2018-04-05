@@ -1,0 +1,45 @@
+<div class = "container">
+  <div class = "m-2">
+    <%= button_to("<< Back to Stylists", index_stylists_clients_path(current_client.id), method: :get, class: "btn btn-secondary btn-sm")%><br />
+    <%= link_to("Submit Your Rating", new_rating_path(:client_id => current_client.id, :stylist_id => @stylist.id))%>
+    <%= link_to "Like", create_fav_stylists_client_path(current_client, :stylist_id => @stylist.id), method: :post %>
+    <%= link_to "Dislike", destroy_fav_stylists_client_path(current_client, :stylist_id => @stylist.id), method: :delete %>
+  </div>
+
+
+  <div>
+      <%= render(:partial => 'stylists/show_stylist_profile', :html => {:multiport => true}, :locals => {:stylist => @stylist})%>
+  </div>
+
+<% # this stuff at the bottom should be in the partial above %>
+  <div id = "stylist_review" class = "stylist_info" style ="display:none; ">
+    <h4 class = "text-center">Reviews</h4><hr>
+      <% @rating.each do |rating| %>
+          <%= render(:partial => 'ratings/index_ratings', :html => {:multiport => true}, :locals => {:rating => rating})%><br />
+            <div>
+              <%= link_to("View Complete Review", show_client_rating_path(rating, :client_id => current_client.id, :stylist_id => @stylist.id))%><br />
+            </div>
+            <hr>
+      <% end %>
+  </div>
+
+  <div id = "stylist_portfolio" class = "stylist_info">
+    <h4 class = "text-center">Porfolio</h4><hr>
+      <div class = "card-group">
+
+      <% @portfolio.each do |portfolio| %>
+        <div class = 'card-body' style = 'width:auto;'>
+          <div class = 'card text-center' style = 'width:200px;'>
+
+              <%= render(:partial => 'portfolios/index_portfolio', :html => {:multiport => true}, :locals => {:portfolio => portfolio})%><br />
+              <div class = 'card-footer'>
+                <%= link_to("More Details", show_client_portfolio_path(portfolio, :client_id => current_client.id, :stylist_id => @stylist.id))%>
+              </div> <!--card-footer-->
+          </div> <!--card-->
+        </div><!--card-body-->
+      <% end %>
+
+    </div><!--card-group-->
+    <%= will_paginate @portfolio, class: "apple_pagination"  %>
+  </div>
+</div><!--container-->

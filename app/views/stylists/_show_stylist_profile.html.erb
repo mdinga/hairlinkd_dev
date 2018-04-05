@@ -1,0 +1,131 @@
+
+<div class = "container">
+  <div class = "row background_stylist">
+    <div class = "col-sm-4 text-center" style = "padding: 3px;">
+      <%= image_tag stylist.avatar.url(:thumb).to_s, class: "img-thumbnail rounded  w-1" %>
+    </div><!--col-sm-4-->
+
+    <div class = "col-sm-8" style = "color: white">
+      <h5 class = "mt-2"><%= @stylist.username%></h5>
+      <p class = "badge badge-primary badge-pill bg-warning " style = "color:black"><%= stylist.overall_rating %> </p> (<%= pluralize(stylist.ratings.count, 'Review') %>)
+      <p>Likes: <%= stylist.clients.count %></p>
+
+      <p><% stylist.areas.each do |a| %>
+        <%= a.name %>
+        <% end %><br />
+
+      <% stylist.cities.each do |c|%>
+      <%= c.city %>
+      <% end %>
+    </p>
+
+
+      <div class = "breadcrumb bg-inverse text-center">
+          <a href="#" id ="portfolio-link" class = "breadcrumb-item text-secondary">My Portfolio</a>
+          <a href="#" id ="about-link" class = "breadcrumb-item text-secondary">About Me </a>
+          <a href="#" id ="reviews-link" class = "breadcrumb-item text-secondary">My Reviews</a>
+          <a href="#" id ="contacts-link" class = "breadcrumb-item text-secondary">My Contacts</a>
+          <a href="#" id ="calendar-link" class = "breadcrumb-item text-secondary">My Calendar</a>
+
+      </div>
+
+    </div><!--col-sm-8-->
+  </div><!--row-->
+</div><!--container-->
+
+  <div id = "about_me" class = "stylist_info" style ="display:none;">
+    <h4 class = "text-center">About Me</h4><hr>
+        <div class = "row">
+          <div class = "col-md-2">Services I Offer:</div>
+            <div class = "col-md-10">
+                <%  stylist.services.each do |h| %>
+                <span class = "badge badge-dark p-2 badge-pill m-1"><%= h.name %></span>
+            <% end %>
+          </div>
+        </div>
+
+        <div class = "row mt-2">
+          <div class = "col-md-2">House Calls:</div>
+            <div class = "col-md-10">
+              <%= stylist.house_calls ? 'Yes' : 'No' %>
+          </div>
+        </div>
+
+        <div class = "row mt-2">
+          <div class = "col-md-2">More About Me:</div>
+            <div class = "col-md-10 ">
+              <blockquote><%= stylist.about_me %></blockquote>
+          </div>
+        </div>
+
+        <div class = "row mt-2">
+          <div class = "col-md-2">Date Joined:</div>
+            <div class = "col-md-10 ">
+                <%= stylist.created_at.strftime("%d %B %Y") %></td>
+          </div>
+        </div>
+  </div>
+
+  <div id = "stylist_review" class = "stylist_info" style ="display:none; ">
+    <h4 class = "text-center">Reviews</h4><hr>
+      <% @rating.each do |rating| %>
+        <%= render(:partial => 'ratings/index_stylist_ratings', :html => {:multiport => true}, :locals => {:rating => rating} ) %>
+          <div class = "text-center">
+            <%= link_to("View Complete Review", show_stylist_rating_path(rating, :stylist_id => @stylist.id))%> <!--view this particular rating -->
+          </div>
+        <hr>
+      <% end %>
+  </div>
+
+
+  <div id = "stylist_portfolio" class = "stylist_info" style ="display:block;">
+    <h4 class = "text-center">Porfolio</h4><hr>
+
+      <div>
+        <% if current_stylist.id == @stylist.id %>
+          <%= link_to("Add Item to Porfolio", new_portfolio_path(:stylist_id => @stylist.id))%>
+        <% end %>
+      </div>
+
+      <div class = "card-group">
+
+          <% @portfolio.each do |portfolio| %>
+          <div class = 'card-body' style = 'width:auto;'>
+            <div class = 'card text-center' style = 'width:200px;'>
+              <%= render(:partial => 'portfolios/index_portfolio', :html => {:multiport => true}, :locals => {:portfolio => portfolio})%>
+
+              <div class = 'card-footer'>
+                <% if current_stylist.id == @stylist.id %>
+                  <%= link_to("Edit", edit_portfolio_path(portfolio))%> |
+                  <%= link_to("Delete", delete_portfolio_path(portfolio))%><br />
+                <% end %>
+              </div> <!--card-footer-->
+
+
+            </div> <!--card-->
+          </div><!--card-body-->
+          <% end %>
+    </div><!--card group-->
+  </div><!--stylist portfolio-->
+
+    <div id = "contact_me" class = "stylist_info" style ="display:none;">
+        <h4 class = "text-center">Contact Details</h4><hr>
+    <table>
+        <tr>
+          <th>Phone:</th>
+          <td><%= stylist.phone %></td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td><%= stylist.email %></td>
+        </tr>
+        <tr>
+          <th>Facebook Page:</th>
+          <td><%= stylist.facebook_link %></td>
+        </tr>
+        <tr>
+          <th>Instagram Page:</th>
+          <td><%= stylist.instagram_link %></td>
+        </tr>
+      </table>
+</div>

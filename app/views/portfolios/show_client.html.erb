@@ -1,0 +1,11 @@
+<div>
+  <%= link_to("<< Back to Stylist", show_stylists_client_path(@portfolio.stylist.id, :client_id => current_client.id)) %>
+</div>
+
+<div>
+  <h2> Portfolio Details</h2>
+</div>
+
+<div>
+  <%= render(:partial => 'show_portfolio', :hmtl => {:multiport => true}, :locals => {:portfolio => @portfolio}) %>
+</div>

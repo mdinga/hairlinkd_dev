@@ -1,0 +1,39 @@
+<div class = 'container'>
+
+    <h3 class = 'text-center mt-3'>List of Stylists</h3>
+
+  <div class = 'row'>
+    <div = class = 'col col-md-2 text-center'>
+      <h4>Quick Search (here)</h4>
+
+    </div><!--col-->
+
+    <div = class = 'col col-sm-10'>
+      <div = class = 'container'>
+        <div class = 'card-group'>
+
+            <% @stylist.each do |stylist| %>
+
+           <div id = "stylist_list">
+            <div class = 'card-body' style = 'width:auto;'>
+              <div class = 'card text-center' style = 'width:200px;'>
+
+                <%= render(:partial => 'index_stylists', :html => {:multiport => true}, :locals => {:stylist => stylist}) %>
+
+               <div class = 'card-footer'>
+                 <%= link_to("View Profile", stylist_path(stylist))%>
+               </div> <!--card-footer-->
+
+              </div> <!--card-->
+              </div><!--card body-->
+             </div> <!--stylist_list-->
+
+               <% end %>
+
+        </div><!--card-group-->
+              <%= will_paginate @stylist, class: 'apple_pagination'%>
+      </div><!--container-->
+    </div><!--col-->
+
+  </div><!--row-->
+</div><!--container-->

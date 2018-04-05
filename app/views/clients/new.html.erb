@@ -1,0 +1,19 @@
+<div class = 'container'>
+
+  <%= button_to("<< Return", root_path, method: :get, class: 'btn btn-secondary btn-sm m-3') %>
+
+  <div>
+    <%= form_for(@client) do |c| %>
+
+      <%= error_messages_for(c.object) %>
+        <form>
+          <%= render(:partial => 'client_register', :html => {:multiport => true}, :locals => {:c => c}) %>
+
+          <div class = 'text-center m-3'>
+            <%= c.submit("Create Profile", class: 'btn btn-dark') %>
+          </div>
+        </form>
+
+    <% end %>
+  </div>
+</div>

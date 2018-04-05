@@ -1,0 +1,16 @@
+<%= link_to("<< Back to Hairstyles", styles_path) %>
+
+<div>
+  <h2>Details of Hairstyles</h2>
+</div>
+
+<div>
+  <%= link_to("Edit", edit_style_path(@style))%>,
+  <%= link_to("Delete", delete_style_path(@style))%><br /><br />
+</div>
+
+<div>
+  <%= render(:partial => "show_style", :html => {:multiport => true}, :locals => {:style => @style})%>
+</div>
+
+  <%= link_to("Like", create_fav_styles_client(@client :style_id => @style.id), :method => :post )%>

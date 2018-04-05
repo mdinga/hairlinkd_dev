@@ -1,0 +1,19 @@
+<%= link_to("<< Back to List", admins_path) %>
+
+<div>
+  <h2>Your Profile, <%= @admin.name%></h2>
+</div>
+
+<table>
+    <th>Fullname:</th>
+    <td><%= @admin.name %><%= @admin.surname %></td>
+  </tr>
+
+    <th>Email: </th>
+    <td><%= @admin.email %></td>
+  </tr>
+  <tr>
+    <th>Date Joined:</th>
+    <td><%= @admin.created_at.strftime("%d %B %Y") %></td>
+  </tr>
+</table>

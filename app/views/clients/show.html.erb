@@ -1,0 +1,19 @@
+<div class = "container">
+
+<div class = "text-center">
+  <h2>Your Profile <%= @client.name%></h2>
+</div>
+
+<div class= "text-center m-4">
+  <%= button_to "Edit Your Profile", edit_client_path(@client), method: :get, class: "btn btn-secondary btn-sm" %>
+</div>
+
+<div>
+  <%= render(:partial => 'show_client', :html => {:multiport => true}, :locals => {:client => @client})%>
+</div>
+
+<div class = "text-center m-4" >
+  <%= button_to "Delete Profile", delete_client_path(@client), method: :get, class: "btn btn-danger btn-sm" %>
+<div>
+
+</div>

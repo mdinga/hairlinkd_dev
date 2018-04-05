@@ -1,0 +1,2 @@
+module StylistAccessHelper
+end

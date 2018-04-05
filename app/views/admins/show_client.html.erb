@@ -1,0 +1,40 @@
+<%= link_to("<< Back to Clients", index_clients_admins_path) %>
+
+
+<div>
+  <h2><%= @client.username%>'s Profile</h2>
+</div>
+
+<section>
+  <div>
+    <%= link_to("Edit Profile", edit_client_admin_path(@client))%>,
+    <%= link_to("Delete Profile", delete_client_admin_path(@client))%><br />
+  </div>
+
+  <table>
+    <tr>
+      <th>Client ID:</th>
+      <td><%= @client.id %></td>
+    </tr>
+    <tr>
+  </table>
+
+  <div>
+    <%= render(:partial => 'clients/show_client', :html => {:multiport => true}, :locals => {:client => @client})%>
+    <hr>
+  </div>
+</section>
+
+<section>
+  <div>
+    <h3>All Reviews Done By <%= @client.username%></h3>
+  </div>
+
+  <div>
+    <% @ratings.each do |rating| %>
+      <%= render(:partial => 'ratings/index_ratings', :html => {:multiport => true}, :locals => {:rating => rating})%>
+      <br />
+      <hr>
+    <% end %>
+  </div>
+</section>

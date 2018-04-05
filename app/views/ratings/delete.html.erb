@@ -1,0 +1,17 @@
+<%= link_to("<< Back to Rating", show_client_rating_path(@rating, :client_id => current_client.id, :stylist_id => @rating.stylist.id )) %>
+
+<div>
+  <h2>Delete Stylist</h2>
+
+  <%= form_for(@rating, :method => 'delete') do |f| %>
+
+    <p>Are you sure you want to permanently delete?</p>
+
+
+
+    <div class="form-buttons">
+      <%= f.submit("Delete Rating") %>
+    </div>
+
+  <% end %>
+</div>
