@@ -40,7 +40,7 @@ class Stylist < ApplicationRecord
 
   validates :email,     :on => :create,
                         :presence => true,
-                        :length => {:maximum => 25},
+                        :length => {:maximum => 50},
                         :format => EMAIL_REGEX
 
   validates :password,  :on => :create,
