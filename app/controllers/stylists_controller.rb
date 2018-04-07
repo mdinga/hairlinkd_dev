@@ -32,11 +32,13 @@ class StylistsController < ApplicationController
   def edit
     @stylist = Stylist.find(params[:id])
     @city = City.all
+    get_service_cat
   end
 
   def update
     @stylist = Stylist.find(params[:id])
     @city = City.all
+    get_service_cat
 
       if  @stylist.update_attributes(stylist_params)
         flash[:notice] = "Stylist updated created successfully."
@@ -76,7 +78,7 @@ class StylistsController < ApplicationController
   end
 
   def stylist_params
-    params.require(:stylist).permit(:avatar, :username, :name, :surname, :phone, :email, :city_ids, :area_ids, :address, :house_calls, :products, :about_me, :password, :password_confirmation, :facebook_link, :instagram_link, service_ids:[])
+    params.require(:stylist).permit(:avatar, :username, :name, :surname, :phone, :email, :city_ids, :area_ids, :address, :house_calls, :salon, :about_me, :password, :password_confirmation, :facebook_link, :instagram_link, service_ids:[])
   end
 
   def ratings_params
@@ -87,9 +89,15 @@ class StylistsController < ApplicationController
     params.require(:portfolio).permit(:image, :stylist_id, :service_id, :details)
   end
 
-
   def assign_role
     @stylist.update_attributes(:role => 'stylist')
+  end
+
+  def get_service_cat
+    @serv_cat = []
+    @file_dir = File.join(File.dirname(__FILE__), '..', '..', 'lib', 'services', 'categories.txt')
+    @file = File.open(@file_dir, 'r')
+    @file.each_line{|line| @serv_cat.push line.chomp}
   end
 
 

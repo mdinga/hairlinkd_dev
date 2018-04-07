@@ -16,7 +16,7 @@
 
       <td>
           <%= link_to("Edit", edit_city_path(c))%>
-          <%= link_to("Delete", delete_city_path(c))%>
+          <%= link_to("Delete", city_path(c), method: :delete)%>
       </td>
     </tr>
     <% end %>

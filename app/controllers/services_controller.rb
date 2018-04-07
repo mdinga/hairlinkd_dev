@@ -3,7 +3,7 @@ class ServicesController < ApplicationController
   layout "admin"
 
   def index
-    @services = Service.all
+    @services = Service.order(params[:sort])
   end
 
   def show

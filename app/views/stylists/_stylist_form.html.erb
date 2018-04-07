@@ -45,9 +45,13 @@
     <div class ='form-group'>
       <label class = 'form-control-label'>I Offer The Following <strong>Services</strong>:</label>
         <div class = " bg-light p-2">
-        <%= s.collection_check_boxes :service_ids, Service.all, :id, :name   do |h| %>
-          <span style = "margin-right: 2px;"><%= h.check_box %></span> <%= h.label %>|
-        <% end %>
+
+          <% @serv_cat.each do |cat| %>
+            <p><strong><%= cat %>: </strong><%= s.collection_check_boxes :service_ids, Service.with_category(cat), :id, :name   do |h| %>
+            <span style = "margin-right: 2px;">| <%= h.check_box %></span> <%= h.label %>
+            <% end %></p>
+          <% end %>
+
       </div>
     </div>
 
@@ -67,6 +71,11 @@
 
   <fieldset>
     <legend>Get Hold of Me</legend>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Salon Name:</label>
+        <%= s.text_field :salon, class: 'form-control' %>
+    </div>
 
     <div class ='form-group'>
       <label class = 'form-control-label'>Cellphone:</label>
