@@ -243,7 +243,7 @@ DEPENDENCIES
   pg
   puma (~> 3.7)
   rails (~> 5.1.4)
-  rmagick (~> 2.16.0)
+  rmagick (~> 2.15, >= 2.15.4)
   sass-rails (~> 5.0)
   selenium-webdriver
   turbolinks (~> 5)
