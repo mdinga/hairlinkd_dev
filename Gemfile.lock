@@ -98,6 +98,7 @@ GEM
     crass (1.0.4)
     erubi (1.7.1)
     execjs (2.7.0)
+    ffi (1.9.23)
     ffi (1.9.23-x86-mingw32)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -126,11 +127,14 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.13.1)
+    mysql2 (0.4.10)
     mysql2 (0.4.10-x86-mingw32)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.2.0)
     nio4r (2.3.0)
+    nokogiri (1.8.2)
+      mini_portile2 (~> 2.3.0)
     nokogiri (1.8.2-x86-mingw32)
       mini_portile2 (~> 2.3.0)
     popper_js (1.12.9)
@@ -202,7 +206,7 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2018.4)
       tzinfo (>= 1.0.0)
-    uglifier (4.1.8)
+    uglifier (4.1.9)
       execjs (>= 0.3.0, < 3)
     web-console (3.6.0)
       actionview (>= 5.0)
@@ -217,7 +221,9 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  ruby
   x86-mingw32
+  x86_64-linux
 
 DEPENDENCIES
   bcrypt!
