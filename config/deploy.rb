@@ -2,7 +2,8 @@
 lock "~> 3.10.1"
 
 set :application, "hairlinkd"
-set :repo_url, "git@github.com:mdinga/hairlinkd.git"
+#set :repo_url, "git@github.com:mdinga/hairlinkd.git"
+set :repo_url, 'https://mdinga:Mthemb00@github.com/mdinga/hairlinkd'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
