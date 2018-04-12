@@ -8,9 +8,6 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
-# Use mysql as the database for Active Record
-gem 'mysql2'
-gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -65,4 +62,10 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
+  # Use mysql as the database for Active Record
+  gem 'mysql2'
+end
+
+group :production do
+  gem 'pg'
 end
