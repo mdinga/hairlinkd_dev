@@ -33,9 +33,9 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'capistrano'
 gem 'capistrano-rails'
-gem 'capistrano-passenger'
+#gem 'capistrano-passenger'
 gem 'capistrano-rbenv'
-
+gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
