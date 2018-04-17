@@ -135,6 +135,9 @@ GEM
       mini_portile2 (~> 2.3.0)
     nokogiri (1.8.2-x86-mingw32)
       mini_portile2 (~> 2.3.0)
+    passenger (5.2.3)
+      rack
+      rake (>= 0.8.1)
     pg (1.0.0)
     pg (1.0.0-x86-mingw32)
     popper_js (1.12.9)
@@ -240,6 +243,7 @@ DEPENDENCIES
   jquery-rails (~> 4.3, >= 4.3.1)
   mail_form
   mysql2
+  passenger
   pg
   puma (~> 3.7)
   rails (~> 5.1.4)
