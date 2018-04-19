@@ -16,7 +16,7 @@
 //= require bootstrap-sprockets
 //= require popper
 //= require rails-ujs
-// require turbolinks
+//= require turbolinks
 //= require_tree .
 //= require home
 
