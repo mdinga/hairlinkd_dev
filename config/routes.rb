@@ -71,7 +71,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :portfolios, :expect => [:show] do
+      resources :portfolios do
         member do
           get :delete
           get :show_client
@@ -80,7 +80,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :admins do
+      resources :admins, :except => [new] do
         member do
           get :delete
           get :show_client
