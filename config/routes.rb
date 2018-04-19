@@ -80,7 +80,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :admins, :except => [new] do
+      resources :admins, :except => [:new] do
         member do
           get :delete
           get :show_client
