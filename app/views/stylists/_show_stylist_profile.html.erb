@@ -33,7 +33,7 @@
   </div><!--row-->
 </div><!--container-->
 
-  <div id = "about_me" class = "stylist_info" style ="display:none;">
+  <div id = "about_me" class = "stylist_info" style ="display:block;">
     <h4 class = "text-center">About Me</h4><hr>
         <div class = "row">
           <div class = "col-md-2">Services I Offer:</div>
@@ -66,7 +66,7 @@
         </div>
   </div>
 
-  <div id = "stylist_review" class = "stylist_info" style ="display:none; ">
+  <div id = "stylist_review" class = "stylist_info" style ="display:block; ">
     <h4 class = "text-center">Reviews</h4><hr>
       <% @rating.each do |rating| %>
         <%= render(:partial => 'ratings/index_stylist_ratings', :html => {:multiport => true}, :locals => {:rating => rating} ) %>
@@ -108,7 +108,7 @@
     </div><!--card group-->
   </div><!--stylist portfolio-->
 
-    <div id = "contact_me" class = "stylist_info" style ="display:none;">
+    <div id = "contact_me" class = "stylist_info" style ="display:block;">
         <h4 class = "text-center">Contact Details</h4><hr>
     <table>
       <tr>
