@@ -42,7 +42,6 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'bootstrap', '~> 4.0'
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 gem 'will_paginate'
-gem 'mail_form'
 
 
 group :development, :test do
