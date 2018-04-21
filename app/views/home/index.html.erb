@@ -70,71 +70,21 @@
 </section>
 
 
-<section>
-  <div class = "row" style = "padding-top: 30px; padding-bottom: 30px; background-color:#DCDCDC;">
-    <sub-section class = "col text-center" style = "font-size:1.4em;">
-      <div>
-
-                <h2 >Visit Our Gallery</h2>
-                <p>Our gallery is home to the top trending hairstyless.<p>
-                <p>Browse through the gallery to get inspiration for your next style.<p>
-                <p>Or select from available tags and let us recommend something for you.<p>
-
-                <div>
-                  <p>Log in to check it out</p>
-                  <button type="button" class = "btn btn-secondary">Log In</button>
-                </div><!--card-footer-->
-
-              </div><!--card-body-->
-          </sub-section>
-
-  </div>
-</section>
-
-
-<section>
-  <div class = "container-fluid row" style = "background-image: url(/assets/web-deco/contact_us.jpg); color:white;">
-    <div style ='width:100%; text-align:center; padding:10px;'>
+<section style = "background-image: url(/assets/web-deco/contact_us.jpg); color:white">
+  <div class = "container text-center p-5">
+    <div style ='width:100%; padding:10px;'>
       <h2>Lets Keep In Touch</h2>
     </div>
 
 
-  <div class = 'col col-sm-6 text-center' style = "font-size:1.4em">
-      <div class = "container">
+  <div style = "font-size:1.4em">
+
         <p>We would love to here from you.</p>
         <p>Whether its an issue you have, or you just want to say hello!!</p>
         <p>Drop us a message and we'll come back to you</p>
-      </div>
+        <%= button_to("Contact Us", "#", method: :get, class: "btn btn-danger")%>
+
   </div>
-
-<div class = 'col col-sm-6 text-center'>
-  <div class = "container">
-    <div class = "form-group">
-      <form style = "color:white;">
-        <%= form_for :contact_form do |f|%>
-
-        <div class ='form-group'>
-          <label class = 'form-control-label'>Name:</label>
-           <%= f.text_field :name %>
-        </div>
-
-        <div class ='form-group'>
-          <label class = 'form-control-label'>Email:</label>
-           <%=  f.text_field :email %>
-        </div>
-
-        <div class ='form-group'>
-          <label class = 'form-control-label'>Message</label>
-           <%= f.text_area :message %>
-        </div>
-
-        <div class = "text-center mb-2"><%= f.submit 'Send', class: 'btn btn-secondary'  %></div>
-
-        <% end %>
-      </form>
-    </div>
-  </div>
-    </div>
 
   </div>
 </section>
