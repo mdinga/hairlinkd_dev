@@ -1,6 +1,7 @@
 <table>
   <div><%= image_tag portfolio.image.url(:thumb).to_s %></div>
 
+<% if portfolio.service %>
   <tr>
     <th>Hairstyle:</th>
     <td><%= portfolio.service.name %></td>
@@ -16,3 +17,4 @@
     <td><%= portfolio.details%></td>
   </tr>
 </table>
+<% end %>

@@ -5,7 +5,7 @@ class StylistsController < ApplicationController
     after_action :assign_role, :only => :create
 
   def index
-      @stylist = Stylist.paginate(:page => params[:page], :per_page => 6)
+      searchable_stylists
   end
 
   def show

@@ -10,16 +10,9 @@
       <p class = "badge badge-primary badge-pill bg-warning " style = "color:black"><%= stylist.overall_rating %> </p> (<%= pluralize(stylist.ratings.count, 'Review') %>)
       <p>Likes: <%= stylist.clients.count %></p>
 
-      <p><% stylist.areas.each do |a| %>
-        <%= a.name %>
-        <% end %><br />
-
-      <% stylist.cities.each do |c|%>
-      <%= c.city %>
-      <% end %>
-    </p>
-
-
+      <p> <%= stylist.areas.present? ? stylist.areas.first.name : " " %><br />
+          <%= stylist.cities.present? ? stylist.cities.first.city : " " %>
+  
       <div class = "breadcrumb bg-inverse text-center">
           <a href="#" id ="portfolio-link" class = "breadcrumb-item text-secondary">My Portfolio</a>
           <a href="#" id ="about-link" class = "breadcrumb-item text-secondary">About Me </a>

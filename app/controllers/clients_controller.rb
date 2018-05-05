@@ -58,13 +58,7 @@ class ClientsController < ApplicationController
   end
 
 def index_stylists
-  @stylist = Stylist.search(params[:search]).order(sort_criteria + " " + sort_direction).paginate(:page => params[:page], :per_page => 6)
-      @cities =[]
-
-    @stylist.each do |s|
-      @cities << s.cities
-    end
-
+ searchable_stylists
 end
 
 def show_stylists
@@ -141,13 +135,7 @@ private
     @client.update_attributes(:role => 'client')
   end
 
-  def sort_criteria
-    Stylist.column_names.include?(params[:sort]) ? params[:sort] : "overall_rating"
-  end
 
-  def sort_direction
-    %w[ASC DESC].include?(params[:direction]) ? params[:direction] : "DESC"
-  end
 
 
 end
