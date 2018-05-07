@@ -1,4 +1,5 @@
 class Stylist < ApplicationRecord
+  rolify :role_cname => 'DefStylist'
 
 
   has_secure_password

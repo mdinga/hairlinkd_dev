@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406211155) do
+ActiveRecord::Schema.define(version: 20180507191438) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -63,9 +63,49 @@ ActiveRecord::Schema.define(version: 20180406211155) do
     t.string "surname"
     t.string "email"
     t.string "password_digest"
-    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "clients_def_clients", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "client_id"
+    t.bigint "def_client_id"
+    t.index ["client_id", "def_client_id"], name: "index_clients_def_clients_on_client_id_and_def_client_id"
+    t.index ["client_id"], name: "index_clients_def_clients_on_client_id"
+    t.index ["def_client_id"], name: "index_clients_def_clients_on_def_client_id"
+  end
+
+  create_table "def_clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_def_clients_on_name_and_resource_type_and_resource_id"
+    t.index ["name"], name: "index_def_clients_on_name"
+    t.index ["resource_type", "resource_id"], name: "index_def_clients_on_resource_type_and_resource_id"
+  end
+
+  create_table "def_stylists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_def_stylists_on_name_and_resource_type_and_resource_id"
+    t.index ["name"], name: "index_def_stylists_on_name"
+    t.index ["resource_type", "resource_id"], name: "index_def_stylists_on_resource_type_and_resource_id"
+  end
+
+  create_table "default_stylists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_default_stylists_on_name_and_resource_type_and_resource_id"
+    t.index ["name"], name: "index_default_stylists_on_name"
+    t.index ["resource_type", "resource_id"], name: "index_default_stylists_on_resource_type_and_resource_id"
   end
 
   create_table "fav_styles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -135,6 +175,17 @@ ActiveRecord::Schema.define(version: 20180406211155) do
     t.index ["stylist_id", "client_id", "style_id"], name: "index_ratings_on_stylist_id_and_client_id_and_style_id"
   end
 
+  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["name"], name: "index_roles_on_name"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
   create_table "services", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "category"
@@ -174,10 +225,32 @@ ActiveRecord::Schema.define(version: 20180406211155) do
     t.string "email"
     t.string "facebook_link"
     t.string "instagram_link"
-    t.string "role"
+    t.string "salon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "salon"
+  end
+
+  create_table "stylists_def_stylists", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "stylist_id"
+    t.bigint "def_stylist_id"
+    t.index ["def_stylist_id"], name: "index_stylists_def_stylists_on_def_stylist_id"
+    t.index ["stylist_id", "def_stylist_id"], name: "index_stylists_def_stylists_on_stylist_id_and_def_stylist_id"
+    t.index ["stylist_id"], name: "index_stylists_def_stylists_on_stylist_id"
+  end
+
+  create_table "stylists_default_stylists", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "stylist_id"
+    t.bigint "default_stylist_id"
+    t.index ["default_stylist_id"], name: "index_stylists_default_stylists_on_default_stylist_id"
+    t.index ["stylist_id"], name: "index_stylists_default_stylists_on_stylist_id"
+  end
+
+  create_table "stylists_roles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "stylist_id"
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_stylists_roles_on_role_id"
+    t.index ["stylist_id", "role_id"], name: "index_stylists_roles_on_stylist_id_and_role_id"
+    t.index ["stylist_id"], name: "index_stylists_roles_on_stylist_id"
   end
 
 end

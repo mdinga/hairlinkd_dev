@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   layout :resolve_layout
 
   #before_action :find_current_client, :only => [:show]
-  after_action :assign_role, :only => :create
+  #after_action :assign_role, :only => :create
 
   helper_method :sort_criteria, :sort_direction
 
@@ -21,7 +21,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
-
+    @client.add_role :def_client
     if @client.save
       flash[:notice] = "Profile Created Successfully, Please Log In"
       redirect_to (client_access_login_path)

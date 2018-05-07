@@ -1,4 +1,5 @@
 class Client < ApplicationRecord
+  rolify :role_cname => 'DefClient'
 
   has_secure_password
 

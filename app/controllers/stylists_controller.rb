@@ -2,7 +2,7 @@ class StylistsController < ApplicationController
 
   layout :resolve_layout
 
-    after_action :assign_role, :only => :create
+    #after_action :assign_role, :only => :create
 
   def index
       @stylist = Stylist.paginate(:page => params[:page], :per_page => 6)
@@ -20,6 +20,7 @@ class StylistsController < ApplicationController
 
   def create
     @stylist = Stylist.new(stylist_params)
+    @stylist.add_role :def_stylist
 
     if @stylist.save
       flash[:notice] = "Profile Created Successfully, Please Log In"
