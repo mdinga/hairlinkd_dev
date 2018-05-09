@@ -1,7 +1,7 @@
 <div class = "container">
 
   <div class = "m-3">
-    <%= button_to("<< Profile", stylist_path(@stylist), method: :get, class: 'btn btn-secondary btn-sm') %>
+    <%= button_to("<< Profile", stylist_path(@stylist), method: :get, class: 'btn btn-hl btn-sm') %>
   </div>
 
   <h2 class = 'text-center'>Edit Your Profile</h2>
@@ -10,7 +10,7 @@
 
     <%= render(:partial => 'stylist_form', :html => {:multiport => true}, :locals => {:s => s}) %>
 
-    <div class = "text-center mb-2"><%= s.submit 'Update My Profile', class: 'btn btn-success btn-sm'  %></div>
+    <div class = "text-center mb-2"><%= s.submit 'Update My Profile', class: 'btn btn-hl btn-sm'  %></div>
 
 
   <% end %>

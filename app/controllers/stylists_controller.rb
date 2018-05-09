@@ -4,8 +4,10 @@ class StylistsController < ApplicationController
 
     #after_action :assign_role, :only => :create
 
+helper_method :sort_criteria, :sort_direction
+
   def index
-      @stylist = Stylist.paginate(:page => params[:page], :per_page => 6)
+    searchable_stylists
   end
 
   def show

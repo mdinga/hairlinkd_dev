@@ -1,26 +1,32 @@
-<h5>Search By Name</h5>
+<h5>Quick Search</h5>
+
 <div class="form-group">
-    <%= form_tag(index_stylists_clients_path(:client_id => current_client.id), method: :get, :id => "stylist_search") do %>
+  <h6>Search By Name:</h6>
+    <%= form_tag(path_to_stylist('#'), method: :get, :id => "stylist_search") do %>
       <%= hidden_field_tag :direction, params[:direction] %>
       <%= hidden_field_tag :sort, params[:sort] %>
       <%= text_field_tag :search, params[:search], class: 'form-control' %>
       <%= submit_tag 'Search', :name => nil, class: 'btn btn-secondary mt-2' %>
     <% end %>
 </div><hr>
+
 <div class = "form group">
-  <h5>Sort by:<h5>
-    <p><%= link_to sortable "overall_rating", "Rating" %></p>
-    <p><%= link_to "- Reviews", "#" %></p>
+  <h6>Sort by:</h6>
+    <p style = "font-size:15px;"><%= link_to sortable "overall_rating", "Rating" %></p>
 </div><hr><!--form group-->
 
 <div class = "form group">
-  <h5>#Tags City<h5>
-    <% @cities.uniq.each do |c| %> 
+  <h6>Search by City:</h6>
+    <p style = "font-size:15px;"><%= link_to "All Cities", path_to_stylist('#') %> (<%= @stylist_all.count%>)<p>
+    <% @cities.uniq.each do |c| %>
+            <p style = "font-size:15px;"><%= link_to c, path_to_stylist(:place => c) %> (<%= @cities.count(c)%>)</p>
     <% end %>
-
 </div><!--form group-->
 
 <div class = "form group">
-  <h5>#Tag Area<h5>
-
+  <h6>Search by Area:</h6>
+    <p style = "font-size:15px;"><%= link_to "All Areas", path_to_stylist('#') %> (<%= @stylist_all.count%>)<p>
+    <% @area.uniq.each do |a| %>
+          <p style = "font-size:15px;"><%= link_to a, path_to_stylist(:sub_place => a) %> (<%= @area.count(a)%>)</p>
+    <% end %>
 </div><!--form group-->

@@ -39,7 +39,11 @@ $gold: #D4AF37;
   //font-family: 'Caveat', cursive;
   font-family: 'Bad Script', cursive;
   margin-left: 20px;
+}
 
+.btn-hl{
+  background-color:black;
+  color:white;
 }
 .info_paragraph{
   font-size: 1.4em;
@@ -84,7 +88,7 @@ $gold: #D4AF37;
 .stylist_info{
   height: auto;
   width: 100%;
-  border: 2px solid grey;
+  //border: 2px solid grey;
 
   padding: 5px;
   margin-bottom: 2px;

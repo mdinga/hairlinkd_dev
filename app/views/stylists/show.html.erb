@@ -1,10 +1,12 @@
 <div class = "container">
 
     <div class = "m-2 clearfix">
-      <% if current_stylist.id == @stylist.id %>
-        <%= button_to("Edit Your Profile", edit_stylist_path(@stylist), method: :get, class: "btn btn-primary btn-sm float-right")%>
+
+      <% if current_user.id == @stylist.id %>
+        <%= button_to("Edit Your Profile", edit_stylist_path(@stylist), method: :get, class: "btn btn-hl btn-sm float-right")%>
       <% end %>
-        <%= button_to("<< Stylists", stylists_path, method: :get, class: "btn btn-secondary btn-sm float-left")%>
+
+        <%= button_to("<< Stylists", stylists_path, method: :get, class: "btn btn-hl btn-sm float-left")%>
 
     </div>
 
@@ -14,7 +16,7 @@
 
 
   <div class = "text-center mt-5">
-      <%= button_to("Delete Profile", delete_stylist_path(@stylist), method: :get, class: "btn btn-danger btn-sm")%>
+      <%= button_to("Delete Profile", delete_stylist_path(@stylist), method: :get, class: "btn btn-danger btn-sm m-4")%>
   </div>
 
 </div>

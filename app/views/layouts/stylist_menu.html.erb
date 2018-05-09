@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Hairlinkd</title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', href="http://fonts.googleapis.com/css?family=Lato|Bad+Script", media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-      <%= favicon_link_tag asset_path('HL_favicon.png'), :rel => 'icon', :type =>  'image/png' %>
-  </head>
+
+<head>
+  <title>Hairlinkd</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', href="http://fonts.googleapis.com/css?family=Lato|Bad+Script", media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('HL_favicon.png'), :rel => 'icon', :type =>  'image/png' %>
+</head>
 
   <body>
 
@@ -18,7 +19,7 @@
 
     <nav class="navbar navbar-light nav-menu navbar-expand-sm sticky-top bg-light">
       <div class="container">
-            <div class = 'navbar-brand'><img src="/assets/Hairlinkd-Logo.png" style = "width: 80px;" alt ="hairlinkd logo"/><span class ="hairlinkd_logo">Hairlinkd</div>
+            <div class = 'navbar-brand'><img src="/assets/Hairlinkd-Logo.png" style = "width: 80px;" alt ="hairlinkd logo"/><span class = "hairlinkd_logo">Hairlinkd</div>
 
         <button class = 'navbar-toggler' type = 'button' data-toggle = 'collapse'
           data-target = '#stylistToggler' aria-controls="stylistToggler"
@@ -29,8 +30,8 @@
         <div class = 'collapse navbar-collapse' id = 'stylistToggler'>
           <div class="nav navbar-nav ml-auto">
 
-            <%= link_to("My Profile", stylist_path(current_stylist.id), class: "nav-item nav-link") %>
-            <%= link_to("Stylists", stylists_path, class: "nav-item nav-link") %>
+            <%= link_to("My Profile", stylist_path(current_user.id), class: "nav-item nav-link") %>
+            <%= link_to("Stylists", stylists_path(:stylist_id == current_user.id), class: "nav-item nav-link") %>
             <%= link_to("Forum", '#', class: "nav-item nav-link") %>
             <%= link_to("Contact Us", '#', class: "nav-item nav-link") %>
             <%= link_to("Logout", stylist_access_stylist_logout_path, class: "nav-item nav-link") %>

@@ -29,6 +29,21 @@ class Stylist < ApplicationRecord
     end
   end
 
+  def self.find_city(place)
+    if place
+      self.joins(:cities).where("cities.city = ?", place)
+    else
+      all
+    end
+  end
+
+  def self.find_area(sub_place)
+    if sub_place
+      self.joins(:areas).where("areas.name = ?", sub_place)
+    else
+      all
+    end
+  end
 
 
 

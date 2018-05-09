@@ -66,24 +66,12 @@
         </div>
   </div>
 
-  <div id = "stylist_review" class = "stylist_info" style ="display:block; ">
-    <h4 class = "text-center">Reviews</h4><hr>
-      <% @rating.each do |rating| %>
-        <%= render(:partial => 'ratings/index_stylist_ratings', :html => {:multiport => true}, :locals => {:rating => rating} ) %>
-          <div class = "text-center">
-            <%= link_to("View Complete Review", show_stylist_rating_path(rating, :stylist_id => @stylist.id))%> <!--view this particular rating -->
-          </div>
-        <hr>
-      <% end %>
-  </div>
-
-
   <div id = "stylist_portfolio" class = "stylist_info" style ="display:block;">
     <h4 class = "text-center">Porfolio</h4><hr>
 
       <div>
-        <% if current_stylist.id == @stylist.id %>
-          <%= link_to("Add Item to Porfolio", new_portfolio_path(:stylist_id => @stylist.id))%>
+        <% if current_user.id == @stylist.id %>
+          <%= button_to(" + Add Item", new_portfolio_path(:stylist_id => @stylist.id), method: :get, class: "btn btn-hl btn-sm text-center")%>
         <% end %>
       </div>
 
@@ -107,6 +95,20 @@
           <% end %>
     </div><!--card group-->
   </div><!--stylist portfolio-->
+
+
+  <div id = "stylist_review" class = "stylist_info" style ="display:block; ">
+    <h4 class = "text-center">Reviews</h4><hr>
+      <% @rating.each do |rating| %>
+        <%= render(:partial => 'ratings/index_stylist_ratings', :html => {:multiport => true}, :locals => {:rating => rating} ) %>
+          <div class = "text-center">
+            <%= link_to("View Complete Review", show_stylist_rating_path(rating, :stylist_id => @stylist.id))%> <!--view this particular rating -->
+          </div>
+        <hr>
+      <% end %>
+  </div>
+
+
 
     <div id = "contact_me" class = "stylist_info" style ="display:block;">
         <h4 class = "text-center">Contact Details</h4><hr>
