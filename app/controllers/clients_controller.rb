@@ -124,7 +124,7 @@ private
       when 'new', 'create', 'delete', 'destroy'
         'menu'
       when 'show', 'index', 'edit', 'index_stylists', 'show_stylists', 'index_styles', 'show_style'
-        'client_menu'
+        'application'
       end
   end
 

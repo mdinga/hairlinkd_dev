@@ -76,7 +76,7 @@ helper_method :sort_criteria, :sort_direction
         when 'new', 'create', 'delete', 'destroy'
           'menu'
         when 'show', 'index'
-          'stylist_menu'
+          'application'
           end
   end
 

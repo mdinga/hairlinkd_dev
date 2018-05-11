@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Hairlinkd</title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', href="http://fonts.googleapis.com/css?family=Lato|Bad+Script", media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+
+<head>
+  <title>Hairlinkd</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', href="http://fonts.googleapis.com/css?family=Lato|Bad+Script", media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= favicon_link_tag asset_path('HL_favicon.png'), :rel => 'icon', :type =>  'image/png' %>
+</head>
 
   <body>
+
+        <% if  current_user.has_role? :def_stylist %>
+          <%= render 'layouts/stylist_menu'%>
+        <% elsif current_user.has_role? :def_client %>
+          <%= render 'layouts/client_menu'%>
+        <% elsif current_user.has_role? :def_admin %>
+          <%= render 'admin'%>
+        <% end %>
+
+        <% if !flash[:notice].blank? %>
+          <div class="notice">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+
     <%= yield %>
   </body>
 </html>
