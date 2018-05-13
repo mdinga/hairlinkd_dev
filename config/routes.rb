@@ -40,10 +40,6 @@ Rails.application.routes.draw do
           get :delete
           get :show_stylists
           get :show_style
-          get :edit_rating
-          patch :update_rating
-          get :delete_rating
-          delete :destroy_rating
           post :create_fav_styles
           delete :destroy_fav_styles
           post :create_fav_stylists
@@ -59,8 +55,6 @@ Rails.application.routes.draw do
       resources :ratings do
         member do
           get :delete
-          get :show_client
-          get :show_stylist
           get :show_admin
         end
       end

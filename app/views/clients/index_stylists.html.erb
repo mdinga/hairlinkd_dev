@@ -22,7 +22,7 @@
                 <%= render(:partial => 'stylists/index_stylists', :html => {:multiport => true}, :locals => {:stylist => stylist}) %>
 
                 <div class = 'card-footer'>
-                  <%= link_to("View Profile", show_stylists_client_path(stylist, :client_id => current_client.id, class: 'card-link'))%>
+                  <%= link_to("View Profile", show_stylists_client_path(stylist, :stylist_id => stylist.id, :client_id => current_client.id, class: 'card-link'))%>
                 </div> <!--card-footer-->
 
               </div> <!--card-->

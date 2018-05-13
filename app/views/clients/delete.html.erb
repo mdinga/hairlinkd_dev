@@ -1,17 +1,21 @@
-<%= link_to("<< Back to Profile", client_path(@client)) %>
+<div class = 'container'>
 
-<div>
-  <h2>Delete Client</h2>
+  <div class = 'm-3'>
+    <%= button_to("<< Back to Profile", client_path(@client), method: :get, class: 'btn btn-secondary btn-sm') %>
+  </div>
 
-  <%= form_for(@client, :method => 'delete') do |f| %>
+  <div class = 'text-center'>
+    <h2>Delete Profile?</h2>
 
-    <p>Are you sure you want to permanently delete <%= f.object.name %>?</p>
+      <%= form_for(@client, :method => 'delete') do |f| %>
 
+      <p>Are you sure you want to permanently delete your profile? This action cannot be undone.</p>
 
-
-    <div class="form-buttons">
-      <%= f.submit("Delete Client") %>
+    <div>
+      <%= f.submit("Delete Client", class: 'btn btn-danger btn-sm') %>
     </div>
 
   <% end %>
+</div>
+
 </div>

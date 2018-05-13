@@ -1,58 +1,94 @@
-<table class = "table table-striped table-sm">
+<div class = 'container'>
 
-  <tr>
-    <th>Stylist</th>
-    <td><%= Stylist.find(@rating.stylist_id).name %></td>
-  </tr>
+<div class = 'row' style = 'margin-top:5px;'>
+  <div class = 'col col-md-6 text-center'>
+  <% if current_user.has_role? :def_admin %>
+    <%= link_to("<< Back Reviews", ratings_path(:admin_id => current_user.id)) %>
+  <% elsif current_user.has_role? :def_client %>
+    <%= link_to("<< Back to Stylist", show_stylists_client_path(@rating.stylist.id, :client_id => current_user.id)) %>
+  <% elsif current_user.has_role? :def_stylist %>
+    <%= link_to("<< Back to Stylist", stylist_path(@rating.stylist.id, :stylist_id => current_user.id)) %>
+  <% end %>
+  </div>
+  <div class = 'col col-md-6 text-center'>
+    <% if current_user.id == @client.id %>
+      <%= button_to "Edit My Rating", edit_rating_path(@rating), method: :get, class: "btn btn-h1 btn-sm" %>
+    <% end %>
+  </div>
+</div>
+<div class = 'text-center'>
+  <h2>Review Details</h2>
+</div>
 
-  <tr>
-    <th>Date of Appointment</th>
-    <td><%= @rating.date_of_appointment.strftime("%d %B %Y") %></td>
-  </tr>
+  <table class = "table table-hover table-sm text-center">
 
-  <tr>
-    <th>Hairstyle</th>
-    <td><%=  %> </td>
-  </tr>
+    <tr>
+      <th>Reviewed by:</th>
+      <td><%= @client.username %></td>
+    </tr>
 
-  <tr>
-    <th>Rating Criterion 1</th>
-    <td><%= @rating.rating_1 %>/5</td>
-  </tr>
+    <tr>
+      <th>Stylist:</th>
+      <td><%= @stylist.username %></td>
+    </tr>
 
-  <tr>
-    <th>Rating Criterion 2</th>
-    <td><%= @rating.rating_2 %>/5</td>
-  </tr>
+    <tr>
+      <th>Date of Appointment:</th>
+      <td><%= @rating.date_of_appointment.strftime("%d %B %Y") %></td>
+    </tr>
 
-  <tr>
-    <th>Rating Criterion 3</th>
-    <td><%= @rating.rating_3 %>/5</td>
-  </tr>
+    <tr>
+      <th>Rating Criterion 1:</th>
+      <td><%= @rating.rating_1 %>/5.0</td>
+    </tr>
 
-  <tr>
-    <th>Rating Criterion 4</th>
-    <td><%= @rating.rating_4 %>/5</td>
-  </tr>
+    <tr>
+      <th>Rating Criterion 2:</th>
+      <td><%= @rating.rating_2 %>/5.0</td>
+    </tr>
 
-  <tr>
-    <th>Rating Criterion 5</th>
-    <td><%= @rating.rating_5 %>/5</td>
-  </tr>
+    <tr>
+      <th>Rating Criterion 3:</th>
+      <td><%= @rating.rating_3 %>/5.0</td>
+    </tr>
 
-  <tr>
-    <th>Will You Return?: </th>
-    <td><%= @rating.return ? 'Yes' : 'No' %></td>
-  </tr>
+    <tr>
+      <th>Rating Criterion 4:</th>
+      <td><%= @rating.rating_4 %>/5.0</td>
+    </tr>
 
-  <tr>
-    <th>Would You Recommend: </th>
-    <td><%= @rating.recommend ? 'Yes' : 'No' %></td>
-  </tr>
+    <tr>
+      <th>Rating Criterion 5:</th>
+      <td><%= @rating.rating_5 %>/5.0</td>
+    </tr>
 
-  <tr>
-    <th>Comments:</th>
-    <td><%= @rating.Comment %></td>
-  </tr>
+    <tr>
+      <th>Will You Return To <%= @stylist.username %>?: </th>
+      <td><%= @rating.return ? 'Absolutely' : 'Not in a Million Years' %></td>
+    </tr>
 
-</table>
+    <tr>
+      <th>Would You Recommend <%= @stylist.username %>?: </th>
+      <td><%= @rating.recommend ? 'Hell Yeah' : 'Not a chance!!!' %></td>
+    </tr>
+
+    <tr>
+      <th>My Experience with <%= @stylist.username %>:</th>
+      <td><%= @rating.Comment %></td>
+    </tr>
+  </table>
+
+  <div class = 'row'>
+    <div class = 'col text-center'>
+    <% if current_user.has_role? :def_admin %>
+      <%= link_to("Edit", '#') %>,
+      <%= link_to("Delete", '#') %>
+    <% elsif current_user.id == @client.id %>
+    <div class = 'btn-group text-center'>
+        <%= button_to "Delete My Rating", delete_rating_path(@rating), method: :get, class: "btn btn-danger btn-sm" %>
+    </div>
+    <% end %>
+      </div>
+  </div>
+
+</div>

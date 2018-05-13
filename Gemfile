@@ -36,10 +36,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #gem to install pictures
 gem 'carrierwave', '~> 1.2.1'
 gem 'rmagick', '~> 2.15', '>= 2.15.4'
-
+gem 'sprockets-rails', '~> 3.2', '>= 3.2.1'
+gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap-glyphicons'
 gem 'coffee-script-source', '1.8.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-gem 'bootstrap', '~> 4.0'
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 gem 'will_paginate'
 gem 'rolify', '~> 5.2'

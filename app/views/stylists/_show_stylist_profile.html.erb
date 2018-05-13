@@ -1,5 +1,4 @@
 
-<div class = "container">
   <div class = "row background_stylist">
     <div class = "col-sm-4 text-center" style = "padding: 3px;">
       <%= image_tag stylist.avatar.url(:thumb).to_s, class: "img-thumbnail rounded  w-1" %>
@@ -31,7 +30,21 @@
 
     </div><!--col-sm-8-->
   </div><!--row-->
-</div><!--container-->
+
+<% if current_user.has_role? :def_client %>
+  <div class = "row">
+    <div class = "col">
+      <%= button_to create_fav_stylists_client_path(current_user, :stylist_id => @stylist.id), class: "btn btn-sm like m-2", style: "background-color: black; color:white" do %>
+        <i class = "glyphicon glyphicon-thumbs-up"></i> Like
+      <% end %>
+
+      <%= button_to destroy_fav_stylists_client_path(current_user, :stylist_id => @stylist.id), method: :delete, class: "btn btn-sm unlike m-2", style: "background-color: black; color:white" do %>
+        <i class = "glyphicon glyphicon-thumbs-down"></i> Unlike
+      <% end %>
+    </div>
+
+  </div>
+<% end %>
 
   <div id = "about_me" class = "stylist_info" style ="display:block;">
     <h4 class = "text-center">About Me</h4><hr>
@@ -102,13 +115,11 @@
       <% @rating.each do |rating| %>
         <%= render(:partial => 'ratings/index_stylist_ratings', :html => {:multiport => true}, :locals => {:rating => rating} ) %>
           <div class = "text-center">
-            <%= link_to("View Complete Review", show_stylist_rating_path(rating, :stylist_id => @stylist.id))%> <!--view this particular rating -->
+            <%= link_to("View Complete Review", rating_path(rating, :stylist_id => rating.stylist.id, :client_id => rating.client.id))%> <!--view this particular rating -->
           </div>
         <hr>
       <% end %>
   </div>
-
-
 
     <div id = "contact_me" class = "stylist_info" style ="display:block;">
         <h4 class = "text-center">Contact Details</h4><hr>

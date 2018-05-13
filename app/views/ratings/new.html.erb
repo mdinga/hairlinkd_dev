@@ -1,17 +1,18 @@
-<%= link_to("<< Back to Stylist", show_stylists_client_path(@stylist)) %>
+<div class = "container">
 
-
-<div>
-  <h2>Create Ratings</h2>
-
-  <%= form_for(@rating) do |f| %>
-
-    <%= render(:partial => 'ratings_form', :locals => {:f => f}) %>
-
+  <%= link_to("<< Back to Stylist", show_stylists_client_path(@stylist)) %>
 
     <div>
-      <%= f.submit("Submit Rating") %>
+      <%= form_for(@rating) do |f| %>
+
+        <%= error_messages_for(f.object) %>
+
+        <form>
+          <%= render(:partial => 'ratings_form', :locals => {:f => f}) %>
+
+        </form>
+
+      <% end %>
     </div>
 
-  <% end %>
 </div>

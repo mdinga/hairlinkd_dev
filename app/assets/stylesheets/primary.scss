@@ -1,3 +1,4 @@
+
 /* Primary stylesheet */
 
 /* Colors */
@@ -39,11 +40,12 @@ $gold: #D4AF37;
   //font-family: 'Caveat', cursive;
   font-family: 'Bad Script', cursive;
   margin-left: 20px;
-}
 
 .btn-hl{
-  background-color:black;
-  color:white;
+    background-color:black;
+    color:white;
+  }
+
 }
 .info_paragraph{
   font-size: 1.4em;
@@ -79,7 +81,7 @@ $gold: #D4AF37;
     height: auto;
     background-image: url(/assets/background/background_4.jpg);
     //background-color:black;
-    border: 2px groove $dark_brown;
+    border: 2px groove black;
     border-radius: 2px;
     background-size: cover;
     margin-bottom: 10px;
@@ -102,8 +104,6 @@ $gold: #D4AF37;
    bottom:0;
    left:0;
 }
-
-
 
 /*Stylist Show Pagination CSS*/
 .apple_pagination {

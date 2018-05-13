@@ -1,6 +1,6 @@
 class RatingsController < ApplicationController
 
-  layout :resolve_layout
+  layout 'application'
 
   before_action :get_tables, :only => [:new, :create, :edit, :update]
 
@@ -14,8 +14,9 @@ class RatingsController < ApplicationController
 
     def show
       @rating = Rating.find(params[:id])
-      @stylist = @rating.stylist_id
-      @client = @rating.client_id
+      @stylist = Stylist.find(@rating.stylist_id)
+      @client = Client.find(@rating.client_id)
+
     end
 
     def show_client
@@ -37,13 +38,13 @@ class RatingsController < ApplicationController
 
     def new
       @stylist = Stylist.find(params[:stylist_id])
-      @rating = Rating.new(:client_id => current_client.id, :stylist_id => @stylist.id)
+      @rating = Rating.new(:client_id => current_user.id, :stylist_id => @stylist.id)
     end
 
     def create
       #creating of new rating of the particular stylist
 
-      @rating = Rating.create(rating_params)
+      @rating = Rating.new(rating_params)
 
         if @rating.save
 
@@ -51,9 +52,9 @@ class RatingsController < ApplicationController
           add_to_overall_rating
 
           flash[:notice] = "Rating successful"
-          redirect_to (show_client_rating_path(@rating, :stylist_id => @rate.stylist.id))
+          redirect_to (rating_path(@rating, :stylist_id => @rate.stylist.id))
         else
-          flash[:notice] = "Oops!! Something went wrong, please try again"
+          render ('new')
         end
     end
 
@@ -68,7 +69,7 @@ class RatingsController < ApplicationController
           get_average_rating
           update_overall_rating
           flash[:notice] = "Rating Updated Successfully"
-          redirect_to(show_client_rating_path(@rating, :stylist_id => @hstylist.id))
+          redirect_to(rating_path(@rating, :stylist_id => @hstylist.id))
         else
           flash[:notice] = "Oops!! Something went wrong, please try again"
           render 'edit'
@@ -127,9 +128,9 @@ class RatingsController < ApplicationController
       when 'index', 'show', 'show_admin', 'new', 'create', 'edit', 'update', 'delete', 'destroy'
         'admin'
       when 'show_stylist'
-        'stylist_menu'
+        'application'
       when 'show_client'
-        'client_menu'
+        'application'
       end
     end
 
