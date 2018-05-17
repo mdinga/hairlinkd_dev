@@ -20,8 +20,9 @@
 
 
       <div class = "breadcrumb bg-inverse text-center">
-          <a href="#" id ="portfolio-link" class = "breadcrumb-item text-secondary">My Portfolio</a>
+
           <a href="#" id ="about-link" class = "breadcrumb-item text-secondary">About Me </a>
+          <a href="#" id ="portfolio-link" class = "breadcrumb-item text-secondary">My Portfolio</a>
           <a href="#" id ="reviews-link" class = "breadcrumb-item text-secondary">My Reviews</a>
           <a href="#" id ="contacts-link" class = "breadcrumb-item text-secondary">My Contacts</a>
           <a href="#" id ="calendar-link" class = "breadcrumb-item text-secondary">My Calendar</a>
@@ -52,8 +53,11 @@
           <div class = "col-md-2">Services I Offer:</div>
             <div class = "col-md-10">
                 <%  stylist.services.each do |h| %>
-                <span class = "badge badge-dark p-2 badge-pill m-1"><%= h.name %></span>
-            <% end %>
+
+                    <span class = "badge badge-dark p-2 badge-pill m-1"><%= h.name %></span>
+
+
+                  <% end %>
           </div>
         </div>
 
@@ -71,12 +75,7 @@
           </div>
         </div>
 
-        <div class = "row mt-2">
-          <div class = "col-md-2">Date Joined:</div>
-            <div class = "col-md-10 ">
-                <%= stylist.created_at.strftime("%d %B %Y") %></td>
-          </div>
-        </div>
+
   </div>
 
   <div id = "stylist_portfolio" class = "stylist_info" style ="display:block;">

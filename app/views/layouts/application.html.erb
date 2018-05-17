@@ -16,7 +16,7 @@
         <% elsif current_user.has_role? :def_client %>
           <%= render 'layouts/client_menu'%>
         <% elsif current_user.has_role? :def_admin %>
-          <%= render 'admin'%>
+          <%= render 'layouts/admin'%>
         <% end %>
 
         <% if !flash[:notice].blank? %>

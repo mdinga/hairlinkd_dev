@@ -12,6 +12,7 @@ gem 'rails', '~> 5.1.4'
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'bootstrap', '~> 4.1', '>= 4.1.1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -36,8 +37,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #gem to install pictures
 gem 'carrierwave', '~> 1.2.1'
 gem 'rmagick', '~> 2.15', '>= 2.15.4'
+
 gem 'sprockets-rails', '~> 3.2', '>= 3.2.1'
-gem 'bootstrap', '~> 4.1.1'
 gem 'bootstrap-glyphicons'
 gem 'coffee-script-source', '1.8.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'

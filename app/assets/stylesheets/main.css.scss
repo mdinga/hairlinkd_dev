@@ -1,3 +1,11 @@
+.btn{
+  background-color:black;
+  color:white;
+}
+
+@import "bootstrap";
+@import 'bootstrap/glyphicons';
+
 
 /* Primary stylesheet */
 
@@ -41,10 +49,6 @@ $gold: #D4AF37;
   font-family: 'Bad Script', cursive;
   margin-left: 20px;
 
-.btn-hl{
-    background-color:black;
-    color:white;
-  }
 
 }
 .info_paragraph{
@@ -94,6 +98,7 @@ $gold: #D4AF37;
 
   padding: 5px;
   margin-bottom: 2px;
+
   h4{
     text-decoration: underline;
   }

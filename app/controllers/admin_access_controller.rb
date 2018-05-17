@@ -51,7 +51,7 @@ class AdminAccessController < ApplicationController
       when "login", "attempt_login"
         "login"
       when "menu"
-        "admin"
+        "application"
       end
     end
 
