@@ -1,6 +1,6 @@
 class ServicesController < ApplicationController
 
-  layout "admin"
+  layout "application"
 
   def index
     @services = Service.order(params[:sort])

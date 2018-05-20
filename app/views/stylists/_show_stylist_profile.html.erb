@@ -34,12 +34,12 @@
 
 <% if current_user.has_role? :def_client %>
   <div class = "row">
-    <div class = "col">
-      <%= button_to create_fav_stylists_client_path(current_user, :stylist_id => @stylist.id), class: "btn btn-sm like m-2", style: "background-color: black; color:white" do %>
-        <i class = "glyphicon glyphicon-thumbs-up"></i> Like
-      <% end %>
+    
+    <%= button_to create_fav_stylists_client_path(current_user, :stylist_id => @stylist.id), class: "btn btn-sm like m-2" do %>
+      <i class = "glyphicon glyphicon-thumbs-up"></i> Like
+    <% end %>
 
-      <%= button_to destroy_fav_stylists_client_path(current_user, :stylist_id => @stylist.id), method: :delete, class: "btn btn-sm unlike m-2", style: "background-color: black; color:white" do %>
+      <%= button_to destroy_fav_stylists_client_path(current_user, :stylist_id => @stylist.id), method: :delete, class: "btn btn-sm unlike m-2", style: "display: inline-block;" do %>
         <i class = "glyphicon glyphicon-thumbs-down"></i> Unlike
       <% end %>
     </div>

@@ -21,7 +21,7 @@ class ClientAccessController < ApplicationController
     if authorized_client
       session[:user_id] = authorized_client.id
       flash[:notice] = "You are now logged in"
-      redirect_to(client_path(current_client.id))
+      redirect_to(client_path(authorized_client.id))
     else
       flash.now[:notice] = "Invalid username/password combination"
       render 'login'

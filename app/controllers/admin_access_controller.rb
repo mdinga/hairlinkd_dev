@@ -9,7 +9,7 @@ class AdminAccessController < ApplicationController
   end
 
   def menu
-    @admin = Admin.find(params[:admin_id])
+    #@admin = Admin.find(params[:admin_id])
     #Go to view and display Admin Menu
   end
 
@@ -24,7 +24,7 @@ class AdminAccessController < ApplicationController
     if authorized_admin
       session[:user_id] = authorized_admin.id
       flash[:notice] = "Admin has been logged in successfully"
-      redirect_to(admin_access_menu_path(:admin_id => authorized_admin.id))
+      redirect_to(admin_path(authorized_admin.id))
     else
       flash.now[:notice] = "Incorrect email/password combination"
       render "login"

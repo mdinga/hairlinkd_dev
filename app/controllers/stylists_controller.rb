@@ -2,6 +2,8 @@ class StylistsController < ApplicationController
 
   layout :resolve_layout
 
+  before_action :get_service_cat, :only => [:edit, :update, :show]
+
     #after_action :assign_role, :only => :create
 
 helper_method :sort_criteria, :sort_direction
@@ -35,13 +37,11 @@ helper_method :sort_criteria, :sort_direction
   def edit
     @stylist = Stylist.find(params[:id])
     @city = City.all
-    get_service_cat
   end
 
   def update
     @stylist = Stylist.find(params[:id])
     @city = City.all
-    get_service_cat
 
       if  @stylist.update_attributes(stylist_params)
         flash[:notice] = "Stylist updated created successfully."
