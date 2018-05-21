@@ -13,7 +13,7 @@ set :repo_url, "git@github.com:mdinga/hairlinkd_dev.git"
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
-set :ssh_options, paranoid: false
+set :ssh_options, paranoid: true
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
@@ -40,5 +40,6 @@ set :ssh_options, paranoid: false
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
+#these following files or directories will not be deployed. i.e. they belong to public
 append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
