@@ -13,7 +13,7 @@ set :repo_url, "git@github.com:mdinga/hairlinkd_dev.git"
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
-set :ssh_options, paranoid: true
+set :ssh_options, paranoid: false
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
