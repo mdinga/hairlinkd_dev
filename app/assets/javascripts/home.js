@@ -1,5 +1,5 @@
 $ (document).ready(function(){
-
+/*
   $("#about-link").click(function(){
     $("#about_me").show("fast");
     $("#contact_me").hide("fast");
@@ -27,6 +27,10 @@ $ (document).ready(function(){
     $("#contact_me").hide("fast");
     $("#stylist_review").hide("fast");
   });
+*/
+$("#jqtest").mouseenter(function(){
+   alert("Yeah!,  J Query is in the house");
+});
 
 
 
