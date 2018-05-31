@@ -1,7 +1,10 @@
 <div class = 'container'>
 
+  <div class = "text-center">
+    <h3>Log in as a Client</h3>
+  </div>
+
       <%= form_tag(client_access_attempt_login_path, :method => :post, class: 'form-group text-center') do %>
-      <legend>Log in as a Client</legend>
           <fieldset>
             <div class = 'form-group'>
               <%= label_tag(:username) %>
