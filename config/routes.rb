@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root 'home#index'
 
 
@@ -22,8 +23,6 @@ Rails.application.routes.draw do
   post 'stylist_access/stylist_attempt_login'
   get 'stylist_access/stylist_logout'
 
-
-  resources :contacts, only: [:new, :create]
 
     resources :stylists do
         member do
@@ -129,6 +128,12 @@ Rails.application.routes.draw do
       end
 
       resources :areas do
+        member do
+          get :delete
+        end
+      end
+
+      resources :contact_forms do
         member do
           get :delete
         end

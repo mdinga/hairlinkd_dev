@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508160217) do
+ActiveRecord::Schema.define(version: 20180603195221) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -81,6 +81,13 @@ ActiveRecord::Schema.define(version: 20180508160217) do
     t.index ["client_id", "def_client_id"], name: "index_clients_def_clients_on_client_id_and_def_client_id"
     t.index ["client_id"], name: "index_clients_def_clients_on_client_id"
     t.index ["def_client_id"], name: "index_clients_def_clients_on_def_client_id"
+  end
+
+  create_table "contact_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.text "message"
   end
 
   create_table "def_admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

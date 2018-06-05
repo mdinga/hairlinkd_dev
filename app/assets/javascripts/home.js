@@ -28,11 +28,5 @@ $ (document).ready(function(){
     $("#stylist_review").hide("fast");
   });
 */
-$("#jqtest").mouseenter(function(){
-   alert("Yeah!,  J Query is in the house");
-});
-
-
-
 
 });

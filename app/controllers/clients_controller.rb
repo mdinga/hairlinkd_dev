@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   layout :resolve_layout
 
   #before_action :find_current_client, :only => [:show]
-  #after_action :assign_role, :only => :create
+  #after_action :send_login_mail, :only => :create
 
   helper_method :sort_criteria, :sort_direction
 
@@ -24,6 +24,9 @@ class ClientsController < ApplicationController
     @client.add_role :def_client
     if @client.save
       flash[:notice] = "Profile Created Successfully, Please Log In"
+
+      #RegisterMailer.new_client.deliver_now
+
       redirect_to (client_access_login_path)
     else
       render ('new')
@@ -131,6 +134,11 @@ private
   def client_params
     params.require(:client).permit(:username, :name, :surname, :email, :password, :password_confirmation, :city, :area, :favourite_hairstyles, :favourite_products, :favourites_gallery, :favourite_stylists)
   end
+
+  def send_login_mail
+
+  end
+
 
 
 end

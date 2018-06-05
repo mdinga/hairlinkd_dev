@@ -1,0 +1,39 @@
+<div class = "container">
+  <%= button_to("<- Home Page", root_path, method: :get, class: "btn btn-sm m-3")%>
+
+<div>
+    <%= form_for @contact do |c| %>
+
+    <legend class = 'text-center'> Lets Keep In Touch: </legend>
+    <form>
+      <fieldset>
+        <div class ='form-group'>
+          <label class = 'form-control-label'>Name:</label>
+          <%= c.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class ='form-group'>
+          <label class = 'form-control-label'>Email:</label>
+          <%= c.text_field :email, class: 'form-control' %>
+        </div>
+
+        <div class ='form-group'>
+          <label class = 'form-control-label'>Phone: (Optional)</label>
+          <%= c.text_field :phone, class: 'form-control' %>
+        </div>
+
+        <div class ='form-group'>
+          <label class = 'form-control-label'>Your Message:</label>
+          <%= c.text_area :message, class: 'form-control' %>
+        </div>
+      </fieldset>
+
+        <div class = "text-center">
+        <%= c.submit("Send Message", class: 'btn btn-sm') %>
+        </div>
+      <% end %>
+    </form>
+
+  </div >
+
+</div >

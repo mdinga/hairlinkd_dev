@@ -2,7 +2,7 @@
 
 <section class="mb-0 background_home" style = "background-image: url(/assets/background/Salon-Pic-1.jpg);">
 
-    <div class = 'container text-center info_paragraph' id = "jqtest" style = "padding-top:10vh; padding-bottom:10vh;">
+    <div class = 'container text-center info_paragraph' style = "padding-top:10vh; padding-bottom:10vh;">
       <h3> Our Goal</h3>
           <p>Finding that perfect stylist does not have to be a struggle!!</p>
           <p>Lets help you browse through hundreds of stylists out there, to find the most ideal stylist for your desired hairstyle. </p>
@@ -82,7 +82,7 @@
         <p>We would love to here from you.</p>
         <p>Whether its an issue you have, or you just want to say hello!!</p>
         <p>Drop us a message and we'll come back to you</p>
-        <%= button_to("Contact Us", "#", method: :get, class: "btn btn-danger")%>
+        <%= button_to("Contact Us", new_contact_form_path, method: :get, class: "btn btn-danger")%>
 
   </div>
 
