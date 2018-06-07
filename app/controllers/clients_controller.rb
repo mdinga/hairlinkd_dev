@@ -25,7 +25,7 @@ class ClientsController < ApplicationController
     if @client.save
       flash[:notice] = "Profile Created Successfully, Please Log In"
 
-      #RegisterMailer.new_client.deliver_now
+      RegisterMailer.new_client.deliver_now
 
       redirect_to (client_access_login_path)
     else

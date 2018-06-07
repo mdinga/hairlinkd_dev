@@ -22,4 +22,5 @@ class RegisterMailer < ApplicationMailer
     mail to: "mbasa.dinga@gmail.com",
         subject: "Welcome to Hairlinkd"
   end
+  
 end
