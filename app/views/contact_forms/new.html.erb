@@ -4,6 +4,8 @@
 <div>
     <%= form_for @contact do |c| %>
 
+    <%= error_messages_for(c.object) %>
+
     <legend class = 'text-center'> Lets Keep In Touch: </legend>
     <form>
       <fieldset>
