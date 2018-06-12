@@ -12,7 +12,7 @@ class Client < ApplicationRecord
 
 
   EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
-  #PASSWORD_REGEX = / \A(?=.*[a-zA-Z])(?=.*[0-9]).{6,}\z/
+  PASSWORD_FORMAT = /\A(?=.{8,})(?=.*\d)(?=.*[a-z])/x
 
   validates :username,  :on => :create,
                         :presence => true,
@@ -26,8 +26,9 @@ class Client < ApplicationRecord
 
   validates :password, :on => :create,
                         :presence => true,
+                        :format => {:with => PASSWORD_FORMAT, message: "must be at least 8 characters and include a number"},
                         :confirmation => true
-                        #:format => {:with => PASSWORD_REGEX, message: "must be at least 6 characters and include one number and one letter"}
+
 
 
 end

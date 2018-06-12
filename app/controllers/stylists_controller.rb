@@ -81,7 +81,7 @@ helper_method :sort_criteria, :sort_direction
   end
 
   def stylist_params
-    params.require(:stylist).permit(:avatar, :username, :name, :surname, :phone, :email, :city_ids, :area_ids, :address, :house_calls, :salon, :about_me, :password, :password_confirmation, :facebook_link, :instagram_link, service_ids:[])
+    params.require(:stylist).permit(:avatar, :username, :name, :surname, :phone, :email, :city_ids, :area_ids, :address, :house_calls, :salon, :about_me, :password, :password_confirmation, :nickname, :facebook_link, :instagram_link, service_ids:[])
   end
 
   def ratings_params

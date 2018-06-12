@@ -33,7 +33,13 @@ class ClientAccessController < ApplicationController
     session[:user_id] = nil
     flash[:notice] = "You have been logged out"
     redirect_to(root_path)
+  end
 
+  def forgot
+    #reset form
+  end
+
+  def attempt_reset
 
   end
 
@@ -42,7 +48,7 @@ class ClientAccessController < ApplicationController
   def resolve_layout
 
     case action_name
-      when "login", "attempt_login"
+      when "login", "attempt_login", 'forgot', 'attempt_reset'
         "login"
       when "menu"
         "client_menu"

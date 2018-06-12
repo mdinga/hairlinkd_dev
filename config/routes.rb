@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'client_access/menu'
   post 'client_access/attempt_login'
   get 'client_access/logout'
+  get 'client_access/forgot'
+  post 'client_access/attempt_reset'
 
 
   get 'stylist_access/stylist_login'

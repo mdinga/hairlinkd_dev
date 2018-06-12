@@ -48,6 +48,7 @@ class Stylist < ApplicationRecord
 
 
     EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
+    PASSWORD_FORMAT = /\A(?=.{8,})(?=.*\d)(?=.*[a-z])/x
 
   validates :username,  :on => :create,
                         :presence => true,
@@ -61,6 +62,8 @@ class Stylist < ApplicationRecord
 
   validates :password,  :on => :create,
                         :presence => true,
+                        :format => {:with => PASSWORD_FORMAT, message: "must be at least 8 characters and include a number"},
                         :confirmation => true
+
 
 end
