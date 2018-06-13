@@ -76,7 +76,7 @@ class PortfoliosController < ApplicationController
     def resolve_layout
       case action_name
       when 'index', 'show_admin', 'show_client', 'show_stylist'
-        'admin'
+        '_admin'
       when 'new', 'create', 'edit', 'update', 'delete', 'destroy'
         'stylist_menu'
       end

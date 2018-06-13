@@ -1,6 +1,6 @@
 class AreasController < ApplicationController
 
-  layout "admin"
+  layout "_admin"
 
   def index
     @areas = Area.all

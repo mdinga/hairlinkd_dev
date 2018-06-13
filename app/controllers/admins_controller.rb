@@ -1,6 +1,6 @@
 class AdminsController < ApplicationController
 
-  layout 'application'
+  layout :resolve_layout
 
   def index
     @admin = Admin.all
@@ -16,6 +16,7 @@ class AdminsController < ApplicationController
 
   def create
     @admin = Admin.create(admin_params)
+    @admin.add_role :def_admin
 
     if @admin.save
         flash[:notice] = "Admin Created Successfully"
@@ -113,11 +114,20 @@ class AdminsController < ApplicationController
     @rating = Rating.find(params[:id])
   end
 
-  #-----------------------------------------------------------------------------
-  # The following is for controlling Portfolios through Admin Profiles
+
 
 
   private
+
+  def resolve_layout
+
+    case action_name
+        when 'new', 'create', 'delete', 'destroy'
+          'menu'
+        else
+          'application'
+        end
+  end
 
   def admin_params
     params.require(:admin).permit(:name, :surname, :email, :password)

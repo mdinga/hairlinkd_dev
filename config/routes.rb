@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'admin_access/logout'
 
 
-
   get 'client_access/login'
   get 'client_access/menu'
   post 'client_access/attempt_login'
@@ -75,7 +74,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :admins, :except => [:new] do
+      resources :admins do
         member do
           get :delete
           get :show_client
@@ -101,7 +100,6 @@ Rails.application.routes.draw do
 
         end
         collection do
-          get :index_clients
           get :index_stylists
           get :index_ratings
           get :index_portfolios
