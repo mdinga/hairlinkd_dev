@@ -54,6 +54,7 @@ class ClientsController < ApplicationController
 
   def destroy
     @client = Client.find(params[:id])
+    @client.ratings.destroy_all
     @client.destroy
     session[:user_id] = nil
     flash[:notice] = "Your profile has been deleted and you have been logged out"

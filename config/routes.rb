@@ -131,6 +131,10 @@ Rails.application.routes.draw do
         member do
           get :delete
         end
+
+        collection do
+          get :remove_all
+        end
       end
 
       resources :contact_forms do

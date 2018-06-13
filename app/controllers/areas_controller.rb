@@ -23,25 +23,25 @@ class AreasController < ApplicationController
 
     @cpt_areas.each do |cpt|
       @a = Area.new(:name => cpt)
-      @a.city_id = 5
+      @a.city_id = City.where(:city => "Cape Town").ids.first
       @a.save
     end
 
     @dbn_areas.each do |dbn|
       @b = Area.new(:name => dbn)
-      @b.city_id = 7
+      @b.city_id = City.where(:city => "Durban").ids.first
       @b.save
     end
 
     @jhb_areas.each do |jhb|
       @c = Area.new(:name => jhb)
-      @c.city_id = 13
+      @c.city_id = City.where(:city => "Johannesburg").ids.first
       @c.save
     end
 
     @pta_areas.each do |pta|
       @d = Area.new(:name => pta)
-      @d.city_id = 31
+      @d.city_id = City.where(:city => "Pretoria").ids.first
       @d.save
     end
     redirect_to(areas_path)
@@ -60,6 +60,11 @@ class AreasController < ApplicationController
   def destroy
     @areas = Area.find(params[:id])
     @areas.destroy
+    redirect_to(areas_path)
+  end
+
+  def remove_all
+    Area.destroy_all
     redirect_to(areas_path)
   end
 
