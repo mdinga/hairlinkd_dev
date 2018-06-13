@@ -4,17 +4,15 @@ class ApplicationController < ActionController::Base
   helper_method :current_stylist, :current_client, :current_admin, :current_user, :path_to_stylist
 
   def current_user
-    @current_user = nil
 
-    case
-
-    when Admin.exists?(session[:user_id]) && Admin.find(session[:user_id]).has_role?(:def_admin)
+    if Admin.exists?(session[:user_id]) && Admin.find(session[:user_id]).has_role?(:log_admin)
       @current_user = Admin.find(session[:user_id])
-      when Stylist.exists?(session[:user_id]) && Stylist.find(session[:user_id]).has_role?(:def_stylist)
-        @current_user = Stylist.find(session[:user_id])
-      when Client.exists?(session[:user_id]) && Client.find(session[:user_id]).has_role?(:def_client)
-        @current_user = Client.find(session[:user_id])
-
+    elsif Stylist.exists?(session[:user_id]) && Stylist.find(session[:user_id]).has_role?(:log_stylist)
+      @current_user = Stylist.find(session[:user_id])
+    elsif Client.exists?(session[:user_id]) && Client.find(session[:user_id]).has_role?(:log_client)
+      @current_user = Client.find(session[:user_id])
+    else
+      @current_user = nil
     end
   end
 

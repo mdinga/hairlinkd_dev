@@ -1,6 +1,7 @@
 class AdminAccessController < ApplicationController
 
-    layout :resolve_layout
+
+  layout :resolve_layout
 
   before_action :confirm_admin_login, :except => [:login, :attempt_login, :logout]
 
@@ -17,14 +18,15 @@ class AdminAccessController < ApplicationController
     if params[:email].present? && params[:password].present?
       found_admin = Admin.where(:email => params[:email]).first
         if found_admin
-          authorized_admin = found_admin.authenticate(params[:password])
+          current_user = found_admin.authenticate(params[:password])
+          current_user.add_role :log_admin
         end
     end
 
-    if authorized_admin
-      session[:user_id] = authorized_admin.id
+    if current_user
+      session[:user_id] = current_user.id
       flash[:notice] = "Admin has been logged in successfully"
-      redirect_to(admin_path(authorized_admin.id))
+      redirect_to(admin_path(current_user.id))
     else
       flash.now[:notice] = "Incorrect email/password combination"
       render "login"
@@ -32,6 +34,8 @@ class AdminAccessController < ApplicationController
   end
 
   def logout
+      current_user = Admin.find(session[:user_id])
+      current_user.remove_role :log_admin
       session[:user_id] = nil
       redirect_to(admin_access_login_path)
   end

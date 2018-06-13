@@ -1,5 +1,6 @@
 class StylistAccessController < ApplicationController
 
+
   layout :resolve_layout
 
   def stylist_login
@@ -14,13 +15,14 @@ class StylistAccessController < ApplicationController
   if params[:username].present? && params[:password].present?
     found_stylist = Stylist.where(:username => params[:username]).first
       if found_stylist
-        authorized_stylist = found_stylist.authenticate(params[:password])
+        current_user = found_stylist.authenticate(params[:password])
+        current_user.add_role :log_stylist
       end
   end
-  if authorized_stylist
-    session[:user_id] = authorized_stylist.id
+  if current_user
+    session[:user_id] = current_user.id
     flash[:notice] = "You are now logged in"
-    redirect_to(stylist_path(authorized_stylist.id))
+    redirect_to(stylist_path(current_user.id))
   else
     flash.now[:notice] = "Invalid username/password combination."
     render 'stylist_login'
@@ -28,6 +30,8 @@ class StylistAccessController < ApplicationController
 end
 
   def stylist_logout
+      current_user = Stylist.find(session[:user_id])
+      current_user.remove_role :log_stylist
       session[:user_id] = nil
       flash[:notice] = "You have been logged out"
       redirect_to(root_path)

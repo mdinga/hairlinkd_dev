@@ -1,5 +1,6 @@
 class ClientAccessController < ApplicationController
 
+
   layout :resolve_layout
 
   def login
@@ -14,14 +15,15 @@ class ClientAccessController < ApplicationController
     if params[:username].present? && params[:password].present?
       found_client = Client.where(:username => params[:username]).first
       if found_client
-        authorized_client = found_client.authenticate(params[:password])
+        current_user = found_client.authenticate(params[:password])
+        current_user.add_role :log_client
       end
     end
 
-    if authorized_client
-      session[:user_id] = authorized_client.id
+    if current_user
+      session[:user_id] = current_user.id
       flash[:notice] = "You are now logged in"
-      redirect_to(client_path(authorized_client.id))
+      redirect_to(client_path(current_user.id))
     else
       flash.now[:notice] = "Invalid username/password combination"
       render 'login'
@@ -30,6 +32,8 @@ class ClientAccessController < ApplicationController
   end
 
   def logout
+    current_user = Client.find(session[:user_id])
+    current_user.remove_role :log_client
     session[:user_id] = nil
     flash[:notice] = "You have been logged out"
     redirect_to(root_path)
