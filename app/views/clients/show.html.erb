@@ -4,6 +4,12 @@
   <h2>Your Profile <%= @client.name%></h2>
 </div>
 
+  <div class = 'm-3'>
+    <% if current_user.has_role? :log_admin %>
+      <%= button_to("<- Clients", clients_path, method: :get, class: 'btn btn-sm') %>
+    <% end %>
+</div>
+
 <div class= "text-center m-4">
   <%= button_to "Edit Your Profile", edit_client_path(@client), method: :get, class: "btn btn-hl btn-sm" %>
 </div>

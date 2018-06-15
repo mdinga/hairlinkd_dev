@@ -56,9 +56,16 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
     @client.ratings.destroy_all
     @client.destroy
-    session[:user_id] = nil
-    flash[:notice] = "Your profile has been deleted and you have been logged out"
-    redirect_to(root_path)
+
+      if current_user.has_role? :log_client
+        session[:user_id] = nil
+        flash[:notice] = "Your profile has been deleted and you have been logged out"
+        redirect_to(root_path)
+      elsif current_user.has_role? :log_admin
+        flash[:notice] = "The stylist has been deleted"
+        redirect_to(clients_path)
+      end
+
   end
 
 def index_stylists

@@ -1,5 +1,10 @@
 <div class = "container">
-  <%= button_to("<< Back to Profile", client_path(@client), method: :get, class: "btn btn-sm btn-secondary m-3") %>
+
+  <% if current_user.has_role? :log_client %>
+    <%= button_to("<-Profile", client_path(@client), method: :get, class: "btn btn-sm m-3") %>
+  <% elsif current_user.has_role? :log_admin %>
+    <%= button_to("<- Clients", clients_path, method: :get, class: "btn btn-sm m-3") %>
+  <% end %>
 
   <div class = "text-center">
     <h2>Update Profile</h2>
@@ -10,7 +15,7 @@
         <%= render(:partial => 'client_form', :html => {:multiport => true}, :locals => {:c => c}) %>
 
         <div class = "text-center">
-          <%= c.submit "Update Profile", class: "btn btn-secondary" %>
+          <%= c.submit "Update Profile", class: "btn btn-sm" %>
         </div>
 
     <% end %>

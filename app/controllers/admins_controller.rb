@@ -93,10 +93,6 @@ class AdminsController < ApplicationController
   #-----------------------------------------------------------------------------
   # The following is for controlling Stylists through Admin Profiles
 
-  def index_stylists
-    @stylist = Stylist.all
-  end
-
   def show_stylist
     @stylist = Stylist.find(params[:id])
     @rating = @stylist.ratings

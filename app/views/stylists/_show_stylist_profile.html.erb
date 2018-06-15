@@ -34,7 +34,7 @@
 
 <% if current_user.has_role? :def_client %>
   <div class = "row">
-    
+
     <%= button_to create_fav_stylists_client_path(current_user, :stylist_id => @stylist.id), class: "btn btn-sm like m-2" do %>
       <i class = "glyphicon glyphicon-thumbs-up"></i> Like
     <% end %>
@@ -69,7 +69,7 @@
         </div>
 
         <div class = "row mt-2">
-          <div class = "col-md-2">More About Me:</div>
+          <div class = "col-md-2">More About Me (And Other Services):</div>
             <div class = "col-md-10 ">
               <blockquote><%= stylist.about_me %></blockquote>
           </div>
@@ -124,7 +124,7 @@
         <h4 class = "text-center">Contact Details</h4><hr>
     <table>
       <tr>
-        <th>Salon contact_me:</th>
+        <th>Salon Name:</th>
         <td><%= stylist.salon %></td>
       </tr>
         <tr>

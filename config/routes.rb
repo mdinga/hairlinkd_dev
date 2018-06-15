@@ -77,16 +77,6 @@ Rails.application.routes.draw do
       resources :admins do
         member do
           get :delete
-          get :show_client
-          get :edit_client
-          patch :update_client
-          get :delete_client
-          delete :destroy_client
-          get :show_stylist
-          get :edit_stylist
-          patch :update_stylist
-          get :delete_stylist
-          delete :destroy_stylist
           get :show_rating
           get :edit_rating
           patch :update_rating
@@ -100,7 +90,6 @@ Rails.application.routes.draw do
 
         end
         collection do
-          get :index_stylists
           get :index_ratings
           get :index_portfolios
         end

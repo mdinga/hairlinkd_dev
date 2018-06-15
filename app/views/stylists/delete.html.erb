@@ -1,6 +1,10 @@
 <div class = 'container'>
   <div class = 'm-3'>
-    <%= button_to("<< Back to Profile", stylist_path(@stylist), method: :get, class: 'btn btn-secondary btn-sm') %>
+    <% if current_user.has_role? :log_stylist %>
+      <%= button_to("<- Profile", stylist_path(@stylist), method: :get, class: 'btn btn-sm') %>
+    <% elsif current_user.has_role? :log_admin %>
+      <%= button_to("<- Profiles", stylists_path, method: :get, class: 'btn btn-sm') %>
+    <% end %>
   </div>
 
   <div class = 'text-center'>
@@ -8,7 +12,7 @@
 
     <%= form_for(@stylist, :method => 'delete') do |s| %>
 
-      <p>Are you sure you want to permanently delete this profile? This action cannot be undone.</p>
+        <p>Are you sure you want to permanently delete this profile? This action cannot be undone.</p>
 
       <div>
         <%= s.submit("Delete Profile", class: 'btn btn-danger btn-sm') %>

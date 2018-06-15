@@ -1,7 +1,12 @@
 <div class = "container">
 
   <div class = "m-3">
-    <%= button_to("<< Profile", stylist_path(@stylist), method: :get, class: 'btn btn-hl btn-sm') %>
+
+      <%= button_to("<- Profile", stylist_path(@stylist), method: :get, class: 'btn btn-sm m-1') %>
+
+    <% if %>
+      <%= button_to("<- Stylists", stylists_path, method: :get, class: 'btn btn-sm m-1') %>
+    <% end %>
   </div>
 
   <h2 class = 'text-center'>Edit Your Profile</h2>

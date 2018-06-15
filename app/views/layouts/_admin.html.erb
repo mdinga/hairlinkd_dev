@@ -26,7 +26,7 @@
                 <div class = "nav navbar-nav ml-auto">
                       <%= link_to("Admins", admins_path, class: "nav-item nav-link" ) %>
                       <%= link_to("Clients", clients_path, class: "nav-item nav-link")%>
-                      <%= link_to("Stylists", index_stylists_admins_path, class: "nav-item nav-link") %>
+                      <%= link_to("Stylists", stylists_path, class: "nav-item nav-link") %>
                       <%= link_to("Reviews", ratings_path, class: "nav-item nav-link") %>
                       <%= link_to("Portfolios", portfolios_path, class: "nav-item nav-link") %>
                       <%= link_to("Admin Styles", styles_path, class: "nav-item nav-link") %>
@@ -41,8 +41,6 @@
 
         </div><!--container-->
       </nav>
-
-        <%= yield %>
 
   </body>
 

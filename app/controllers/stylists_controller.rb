@@ -57,14 +57,20 @@ helper_method :sort_criteria, :sort_direction
 
   def destroy
     @stylist = Stylist.find(params[:id])
-    @stylist.ratings.destroy_all #delete all the stylists ratings
-    @stylist.portfolios.destroy_all #delete all the stylists portfolio
-    @stylist.cities.destroy_all
-    @stylist.areas.destroy_all
-    @stylist.destroy
-    session[:user_id] = nil
-    flash[:notice] = "Stylist deleted successfully."
-    redirect_to (root_path)
+    if current_user.has_role? :log_stylist
+      @stylist.ratings.destroy_all #delete all the stylists ratings
+      @stylist.portfolios.destroy_all #delete all the stylists portfolio
+      @stylist.cities.destroy_all
+      @stylist.areas.destroy_all
+      @stylist.destroy
+      session[:user_id] = nil
+      flash[:notice] = "Stylist deleted successfully."
+      redirect_to (root_path)
+    elsif current_user.has_role? :log_admin
+      flash[:notice] = "That stylist was deleted successfully by Admin."
+      redirect_to (stylists_path)
+    end
+
   end
 
 

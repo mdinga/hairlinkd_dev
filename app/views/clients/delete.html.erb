@@ -1,7 +1,11 @@
 <div class = 'container'>
 
   <div class = 'm-3'>
-    <%= button_to("<< Back to Profile", client_path(@client), method: :get, class: 'btn btn-secondary btn-sm') %>
+      <% if current_user.has_role? :log_client %>
+        <%= button_to("<- Profile", client_path(@client), method: :get, class: 'btn btn-sm') %>
+      <% elsif current_user.has_role? :log_admin %>
+        <%= button_to("<- Clients", clients_path, method: :get, class: 'btn btn-sm') %>
+      <% end %>
   </div>
 
   <div class = 'text-center'>
