@@ -1,6 +1,6 @@
 class StylesController < ApplicationController
 
-  layout "_admin"
+  layout "application"
 
   before_action :get_style_names, :get_style_cats, :get_stylists_and_clients, :only => [:new, :create, :edit, :update]
 
