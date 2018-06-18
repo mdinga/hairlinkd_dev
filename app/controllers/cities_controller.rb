@@ -1,6 +1,6 @@
 class CitiesController < ApplicationController
 
-  layout "_admin"
+  layout "application"
 
   def index
     @city = City.all
@@ -10,9 +10,18 @@ class CitiesController < ApplicationController
   end
 
   def new
+    @city = City.new
   end
 
   def create
+    @city = City.new(city_params)
+    if @city.save
+      flash[:notice] = "A city has been added"
+      redirect_to(cities_path)
+    end
+  end
+
+  def create_all
     get_cities
 
     @city_name.each do |c|
@@ -24,9 +33,15 @@ class CitiesController < ApplicationController
   end
 
   def edit
+    @city = City.find(params[:id])
   end
 
   def update
+    @city = City.find(params[:id])
+      if @city.update_attributes(city_params)
+        flash[:notice] = "City has been updated"
+        redirect_to(cities_path)
+      end
   end
 
   def delete

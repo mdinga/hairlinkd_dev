@@ -30,7 +30,6 @@ class StylistAccessController < ApplicationController
 end
 
   def stylist_logout
-      current_user = Stylist.find(session[:user_id])
       current_user.remove_role :log_stylist
       session[:user_id] = nil
       flash[:notice] = "You have been logged out"

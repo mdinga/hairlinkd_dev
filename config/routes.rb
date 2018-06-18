@@ -111,10 +111,15 @@ Rails.application.routes.draw do
 
 
       resources :cities do
-        member do
-          get :delete
+          member do
+            get :delete
+          end
+
+          collection do
+            post :create_all
+          end
         end
-      end
+    
 
       resources :areas do
         member do

@@ -12,7 +12,7 @@
             </div>
 
             <div class = 'form-group'>
-              <%= label_tag(:password) %><span style = "font:0.3em;">Password must be at least 8 characters and one number</span>
+              <%= label_tag(:password) %>
               <%= password_field_tag(:password) %>
             </div>
 
@@ -21,7 +21,7 @@
             </div>
 
             <div class = "form-group">
-              <%= link_to("Forgot Password", client_access_forgot_path) %>
+              <%= link_to("Forgot Password", client_access_forgot_path) %><br>
               <%= link_to("<--Return", root_path) %>
             </div>
           </fieldset>

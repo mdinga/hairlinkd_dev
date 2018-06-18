@@ -1,3 +1,19 @@
-<h1>Create A City</h1>
+<div class = 'container'>
 
-<%= button_to "Create Cities", cities_path, class: "btn btn-danger" %>
+  <%= button_to("<- Return", cities_path, method: :get, class: 'btn btn-hl btn-sm m-3') %>
+
+  <div>
+    <%= form_for(@city) do |c| %>
+
+      <%= error_messages_for(c.object) %>
+        <form>
+          <%= render(:partial => 'city_form', :html => {:multiport => true}, :locals => {:c => c}) %>
+
+          <div class = 'text-center m-3'>
+            <%= c.submit("Create City", class: 'btn btn-sm') %>
+          </div>
+        </form>
+
+    <% end %>
+  </div>
+</div>

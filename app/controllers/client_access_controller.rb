@@ -32,7 +32,6 @@ class ClientAccessController < ApplicationController
   end
 
   def logout
-    current_user = Client.find(session[:user_id])
     current_user.remove_role :log_client
     session[:user_id] = nil
     flash[:notice] = "You have been logged out"

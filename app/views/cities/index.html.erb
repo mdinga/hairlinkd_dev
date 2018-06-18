@@ -1,8 +1,10 @@
-<h2>City Names</h2>
-<%= link_to("Create City", new_city_path)%>
-<hr>
-
 <div class = "container">
+<h2>City Names</h2>
+<%= button_to("Create All Cities", create_all_cities_path, class: "btn btn-danger btn-sm")%><br>
+<%= button_to("Add A City", new_city_path, method: :get, class: "btn btn-sm")%>
+
+
+
   <table class = 'table table-hover'>
 
     <tr>

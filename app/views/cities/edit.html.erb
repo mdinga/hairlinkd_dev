@@ -1,2 +1,19 @@
-<h1>Cities#edit</h1>
-<p>Find me in app/views/cities/edit.html.erb</p>
+<div class = 'container'>
+
+  <%= button_to("<- Return", cities_path, method: :get, class: 'btn btn-hl btn-sm m-3') %>
+
+  <div>
+    <%= form_for(@city) do |c| %>
+
+      <%= error_messages_for(c.object) %>
+        <form>
+          <%= render(:partial => 'city_form', :html => {:multiport => true}, :locals => {:c => c}) %>
+
+          <div class = 'text-center m-3'>
+            <%= c.submit("Update City", class: 'btn btn-sm') %>
+          </div>
+        </form>
+
+    <% end %>
+  </div>
+</div>
