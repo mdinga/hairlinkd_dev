@@ -14,8 +14,8 @@
                 <%= render(:partial => 'styles/index_styles', :html => {:multiport => true}, :locals => {:style => style}) %>
 
 
-                  <%= link_to("More Info", show_style_client_path(style, :client_id => current_client.id, class: 'card-link'))%>
-                  
+                  <%= link_to("More Info", show_style_client_path(style, :client_id => current_user.id, class: 'card-link'))%>
+
               </div> <!--card-->
             </div><!--card-body-->
           <% end %>

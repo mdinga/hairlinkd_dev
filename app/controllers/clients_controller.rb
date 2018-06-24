@@ -2,7 +2,6 @@ class ClientsController < ApplicationController
 
   layout :resolve_layout
 
-  #before_action :find_current_client, :only => [:show]
   #after_action :send_login_mail, :only => :create
 
   helper_method :sort_criteria, :sort_direction
@@ -24,9 +23,7 @@ class ClientsController < ApplicationController
     @client.add_role :def_client
     if @client.save
       flash[:notice] = "Profile Created Successfully, Please Log In"
-
-      RegisterMailer.new_client.deliver_now
-
+      #RegisterMailer.new_client.deliver_now
       redirect_to (client_access_login_path)
     else
       render ('new')
@@ -57,14 +54,15 @@ class ClientsController < ApplicationController
     @client.ratings.destroy_all
     @client.destroy
 
-      if current_user.has_role? :log_client
+      #if current_user.has_role? :log_client
         session[:user_id] = nil
         flash[:notice] = "Your profile has been deleted and you have been logged out"
         redirect_to(root_path)
-      elsif current_user.has_role? :log_admin
-        flash[:notice] = "The stylist has been deleted"
-        redirect_to(clients_path)
-      end
+
+      #elsif current_user.has_role? :log_admin
+        #flash[:notice] = "The stylist has been deleted"
+        #redirect_to(clients_path)
+      #end
 
   end
 
@@ -90,41 +88,41 @@ end
 def create_fav_styles
     @style = Style.find(params[:style_id])
 
-    unless current_client.styles.include?(@style)
-      current_client.styles << @style
+    unless current_user.styles.include?(@style)
+      current_user.styles << @style
       flash[:notice] = "Like Updated"
-      redirect_to (show_style_client_path(:client_id => current_client.id, :style_id => @style.id))
+      redirect_to (show_style_client_path(:client_id => current_user.id, :style_id => @style.id))
     else
       flash[:notice] = "You Already Like This Style"
-      redirect_to (show_style_client_path(:client_id => current_client.id, :style_id => @style.id))
+      redirect_to (show_style_client_path(:client_id => current_user.id, :style_id => @style.id))
     end
 end
 
 def destroy_fav_styles
     @style = Style.find(params[:style_id])
-    current_client.styles.delete(@style)
+    current_user.styles.delete(@style)
     flash[:notice] = "Dislike Updated"
-    redirect_to (show_style_client_path(:client_id => current_client.id, :style_id => @style.id))
+    redirect_to (show_style_client_path(:client_id => current_user.id, :style_id => @style.id))
 end
 
 def create_fav_stylists
   @stylist = Stylist.find(params[:stylist_id])
 
-  unless current_client.stylists.include?(@stylist)
-    current_client.stylists << @stylist
+  unless current_user.stylists.include?(@stylist)
+    current_user.stylists << @stylist
     flash[:notice] = "Like Updated"
-    redirect_to(show_stylists_client_path(@stylist, :client_id => current_client.id))
+    redirect_to(show_stylists_client_path(@stylist, :client_id => current_user.id))
   else
     flash[:notice] = "You Already Like This Stylist"
-    redirect_to(show_stylists_client_path(@stylist, :client_id => current_client.id))
+    redirect_to(show_stylists_client_path(@stylist, :client_id => current_user.id))
   end
 end
 
 def destroy_fav_stylists
   @stylist = Stylist.find(params[:stylist_id])
-  current_client.stylists.delete(@stylist)
+  current_user.stylists.delete(@stylist)
   flash[:notice] = "Dislike Updated"
-  redirect_to(show_stylists_client_path(@stylist, :client_id => current_client.id))
+  redirect_to(show_stylists_client_path(@stylist, :client_id => current_user.id))
 end
 
 private

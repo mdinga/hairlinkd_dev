@@ -85,7 +85,7 @@ class RatingsController < ApplicationController
       @rating.destroy
       update_overall_rating
       flash[:notice] = "Your Rating Has Been Deleted"
-      redirect_to (index_stylists_clients_path(current_client.id))
+      redirect_to (index_stylists_clients_path(current_user.id))
     end
 
   private

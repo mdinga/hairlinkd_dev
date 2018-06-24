@@ -2,7 +2,7 @@
 
     <div class = "m-2 clearfix">
 
-      <% if current_user.id == @stylist.id %>
+      <% if session[:stylist_id] %>
         <%= button_to("Edit Your Profile", edit_stylist_path(@stylist), method: :get, class: "btn btn-hl btn-sm float-right")%>
       <% end %>
 

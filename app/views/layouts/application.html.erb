@@ -13,11 +13,11 @@
 
   <body>
 
-        <% if  current_user.has_role? :def_stylist %>
+        <% if  session[:stylist_id] %>
           <%= render 'layouts/stylist_menu'%>
-        <% elsif current_user.has_role? :def_client %>
+        <% elsif session[:client_id] %>
           <%= render 'layouts/client_menu'%>
-        <% elsif current_user.has_role? :def_admin %>
+        <% elsif session[:admin_id] %>
           <%= render 'layouts/admin'%>
         <% end %>
 

@@ -19,7 +19,7 @@ class PortfoliosController < ApplicationController
     end
 
     def new
-      @portfolio = Portfolio.new(:stylist_id => current_stylist.id)
+      @portfolio = Portfolio.new(:stylist_id => current_user.id)
       @service = Service.all
     end
 
@@ -28,7 +28,7 @@ class PortfoliosController < ApplicationController
       @service = Service.all
 
       if @portfolio.save
-        redirect_to (stylist_path(current_stylist))
+        redirect_to (stylist_path(current_user))
         flash[:notice] = "Item Added To Your Portfolio"
       else
         flash[:notice] = "Oops, Something Is Not Right, Please Try Again"
@@ -47,7 +47,7 @@ class PortfoliosController < ApplicationController
       @service = Service.all
 
       if  @portfolio.update_attributes(portfolio_params)
-        redirect_to (stylist_path(current_stylist))
+        redirect_to (stylist_path(current_user))
         flash[:notice] = "Your Portfolio Has Been Updated"
       else
         flash[:notice] = "Oops, Something Is Not Right, Please Try Again"
@@ -64,7 +64,7 @@ class PortfoliosController < ApplicationController
       @portfolio = Portfolio.find(params[:id])
       @portfolio.destroy
       flash[:notice] = "Item Removed From Your Portfolio"
-      redirect_to (stylist_path(current_stylist))
+      redirect_to (stylist_path(current_user))
     end
 
     private
@@ -78,7 +78,7 @@ class PortfoliosController < ApplicationController
       when 'index', 'show_admin', 'show_client', 'show_stylist'
         '_admin'
       when 'new', 'create', 'edit', 'update', 'delete', 'destroy'
-        'stylist_menu'
+        'application'
       end
     end
 

@@ -22,7 +22,7 @@
         <p>There are no Stylists that you like yet!!</p>
         <p>All the Stylists that you like will appear here</p>
         <p>Check out the Stylists</p>
-        <%= button_to "View Stylists", index_stylists_clients_path(:client_id => current_client.id), method: :get, class: "btn btn-secondary btn-sm"%>
+        <%= button_to "View Stylists", index_stylists_clients_path, method: :get, class: "btn btn-secondary btn-sm"%>
       </div>
 
     <% else %>
@@ -48,7 +48,7 @@
             <p>There are no Hairstyles that you like yet!!</p>
             <p>All the Hairstyles that you like for the gallery will appear here</p>
             <p>Check out the gallery now</p>
-            <%= button_to "View Gallery", index_styles_clients_path(:client_id => current_client.id), method: :get, class: "btn btn-secondary btn-sm"%>
+            <%= button_to "View Gallery", index_styles_clients_path, method: :get, class: "btn btn-secondary btn-sm"%>
           </div>
 
       <% else %>
@@ -58,7 +58,7 @@
           <div class = 'card-body' style = 'width:auto;'>
             <div class = 'card text-center' style = 'width:200px;'>
               <%= render :partial => "styles/index_styles", :html => {:multiport => true}, :locals => {:style => style}%>
-              <%= link_to("More Info", show_style_client_path(style, :client_id => current_client.id,  class: 'card-link'))%>
+              <%= link_to("More Info", show_style_client_path(style,  class: 'card-link'))%>
             </div> <!--card-->
           </div><!--card-body-->
 

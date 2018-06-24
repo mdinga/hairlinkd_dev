@@ -1,17 +1,24 @@
-<h2>Reviews</h2>
+<div class = 'container'>
+  <h2>Reviews</h2>
 
+<div class = 'card-group'>
 
-<hr>
+  <% @rating.each do |rating| %>
+    <div class = 'stylist-list'>
+      <div class = 'card text-center'>
 
-<% @rating.each do |rating| %>
+        <div class = 'card-body'>
+            <%= render(:partial => 'index_ratings', :html => {:multiport => true}, :locals => {:rating => rating})%>
+        </div><!-- card-body -->
 
-<%= render(:partial => 'index_ratings', :html => {:multiport => true}, :locals => {:rating => rating})%>
+        <div class = 'card-footer'>
+          <%= link_to("View Review", rating_path(rating))%>
+        </div><!-- card-footer -->
+        
+    </div><!-- card -->
 
-<br />
-
-<%= link_to("View Review", rating_path(rating, :admin_id => current_admin.id))%>
-
-<hr>
-<% end %>
+    </div><!-- stylist-list -->
+  <% end %>
+</div> <!-- card-group -->
 
 </div>

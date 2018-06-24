@@ -5,9 +5,9 @@
 </div>
 
   <div class = 'm-3'>
-    <% if current_user.has_role? :log_admin %>
+    <!-- <% if Admin.exists?(session[:admin_id]) %> -->
       <%= button_to("<- Clients", clients_path, method: :get, class: 'btn btn-sm') %>
-    <% end %>
+    <!-- <% end %> -->
 </div>
 
 <div class= "text-center m-4">

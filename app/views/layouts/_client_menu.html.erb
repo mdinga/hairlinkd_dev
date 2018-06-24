@@ -11,9 +11,9 @@
 
               <div class = 'collapse navbar-collapse' id = 'clientToggler'>
                 <div class="nav navbar-nav ml-auto">
-                    <%= link_to("My Profile", client_path(current_client.id), class: 'nav-item nav-link') %>
-                    <%= link_to("Stylists", index_stylists_clients_path(:client_id => current_client.id), class: 'nav-item nav-link')%>
-                    <%= link_to("Gallery", index_styles_clients_path(:client_id => current_client.id), class: 'nav-item nav-link') %>
+                    <%= link_to("My Profile", client_path(current_user.id), class: 'nav-item nav-link') %>
+                    <%= link_to("Stylists", index_stylists_clients_path, class: 'nav-item nav-link')%>
+                    <%= link_to("Gallery", index_styles_clients_path, class: 'nav-item nav-link') %>
 
                     <%= link_to("Forum", '#', class: 'nav-item nav-link') %>
                     <%= link_to("Contact Us", '#', class: 'nav-item nav-link') %>

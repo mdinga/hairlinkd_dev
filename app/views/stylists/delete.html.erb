@@ -1,8 +1,8 @@
 <div class = 'container'>
   <div class = 'm-3'>
-    <% if current_user.has_role? :log_stylist %>
+    <% if session[:stylist_id] %>
       <%= button_to("<- Profile", stylist_path(@stylist), method: :get, class: 'btn btn-sm') %>
-    <% elsif current_user.has_role? :log_admin %>
+    <% elsif session[:admin_id] %>
       <%= button_to("<- Profiles", stylists_path, method: :get, class: 'btn btn-sm') %>
     <% end %>
   </div>

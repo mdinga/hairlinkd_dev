@@ -22,10 +22,10 @@
                 <%= render(:partial => 'index_stylists', :html => {:multiport => true}, :locals => {:stylist => stylist}) %>
 
                <div class = 'card-footer'>
-                 
+
                   <%= link_to("View Profile", stylist_path(stylist))%><br>
 
-                <% if current_user.has_role? :log_admin%>
+                <% if session[:admin_id]%>
                   <%= link_to("Edit Profile", edit_stylist_path(stylist))%><br>
                   <%= link_to("Delete Profile", delete_stylist_path(stylist))%>
                 <% end %>

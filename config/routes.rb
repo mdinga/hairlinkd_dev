@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
 
-  get 'admin', :to => 'admin_access#menu'
+  get 'alog', :to => 'admin_access#menu'
   get 'admin_access/login'
   get 'admin_access/menu'
   post 'admin_access/attempt_login'
@@ -119,7 +119,7 @@ Rails.application.routes.draw do
             post :create_all
           end
         end
-    
+
 
       resources :areas do
         member do

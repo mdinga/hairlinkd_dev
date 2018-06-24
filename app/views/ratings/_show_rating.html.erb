@@ -2,11 +2,11 @@
 
 <div class = 'row' style = 'margin-top:5px;'>
   <div class = 'col col-md-6 text-center'>
-  <% if current_user.has_role? :def_admin %>
+  <% if session[:admin_id] %>
     <%= link_to("<< Back Reviews", ratings_path(:admin_id => current_user.id)) %>
-  <% elsif current_user.has_role? :def_client %>
+  <% elsif session[:client_id] %>
     <%= link_to("<< Back to Stylist", show_stylists_client_path(@rating.stylist.id, :client_id => current_user.id)) %>
-  <% elsif current_user.has_role? :def_stylist %>
+  <% elsif session[:stylist_id] %>
     <%= link_to("<< Back to Stylist", stylist_path(@rating.stylist.id, :stylist_id => current_user.id)) %>
   <% end %>
   </div>
@@ -64,12 +64,12 @@
 
     <tr>
       <th>Will You Return To <%= @stylist.username %>?: </th>
-      <td><%= @rating.return ? 'Absolutely' : 'Not in a Million Years' %></td>
+      <td><%= @rating.return ? 'Yes' : 'No' %></td>
     </tr>
 
     <tr>
-      <th>Would You Recommend <%= @stylist.username %>?: </th>
-      <td><%= @rating.recommend ? 'Hell Yeah' : 'Not a chance!!!' %></td>
+      <th>Would You Recommend <%= @stylist.username %> to a friend?: </th>
+      <td><%= @rating.recommend ? 'Yes' : 'No' %></td>
     </tr>
 
     <tr>

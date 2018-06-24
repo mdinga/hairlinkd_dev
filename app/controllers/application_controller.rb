@@ -1,51 +1,24 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_stylist, :current_client, :current_admin, :current_user, :path_to_stylist
+  helper_method :current_user, :path_to_stylist
+def current_user
 
-  def current_user
-
-    if Admin.exists?(session[:user_id]) && Admin.find(session[:user_id]).has_role?(:log_admin)
-      @current_user = Admin.find(session[:user_id])
-    elsif Stylist.exists?(session[:user_id]) && Stylist.find(session[:user_id]).has_role?(:log_stylist)
-      @current_user = Stylist.find(session[:user_id])
-    elsif Client.exists?(session[:user_id]) && Client.find(session[:user_id]).has_role?(:log_client)
-      @current_user = Client.find(session[:user_id])
+@current_user =
+    if session[:admin_id]
+      @current_admin_user = Admin.find(session[:admin_id])
+      @current_admin_user
+    elsif session[:stylist_id]
+      @current_stylist_user = Stylist.find(session[:stylist_id])
+      @current_stylist_user
+    elsif session[:client_id]
+      @current_client_user = Client.find(session[:client_id])
+      @current_client_user
     else
-      @current_user = nil
+       nil
     end
-  end
+end
 
-  def current_stylist
-    if Stylist.exists?(session[:user_id])
-      if Stylist.find(session[:user_id]).has_role? :def_stylist
-        @current_stylist ||= Stylist.find(session[:user_id])
-      else
-        @current_stylist = nil
-      end
-    end
-  end
-
-
-  def current_client
-    if session[:user_id].present?
-      if Client.find(session[:user_id]).has_role? :def_client
-        @current_client ||= Client.find(session[:user_id])
-      else
-        @current_client = nil
-      end
-    end
-  end
-
-  def current_admin
-    if session[:user_id].present?
-      if Admin.find(session[:user_id]).has_role? :def_admin
-        @current_admin ||= Admin.find(session[:user_id])
-      else
-        @current_admin = nil
-      end
-    end
-  end
 
 def searchable_stylists
   @stylist = Stylist.search(params[:search]).find_city(params[:place]).find_area(params[:sub_place]).order(sort_criteria + " " + sort_direction).paginate(:page => params[:page], :per_page => 16)
