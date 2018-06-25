@@ -2,7 +2,7 @@ class StylesController < ApplicationController
 
   layout "application"
 
-  before_action :get_style_names, :get_style_cats, :get_stylists_and_clients, :only => [:new, :create, :edit, :update]
+  before_action :get_stylists_and_clients, :only => [:new, :create, :edit, :update]
 
 
   def index
@@ -14,10 +14,12 @@ class StylesController < ApplicationController
   end
 
   def new
+    @service = Service.all
     @style = Style.new
   end
 
   def create
+    @service = Service.all
       @style = Style.create(style_params)
 
         if @style.save
@@ -29,10 +31,12 @@ class StylesController < ApplicationController
   end
 
   def edit
+    @service = Service.all
     @style = Style.find(params[:id])
   end
 
   def update
+    @service = Service.all
     @style = Style.find(params[:id])
 
       if @style.update_attributes(style_params)
@@ -56,21 +60,7 @@ class StylesController < ApplicationController
   private
 
   def style_params
-    params.require(:style).permit(:image, :style_name, :category, :sub_category, :details, :stylist_id, :client_id, :popularity)
-  end
-
-  def get_style_names
-    @style_type = []
-    @file_dir = File.join(File.dirname(__FILE__), '..', '..', 'lib', 'styles', 'style_names.txt')
-    @file = File.open(@file_dir, 'r')
-    @file.each_line{|line| @style_type.push line}
-  end
-
-  def get_style_cats
-    @style_cat = []
-    @file_dir = File.join(File.dirname(__FILE__), '..', '..', 'lib', 'styles', 'style_categories.txt')
-    @file = File.open(@file_dir, 'r')
-    @file.each_line{|line| @style_cat.push line}
+    params.require(:style).permit(:image, :style_name, :service_id, :details, :stylist_id, :client_id, :popularity)
   end
 
   def get_stylists_and_clients

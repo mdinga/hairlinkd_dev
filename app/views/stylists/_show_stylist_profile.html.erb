@@ -1,10 +1,10 @@
 
   <div class = "row background_stylist">
-    <div class = "col-sm-4 text-center" style = "padding: 3px;">
+    <div class = "col-sm-4 offset-sm-2 text-center" style = "padding: 3px;">
       <%= image_tag stylist.avatar.url(:thumb).to_s, class: "img-thumbnail rounded  w-1" %>
     </div><!--col-sm-4-->
 
-    <div class = "col-sm-8" style = "color: white">
+    <div class = "col-sm-4 text-center mt-3" style = "color: white">
       <h5 class = "mt-2"><%= @stylist.username%></h5>
       <p class = "badge badge-primary badge-pill bg-warning " style = "color:black"><%= stylist.overall_rating %> </p> (<%= pluralize(stylist.ratings.count, 'Review') %>)
       <p>Likes: <%= stylist.clients.count %></p>

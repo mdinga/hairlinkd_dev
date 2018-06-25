@@ -7,17 +7,7 @@
 
   <tr>
     <th>Hairstyle</th>
-    <td><%= s.select(:style_name, @style_type) %></td>
-  </tr>
-
-  <tr>
-    <th>Category</th>
-    <td><%= s.select(:category, @style_cat) %></td>
-  </tr>
-
-  <tr>
-    <th>Sub-Category</th>
-    <td><%= s.select(:sub_category, @style_cat) %></td>
+    <td><%= s.select(:service_id, @service.map{|h| [h.name, h.id]}) %></td>
   </tr>
 
   <tr>

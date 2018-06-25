@@ -226,16 +226,15 @@ ActiveRecord::Schema.define(version: 20180603195221) do
 
   create_table "styles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "style_name"
-    t.string "category"
-    t.string "sub_category"
+    t.string "image"
     t.text "details", limit: 255
     t.integer "stylist_id"
     t.integer "client_id"
+    t.integer "service_id"
     t.integer "popularity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
-    t.index ["stylist_id", "client_id"], name: "index_styles_on_stylist_id_and_client_id"
+    t.index ["stylist_id", "client_id", "service_id"], name: "index_styles_on_stylist_id_and_client_id_and_service_id"
   end
 
   create_table "stylists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
