@@ -68,4 +68,5 @@ end
 
 group :production do
   gem 'pg', '~> 1.0'
+  gem 'google-analytics-rails', '~> 1.1', '>= 1.1.1'
 end

@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.10.2"
+lock "~> 3.11.0"
 
 set :application, "41.185.97.11"
 set :repo_url, "git@github.com:mdinga/hairlinkd_dev.git"

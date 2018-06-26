@@ -105,6 +105,7 @@ GEM
     ffi (1.9.25-x86-mingw32)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    google-analytics-rails (1.1.1)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -241,6 +242,7 @@ DEPENDENCIES
   carrierwave (~> 1.2.1)
   coffee-rails (~> 4.2)
   coffee-script-source (= 1.8.0)
+  google-analytics-rails (~> 1.1, >= 1.1.1)
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3, >= 4.3.1)
   mysql2
