@@ -28,8 +28,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
  #gem 'bcrypt', '~> 3.1.7'
-
-
 #gem "passenger"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -37,7 +35,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #gem to install pictures
 gem 'carrierwave', '~> 1.2.1'
 gem 'rmagick', '~> 2.15', '>= 2.15.4'
-
 gem 'sprockets-rails', '~> 3.2', '>= 3.2.1'
 gem 'bootstrap-glyphicons'
 gem 'coffee-script-source', '1.8.0'

@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
 
-  root 'home#index'
+  #root 'home#index'
+  root 'home#construction'
 
+  get 'web', :to => 'home#index'
 
   get 'alog', :to => 'admin_access#menu'
   get 'admin_access/login'
