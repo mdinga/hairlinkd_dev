@@ -99,6 +99,10 @@ GEM
     coffee-script-source (1.8.0)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    dotenv (2.5.0)
+    dotenv-rails (2.5.0)
+      dotenv (= 2.5.0)
+      railties (>= 3.2, < 6.0)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25)
@@ -241,6 +245,7 @@ DEPENDENCIES
   carrierwave (~> 1.2.1)
   coffee-rails (~> 4.2)
   coffee-script-source (= 1.8.0)
+  dotenv-rails
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3, >= 4.3.1)
   mysql2
