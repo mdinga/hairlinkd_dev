@@ -26,7 +26,7 @@ helper_method :sort_criteria, :sort_direction
     @stylist = Stylist.new(stylist_params)
     @stylist.add_role :def_stylist
 
-    if @stylist.save
+    if @stylist.save && verify_recaptcha(model: @stylist)
       flash[:notice] = "Profile Created Successfully, Please Log In"
       redirect_to (stylist_access_stylist_login_path)
     else
