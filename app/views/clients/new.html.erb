@@ -1,6 +1,7 @@
 <div class = 'container'>
-  <h3>Create A City</h3>
-  <%= button_to("<- Return", root_path, method: :get, class: 'btn btn-hl btn-sm m-3') %>
+  <div>
+    <%= button_to("<< Return", root_path, method: :get, class: 'btn btn-hl btn-sm m-3') %>
+  </div>
 
   <div>
     <%= form_for(@client) do |c| %>

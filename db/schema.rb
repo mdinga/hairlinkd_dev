@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20180628164430) do
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname"
+    t.string "nickname", default: ""
   end
 
   create_table "admins_def_admins", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20180628164430) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname"
+    t.string "nickname", default: ""
   end
 
   create_table "clients_def_clients", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -255,7 +255,7 @@ ActiveRecord::Schema.define(version: 20180628164430) do
     t.string "salon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname"
+    t.string "nickname", default: ""
   end
 
   create_table "stylists_def_stylists", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

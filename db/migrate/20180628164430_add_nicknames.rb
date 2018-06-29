@@ -2,9 +2,9 @@ class AddNicknames < ActiveRecord::Migration[5.1]
 
 
   def up
-    add_column :stylists, :nickname, :string
-    add_column :clients, :nickname, :string
-    add_column :admins, :nickname, :string
+    add_column :stylists, :nickname, :string, :default => ""
+    add_column :clients, :nickname, :string, :default => ""
+    add_column :admins, :nickname, :string, :default => ""
   end
 
   def down
