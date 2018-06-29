@@ -65,5 +65,7 @@ class Stylist < ApplicationRecord
                         :format => {:with => PASSWORD_FORMAT, message: "must be at least 8 characters and include a number"},
                         :confirmation => true
 
+  validates :nickname, :presence => false
+
 
 end

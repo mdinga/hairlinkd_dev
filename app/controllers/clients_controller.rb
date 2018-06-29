@@ -51,20 +51,18 @@ class ClientsController < ApplicationController
 
   def destroy
     @client = Client.find(params[:id])
-    @client.ratings.destroy_all
-    @client.destroy
 
-      #if current_user.has_role? :log_client
-        session[:user_id] = nil
+    if session[:client_id]
+        delete_this_client
+        session[:client_id] = nil
         flash[:notice] = "Your profile has been deleted and you have been logged out"
         redirect_to(root_path)
-
-      #elsif current_user.has_role? :log_admin
-        #flash[:notice] = "The stylist has been deleted"
-        #redirect_to(clients_path)
-      #end
-
-  end
+      elsif session[:admin_id]
+        delete_this_client
+        flash[:notice] = "That client was deleted successfully by Admin."
+        redirect_to(clients_path)
+      end
+    end
 
 def index_stylists
   searchable_stylists
@@ -141,8 +139,13 @@ private
     params.require(:client).permit(:username, :name, :surname, :email, :password, :password_confirmation, :city, :area, :favourite_hairstyles, :favourite_products, :favourites_gallery, :favourite_stylists, :nickname)
   end
 
-  def send_login_mail
-
+  def delete_this_client
+    @client.ratings.destroy_all #delete all the stylists ratings
+    #@client.fav_styles.destroy_all #delete all favourite styles
+    #@client.fav_stylists.destroy_all #delete all favourite stylists
+    @client.cities.destroy_all
+    @client.areas.destroy_all
+    @client.destroy
   end
 
 

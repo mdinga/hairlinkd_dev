@@ -26,7 +26,7 @@ helper_method :sort_criteria, :sort_direction
     @stylist = Stylist.new(stylist_params)
     @stylist.add_role :def_stylist
 
-    if @stylist.save && verify_recaptcha(model: @stylist)
+    if @stylist.save
       flash[:notice] = "Profile Created Successfully, Please Log In"
       redirect_to (stylist_access_stylist_login_path)
     else
@@ -57,16 +57,16 @@ helper_method :sort_criteria, :sort_direction
 
   def destroy
     @stylist = Stylist.find(params[:id])
-    if current_user.has_role? :log_stylist
-      @stylist.ratings.destroy_all #delete all the stylists ratings
-      @stylist.portfolios.destroy_all #delete all the stylists portfolio
-      @stylist.cities.destroy_all
-      @stylist.areas.destroy_all
-      @stylist.destroy
-      session[:user_id] = nil
+
+
+    if session[:stylist_id]
+      delete_this_stylist
+      session[:stylist_id] = nil
       flash[:notice] = "Stylist deleted successfully."
       redirect_to (root_path)
-    elsif current_user.has_role? :log_admin
+
+    elsif session[:admin_id]
+      delete_this_stylist
       flash[:notice] = "That stylist was deleted successfully by Admin."
       redirect_to (stylists_path)
     end
@@ -108,6 +108,15 @@ helper_method :sort_criteria, :sort_direction
     @file = File.open(@file_dir, 'r')
     @file.each_line{|line| @serv_cat.push line.chomp}
   end
+
+  def delete_this_stylist
+    @stylist.ratings.destroy_all #delete all the stylists ratings
+    @stylist.portfolios.destroy_all #delete all the stylists portfolio
+    @stylist.cities.destroy_all
+    @stylist.areas.destroy_all
+    @stylist.destroy
+  end
+
 
 
 end

@@ -78,18 +78,6 @@ class AdminsController < ApplicationController
     end
   end
 
-  def delete_client
-        @client = Client.find(params[:id])
-  end
-
-  def destroy_client
-    @client = Client.find(params[:id])
-    @client.ratings.destroy_all
-    @client.destroy
-    flash[:notice] = "Client deleted successfully."
-    redirect_to (index_clients_admins_path)
-  end
-
   #-----------------------------------------------------------------------------
   # The following is for controlling Stylists through Admin Profiles
 

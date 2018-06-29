@@ -1,10 +1,10 @@
 <div class = 'container'>
 
   <div class = 'm-3'>
-      <!-- <% if session[:client_id] %> -->
-        <%= button_to("<- Profile", client_path(@client), method: :get, class: 'btn btn-sm') %>
-      <!-- <% elsif session[:admin_id] %> -->
-        <%= button_to("<- Clients", clients_path, method: :get, class: 'btn btn-sm') %>
+      <% if session[:client_id] %>
+        <%= button_to("<< Profile", client_path(@client), method: :get, class: 'btn btn-sm') %>
+      <% elsif session[:admin_id] %>
+        <%= button_to("<< Clients", clients_path, method: :get, class: 'btn btn-sm') %>
       <% end %>
   </div>
 

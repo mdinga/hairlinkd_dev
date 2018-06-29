@@ -42,9 +42,6 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 gem 'will_paginate'
 gem 'rolify', '~> 5.2'
-gem 'dotenv-rails', :require => 'dotenv/rails-now'
-gem 'recaptcha', '~> 4.9'
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
