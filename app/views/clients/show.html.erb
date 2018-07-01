@@ -6,12 +6,8 @@
 
   <div class = 'm-3'>
     <!-- <% if Admin.exists?(session[:admin_id]) %> -->
-      <%= button_to("<- Clients", clients_path, method: :get, class: 'btn btn-sm') %>
+      <%= button_to("<< Clients", clients_path, method: :get, class: 'btn btn-sm') %>
     <!-- <% end %> -->
-</div>
-
-<div class= "text-center m-4">
-  <%= button_to "Edit Your Profile", edit_client_path(@client), method: :get, class: "btn btn-hl btn-sm" %>
 </div>
 
 <div>

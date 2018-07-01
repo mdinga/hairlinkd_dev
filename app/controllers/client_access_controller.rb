@@ -42,21 +42,48 @@ class ClientAccessController < ApplicationController
     #reset form
   end
 
-  def attempt_reset
+  def reset
+    require "securerandom"
+    if params[:email].present?
+      @client = Client.where(:email => params[:email]).first
+      @randowm_password = SecureRandom.hex(5)
+      @client.update_attributes(:password => @randowm_password)
+      flash.now[:notice] = "New password has been sent to your mail"
+      render 'login'
+    else
+      flash.now[:notice] = "No such email here"
+      render 'forgot'
+    end
+  end
 
+  def password_form
+    @client = current_user
+  end
+
+  def update_password
+    @client = current_user
+    if @client.update_attributes(password_params)
+      flash[:notice] = "Your password has been successfully changed"
+      redirect_to(client_path(@client))
+    else
+      flash[:notice] = "Oops something went wrong, please try again"
+      render 'password_form'
+    end
   end
 
   private
 
   def resolve_layout
-
-    case action_name
-      when "login", "attempt_login", 'forgot', 'attempt_reset'
-        "login"
-      when "menu"
-        "client_menu"
+      case action_name
+        when "login", "attempt_login", 'forgot', 'reset'
+          "login"
+        when "menu", "password_form", "update_password"
+          "application"
+        end
   end
 
+  def password_params
+    params.require(:client).permit(:password, :password_confirmation)
   end
 
 

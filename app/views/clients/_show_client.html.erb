@@ -8,7 +8,11 @@
     <td><%= @client.name %> <%= @client.surname %></td>
   </tr>
   <tr>
-    <th>Date Joined</th>
+    <th>Email</th>
+    <td><%= @client.email %></td>
+  </tr>
+  <tr>
+    <th>Date Joined:</th>
     <td><%= @client.created_at.strftime("%d %B %Y") %></td>
   </tr>
 </table>

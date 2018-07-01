@@ -2,11 +2,10 @@
 
     <div class = "m-2 clearfix">
 
-      <% if session[:stylist_id] %>
-        <%= button_to("Edit Your Profile", edit_stylist_path(@stylist), method: :get, class: "btn btn-hl btn-sm float-right")%>
-      <% end %>
 
-        <%= button_to("<- Stylists", stylists_path, method: :get, class: "btn btn-hl btn-sm float-left")%>
+      <% if session[:admin_id] %>
+        <%= button_to("<< Stylists", stylists_path, method: :get, class: "btn btn-hl btn-sm float-left")%>
+      <% end %>
 
     </div>
 

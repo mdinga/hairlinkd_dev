@@ -11,16 +11,24 @@
         </button>
 
         <div class = 'collapse navbar-collapse' id = 'stylistToggler'>
-          <div class="nav navbar-nav ml-auto">
+          <ul class="nav navbar-nav ml-auto">
 
-            <%= link_to("My Profile", stylist_path(current_user.id), class: "nav-item nav-link") %>
-            <%= link_to("Stylists", stylists_path(:stylist_id == current_user.id), class: "nav-item nav-link") %>
-            <%= link_to("Forum", '#', class: "nav-item nav-link") %>
-            <%= link_to("Contact Us", '#', class: "nav-item nav-link") %>
-            <%= link_to("Logout", stylist_access_stylist_logout_path, class: "nav-item nav-link") %>
+          <li class = "nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
 
+            <ul class = 'dropdown-menu' aria-labelledby = "navbarDropdown">
+              <li><%= link_to("View Profile", stylist_path(current_user.id), class: "dropdown-item") %></li>
+              <li><%= link_to("Edit Profile", edit_stylist_path(current_user.id), class: "dropdown-item") %></li>
+              <li><%= link_to("Change Password", stylist_access_password_form_path, class: "dropdown-item") %></li>
+            </ul><!-- dropdown-menu -->
+          </li><!-- nav-item -->
 
-            </div><!--nav---->
+            <li><%= link_to("Stylists", stylists_path(:stylist_id == current_user.id), class: "nav-item nav-link") %></li>
+            <li><%= link_to("Forum", '#', class: "nav-item nav-link") %></li>
+            <li><%= link_to("Contact Us", '#', class: "nav-item nav-link") %></li>
+            <li><%= link_to("Logout", stylist_access_stylist_logout_path, class: "nav-item nav-link") %></li>
+
+          </ul><!--nav---->
           </div><!--collapse---->
         </div><!--container-->
       </nav>

@@ -18,14 +18,19 @@ Rails.application.routes.draw do
   post 'client_access/attempt_login'
   get 'client_access/logout'
   get 'client_access/forgot'
-  post 'client_access/attempt_reset'
+  post 'client_access/reset'
+  get 'client_access/password_form'
+  post 'client_access/update_password'
 
 
   get 'stylist_access/stylist_login'
   get 'stylist_access/stylist_menu'
   post 'stylist_access/stylist_attempt_login'
   get 'stylist_access/stylist_logout'
-
+  get 'stylist_access/forgot'
+  post 'stylist_access/reset'
+  get 'stylist_access/password_form'
+  post 'stylist_access/update_password'
 
     resources :stylists do
         member do
