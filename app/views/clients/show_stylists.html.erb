@@ -1,9 +1,6 @@
 <div class = "container">
   <div class = " row m-2">
-    <div class = "col-6">
-      <%= link_to("<< Back to Stylists", index_stylists_clients_path(current_user.id)) %>
-    </div>
-    <div class = "col-6">
+    <div>
    <%= link_to("Submit Your Rating", new_rating_path(:client_id => current_user.id, :stylist_id => @stylist.id), class: "link-button")%>
     </div>
   </div>

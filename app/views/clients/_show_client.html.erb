@@ -1,32 +1,52 @@
-<table class = "table table-sm">
-  <tr>
-    <th>Username:</th>
-    <td><%= @client.username %></td>
-  </tr>
-  <tr>
-    <th>Full Name:</th>
-    <td><%= @client.name %> <%= @client.surname %></td>
-  </tr>
-  <tr>
-    <th>Email</th>
-    <td><%= @client.email %></td>
-  </tr>
-  <tr>
-    <th>Date Joined:</th>
-    <td><%= @client.created_at.strftime("%d %B %Y") %></td>
-  </tr>
-</table>
+
+  <div class = 'client_divs'>
+    <div class = 'text-center'>
+      <h4>Your Notifications</h4>
+    </div>
+    <table class = "table table-sm table-hover">
+      <thead>
+        <tr>
+          <th>Notification</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Appointments</td>
+          <td>No appointment pending</td>
+          <td><%= link_to('Create New Appointment', '#')%> / <%= link_to('View Appointments', '#')%></td>
+        </tr>
+        <tr>
+          <td>Your Reviews</td>
+          <td>You haven't reviewed any Stylist yet</td>
+          <td><%= link_to('Create Review', '#')%> / <%= link_to('View Your Reviews', '#')%></td>
+        </tr>
+        <tr>
+          <td>Messages</td>
+          <td>No messages pending</td>
+          <td><%= link_to('New Message', '#')%> / <%= link_to('View Messages', '#')%></td>
+        </tr>
+        <tr>
+          <td>Comments</td>
+          <td>No comments</td>
+          <td><%= link_to('Write Comment', '#')%></td>
+        </tr>
+      </tbody>
+    </table>
+  </div><!-- row -->
+
 
 <hr>
 
-<div class = "container mt-3" style = "border: 2px outset #D3D3D3;">
+<div class = "container client_divs">
   <h5 class = "text-center m-3" style = "text-decoration:underline;">Stylists You Like</h5>
     <% if @client.stylists.count < 1 %>
         <div class = "text-center pb-3">
         <p>There are no Stylists that you like yet!!</p>
         <p>All the Stylists that you like will appear here</p>
         <p>Check out the Stylists</p>
-        <%= button_to "View Stylists", index_stylists_clients_path, method: :get, class: "btn btn-secondary btn-sm"%>
+        <%= button_to "View Stylists", index_stylists_clients_path, method: :get, class: "btn btn-sm"%>
       </div>
 
     <% else %>
@@ -36,15 +56,18 @@
           <div class = 'card-body' style = 'width:auto;'>
             <div class = 'card text-center' style = 'width:200px;'>
               <%= render :partial => "stylists/index_stylists", :hmtl => {:multiport => true}, :locals => {:stylist => stylist}%>
+                <%= link_to("View Profile", show_stylists_client_path(stylist))%>
             </div> <!--card-->
           </div><!--card-body-->
           <% end %>
       </div><!--card-body-->
-
+      <div class = 'text-center m-3'>
+        <%= button_to "View Stylists", index_stylists_clients_path, method: :get, class: "btn btn-sm"%>
+      </div>
     <% end %>
 </div>
 
-<div class = "container mt-3" style = "border: 2px outset #D3D3D3;">
+<div class = "container client_divs" style = "border-bottom: 1px solid black;">
   <h5 class = "text-center m-3" style = "text-decoration:underline;">Hairstyles You Like</h5>
       <% if @client.styles.count < 1 %>
 
@@ -52,7 +75,7 @@
             <p>There are no Hairstyles that you like yet!!</p>
             <p>All the Hairstyles that you like for the gallery will appear here</p>
             <p>Check out the gallery now</p>
-            <%= button_to "View Gallery", index_styles_clients_path, method: :get, class: "btn btn-secondary btn-sm"%>
+            <%= button_to "View Gallery", index_styles_clients_path, method: :get, class: "btn btn-sm"%>
           </div>
 
       <% else %>
@@ -66,10 +89,13 @@
             </div> <!--card-->
           </div><!--card-body-->
 
-      <% end %>
-
+          <% end %>
+      </div><!--card-group-->
+      <div class = 'text-center m-3'>
+        <%= button_to "View Gallery", index_styles_clients_path, method: :get, class: "btn btn-sm"%>
+      </div>
 
     <% end %>
-    </div><!--card-group-->
+
 
 </div><!--container-->
