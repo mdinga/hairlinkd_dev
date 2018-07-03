@@ -16,11 +16,13 @@ class RegisterMailer < ApplicationMailer
   #
   #   en.register_mailer.new_client.subject
   #
-  def new_client
-    @greeting = "Hi"
+  def new_client(client)
+    @client = client
+    @username = @client.username
+    @greeting = "Hi #{@username}"
 
-    mail to: "mbasa.dinga@gmail.com",
+    mail to: @client.email, "mbasa.dinga@gmail.com"
         subject: "Welcome to Hairlinkd"
   end
-  
+
 end
