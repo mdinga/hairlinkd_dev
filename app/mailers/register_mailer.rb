@@ -26,7 +26,7 @@ class RegisterMailer < ApplicationMailer
     @greeting = "Hi #{@username}"
 
     mail  to: @client.email,
-          bcc: "mbasa.dinga@gmail.com",
+          bcc: "hairlinkd@gmail.com",
           subject: "Welcome to Hairlinkd"
   end
 
