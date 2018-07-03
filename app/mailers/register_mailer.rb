@@ -5,10 +5,14 @@ class RegisterMailer < ApplicationMailer
   #
   #   en.register_mailer.new_stylist.subject
   #
-  def new_stylist
-    @greeting = "Hi"
+  def new_stylist(stylist)
+    @stylist = stylist
+    @username = @stylist.username
+    @greeting = "Hi #{@username}"
 
-    mail to: "to@example.org"
+    mail  to: @stylist.email,
+          bcc: "hairlinkd@gmail.com",
+          subject: "Welcome to Hairlinkd"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -21,8 +25,9 @@ class RegisterMailer < ApplicationMailer
     @username = @client.username
     @greeting = "Hi #{@username}"
 
-    mail to: @client.email, "mbasa.dinga@gmail.com"
-        subject: "Welcome to Hairlinkd"
+    mail  to: @client.email,
+          bcc: "mbasa.dinga@gmail.com",
+          subject: "Welcome to Hairlinkd"
   end
 
 end

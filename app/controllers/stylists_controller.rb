@@ -28,6 +28,7 @@ helper_method :sort_criteria, :sort_direction
 
     if @stylist.save
       flash[:notice] = "Profile Created Successfully, Please Log In"
+      RegisterMailer.new_stylist(@stylist).deliver_now
       redirect_to (stylist_access_stylist_login_path)
     else
       render ('new')
