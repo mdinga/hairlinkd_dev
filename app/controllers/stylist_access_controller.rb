@@ -12,8 +12,8 @@ class StylistAccessController < ApplicationController
 
 
   def stylist_attempt_login
-  if params[:email].present? && params[:password].present?
-    found_stylist = Stylist.where(:email => params[:email]).first
+  if params[:username].present? && params[:password].present?
+    found_stylist = Stylist.where(:username => params[:username]).first
       if found_stylist
         authorized_stylist = found_stylist.authenticate(params[:password])
         #current_user.add_role :log_stylist
@@ -24,7 +24,7 @@ class StylistAccessController < ApplicationController
     flash[:notice] = "You are now logged in"
     redirect_to(stylist_path(authorized_stylist.id))
   else
-    flash.now[:notice] = "Invalid email/password combination."
+    flash.now[:notice] = "Invalid username/password combination."
     render 'stylist_login'
   end
 end
@@ -41,11 +41,17 @@ end
   end
 
   def reset
+    require "securerandom"
     if params[:email].present?
       @stylist = Stylist.where(:email => params[:email]).first
-      @stylist.send_password_reset
-      flash.now[:notice] = "Email sent with password reset instructions"
-      redirect_to(root_path)
+      @randowm_password = SecureRandom.hex(5)
+      @stylist.update_attributes(:password => @randowm_password)
+      flash.now[:notice] = "New password has been sent to your mail"
+      render 'stylist_login'
+    else
+      flash.now[:notice] = "No such email here"
+      render 'forgot'
+    end
   end
 
   def password_form
@@ -53,15 +59,13 @@ end
   end
 
   def update_password
-    @stylist = Stylist.find_by_password_reset_token!(params[:id])
-    if @stylist.password_reset_sent_at < 2.hours.ago
-      flash[:notice] = "Password has expired"
-      redirect_to(stylist_access_forgot_path)
-    elsif @stylist.update_attributes(params[:client])
-      flash[:notice] = "Password has been reset, you can now log in"
-      redirect_to(stylist_access_login_path)
+    @stylist = current_user
+    if @stylist.update_attributes(password_params)
+      flash[:notice] = "Your password has been successfully changed"
+      redirect_to(stylist_path(@stylist))
     else
-      render 'stylist_login'
+      flash[:notice] = "Oops something went wrong, please try again"
+      render 'password_form'
     end
   end
 
@@ -75,6 +79,10 @@ end
       when "stylist_menu", "password_form", "update_password"
         "application"
       end
+  end
+
+  def password_params
+    params.require(:stylist).permit(:password, :password_confirmation)
   end
 
 

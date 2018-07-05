@@ -12,8 +12,8 @@ class ClientAccessController < ApplicationController
   end
 
   def attempt_login
-    if params[:email].present? && params[:password].present?
-      found_client = Client.where(:email => params[:email]).first
+    if params[:username].present? && params[:password].present?
+      found_client = Client.where(:username => params[:username]).first
       if found_client
         authorized_client = found_client.authenticate(params[:password])
         #current_user.add_role :log_client
@@ -25,7 +25,7 @@ class ClientAccessController < ApplicationController
       flash[:notice] = "You are now logged in"
       redirect_to(client_path(authorized_client.id))
     else
-      flash.now[:notice] = "Invalid email/password combination"
+      flash.now[:notice] = "Invalid username/password combination"
       render 'login'
     end
 
@@ -43,28 +43,31 @@ class ClientAccessController < ApplicationController
   end
 
   def reset
+    require "securerandom"
     if params[:email].present?
       @client = Client.where(:email => params[:email]).first
-      @client.send_password_reset
-      flash.now[:notice] = "Email sent with password reset instructions"
-      redirect_to(root_path)
+      @randowm_password = SecureRandom.hex(5)
+      @client.update_attributes(:password => @randowm_password)
+      flash.now[:notice] = "New password has been sent to your mail"
+      render 'login'
+    else
+      flash.now[:notice] = "No such email here"
+      render 'forgot'
     end
   end
 
   def password_form
-    @client = Client.find_by_password_reset_token!(params[:id])
+    @client = current_user
   end
 
   def update_password
-    @client = Client.find_by_password_reset_token!(params[:id])
-    if @client.password_reset_sent_at < 2.hours.ago
-      flash[:notice] = "Password has expired"
-      redirect_to(client_access_forgot_path)
-    elsif @client.update_attributes(params[:client])
-      flash[:notice] = "Password has been reset, you can now log in"
-      redirect_to(client_access_login_path)
+    @client = current_user
+    if @client.update_attributes(password_params)
+      flash[:notice] = "Your password has been successfully changed"
+      redirect_to(client_path(@client))
     else
-      render 'login'
+      flash[:notice] = "Oops something went wrong, please try again"
+      render 'password_form'
     end
   end
 
