@@ -12,10 +12,10 @@
         <label class = 'form-control-label col-md-4 text-center'>Date of Your Appointment:</label>
         <%= f.date_select :date_of_appointment , class: 'form-control col-md-8 text-center' %>
       </div>
-
+<hr>
 
       <div class ='row form-group'>
-        <label class = 'radio-inline col-md-4 text-center'>Rating 1:</label>
+        <label class = 'radio-inline col-md-4 text-center'>I got value for my money:</label>
         <div class = 'col-md-8'>
           <%= f.radio_button :rating_1, 1, type: 'radio', class: "m-3" %><span>1</span>
           <%= f.radio_button :rating_1, 2, type: 'radio', class: "m-3"%><span>2</span>
@@ -24,9 +24,9 @@
           <%= f.radio_button :rating_1, 5, type: 'radio', class: "m-3"%><span>5</span>
         </div>
       </div>
-
+<hr>
       <div class ='row form-group'>
-        <label class = 'radio-inline col-md-4 text-center'>Rating 2:</label>
+        <label class = 'radio-inline col-md-4 text-center'>The venue was clean and hygienic:</label>
         <div class = 'col-md-8'>
           <%= f.radio_button :rating_2, 1, type: 'radio', class: "m-3" %><span>1</span>
           <%= f.radio_button :rating_2, 2, type: 'radio', class: "m-3"%><span>2</span>
@@ -35,9 +35,9 @@
           <%= f.radio_button :rating_2, 5, type: 'radio', class: "m-3"%><span>5</span>
         </div>
       </div>
-
+<hr>
       <div class ='row form-group'>
-        <label class = 'radio-inline col-md-4 text-center'>Rating 3:</label>
+        <label class = 'radio-inline col-md-4 text-center'>My needs and expectation were met:</label>
         <div class = 'col-md-8'>
           <%= f.radio_button :rating_3, 1, type: 'radio', class: "m-3" %><span>1</span>
           <%= f.radio_button :rating_3, 2, type: 'radio', class: "m-3"%><span>2</span>
@@ -46,9 +46,9 @@
           <%= f.radio_button :rating_3, 5, type: 'radio', class: "m-3"%><span>5</span>
         </div>
       </div>
-
+<hr>
       <div class ='row form-group'>
-        <label class = 'radio-inline col-md-4 text-center'>Rating 4:</label>
+        <label class = 'radio-inline col-md-4 text-center'>Acted in a professional manner:</label>
         <div class = 'col-md-8'>
           <%= f.radio_button :rating_4, 1, type: 'radio', class: "m-3" %><span>1</span>
           <%= f.radio_button :rating_4, 2, type: 'radio', class: "m-3"%><span>2</span>
@@ -57,9 +57,9 @@
           <%= f.radio_button :rating_4, 5, type: 'radio', class: "m-3"%><span>5</span>
         </div>
       </div>
-
+<hr>
       <div class ='row form-group'>
-        <label class = 'radio-inline col-md-4 text-center'>Rating 5:</label>
+        <label class = 'radio-inline col-md-4 text-center'>Was gentle when handling my hair:</label>
         <div class = 'col-md-8'>
           <%= f.radio_button :rating_5, 1, type: 'radio', class: "m-3" %><span>1</span>
           <%= f.radio_button :rating_5, 2, type: 'radio', class: "m-3"%><span>2</span>
@@ -68,7 +68,7 @@
           <%= f.radio_button :rating_5, 5, type: 'radio', class: "m-3"%><span>5</span>
         </div>
       </div>
-
+<hr>
       <div class ='row form-group'>
           <label class = 'checkbox-inline col-md-4 text-center'>Will you returning?</label>
         <div class = 'col-md-8'>
@@ -76,7 +76,7 @@
             <%= f.radio_button :return, 0, type: "checkbox", class: "m-3" %>No
         </div>
       </div>
-
+<hr>
       <div class ='row form-group'>
           <label class = 'checkbox-inline col-md-4 text-center'>Would you recommend the Stylist?</label>
 
@@ -85,13 +85,13 @@
             <%= f.radio_button :recommend, 0, type: "checkbox", class: "m-3" %>No
           </div>
       </div>
-
+<hr>
       <div class ='form-group'>
         <label class = 'form-control-label'>Please tell us more about your experience:</label>
         <%= f.text_area :Comment, class: 'form-control' %>
       </div>
     </fieldset>
-
+<hr>
     <div class = 'text-center'>
       <%= f.submit "Submit Rating", class: "btn btn-hl" %>
     </div>

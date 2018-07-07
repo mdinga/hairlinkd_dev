@@ -4,7 +4,7 @@ class Rating < ApplicationRecord
   belongs_to :stylist
 
 
-  validates_presence_of :Comment
+  #validates_presence_of :Comment
   validate :today_or_before
   validate :date_too_far
   validate :rating_1_missing

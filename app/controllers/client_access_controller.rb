@@ -43,30 +43,27 @@ class ClientAccessController < ApplicationController
   end
 
   def reset
-    require "securerandom"
-    if params[:email].present?
       @client = Client.where(:email => params[:email]).first
-      @randowm_password = SecureRandom.hex(5)
+      @client.send_password_reset if @client
       @client.update_attributes(:password => @randowm_password)
       flash.now[:notice] = "New password has been sent to your mail"
-      render 'login'
-    else
-      flash.now[:notice] = "No such email here"
-      render 'forgot'
-    end
+      redirect_to (root_path)
   end
 
   def password_form
-    @client = current_user
+    @client = Client.where(:password_reset_token => params[:password_reset_token]).first
   end
 
   def update_password
-    @client = current_user
+    @client = Client.where(:password_reset_token => params[:password_reset_token]).first
+    #if @client.password_reset_sent_at < 2.hours.ago
+      #flash[:notice] = "Password has expired"
+      #redirect_to (client_access_forgot_path)
+    #elsif
     if @client.update_attributes(password_params)
-      flash[:notice] = "Your password has been successfully changed"
-      redirect_to(client_path(@client))
+      flash[:notice] = "Password has been reset"
+      redirect_to (client_access_login_path)
     else
-      flash[:notice] = "Oops something went wrong, please try again"
       render 'password_form'
     end
   end

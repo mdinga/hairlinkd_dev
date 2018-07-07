@@ -1,11 +1,7 @@
 <div class = "container">
-  <div class = " row m-2">
-    <div>
-   <%= link_to("Submit Your Rating", new_rating_path(:client_id => current_user.id, :stylist_id => @stylist.id), class: "link-button")%>
-    </div>
-  </div>
 
-  <div>
+
+  <div class = 'mt-2'>
       <%= render(:partial => 'stylists/show_stylist_profile', :html => {:multiport => true}, :locals => {:stylist => @stylist})%>
   </div>
 
