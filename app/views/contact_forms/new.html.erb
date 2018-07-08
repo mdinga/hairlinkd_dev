@@ -1,5 +1,5 @@
 <div class = "container">
-  <%= button_to("<- Home Page", root_path, method: :get, class: "btn btn-sm m-3")%>
+  <%= button_to("<< Home Page", root_path, method: :get, class: "btn btn-sm m-3")%>
 
 <div>
     <%= form_for @contact do |c| %>
@@ -24,13 +24,19 @@
           <%= c.text_field :phone, class: 'form-control' %>
         </div>
 
-        <div class ='form-group'>
-          <label class = 'form-control-label'>Your Message:</label>
-          <%= c.text_area :message, class: 'form-control' %>
+        <div class ='form-group fihla'>
+          <label class = 'form-control-label'>Your Username:</label>
+          <%= c.text_field :nickname, class: 'form-control' %>
         </div>
       </fieldset>
 
-        <div class = "text-center">
+      <div class ='form-group'>
+        <label class = 'form-control-label'>Your Message:</label>
+        <%= c.text_area :message, :size => '5x5', class: 'form-control' %>
+      </div>
+    </fieldset>
+
+        <div class = "text-center mb-5">
         <%= c.submit("Send Message", class: 'btn btn-sm') %>
         </div>
       <% end %>

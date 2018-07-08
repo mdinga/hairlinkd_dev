@@ -12,8 +12,8 @@ class StylistAccessController < ApplicationController
 
 
   def stylist_attempt_login
-  if params[:username].present? && params[:password].present?
-    found_stylist = Stylist.where(:username => params[:username]).first
+  if params[:email].present? && params[:password].present?
+    found_stylist = Stylist.where(:email => params[:email]).first
       if found_stylist
         authorized_stylist = found_stylist.authenticate(params[:password])
         #current_user.add_role :log_stylist
@@ -24,7 +24,7 @@ class StylistAccessController < ApplicationController
     flash[:notice] = "You are now logged in"
     redirect_to(stylist_path(authorized_stylist.id))
   else
-    flash.now[:notice] = "Invalid username/password combination."
+    flash.now[:notice] = "Invalid email/password combination."
     render 'stylist_login'
   end
 end

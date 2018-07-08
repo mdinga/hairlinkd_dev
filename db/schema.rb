@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20180707085530) do
     t.string "email"
     t.string "phone"
     t.text "message"
+    t.string "nickname"
   end
 
   create_table "def_admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

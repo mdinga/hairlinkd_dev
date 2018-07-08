@@ -5,6 +5,7 @@ class CreateContactForm < ActiveRecord::Migration[5.1]
       t.string "email"
       t.string "phone"
       t.text "message"
+      t.string "nickname"
     end
   end
 

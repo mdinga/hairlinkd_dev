@@ -1,4 +1,11 @@
 $ (document).ready(function(){
+
+  /* Search Function for Stylists, default is collapse*/
+  $('#searchFunction').collapse("hide");
+  $('#filterFunction').collapse("hide");
+  $('#cityFunction').collapse("hide");
+  $('#areaFunction').collapse("hide");
+  $('#styleFunction').collapse("hide");
 /*
   $("#about-link").click(function(){
     $("#about_me").show("fast");

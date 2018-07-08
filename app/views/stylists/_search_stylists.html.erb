@@ -1,32 +1,86 @@
-<h5>Quick Search</h5>
+<h4>Quick Search</h4>
 
-<div class="form-group">
-  <h6>Search By Name:</h6>
-    <%= form_tag(path_to_stylist('#'), method: :get, :id => "stylist_search") do %>
-      <%= hidden_field_tag :direction, params[:direction] %>
-      <%= hidden_field_tag :sort, params[:sort] %>
-      <%= text_field_tag :search, params[:search], class: 'form-control' %>
-      <%= submit_tag 'Search', :name => nil, class: 'btn btn-secondary mt-2' %>
-    <% end %>
-</div><hr>
+<div id = "accordion">
+  <!-- __________________________________First search function i.e. searching by name___________________________________________ -->
+    <div class="form-group">
+      <div id = "searchName">
+          <h6 data-toggle = "collapse" data-target = "#searchFunction" aria-expanded="true" aria-controls="searchFunction">
+            Search By Name: <span><i class = "glyphicon glyphicon-chevron-down" style = 'font-size:10px;'></i></span>
+          </h6>
+      </div><!-- id = "searchName" -->
 
-<div class = "form group">
-  <h6>Sort by:</h6>
-    <p style = "font-size:15px;"><%= link_to sortable "overall_rating", "Rating" %></p>
-</div><hr><!--form group-->
+      <div id="searchFunction" class="collapse show" aria-labelledby="searchName" data-parent="#accordion">
+          <%= form_tag(path_to_stylist('#'), method: :get, :id => "stylist_search") do %>
+            <%= hidden_field_tag :direction, params[:direction] %>
+            <%= hidden_field_tag :sort, params[:sort] %>
+            <%= text_field_tag :search, params[:search], class: 'form-control' %>
+            <%= submit_tag 'Search', :name => nil, class: 'btn btn-secondary mt-2' %>
+          <% end %>
+      </div><!-- class =searchFunction  -->
+    </div><!-- class = form-group -->
+    <hr>
+  <!-- __________________________________Second search function i.e. Sort By___________________________________________ -->
 
-<div class = "form group">
-  <h6>Search by City:</h6>
-    <p style = "font-size:15px;"><%= link_to "All Cities", path_to_stylist('#') %> (<%= @stylist_all.count%>)<p>
-    <% @cities.uniq.each do |c| %>
-            <p style = "font-size:15px;"><%= link_to c, path_to_stylist(:place => c) %> (<%= @cities.count(c)%>)</p>
-    <% end %>
-</div><!--form group-->
 
-<div class = "form group">
-  <h6>Search by Area:</h6>
-    <p style = "font-size:15px;"><%= link_to "All Areas", path_to_stylist('#') %> (<%= @stylist_all.count%>)<p>
-    <% @area.uniq.each do |a| %>
-          <p style = "font-size:15px;"><%= link_to a, path_to_stylist(:sub_place => a) %> (<%= @area.count(a)%>)</p>
-    <% end %>
-</div><!--form group-->
+  <div class = "form group">
+    <div id = "filterRating">
+      <h6 data-toggle = "collapse" data-target = "#filterFunction" aria-expanded="true" aria-controls="filterFunction">
+        Sort by: <span><i class = "glyphicon glyphicon-chevron-down" style = 'font-size:10px;'></i></span>
+      </h6>
+    </div><!-- id = "filterRating" -->
+
+    <div id="filterFunction" class="collapse show" aria-labelledby="filterRating" data-parent="#accordion">
+        <p style = "font-size:15px;"><%= link_to sortable "overall_rating", "Rating" %></p>
+    </div><!-- class =searchFunction  -->
+  </div><!--form group-->
+  <hr>
+  <!-- __________________________________Third search function i.e. Search by City___________________________________________ -->
+
+  <div class = "form group">
+    <div id = "searchCity">
+      <h6 data-toggle = "collapse" data-target = "#cityFunction" aria-expanded="true" aria-controls="cityFunction">
+        Search by City: <span><i class = "glyphicon glyphicon-chevron-down" style = 'font-size:10px;'></i></span>
+      </h6>
+    </div>   <!-- id = searchCity -->
+
+    <div id="cityFunction" class="collapse show" aria-labelledby="searchCity" data-parent="#accordion">
+      <p style = "font-size:15px;"><%= link_to "All Cities", path_to_stylist('#') %> (<%= @stylist_all.count%>)<p>
+      <% @cities.uniq.each do |c| %>
+              <p style = "font-size:15px;"><%= link_to c, path_to_stylist(:place => c) %> (<%= @cities.count(c)%>)</p>
+      <% end %>
+    </div><!-- class =cityFunction  -->
+  </div><!--form group-->
+  <hr>
+  <!-- __________________________________forth search function i.e. Search by Area___________________________________________ -->
+
+  <div class = "form group">
+    <div id = "searchArea">
+      <h6 data-toggle = "collapse" data-target = "#areaFunction" aria-expanded="true" aria-controls="areaFunction">
+        Search by Area: <span><i class = "glyphicon glyphicon-chevron-down" style = 'font-size:10px;'></i></span>
+      </h6>
+    </div>   <!-- id = searchArea -->
+
+    <div id="areaFunction" class="collapse show" aria-labelledby="searchArea" data-parent="#accordion">
+      <p style = "font-size:15px;"><%= link_to "All Areas", path_to_stylist('#') %> (<%= @stylist_all.count%>)<p>
+      <% @area.uniq.each do |a| %>
+            <p style = "font-size:15px;"><%= link_to a, path_to_stylist(:sub_place => a) %> (<%= @area.count(a)%>)</p>
+      <% end %>
+    </div><!-- class =areaFunction  -->
+    </div><!--form group-->
+  <hr>
+
+  <!-- __________________________________Fifth search function i.e. Search by Hairstyle___________________________________________ -->
+
+  <div class = "form group">
+    <div id = "searchStyle">
+      <h6 data-toggle = "collapse" data-target = "#styleFunction" aria-expanded="true" aria-controls="styleFunction">
+        Search by Hairstyle: <span><i class = "glyphicon glyphicon-chevron-down" style = 'font-size:10px;'></i></span>
+      </h6>
+    </div>   <!-- id = searchArea -->
+
+    <div id="styleFunction" class="collapse show" aria-labelledby="searchStyle" data-parent="#accordion">
+
+    </div><!-- class =areaFunction  -->
+    </div><!--form group-->
+  <hr>
+</div><!-- id = "accordion" -->

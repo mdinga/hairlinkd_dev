@@ -15,4 +15,14 @@ validates :email, :on => :create,
 validates :message, :on => :create,
                     :presence => true
 
+validate :is_nickname_there
+
+private
+
+def is_nickname_there
+  unless nickname == ""
+    errors.add(:base, "")
+  end
+end
+
 end

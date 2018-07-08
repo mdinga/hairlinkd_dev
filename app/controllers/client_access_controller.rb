@@ -12,8 +12,8 @@ class ClientAccessController < ApplicationController
   end
 
   def attempt_login
-    if params[:username].present? && params[:password].present?
-      found_client = Client.where(:username => params[:username]).first
+    if params[:email].present? && params[:password].present?
+      found_client = Client.where(:email => params[:email]).first
       if found_client
         authorized_client = found_client.authenticate(params[:password])
         #current_user.add_role :log_client
@@ -25,7 +25,7 @@ class ClientAccessController < ApplicationController
       flash[:notice] = "You are now logged in"
       redirect_to(client_path(authorized_client.id))
     else
-      flash.now[:notice] = "Invalid username/password combination"
+      flash.now[:notice] = "Invalid email/password combination"
       render 'login'
     end
 
