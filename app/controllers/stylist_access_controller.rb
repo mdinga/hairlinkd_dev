@@ -41,32 +41,27 @@ end
   end
 
   def reset
-    require "securerandom"
-    if params[:email].present?
-      @stylist = Stylist.where(:email => params[:email]).first
-      @randowm_password = SecureRandom.hex(5)
-      @stylist.update_attributes(:password => @randowm_password)
-      flash.now[:notice] = "New password has been sent to your mail"
-      render 'stylist_login'
-    else
-      flash.now[:notice] = "No such email here"
-      render 'forgot'
-    end
+    @stylist = Stylist.where(:email => params[:email]).first
+    @stylist.send_password_reset if @stylist
+    redirect_to(root_path)
+    flash[:notice] = "Email sent with password reset instructions"
   end
 
   def password_form
-    @stylist = current_user
+    @stylist = Stylist.find_by_password_reset_token!(params[:id])
   end
 
   def update_password
-    @stylist = current_user
-    if @stylist.update_attributes(password_params)
-      flash[:notice] = "Your password has been successfully changed"
-      redirect_to(stylist_path(@stylist))
-    else
-      flash[:notice] = "Oops something went wrong, please try again"
-      render 'password_form'
-    end
+      @stylist = Stylist.find_by_password_reset_token!(params[:id])
+      #if @stylist.password_reset_sent_at < 2.hours.ago
+        #redirect_to (stylist_access_forgot_path)
+        #flash[:notice] = "Password has expired"
+      if @stylist.update_attributes(params[:stylist])
+        redirect_to (stylist_access_stylist_login_path)
+        flash[:notice] = "Password has been reset"
+      else
+        render "password_form"
+      end
   end
 
   private
@@ -74,9 +69,9 @@ end
   def resolve_layout
 
     case action_name
-      when "stylist_login", "stylist_attempt_login", "forgot", "reset"
+      when "stylist_login", "stylist_attempt_login", "forgot", "reset", "password_form", "update_password"
         "login"
-      when "stylist_menu", "password_form", "update_password"
+      when "stylist_menu"
         "application"
       end
   end

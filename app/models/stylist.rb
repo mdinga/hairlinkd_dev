@@ -21,6 +21,34 @@ class Stylist < ApplicationRecord
 
   #scope :search, lambda {|query| where(["name LIKE ?", "%#{query}%"])}
 
+    EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
+    PASSWORD_FORMAT = /\A(?=.{8,})(?=.*\d)(?=.*[a-z])/x
+
+  validates :username,  :on => :create,
+                        :presence => true,
+                        :length => {:within => 3..15},
+                        :uniqueness => true
+
+  validates :email,     :on => :create,
+                        :presence => true,
+                        :length => {:maximum => 50},
+                        :format => EMAIL_REGEX
+
+  validates :password,  :on => :create,
+                        :presence => true,
+                        :format => {:with => PASSWORD_FORMAT, message: "must be at least 8 characters and include a number"},
+                        :confirmation => true
+
+  validate :is_nickname_there
+
+
+def send_password_reset
+  generate_token(:password_reset_token)
+  self.password_reset_sent_at = Time.zone.now
+  self.save!
+  PasswordMailer.reset_password_stylist(self).deliver_now
+end
+
   def self.search(search)
     if search
       where("name LIKE ?", "%#{search}%")
@@ -45,30 +73,15 @@ class Stylist < ApplicationRecord
     end
   end
 
-
-
-    EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
-    PASSWORD_FORMAT = /\A(?=.{8,})(?=.*\d)(?=.*[a-z])/x
-
-  validates :username,  :on => :create,
-                        :presence => true,
-                        :length => {:within => 3..15},
-                        :uniqueness => true
-
-  validates :email,     :on => :create,
-                        :presence => true,
-                        :length => {:maximum => 50},
-                        :format => EMAIL_REGEX
-
-  validates :password,  :on => :create,
-                        :presence => true,
-                        :format => {:with => PASSWORD_FORMAT, message: "must be at least 8 characters and include a number"},
-                        :confirmation => true
-
-  validate :is_nickname_there
-
-
   private
+
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while Stylist.exists?(column => self[column])
+  end
+
+
 
   def is_nickname_there
     unless nickname == ""
