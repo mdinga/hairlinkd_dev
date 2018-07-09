@@ -48,21 +48,23 @@ end
   end
 
   def password_form
-    @stylist = Stylist.find_by_password_reset_token!(params[:id])
+    @stylist = Stylist.where(:password_reset_token => params[:password_reset_token]).first
   end
 
   def update_password
-      @stylist = Stylist.find_by_password_reset_token!(params[:id])
-      #if @stylist.password_reset_sent_at < 2.hours.ago
-        #redirect_to (stylist_access_forgot_path)
-        #flash[:notice] = "Password has expired"
-      if @stylist.update_attributes(params[:stylist])
+    @stylist = Stylist.where(:password_reset_token => params[:password_reset_token]).first
+      if @stylist.password_reset_sent_at < 2.hours.ago
+        redirect_to (stylist_access_forgot_path)
+        flash[:notice] = "Password has expired"
+      elsif @stylist.update_attributes(password_params)
         redirect_to (stylist_access_stylist_login_path)
         flash[:notice] = "Password has been reset"
       else
         render "password_form"
       end
   end
+
+
 
   private
 

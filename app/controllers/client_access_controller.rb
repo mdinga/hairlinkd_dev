@@ -56,11 +56,10 @@ class ClientAccessController < ApplicationController
 
   def update_password
     @client = Client.where(:password_reset_token => params[:password_reset_token]).first
-    #if @client.password_reset_sent_at < 2.hours.ago
-      #flash[:notice] = "Password has expired"
-      #redirect_to (client_access_forgot_path)
-    #elsif
-    if @client.update_attributes(password_params)
+    if @client.password_reset_sent_at < 2.hours.ago
+      redirect_to (client_access_forgot_path)
+      flash[:notice] = "Password has expired"
+    elsif @client.update_attributes(password_params)
       flash[:notice] = "Password has been reset"
       redirect_to (client_access_login_path)
     else
@@ -72,9 +71,9 @@ class ClientAccessController < ApplicationController
 
   def resolve_layout
       case action_name
-        when "login", "attempt_login", 'forgot', 'reset'
+        when "login", "attempt_login", 'forgot', 'reset', "password_form", "update_password"
           "login"
-        when "menu", "password_form", "update_password"
+        when "menu"
           "application"
         end
   end
