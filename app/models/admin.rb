@@ -5,6 +5,9 @@ class Admin < ApplicationRecord
 
   validate :is_nickname_there
 
+  before_save do
+    self.email = self.email.downcase
+  end
 
   private
 

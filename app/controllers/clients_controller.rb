@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
 
   layout :resolve_layout
 
-  #after_action :send_login_mail, :only => :create
+  before_action :get_service_cat, :only => [ :show_stylist]
 
   helper_method :sort_criteria, :sort_direction
 
@@ -148,6 +148,12 @@ private
     @client.destroy
   end
 
+  def get_service_cat
+    @serv_cat = []
+    @file_dir = File.join(File.dirname(__FILE__), '..', '..', 'lib', 'services', 'categories.txt')
+    @file = File.open(@file_dir, 'r')
+    @file.each_line{|line| @serv_cat.push line.chomp}
+  end
 
 
 end

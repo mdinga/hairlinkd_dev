@@ -6,7 +6,7 @@
 
     <div class = "col-sm-4 text-center mt-3" style = "color: white">
       <h5 class = "mt-2"><%= @stylist.username%></h5>
-      
+
       <p><% stylist.cities.each do |c|%>
       <%= c.city %>
       <% end %>
@@ -55,9 +55,9 @@
   <div id = "about_me" class = "stylist_info" style ="display:block;">
     <h4 class = "text-center">About Me</h4><hr>
         <div class = "row">
-          <div class = "col-md-2 strong">Services I Offer:</div>
+          <div class = "col-md-2"><strong>Services I Offer:</strong></div>
             <div class = "col-md-10">
-                <%  stylist.services.each do |h| %>
+                <%  @stylist.services.each do |h| %>
 
                     <span class = "badge badge-dark p-2 badge-pill m-1"><%= h.name %></span>
 
@@ -67,14 +67,14 @@
         </div>
 
         <div class = "row mt-2">
-          <div class = "col-md-2">House Calls:</div>
+          <div class = "col-md-2"><strong>House Calls:</strong></div>
             <div class = "col-md-10">
               <%= stylist.house_calls ? 'Yes' : 'No' %>
           </div>
         </div>
 
         <div class = "row mt-2">
-          <div class = "col-md-2">More About Me (And Other Services):</div>
+          <div class = "col-md-2"><strong>More About Me:</strong></div>
             <div class = "col-md-10 ">
               <blockquote><%= stylist.about_me %></blockquote>
           </div>

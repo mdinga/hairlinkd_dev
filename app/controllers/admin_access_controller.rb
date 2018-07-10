@@ -15,8 +15,8 @@ class AdminAccessController < ApplicationController
   end
 
   def attempt_login
-    if params[:email].present? && params[:password].present?
-      found_admin = Admin.where(:email => params[:email]).first
+    if params[:email].downcase.present? && params[:password].present?
+      found_admin = Admin.where(:email => params[:email].downcase).first
         if found_admin
           authorized_admin = found_admin.authenticate(params[:password])
           #current_user.add_role :log_admin

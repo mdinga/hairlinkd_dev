@@ -12,8 +12,8 @@ class ClientAccessController < ApplicationController
   end
 
   def attempt_login
-    if params[:email].present? && params[:password].present?
-      found_client = Client.where(:email => params[:email]).first
+    if params[:email].downcase.present? && params[:password].present?
+      found_client = Client.where(:email => params[:email].downcase).first
       if found_client
         authorized_client = found_client.authenticate(params[:password])
         #current_user.add_role :log_client

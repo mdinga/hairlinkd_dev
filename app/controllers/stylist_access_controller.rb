@@ -12,8 +12,8 @@ class StylistAccessController < ApplicationController
 
 
   def stylist_attempt_login
-  if params[:email].present? && params[:password].present?
-    found_stylist = Stylist.where(:email => params[:email]).first
+  if params[:email].downcase.present? && params[:password].present?
+    found_stylist = Stylist.where(:email => params[:email].downcase).first
       if found_stylist
         authorized_stylist = found_stylist.authenticate(params[:password])
         #current_user.add_role :log_stylist
