@@ -14,7 +14,7 @@
     </div>
 
 
-<% if session[:stylist_id] %>
+<% if current_user.id == @stylist.id %>
   <div class = "text-center mt-5">
       <%= button_to("Delete Profile", delete_stylist_path(@stylist), method: :get, class: "btn btn-danger btn-sm m-4")%>
   </div>
