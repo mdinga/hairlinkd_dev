@@ -5,4 +5,5 @@ class Service < ApplicationRecord
   has_many :styles
 
   scope :with_category, lambda {|cat| where(:category => cat)}
+  scope :alphabetically, lambda {order("name ASC")}
 end

@@ -90,7 +90,7 @@ class RatingsController < ApplicationController
 
   private
     def rating_params
-      params.require(:rating).permit(:stylist_id, :client_id, :date_of_appointment, :style_id, :rating_1, :rating_2, :rating_3, :rating_4, :rating_5, :total_rating, :return?, :recommend?, :Comment)
+      params.require(:rating).permit(:stylist_id, :client_id, :date_of_appointment, :style_id, :rating_1, :rating_2, :rating_3, :rating_4, :rating_5, :total_rating, :return, :recommend, :Comment)
     end
 
     def get_average_rating

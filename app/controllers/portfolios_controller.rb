@@ -20,12 +20,12 @@ class PortfoliosController < ApplicationController
 
     def new
       @portfolio = Portfolio.new(:stylist_id => current_user.id)
-      @service = Service.all
+      @service = Service.alphabetically
     end
 
     def create
       @portfolio = Portfolio.create(portfolio_params)
-      @service = Service.all
+      @service = Service.alphabetically
 
       if @portfolio.save
         redirect_to (stylist_path(current_user))
@@ -39,12 +39,12 @@ class PortfoliosController < ApplicationController
 
     def edit
       @portfolio = Portfolio.find(params[:id])
-      @service = Service.all
+      @service = Service.alphabetically
     end
 
     def update
       @portfolio = Portfolio.find(params[:id])
-      @service = Service.all
+      @service = Service.alphabetically
 
       if  @portfolio.update_attributes(portfolio_params)
         redirect_to (stylist_path(current_user))

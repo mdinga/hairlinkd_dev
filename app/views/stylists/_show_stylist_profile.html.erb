@@ -87,7 +87,7 @@
     <h4 class = "text-center">Porfolio</h4><hr>
 
       <div>
-        <% if session[:stylist_id] %>
+        <% if current_user.id == params[:id] %>
           <%= button_to(" + Add Item", new_portfolio_path(:stylist_id => @stylist.id), method: :get, class: "btn btn-hl btn-sm text-center")%>
         <% end %>
       </div>
