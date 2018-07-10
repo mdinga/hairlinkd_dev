@@ -10,6 +10,7 @@ class FormMailer < ApplicationMailer
     @name = @contact.name
     @email = @contact.email
     @message = @contact.message
+    @phone = @contact.phone
 
     mail  to: "hairlinkd@gmail.com",
           from: @email,

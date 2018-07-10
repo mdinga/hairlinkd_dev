@@ -6,9 +6,7 @@
 
     <div class = "col-sm-4 text-center mt-3" style = "color: white">
       <h5 class = "mt-2"><%= @stylist.username%></h5>
-      <p class = "badge badge-primary badge-pill bg-warning " style = "color:black"><%= stylist.overall_rating %> </p> (<%= pluralize(stylist.ratings.count, 'Review') %>)
-      <p>Likes: <%= stylist.clients.count %></p>
-
+      
       <p><% stylist.cities.each do |c|%>
       <%= c.city %>
       <% end %>
@@ -16,6 +14,11 @@
       <% stylist.areas.each do |a| %>
         (<%= a.name %>)
         <% end %><br /></p>
+
+      <p class = "badge badge-primary badge-pill bg-warning " style = "color:black"><%= stylist.overall_rating %> </p> (<%= pluralize(stylist.ratings.count, 'Review') %>)
+      <p>Likes: <%= stylist.clients.count %></p>
+
+
 
         <% if session[:client_id]%>
           <%= link_to("Submit Your Review", new_rating_path(:client_id => current_user.id, :stylist_id => @stylist.id), class: 'm-2',  style: 'color:#D4AF37; font-weight: bold;')%>
