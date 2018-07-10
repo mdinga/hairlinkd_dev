@@ -43,7 +43,7 @@ class ClientAccessController < ApplicationController
   end
 
   def reset
-      @client = Client.where(:email => params[:email]).first
+      @client = Client.where(:email => params[:email].downcase).first
       @client.send_password_reset if @client
       @client.update_attributes(:password => @randowm_password)
       flash.now[:notice] = "New password has been sent to your mail"

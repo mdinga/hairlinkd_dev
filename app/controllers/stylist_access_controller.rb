@@ -41,7 +41,7 @@ end
   end
 
   def reset
-    @stylist = Stylist.where(:email => params[:email]).first
+    @stylist = Stylist.where(:email => params[:email].downcase).first
     @stylist.send_password_reset if @stylist
     redirect_to(root_path)
     flash[:notice] = "Email sent with password reset instructions"
