@@ -7,7 +7,7 @@ class RegisterMailer < ApplicationMailer
   #
   def new_stylist(stylist)
     @stylist = stylist
-    @username = @stylist.username
+    @username = @stylist.username.capitalize
     @greeting = "Hi #{@username}"
 
     mail  to: @stylist.email,
