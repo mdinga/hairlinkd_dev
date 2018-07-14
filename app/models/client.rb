@@ -9,7 +9,7 @@ class Client < ApplicationRecord
   has_and_belongs_to_many :stylists, :join_table => "fav_stylists"
   has_and_belongs_to_many :cities
   has_and_belongs_to_many :areas
-
+  mount_uploader :picture, PictureUploader
 
   EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
   PASSWORD_FORMAT = /\A(?=.{8,})(?=.*\d)(?=.*[a-z])/x

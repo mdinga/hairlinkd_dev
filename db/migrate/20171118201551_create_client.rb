@@ -9,6 +9,10 @@ class CreateClient < ActiveRecord::Migration[5.1]
       t.string "email"
       t.string "password_digest"
       t.string "role"
+      t.string "picture"
+      t.string "password_reset_token"
+      t.datetime "password_reset_sent_at"
+      t.string "nickname", :default => ""
 
       t.timestamps
     end

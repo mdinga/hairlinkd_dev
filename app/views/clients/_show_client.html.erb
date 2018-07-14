@@ -1,40 +1,42 @@
 
   <div class = 'client_divs'>
-    <div class = 'text-center'>
-      <h4>Your Notifications</h4>
-    </div>
-    <table class = "table table-sm table-hover">
-      <thead>
-        <tr>
-          <th>Notification</th>
-          <th>Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Appointments</td>
-          <td>No appointment pending</td>
-          <td><%= link_to('Create New Appointment', '#')%> / <%= link_to('View Appointments', '#')%></td>
-        </tr>
-        <tr>
-          <td>Your Reviews</td>
-          <td>You haven't reviewed any Stylist yet</td>
-          <td><%= link_to('Create Review', '#')%> / <%= link_to('View Your Reviews', '#')%></td>
-        </tr>
-        <tr>
-          <td>Messages</td>
-          <td>No messages pending</td>
-          <td><%= link_to('New Message', '#')%> / <%= link_to('View Messages', '#')%></td>
-        </tr>
-        <tr>
-          <td>Comments</td>
-          <td>No comments</td>
-          <td><%= link_to('Write Comment', '#')%></td>
-        </tr>
-      </tbody>
-    </table>
-  </div><!-- row -->
+    <div class = 'row'>
+
+      <div class = "col-sm-4 text-center" style = "padding: 3px;">
+        <%= image_tag @client.picture.url(:thumb).to_s %>
+      </div><!--col-sm-4-->
+
+      <div class = "col-sm-8">
+        <table class = "table table-sm  text-center table-hover mt-4">
+          <thead>
+            <tr>
+              <th>Create New</th>
+              <th>View</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Appointments:</td>
+              <td><%= link_to('View', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> 0 </span> / <%= link_to('Create', '#')%></td>
+            </tr>
+            <tr>
+              <td>Messages:</td>
+              <td><%= link_to('View', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> 0 </span> / <%= link_to('Create', '#')%></td>
+            </tr>
+            <tr>
+              <td>Reviews:</td>
+              <td><%= link_to('View', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> <%= @client.ratings.count %> </span> / <%= link_to('Create', '#')%></td>
+            </tr>
+            <tr>
+              <td>Comments:</td>
+              <td><%= link_to('View', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> 0 </span> / <%= link_to('Create', '#')%></td>
+            </tr>
+          </tbody>
+        </table>
+        </div><!-- col-sm-8 -->
+
+    </div><!-- row -->
+  </div><!-- client_divs -->
 
 
 <hr>

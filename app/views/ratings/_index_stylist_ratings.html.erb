@@ -1,11 +1,13 @@
 <div class = "media w-5">
 
-  <div class ="d-flex align-self-center p-4 mr-3"><h6><%= Client.find(rating.client_id).username %>'s Review:</h5>
-
+  <div>
+    <%= image_tag rating.client.picture.url(:thumb).to_s, class: " d-flex align-self-center img-fluid w-50" %>
   </div>
 
 <div class = "media-body  ">
+      <h6><%= rating.client.username.capitalize %>'s Review:</h5>
       <p><span class = "badge badge-primary badge-pill bg-warning " style = "color:black"><%= rating.total_rating %>/5.0</span></p>
+      <p>Value: <%= rating.rating_1 %> / Venue: <%= rating.rating_2 %> / Needs Met: <%= rating.rating_3 %> / Professional: <%= rating.rating_4 %>/ Gentle: <%= rating.rating_5 %></p>
       <p><strong>Will you return?: </strong><%= rating.return? ? "Yes" : "No" %>  |
      <strong>Will you recommend?: </strong><%= rating.recommend? ? "Yes" : "No" %></p>
 </div>

@@ -2,6 +2,7 @@
 Rails.application.routes.draw do
 
 
+
   #root 'home#index'
   root 'home#index'
 
@@ -138,6 +139,12 @@ Rails.application.routes.draw do
       end
 
       resources :contact_forms do
+        member do
+          get :delete
+        end
+      end
+
+      resources :blogs do
         member do
           get :delete
         end

@@ -16,6 +16,10 @@ def up
     t.string "facebook_link"
     t.string "instagram_link"
     t.string "role"
+    t.string "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.string "nickname", :default => ""
+    t.string "salon"
 
     t.timestamps
   end

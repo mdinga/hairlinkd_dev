@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180707085530) do
+ActiveRecord::Schema.define(version: 20180714172156) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 20180707085530) do
     t.index ["area_id", "stylist_id"], name: "index_areas_stylists_on_area_id_and_stylist_id"
   end
 
+  create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "image"
+    t.string "sting"
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "city"
   end
@@ -72,11 +81,13 @@ ActiveRecord::Schema.define(version: 20180707085530) do
     t.string "surname"
     t.string "email"
     t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "nickname", default: ""
+    t.string "role"
+    t.string "picture"
     t.string "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string "nickname", default: ""
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "clients_def_clients", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -85,6 +96,12 @@ ActiveRecord::Schema.define(version: 20180707085530) do
     t.index ["client_id", "def_client_id"], name: "index_clients_def_clients_on_client_id_and_def_client_id"
     t.index ["client_id"], name: "index_clients_def_clients_on_client_id"
     t.index ["def_client_id"], name: "index_clients_def_clients_on_def_client_id"
+  end
+
+  create_table "clients_services", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "client_id"
+    t.integer "service_id"
+    t.index ["client_id", "service_id"], name: "index_clients_services_on_client_id_and_service_id"
   end
 
   create_table "contact_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -255,12 +272,13 @@ ActiveRecord::Schema.define(version: 20180707085530) do
     t.string "email"
     t.string "facebook_link"
     t.string "instagram_link"
+    t.string "role"
+    t.string "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.string "nickname", default: ""
     t.string "salon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname", default: ""
-    t.string "password_reset_token"
-    t.datetime "password_reset_sent_at"
   end
 
   create_table "stylists_def_stylists", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

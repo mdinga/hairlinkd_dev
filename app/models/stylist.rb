@@ -77,6 +77,8 @@ end
     end
   end
 
+
+
   private
 
   def generate_token(column)
@@ -84,8 +86,6 @@ end
       self[column] = SecureRandom.urlsafe_base64
     end while Stylist.exists?(column => self[column])
   end
-
-
 
   def is_nickname_there
     unless nickname == ""

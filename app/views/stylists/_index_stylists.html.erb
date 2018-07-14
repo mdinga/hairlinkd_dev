@@ -1,5 +1,6 @@
       <div class = 'card-header'>
-        <h5 class = 'card-title'><%= stylist.name %></h5>
+        <h5 class = 'card-title'><%= stylist.username %></h5>
+
       <% if session[:admin_id] %>
         <p> Stylist ID:<%= stylist.id%></p>
       <% end %>
