@@ -12,7 +12,7 @@ class RegisterMailer < ApplicationMailer
 
     mail  to: @stylist.email,
           bcc: "hairlinkd@gmail.com",
-          subject: "Hairlinkd is Back, New and Improved"
+          subject: "Welcome to Hairlinkd"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

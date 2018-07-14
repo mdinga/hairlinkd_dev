@@ -58,12 +58,14 @@
           <div class = "col-md-2"><strong>Services I Offer:</strong></div>
             <div class = "col-md-10">
 
-              <% @cats.each do |c| %>
-                  <p> <%= c %> -
-                     <% @stylist.services.with_category(c).each do |s| %>
-                        <span class = "badge badge-dark p-1 badge-pill m-1"><%= s.name %></span>
-                     <% end %>
-                    </p>
+              <% unless @cats %>
+                <% @cats.each do |c| %>
+                    <p> <%= c %> -
+                       <% @stylist.services.with_category(c).each do |s| %>
+                          <span class = "badge badge-dark p-1 badge-pill m-1"><%= s.name %></span>
+                       <% end %>
+                      </p>
+                <% end %>
               <% end %>
 
           </div>
