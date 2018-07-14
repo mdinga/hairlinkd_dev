@@ -87,7 +87,7 @@
     <h4 class = "text-center">Porfolio</h4><hr>
 
       <div>
-        <% if current_user.id == @stylist.id %>
+        <% if current_user.id == params[:id] %>
           <%= button_to(" + Add Item", new_portfolio_path(:stylist_id => @stylist.id), method: :get, class: "btn btn-hl btn-sm text-center")%>
         <% end %>
       </div>
@@ -100,7 +100,7 @@
               <%= render(:partial => 'portfolios/index_portfolio', :html => {:multiport => true}, :locals => {:portfolio => portfolio})%>
 
               <div class = 'card-footer'>
-                <% if current_user.id == @stylist.id %>
+                <% if session[:stylist_id] %>
                   <%= link_to("Edit", edit_portfolio_path(portfolio))%> |
                   <%= link_to("Delete", delete_portfolio_path(portfolio))%><br />
                 <% end %>
