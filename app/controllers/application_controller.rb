@@ -49,11 +49,7 @@ def searchable_stylists
    end
 
    def path_to_stylist(arg)
-     if current_user.has_role? :def_stylist
        stylists_path(arg)
-     elsif current_user.has_role? :def_client
-       index_stylists_clients_path(arg)
-     end
    end
 
 

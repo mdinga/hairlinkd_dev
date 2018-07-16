@@ -64,10 +64,6 @@ class ClientsController < ApplicationController
       end
     end
 
-def index_stylists
-  searchable_stylists
-   #@client = Client.find(params[:id])
-end
 
 def show_stylists
   @stylist = Stylist.find(params[:id])
@@ -109,10 +105,10 @@ def create_fav_stylists
   unless current_user.stylists.include?(@stylist)
     current_user.stylists << @stylist
     flash[:notice] = "Like Updated"
-    redirect_to(show_stylists_client_path(@stylist, :client_id => current_user.id))
+    redirect_to(stylist_path(@stylist))
   else
     flash[:notice] = "You Already Like This Stylist"
-    redirect_to(show_stylists_client_path(@stylist, :client_id => current_user.id))
+    redirect_to(stylist_path(@stylist))
   end
 end
 
@@ -120,7 +116,7 @@ def destroy_fav_stylists
   @stylist = Stylist.find(params[:stylist_id])
   current_user.stylists.delete(@stylist)
   flash[:notice] = "Dislike Updated"
-  redirect_to(show_stylists_client_path(@stylist, :client_id => current_user.id))
+  redirect_to(stylist_path(@stylist))
 end
 
 private
@@ -130,7 +126,7 @@ private
     case action_name
       when 'new', 'create', 'delete', 'destroy'
         'menu'
-      when 'show', 'index', 'edit', 'index_stylists', 'show_stylists', 'index_styles', 'show_style'
+      when 'show', 'index', 'edit', 'index_styles', 'show_style'
         'application'
       end
   end
@@ -155,5 +151,12 @@ private
     @file.each_line{|line| @serv_cat.push line.chomp}
   end
 
+  def services_array
+    @services_cat = Array.new
+      @stylist.services.each do |s|
+        @services_cat << s.category
+      end
+    @cats = @services_cat.uniq
+  end
 
 end

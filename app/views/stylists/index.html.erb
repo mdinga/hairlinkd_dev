@@ -25,7 +25,7 @@
 
                   <%= link_to("View Profile", stylist_path(stylist))%><br>
 
-                <% if session[:admin_id]%>
+                <% if current_user.has_role? :def_admin%>
                   <%= link_to("Edit Profile", edit_stylist_path(stylist))%><br>
                   <%= link_to("Delete Profile", delete_stylist_path(stylist))%>
                 <% end %>

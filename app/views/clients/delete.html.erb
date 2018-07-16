@@ -1,9 +1,9 @@
 <div class = 'container'>
 
   <div class = 'm-3'>
-      <% if session[:client_id] %>
+      <% if current_user.has_role? :def_client %>
         <%= button_to("<< Profile", client_path(@client), method: :get, class: 'btn btn-sm') %>
-      <% elsif session[:admin_id] %>
+      <% elsif current_user.has_role? :def_admin %>
         <%= button_to("<< Clients", clients_path, method: :get, class: 'btn btn-sm') %>
       <% end %>
   </div>

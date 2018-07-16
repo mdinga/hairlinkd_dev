@@ -2,16 +2,16 @@
 
 <div class = 'row' style = 'margin-top:5px;'>
   <div class = 'col col-md-6 text-center'>
-  <% if session[:admin_id] %>
+  <% if current_user.has_role? :def_admin %>
     <%= link_to("<< Back Reviews", ratings_path(:admin_id => current_user.id)) %>
-  <% elsif session[:client_id] %>
-    <%= link_to("<< Back to Stylist", show_stylists_client_path(@rating.stylist.id, :client_id => current_user.id)) %>
-  <% elsif session[:stylist_id] %>
+  <% elsif current_user.has_role? :def_client %>
+    <%= link_to("<< Back to Stylist", stylist_path(@rating.stylist.id, :client_id => current_user.id)) %>
+  <% elsif current_user.has_role? :def_stylist %>
     <%= link_to("<< Back to Stylist", stylist_path(@rating.stylist.id, :stylist_id => current_user.id)) %>
   <% end %>
   </div>
   <div class = 'col col-md-6 text-center'>
-    <% if current_user.id == @client.id %>
+    <% if (current_user.has_role? :def_client) && (current_user.id == @rating.client.id) %>
       <%= button_to "Edit My Rating", edit_rating_path(@rating), method: :get, class: "btn btn-h1 btn-sm" %>
     <% end %>
   </div>

@@ -45,7 +45,6 @@ Rails.application.routes.draw do
       resources :clients do
         member do
           get :delete
-          get :show_stylists
           get :show_style
           post :create_fav_styles
           delete :destroy_fav_styles
@@ -54,7 +53,6 @@ Rails.application.routes.draw do
         end
 
         collection do
-          get :index_stylists
           get :index_styles
         end
       end

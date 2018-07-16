@@ -12,7 +12,7 @@ class FormMailer < ApplicationMailer
     @message = @contact.message
     @phone = @contact.phone
 
-    mail  to: "hairlinkd@gmail.com",
+    mail  to: "admin@hairlinkd.com",
           from: @email,
           subject: "General Contact Form: #{@name}"
   end

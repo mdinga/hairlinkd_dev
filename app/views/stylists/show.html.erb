@@ -3,7 +3,7 @@
     <div class = "m-2 clearfix">
 
 
-      <% if session[:admin_id] %>
+      <% if current_user.has_role? :def_admin %>
         <%= button_to("<< Stylists", stylists_path, method: :get, class: "btn btn-hl btn-sm float-left")%>
       <% end %>
 
@@ -14,7 +14,7 @@
     </div>
 
 
-<% if session[:stylist_id] %>
+<% if current_user.has_role? :def_stylist %>
   <div class = "text-center mt-5">
       <%= button_to("Delete Profile", delete_stylist_path(@stylist), method: :get, class: "btn btn-danger btn-sm m-4")%>
   </div>

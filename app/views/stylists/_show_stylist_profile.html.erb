@@ -20,7 +20,7 @@
 
 
 
-        <% if session[:client_id]%>
+        <% if current_user.has_role? :def_client %>
           <%= link_to("Submit Your Review", new_rating_path(:client_id => current_user.id, :stylist_id => @stylist.id), class: 'm-2',  style: 'color:#D4AF37; font-weight: bold;')%>
         <% end %>
 
@@ -37,7 +37,7 @@
     </div><!--col-sm-8-->
   </div><!--row-->
 
-<% if session[:client_id] %>
+<% if current_user.has_role? :def_client %>
   <div class = "row">
 
     <%= button_to create_fav_stylists_client_path(current_user, :stylist_id => @stylist.id), class: "btn btn-sm like m-2" do %>
@@ -52,13 +52,15 @@
   </div>
 <% end %>
 
+                                                                  <!-- About Me Section -->
+
   <div id = "about_me" class = "stylist_info" style ="display:block;">
     <h4 class = "text-center">About Me</h4><hr>
         <div class = "row">
           <div class = "col-md-2"><strong>Services I Offer:</strong></div>
             <div class = "col-md-10">
 
-              <% unless @cats %>
+              <% if @cats %>
                 <% @cats.each do |c| %>
                     <p> <%= c %> -
                        <% @stylist.services.with_category(c).each do |s| %>
@@ -84,74 +86,104 @@
               <blockquote><%= stylist.about_me %></blockquote>
           </div>
         </div>
+  </div>
+                                                                  <!-- End of About Me Section -->
 
+                                                                  <!-- Contact Me Section -->
 
+      <div id = "contact_me" class = "stylist_info" style ="display:block;">
+          <h4 class = "text-center">Contact Me</h4><hr>
+      <table>
+        <tr>
+          <th>Salon Name:</th>
+          <td><%= stylist.salon %></td>
+        </tr>
+          <tr>
+            <th>Phone:</th>
+            <td><%= stylist.phone %></td>
+          </tr>
+          <tr>
+            <th>Email:</th>
+            <td><%= stylist.email %></td>
+          </tr>
+          <tr>
+            <th>Facebook Page:</th>
+            <td><%= stylist.facebook_link %></td>
+          </tr>
+          <tr>
+            <th>Instagram Page:</th>
+            <td><%= stylist.instagram_link %></td>
+          </tr>
+        </table>
   </div>
 
+
+                                                                  <!-- Portfolio Secion -->
+
   <div id = "stylist_portfolio" class = "stylist_info" style ="display:block;">
-    <h4 class = "text-center">Porfolio</h4><hr>
+    <h4 class = "text-center">My Porfolio</h4><hr>
 
       <div>
-        <% if current_user.id == @stylist.id %>
-          <%= button_to(" + Add Item", new_portfolio_path(:stylist_id => @stylist.id), method: :get, class: "btn btn-hl btn-sm text-center")%>
+        <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>
+          <% if @portfolio.count < 8 %>
+            <%= button_to(" + Add Item", new_portfolio_path(:stylist_id => @stylist.id), method: :get, class: "btn btn-hl btn-sm text-center")%>
+          <% end %>
         <% end %>
       </div>
 
-      <div class = "card-group">
 
+      <% if @portfolio.count < 1 %>
+
+      <div class = "text-center pb-3">
+        <p>You currently have no items on your portfolio</p>
+        <p>Show off your skills by uploading your best work here. The more details the better.</p>
+      </div>
+
+      <% else %>
+
+      <div class = "card-group">
           <% @portfolio.each do |portfolio| %>
           <div class = 'card-body' style = 'width:auto;'>
             <div class = 'card text-center' style = 'width:200px;'>
               <%= render(:partial => 'portfolios/index_portfolio', :html => {:multiport => true}, :locals => {:portfolio => portfolio})%>
 
               <div class = 'card-footer'>
-                <% if session[:stylist_id] %>
+                <% if current_user.has_role? :def_stylist %>
                   <%= link_to("Edit", edit_portfolio_path(portfolio))%> |
                   <%= link_to("Delete", delete_portfolio_path(portfolio))%><br />
                 <% end %>
               </div> <!--card-footer-->
-
-
             </div> <!--card-->
           </div><!--card-body-->
+
           <% end %>
     </div><!--card group-->
+
+    <% end %>
   </div><!--stylist portfolio-->
 
+                                                                  <!-- End of Portfolio Section -->
 
-  <div id = "stylist_review" class = "stylist_info" style ="display:block; ">
-    <h4 class = "text-center">Reviews</h4><hr>
-      <% @rating.each do |rating| %>
-        <%= render(:partial => 'ratings/index_stylist_ratings', :html => {:multiport => true}, :locals => {:rating => rating} ) %>
-          <div class = "text-center">
-            <%= link_to("View Complete Review", rating_path(rating, :stylist_id => rating.stylist.id, :client_id => rating.client.id))%> <!--view this particular rating -->
-          </div>
-        <hr>
-      <% end %>
-  </div>
+                                                                  <!-- Reviews Secion -->
+<div id = "stylist_review" class = "stylist_info" style ="display:block; ">
+  <h4 class = "text-center">My Reviews</h4><hr>
+    <% if @rating.count < 1 %>
 
-    <div id = "contact_me" class = "stylist_info" style ="display:block;">
-        <h4 class = "text-center">Contact Details</h4><hr>
-    <table>
-      <tr>
-        <th>Salon Name:</th>
-        <td><%= stylist.salon %></td>
-      </tr>
-        <tr>
-          <th>Phone:</th>
-          <td><%= stylist.phone %></td>
-        </tr>
-        <tr>
-          <th>Email:</th>
-          <td><%= stylist.email %></td>
-        </tr>
-        <tr>
-          <th>Facebook Page:</th>
-          <td><%= stylist.facebook_link %></td>
-        </tr>
-        <tr>
-          <th>Instagram Page:</th>
-          <td><%= stylist.instagram_link %></td>
-        </tr>
-      </table>
-</div>
+    <div class = "text-center pb-3">
+      <p>You currently have no reviews</p>
+      <p>Your reviews and ratings submitted by your clients will appear here. The higher your ratings, the more you stand out.</p>
+    </div>
+
+    <% else %>
+          <% @rating.each do |rating| %>
+            <%= render(:partial => 'ratings/index_stylist_ratings', :html => {:multiport => true}, :locals => {:rating => rating} ) %>
+              <div class = "text-center">
+                <%= link_to("View Complete Review", rating_path(rating, :stylist_id => rating.stylist.id, :client_id => rating.client.id))%> <!--view this particular rating -->
+              </div>
+            <hr>
+          <% end %>
+      </div>
+
+    <% end %>
+
+    <hr>

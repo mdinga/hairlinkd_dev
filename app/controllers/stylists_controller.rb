@@ -26,8 +26,6 @@ helper_method :sort_criteria, :sort_direction
   def create
     @stylist = Stylist.new(stylist_params)
     @stylist.add_role :def_stylist
-
-
     if @stylist.save
       flash[:notice] = "Profile Created Successfully, Please Log In"
       RegisterMailer.new_stylist(@stylist).deliver_now
