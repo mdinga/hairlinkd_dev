@@ -57,7 +57,7 @@ end
     if search
       where("name LIKE ?", "%#{search}%")
     else
-      all
+      where(nil)
     end
   end
 

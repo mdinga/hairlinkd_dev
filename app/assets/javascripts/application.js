@@ -21,12 +21,8 @@
 
 
 $(function(){
-  $("#stylist_list p a, #stylist_list .apple_pagination a").live("click", function(){
+  $(".ajax_search a").live("click", function(){
     $.getScript(this.href);
     return false;
-  });
-  $("#stylist_search").submit(function(){
-    $.get(this.action, $(this).serialize(), null, "script");
-    return false
   });
 });
