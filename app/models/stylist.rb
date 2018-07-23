@@ -4,16 +4,17 @@ class Stylist < ApplicationRecord
 
   has_secure_password
 
-  has_many :ratings
+  belongs_to :user
+  has_many :ratings, :dependent => :destroy
   has_many :clients, :through => :ratings
-  has_many :portfolios
+  has_many :portfolios, :dependent => :destroy
   has_and_belongs_to_many :hairstyles
   has_and_belongs_to_many :services
-  has_and_belongs_to_many :clients, :join_table => "fav_stylists"
   has_and_belongs_to_many :cities
   has_and_belongs_to_many :areas
   mount_uploader :avatar, AvatarUploader
-
+  has_many :personal_messages, as: :chatter
+  has_and_belongs_to_many :clients, :join_table => "fav_stylists"
   scope :top_rating, lambda {order("overall_rating DESC")}
   #scope :sort, lambda {order("#{params[:sort_param]} DES")}
   scope :only_3, lambda {limit(3)}

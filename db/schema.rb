@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180714172156) do
+ActiveRecord::Schema.define(version: 20180723155404) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20180714172156) do
   end
 
   create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
     t.string "username", limit: 20
     t.string "name"
     t.string "surname"
@@ -88,6 +89,7 @@ ActiveRecord::Schema.define(version: 20180714172156) do
     t.string "nickname", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
   create_table "clients_def_clients", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -110,6 +112,12 @@ ActiveRecord::Schema.define(version: 20180714172156) do
     t.string "phone"
     t.text "message"
     t.string "nickname"
+  end
+
+  create_table "conversations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "stylist_id"
+    t.integer "client_id"
+    t.index ["stylist_id", "client_id"], name: "index_conversations_on_stylist_id_and_client_id"
   end
 
   create_table "def_admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -178,6 +186,16 @@ ActiveRecord::Schema.define(version: 20180714172156) do
     t.integer "stylist_id"
     t.integer "hairstyle_id"
     t.index ["stylist_id", "hairstyle_id"], name: "index_hairstyles_stylists_on_stylist_id_and_hairstyle_id"
+  end
+
+  create_table "personal_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "conversation_id"
+    t.text "body", limit: 255
+    t.integer "chatter_id"
+    t.string "chatter_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id", "chatter_id"], name: "index_personal_messages_on_conversation_id_and_chatter_id"
   end
 
   create_table "portfolios", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -260,6 +278,7 @@ ActiveRecord::Schema.define(version: 20180714172156) do
   end
 
   create_table "stylists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
     t.string "avatar"
     t.string "username", limit: 20
     t.string "name"
@@ -279,6 +298,7 @@ ActiveRecord::Schema.define(version: 20180714172156) do
     t.string "salon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_stylists_on_user_id"
   end
 
   create_table "stylists_def_stylists", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -302,6 +322,11 @@ ActiveRecord::Schema.define(version: 20180714172156) do
     t.index ["role_id"], name: "index_stylists_roles_on_role_id"
     t.index ["stylist_id", "role_id"], name: "index_stylists_roles_on_stylist_id_and_role_id"
     t.index ["stylist_id"], name: "index_stylists_roles_on_stylist_id"
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

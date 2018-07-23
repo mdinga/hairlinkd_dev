@@ -2,6 +2,13 @@
   <fieldset>
     <legend>Bio Info</legend>
 
+    <% if current_user.has_role? :def_admin%>
+        <div class ='form-group'>
+          <label class = 'form-control-label'>User_ID:</label>
+          <%= s.text_field :user_id, class: 'form-control' %>
+        </div>
+    <% end %>
+
     <div class ='form-group'>
       <label class = 'form-control-label'>Load Profile Picture:</label>
        <%= s.file_field(:avatar) %>

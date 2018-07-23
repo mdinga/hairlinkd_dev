@@ -3,6 +3,7 @@ class StylistsController < ApplicationController
   layout :resolve_layout
 
   before_action :get_service_cat, :only => [:edit, :update, :show]
+  before_action :count_users, :only => [:new, :create]
 
     #after_action :assign_role, :only => :create
 
@@ -20,12 +21,17 @@ helper_method :sort_criteria, :sort_direction
   end
 
   def new
-    @stylist = Stylist.new
+    @user = User.new
+    @stylist = Stylist.new(:user_id => @user_count + 1)
   end
 
   def create
     @stylist = Stylist.new(stylist_params)
     @stylist.add_role :def_stylist
+
+    @user = User.create(:id => @user_count + 1)
+    @stylist.user_id == @user
+
     if @stylist.save
       flash[:notice] = "Profile Created Successfully, Please Log In"
       RegisterMailer.new_stylist(@stylist).deliver_now
@@ -61,13 +67,11 @@ helper_method :sort_criteria, :sort_direction
 
 
     if session[:stylist_id]
-      delete_this_stylist
       session[:stylist_id] = nil
       flash[:notice] = "Stylist deleted successfully."
       redirect_to (root_path)
 
     elsif session[:admin_id]
-      delete_this_stylist
       flash[:notice] = "That stylist was deleted successfully by Admin."
       redirect_to (stylists_path)
     end
@@ -88,7 +92,7 @@ helper_method :sort_criteria, :sort_direction
   end
 
   def stylist_params
-    params.require(:stylist).permit(:avatar, :username, :name, :surname, :phone, :email, :city_ids, :area_ids, :address, :house_calls, :salon, :about_me, :password, :password_confirmation, :nickname, :facebook_link, :instagram_link, service_ids:[])
+    params.require(:stylist).permit(:avatar, :username, :name, :user_id, :surname, :phone, :email, :city_ids, :area_ids, :address, :house_calls, :salon, :about_me, :password, :password_confirmation, :nickname, :facebook_link, :instagram_link, service_ids:[])
   end
 
   def ratings_params
@@ -110,13 +114,6 @@ helper_method :sort_criteria, :sort_direction
     @file.each_line{|line| @serv_cat.push line.chomp}
   end
 
-  def delete_this_stylist
-    @stylist.ratings.destroy_all #delete all the stylists ratings
-    @stylist.portfolios.destroy_all #delete all the stylists portfolio
-    @stylist.cities.destroy_all
-    @stylist.areas.destroy_all
-    @stylist.destroy
-  end
 
   def services_array
     @services_cat = Array.new
@@ -126,5 +123,8 @@ helper_method :sort_criteria, :sort_direction
     @cats = @services_cat.uniq
   end
 
+  def count_users
+    @user_count = User.all.count
+  end
 
 end

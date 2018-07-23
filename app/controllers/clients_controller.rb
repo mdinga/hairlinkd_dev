@@ -3,6 +3,8 @@ class ClientsController < ApplicationController
   layout :resolve_layout
 
   before_action :get_service_cat, :only => [ :show_stylist]
+  before_action :count_users, :only => [:new, :create]
+
 
   helper_method :sort_criteria, :sort_direction
 
@@ -12,15 +14,21 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
+
   end
 
   def new
-    @client = Client.new
+    @user = User.new
+    @client = Client.new(:user_id => @user_count + 1)
+
   end
 
   def create
     @client = Client.new(client_params)
     @client.add_role :def_client
+    @user = User.create(:id => @user_count + 1)
+    @client.user_id == @user
+
     if @client.save
       flash[:notice] = "Profile Created Successfully, Please Log In"
       RegisterMailer.new_client(@client).deliver_now
@@ -132,7 +140,7 @@ private
   end
 
   def client_params
-    params.require(:client).permit(:picture, :username, :name, :surname, :email, :password, :password_confirmation, :city, :area, :favourite_hairstyles, :favourite_products, :favourites_gallery, :favourite_stylists, :nickname)
+    params.require(:client).permit(:picture, :username, :name, :surname, :email, :password, :password_confirmation, :city, :area, :favourite_hairstyles, :favourite_products, :favourites_gallery, :favourite_stylists, :nickname, :user_id)
   end
 
   def delete_this_client
@@ -157,6 +165,10 @@ private
         @services_cat << s.category
       end
     @cats = @services_cat.uniq
+  end
+
+  def count_users
+    @user_count = User.all.count
   end
 
 end

@@ -1,0 +1,20 @@
+<div class = 'container'>
+  <div>
+    <%= button_to("<< Return", '#', method: :get, class: 'btn btn-hl btn-sm m-3') %>
+  </div>
+
+  <div>
+    <%= form_for(@conversation) do |c| %>
+
+      <%= error_messages_for(c.object) %>
+        <form>
+          <%= render(:partial => 'conversation', :html => {:multiport => true}, :locals => {:c => c}) %>
+
+          <div class = 'text-center m-3'>
+            <%= c.submit("Create Conversation", class: 'btn btn-sm') %>
+          </div>
+        </form>
+
+    <% end %>
+  </div>
+</div>

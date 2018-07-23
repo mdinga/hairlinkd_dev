@@ -1,8 +1,6 @@
 
 Rails.application.routes.draw do
 
-
-
   #root 'home#index'
   root 'home#index'
 
@@ -147,6 +145,9 @@ Rails.application.routes.draw do
           get :delete
         end
       end
+
+      resources :conversations
+      resources :personal_messages
 
 
 

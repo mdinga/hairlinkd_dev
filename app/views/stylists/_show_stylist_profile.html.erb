@@ -22,6 +22,7 @@
 
         <% if current_user.has_role? :def_client %>
           <%= link_to("Submit Your Review", new_rating_path(:client_id => current_user.id, :stylist_id => @stylist.id), class: 'm-2',  style: 'color:#D4AF37; font-weight: bold;')%>
+          <%= link_to("Send Message", new_conversation_path(:client_id => current_user.id, :stylist_id => @stylist.id), class: 'm-2',  style: 'color:#D4AF37; font-weight: bold;')%>
         <% end %>
 
       <!-- <div class = "breadcrumb bg-inverse text-center">
