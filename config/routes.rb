@@ -1,6 +1,7 @@
 
 Rails.application.routes.draw do
 
+
   #root 'home#index'
   root 'home#index'
 
@@ -52,6 +53,12 @@ Rails.application.routes.draw do
 
         collection do
           get :index_styles
+        end
+      end
+
+      resources :users do
+        member do
+          get :delete
         end
       end
 
