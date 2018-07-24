@@ -60,13 +60,13 @@ class ClientsController < ApplicationController
   def destroy
     @client = Client.find(params[:id])
 
-    if session[:client_id]
-        delete_this_client
+    if current_user.has_role? :def_client
+        @client.destroy
         session[:client_id] = nil
         flash[:notice] = "Your profile has been deleted and you have been logged out"
         redirect_to(root_path)
-      elsif session[:admin_id]
-        delete_this_client
+      elsif current_user.has_role? :def_admin
+        @client.destroy
         flash[:notice] = "That client was deleted successfully by Admin."
         redirect_to(clients_path)
       end
@@ -147,8 +147,7 @@ private
     @client.ratings.destroy_all #delete all the stylists ratings
     #@client.fav_styles.destroy_all #delete all favourite styles
     #@client.fav_stylists.destroy_all #delete all favourite stylists
-    @client.cities.destroy_all
-    @client.areas.destroy_all
+
     @client.destroy
   end
 
