@@ -4,7 +4,7 @@ class Stylist < ApplicationRecord
 
   has_secure_password
 
-  belongs_to :user
+
   has_many :ratings, :dependent => :destroy
   has_many :clients, :through => :ratings
   has_many :portfolios, :dependent => :destroy

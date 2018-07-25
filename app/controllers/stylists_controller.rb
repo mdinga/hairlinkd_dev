@@ -3,7 +3,7 @@ class StylistsController < ApplicationController
   layout :resolve_layout
 
   before_action :get_service_cat, :only => [:edit, :update, :show]
-  before_action :count_users, :only => [:new, :create]
+
 
     #after_action :assign_role, :only => :create
 
@@ -21,16 +21,12 @@ helper_method :sort_criteria, :sort_direction
   end
 
   def new
-    @user = User.new
-    @stylist = Stylist.new(:user_id => @user_count + 1)
+    @stylist = Stylist.new
   end
 
   def create
     @stylist = Stylist.new(stylist_params)
     @stylist.add_role :def_stylist
-
-    @user = User.create(:id => @user_count + 1)
-    @stylist.user_id == @user
 
     if @stylist.save
       flash[:notice] = "Profile Created Successfully, Please Log In"
@@ -92,7 +88,7 @@ helper_method :sort_criteria, :sort_direction
   end
 
   def stylist_params
-    params.require(:stylist).permit(:avatar, :username, :name, :user_id, :surname, :phone, :email, :city_ids, :area_ids, :address, :house_calls, :salon, :about_me, :password, :password_confirmation, :nickname, :facebook_link, :instagram_link, service_ids:[])
+    params.require(:stylist).permit(:avatar, :username, :name, :surname, :phone, :email, :city_ids, :area_ids, :address, :house_calls, :salon, :about_me, :password, :password_confirmation, :nickname, :facebook_link, :instagram_link, service_ids:[])
   end
 
   def ratings_params
@@ -121,10 +117,6 @@ helper_method :sort_criteria, :sort_direction
         @services_cat << s.category
       end
     @cats = @services_cat.uniq
-  end
-
-  def count_users
-    @user_count = User.all.count
   end
 
 end
