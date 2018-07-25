@@ -5,14 +5,11 @@ class Admin < ApplicationRecord
 
   has_one :user, as: :operator, :dependent => :destroy
 
-  validate :is_nickname_there
-
-
   # call backs
 
   before_save :downcase_email
   after_update :create_user
-  
+
   private
 
   def is_nickname_there
