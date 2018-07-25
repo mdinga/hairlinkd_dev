@@ -3,10 +3,9 @@
 <div>
   <h2>Update Admin</h2>
 
-  <%= form_for(@admin) do |a| %>
+    <%= form_for(@admin) do |a| %>
 
- <%= render(:partial => 'admin_form', :html => {:multiport => true}, :locals => {:a => a}) %>
-
+      <%= render(:partial => 'admin_form', :html => {:multiport => true}, :locals => {:a => a}) %>
 
     <div>
       <%= a.submit("Update Admin") %>

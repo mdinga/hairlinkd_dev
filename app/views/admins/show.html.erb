@@ -16,4 +16,10 @@
     <th>Date Joined:</th>
     <td><%= @admin.created_at.strftime("%d %B %Y") %></td>
   </tr>
+  <tr>
+    <th>User_ID:</th>
+    <td><%= @admin.user.id %></td>
+  </tr>
 </table>
+
+<%= link_to("<< Edit Admin", edit_admin_path(@admin)) %>
