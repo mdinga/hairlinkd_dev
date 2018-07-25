@@ -3,6 +3,7 @@
 
       <% if current_user.has_role? :def_admin %>
         <p> Stylist ID:<%= stylist.id%></p>
+        <p> User ID:<%= stylist.user.id%></p>
       <% end %>
 
       </div>

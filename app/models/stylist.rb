@@ -46,7 +46,7 @@ class Stylist < ApplicationRecord
 
 # Call backs
   before_save :downcase_email
-  after_update :create_user
+  after_create :create_user
 
 # General funtions
 def send_password_reset
