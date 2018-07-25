@@ -14,11 +14,4 @@
       <%= c.text_field :surname, class: 'form-control' %>
     </div>
 
-<% if current_user.has_role? :def_admin%>
-    <div class ='form-group'>
-      <label class = 'form-control-label'>User_ID:</label>
-      <%= c.text_field :user_id, class: 'form-control' %>
-    </div>
-<% end %>
-
   </fieldset>
