@@ -3,7 +3,7 @@ class CreateStylist < ActiveRecord::Migration[5.1]
 def up
 
   create_table :stylists do |t|
-    t.integer "user_id"
+
     t.string "avatar"
     t.string "username", :limit => 20
     t.string "name"
@@ -25,7 +25,7 @@ def up
 
     t.timestamps
   end
-  add_index("stylists", "user_id")
+  
 
 end
 

@@ -3,7 +3,6 @@ class CreateClient < ActiveRecord::Migration[5.1]
   def up
 
     create_table :clients do |t|
-      t.integer "user_id"
       t.string "username", :limit => 20
       t.string "name"
       t.string "surname"
@@ -17,7 +16,7 @@ class CreateClient < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-    add_index("clients", "user_id")
+
   end
 
   def down

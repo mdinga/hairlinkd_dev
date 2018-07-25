@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180723155404) do
+ActiveRecord::Schema.define(version: 20180725162633) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 20180723155404) do
   end
 
   create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "user_id"
     t.string "username", limit: 20
     t.string "name"
     t.string "surname"
@@ -89,7 +88,6 @@ ActiveRecord::Schema.define(version: 20180723155404) do
     t.string "nickname", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
   create_table "clients_def_clients", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -278,7 +276,6 @@ ActiveRecord::Schema.define(version: 20180723155404) do
   end
 
   create_table "stylists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "user_id"
     t.string "avatar"
     t.string "username", limit: 20
     t.string "name"
@@ -298,7 +295,6 @@ ActiveRecord::Schema.define(version: 20180723155404) do
     t.string "salon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_stylists_on_user_id"
   end
 
   create_table "stylists_def_stylists", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -325,8 +321,12 @@ ActiveRecord::Schema.define(version: 20180723155404) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.integer "operator_id"
+    t.string "operator_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["operator_id", "operator_type"], name: "index_users_on_operator_id_and_operator_type"
   end
 
 end

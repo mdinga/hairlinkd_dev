@@ -3,6 +3,7 @@ class Client < ApplicationRecord
 
   has_secure_password
 
+  has_one :user, as: :operator, :dependent => :destroy
   has_many :ratings, :dependent => :destroy
   has_many :stylists, :through => :ratings
   has_and_belongs_to_many :cities
@@ -32,9 +33,15 @@ class Client < ApplicationRecord
 
                         validate :is_nickname_there
 
+
+# Call backs
   before_save do
     self.email = self.email.downcase
   end
+
+  after_create :create_user
+
+# General funtions
 
 def send_password_reset
   generate_token(:password_reset_token)

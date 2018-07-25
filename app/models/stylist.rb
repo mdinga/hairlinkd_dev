@@ -4,7 +4,7 @@ class Stylist < ApplicationRecord
 
   has_secure_password
 
-
+  has_one :user, as: :operator, :dependent => :destroy
   has_many :ratings, :dependent => :destroy
   has_many :clients, :through => :ratings
   has_many :portfolios, :dependent => :destroy
@@ -16,6 +16,7 @@ class Stylist < ApplicationRecord
   has_many :personal_messages, as: :chatter
   has_and_belongs_to_many :clients, :join_table => "fav_stylists"
   scope :top_rating, lambda {order("overall_rating DESC")}
+
   #scope :sort, lambda {order("#{params[:sort_param]} DES")}
   scope :only_3, lambda {limit(3)}
   scope :review, lambda {order ("ratings.count DESC")}
@@ -42,11 +43,15 @@ class Stylist < ApplicationRecord
 
   validate :is_nickname_there
 
+
+# Call backs
   before_save do
     self.email = self.email.downcase
   end
 
+  after_create :create_user
 
+# General funtions
 def send_password_reset
   generate_token(:password_reset_token)
   self.password_reset_sent_at = Time.zone.now

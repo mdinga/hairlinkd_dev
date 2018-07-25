@@ -3,8 +3,12 @@ class ApplicationRecord < ActiveRecord::Base
 
   private
 
-  def empty
+  def create_user
+    @user = User.new
+    self.user == @user
+    @user.save!
   end
 
-  
+
+
 end
