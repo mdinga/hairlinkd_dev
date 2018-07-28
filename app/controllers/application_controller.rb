@@ -4,19 +4,35 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :path_to_stylist
 def current_user
 
-@current_user =
-    if session[:admin_id]
-      @current_admin_user = Admin.find(session[:admin_id])
-      @current_admin_user if @current_admin_user.has_role?(:def_admin)
-    elsif session[:stylist_id]
-      @current_stylist_user = Stylist.find(session[:stylist_id])
-      @current_stylist_user if @current_stylist_user.has_role?(:def_stylist)
-    elsif session[:client_id]
-      @current_client_user = Client.find(session[:client_id])
-      @current_client_user if @current_client_user.has_role?(:def_client)
-    else
-       nil
-    end
+# @current_user =
+#     if session[:admin_id]
+#       @current_admin_user = Admin.find(session[:admin_id])
+#       @current_admin_user if @current_admin_user.has_role?(:def_admin)
+#     elsif session[:stylist_id]
+#       @current_stylist_user = Stylist.find(session[:stylist_id])
+#       @current_stylist_user if @current_stylist_user.has_role?(:def_stylist)
+#     elsif session[:client_id]
+#       @current_client_user = Client.find(session[:client_id])
+#       @current_client_user if @current_client_user.has_role?(:def_client)
+#     else
+#        nil
+#    end
+# end
+
+
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+        @current_user =
+          if  @user.operator_type == "Admin"
+              Admin.find(@user.operator.id)
+          elsif @user.operator_type == "Stylist"
+              Stylist.find(@user.operator.id)
+          elsif @user.operator_type == "Client"
+              Client.find(@user.operator.id)
+          else
+              nil
+          end
+        end
 end
 
 

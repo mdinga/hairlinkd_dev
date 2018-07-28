@@ -24,7 +24,7 @@ class AdminAccessController < ApplicationController
     end
 
     if authorized_admin
-      session[:admin_id] = authorized_admin.id
+      session[:user_id] = authorized_admin.user.id
       flash[:notice] = "Admin has been logged in successfully"
       redirect_to(admin_path(authorized_admin))
     else
@@ -35,7 +35,7 @@ class AdminAccessController < ApplicationController
 
   def logout
       #current_user.remove_role :log_admin
-      session[:admin_id] = nil
+      session[:user_id] = nil
       redirect_to(admin_access_login_path)
   end
 

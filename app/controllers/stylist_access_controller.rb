@@ -20,7 +20,7 @@ class StylistAccessController < ApplicationController
       end
   end
   if authorized_stylist
-    session[:stylist_id] = authorized_stylist.id
+    session[:user_id] = authorized_stylist.user.id
     flash[:notice] = "You are now logged in"
     redirect_to(stylist_path(authorized_stylist.id))
   else
@@ -31,7 +31,7 @@ end
 
   def stylist_logout
       #current_user.remove_role :log_stylist
-      session[:stylist_id] = nil
+      session[:user_id] = nil
       flash[:notice] = "You have been logged out"
       redirect_to(root_path)
   end

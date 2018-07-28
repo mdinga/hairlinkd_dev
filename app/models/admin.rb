@@ -8,7 +8,7 @@ class Admin < ApplicationRecord
   # call backs
 
   before_save :downcase_email
-  after_update :create_user
+  after_create :create_user
 
   private
 

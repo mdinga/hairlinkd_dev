@@ -21,7 +21,7 @@ class ClientAccessController < ApplicationController
     end
 
     if authorized_client
-      session[:client_id] = authorized_client.id
+      session[:user_id] = authorized_client.user.id
       flash[:notice] = "You are now logged in"
       redirect_to(client_path(authorized_client.id))
     else
