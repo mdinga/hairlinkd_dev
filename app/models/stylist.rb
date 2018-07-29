@@ -15,8 +15,8 @@ class Stylist < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   has_many :personal_messages, as: :chatter
   has_and_belongs_to_many :clients, :join_table => "fav_stylists"
-  scope :top_rating, lambda {order("overall_rating DESC")}
 
+  scope :top_rating, lambda {order("overall_rating DESC")}
   #scope :sort, lambda {order("#{params[:sort_param]} DES")}
   scope :only_3, lambda {limit(3)}
   scope :review, lambda {order ("ratings.count DESC")}

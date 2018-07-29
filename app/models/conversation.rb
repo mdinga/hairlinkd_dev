@@ -1,9 +1,14 @@
 class Conversation < ApplicationRecord
+  belongs_to :author, class_name: "User"
+  belongs_to :receiver class_name: "User"
+  has_many :personal_messages, -> {order(created_at: :asc)}, dependent: :destroy
 
-  has_many :personal_messages, :dependent => :destroy
-  belongs_to :stylist
-  belongs_to :client
+  scope :participating, lambda{|user|, where("(conversation.author.id = ? OR conversation.receiver.id = ?)", user.id, user.id)}
 
-  scope  :participating_as_stylist, lambda {|user| where(("consersations.stylist_id = ?"), user.id)}
-  scope  :participating_as_client, lambda {|user| where(("consersations.client_id = ?"), user.id)}
+  validates :author, uniqueness: {scope: :reciever}
+
+  def with(current_user)
+    author == current_user.user ? reciever : author
+  end
+
 end

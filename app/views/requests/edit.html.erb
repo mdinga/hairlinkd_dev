@@ -1,0 +1,20 @@
+<div class = "container">
+
+<div class = "m-3">
+  <%= button_to("<< Back to Profile", client_path(current_user), method: :get, class: "btn btn-sm") %>
+</div>
+
+
+    <h4 class = 'text-center'>Update Hairstyle Request</h4>
+
+    <%= form_for(@request) do |r| %>
+
+      <%= error_messages_for(r.object) %>
+      <%= render(:partial => 'request_form', :locals => {:r => r}) %>
+
+    <div class = "text-center m-4">
+      <%= r.submit "Update Request", class: "btn btn-sm" %>
+    </div>
+
+  <% end %>
+</div>

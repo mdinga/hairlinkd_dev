@@ -1,20 +1,19 @@
 <div class = 'container'>
-  <div>
-    <%= button_to("<< Return", '#', method: :get, class: 'btn btn-hl btn-sm m-3') %>
-  </div>
 
-  <div>
-    <%= form_for(@conversation) do |c| %>
+    <div id = "conversation">
+      <div id = "conversation-header" class = "text-center">
+        <h4> <strong><%= current_user.username %></strong> chatting to <strong><%= @stylist.username %></strong></h4>
+      </div>
 
-      <%= error_messages_for(c.object) %>
-        <form>
-          <%= render(:partial => 'conversation', :html => {:multiport => true}, :locals => {:c => c}) %>
+      <div id = "conversation-body">
 
-          <div class = 'text-center m-3'>
-            <%= c.submit("Create Conversation", class: 'btn btn-sm') %>
-          </div>
-        </form>
+      </div>
 
-    <% end %>
-  </div>
+      <div id = "personal_message">
+        <%= form_for @personal_message do |f| %>
+          <%= hidden_field_tag 'conversation_id' %>
+      </div>
+
+    </div>
+
 </div>

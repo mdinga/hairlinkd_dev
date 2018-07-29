@@ -3,6 +3,7 @@
     <div class = 'row'>
 
       <div class = "col-sm-4 text-center" style = "padding: 3px;">
+        <h5><%= @client.username.capitalize %></h5>
         <%= image_tag @client.picture.url(:thumb).to_s %>
       </div><!--col-sm-4-->
 
@@ -16,6 +17,10 @@
           </thead>
           <tbody>
             <tr>
+              <td><%= link_to('Request a Hairstyle:', new_request_path)%> </td>
+              <td><%= link_to('View', requests_path)%> <span class = "badge badge-primary badge-pill bg-primary "> <%= @client.requests.count %> </span> / <%= link_to('Responses', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> 0 </span></td>
+            </tr>
+            <tr>
               <td>Appointments:</td>
               <td><%= link_to('View', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> 0 </span> / <%= link_to('Create', '#')%></td>
             </tr>
@@ -27,11 +32,7 @@
               <td>Reviews:</td>
               <td><%= link_to('View', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> <%= @client.ratings.count %> </span> / <%= link_to('Create', '#')%></td>
             </tr>
-            <tr>
-              <td>Comments:</td>
-              <td><%= link_to('View', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> 0 </span> / <%= link_to('Create', '#')%></td>
-            </tr>
-          </tbody>
+                </tbody>
         </table>
         </div><!-- col-sm-8 -->
 

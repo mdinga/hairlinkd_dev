@@ -1,8 +1,6 @@
 class PersonalMessage < ApplicationRecord
-
-  belongs_to :chatter, polymorphic: true
   belongs_to :conversation
+  belongs_to :user
 
   validates :body, presence: true
-
 end

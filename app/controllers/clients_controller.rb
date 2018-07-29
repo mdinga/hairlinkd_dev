@@ -13,7 +13,6 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
-
   end
 
   def new
@@ -25,7 +24,7 @@ class ClientsController < ApplicationController
     @client.add_role :def_client
 
     if @client.save
-      
+
       flash[:notice] = "Profile Created Successfully, Please Log In"
       RegisterMailer.new_client(@client).deliver_now
       redirect_to (client_access_login_path)

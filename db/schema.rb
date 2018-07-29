@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180725162633) do
+ActiveRecord::Schema.define(version: 20180728180933) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -113,9 +113,13 @@ ActiveRecord::Schema.define(version: 20180725162633) do
   end
 
   create_table "conversations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "stylist_id"
-    t.integer "client_id"
-    t.index ["stylist_id", "client_id"], name: "index_conversations_on_stylist_id_and_client_id"
+    t.integer "author_id"
+    t.integer "receiver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id", "receiver_id"], name: "index_conversations_on_author_id_and_receiver_id", unique: true
+    t.index ["author_id"], name: "index_conversations_on_author_id"
+    t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
   end
 
   create_table "def_admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -187,13 +191,13 @@ ActiveRecord::Schema.define(version: 20180725162633) do
   end
 
   create_table "personal_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "conversation_id"
-    t.text "body", limit: 255
-    t.integer "chatter_id"
-    t.string "chatter_type"
+    t.text "body"
+    t.bigint "conversation_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["conversation_id", "chatter_id"], name: "index_personal_messages_on_conversation_id_and_chatter_id"
+    t.index ["conversation_id"], name: "index_personal_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_personal_messages_on_user_id"
   end
 
   create_table "portfolios", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -237,6 +241,19 @@ ActiveRecord::Schema.define(version: 20180725162633) do
     t.boolean "recommend"
     t.text "Comment"
     t.index ["stylist_id", "client_id", "style_id"], name: "index_ratings_on_stylist_id_and_client_id_and_style_id"
+  end
+
+  create_table "requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "title"
+    t.string "description", limit: 500
+    t.string "image"
+    t.text "budget"
+    t.integer "client_id"
+    t.integer "city_id"
+    t.integer "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id", "city_id", "service_id"], name: "index_requests_on_client_id_and_city_id_and_service_id"
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -329,4 +346,6 @@ ActiveRecord::Schema.define(version: 20180725162633) do
     t.index ["operator_id", "operator_type"], name: "index_users_on_operator_id_and_operator_type"
   end
 
+  add_foreign_key "personal_messages", "conversations"
+  add_foreign_key "personal_messages", "users"
 end

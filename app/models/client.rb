@@ -12,6 +12,7 @@ class Client < ApplicationRecord
   has_many :personal_messages, as: :chatter, :dependent => :destroy
   has_and_belongs_to_many :styles, :join_table => "fav_styles"
   has_and_belongs_to_many :stylists, :join_table => "fav_stylists"
+  has_many :requests, :dependent => :destroy
 
   EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
   PASSWORD_FORMAT = /\A(?=.{8,})(?=.*\d)(?=.*[a-z])/x

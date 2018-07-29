@@ -1,0 +1,16 @@
+<div class = "container">
+  <div class="media">
+    <%= image_tag request.image.url(:display).to_s, class: "align-self-start mr-3 w-25" %>
+      <div class="media-body">
+        <h5 class="mt-0"><%= request.title %></h5>
+          <p> <strong>Hairstyle:</strong> <%= request.service.name %></p>
+          <p> <strong>Details:</strong> <%= request.description %></p>
+          <p> <strong>City:</strong> <%= request.city.city %></p>
+
+          <div class = "btn-group">
+            <%= button_to("Edit", edit_request_path(request), method: :get, class: "btn btn-sm m-1") %>
+            <%= button_to("Delete", request_path(request), method: :delete, class: "btn btn-sm m-1") %>
+          </div>
+      </div>
+  </div>
+</div>

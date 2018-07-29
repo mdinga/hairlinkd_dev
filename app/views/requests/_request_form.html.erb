@@ -1,0 +1,38 @@
+<div class = 'form-group'>
+  <fieldset >
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'><strong>Title:</strong></label>
+      <%= r.text_field :title, placeholder: "e.g. 20 inch Brazilian needed urgently", class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'><strong>Select a Hairstyle:</strong></label> <span style = "font-size:80%;">(Select "Other", if your hairstyle doesn't appear)</span><br \>
+      <%= r.select :service_id , @service.map {|c| [c.name, c.id]}, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'><strong>Tell us more about the hairstyle you want:</strong></label>
+      <%= r.text_area :description, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'><strong>Picture:</strong></label>
+       <%= r.file_field :image, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'><strong>Budget Range:</strong></label>
+      <%= r.text_field :budget, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'><strong>City:</strong> </label> <span style = "font-size:80%;">(Select "Other", if your city doesn't appear)</span><br \>
+      <%= r.select :city_id , @city.map {|c| [c.city, c.id]}, class: 'form-control' %>
+    </div>
+
+        <%= r.hidden_field :client_id , class: 'form-control' %>
+
+
+  </fieldset>
+</div>
