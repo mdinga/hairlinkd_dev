@@ -1,7 +1,14 @@
+<div class="jumbotron p-4 mt-3 mb-3" style = "background-color:black !important; color:white;">
+  <div class="text-center">
+    <h1 class="display-4">Hairstyle Requests from Clients</h1>
+    <p class="lead">Clients everywhere are looking for stylists who can fulfil their hair needs. If you are that stylist, simply respond to the client’s request and connect directly with them.</p>
+  </div>
+</div>
 
-<h3 class = 'text-center m-2'>Hairstyle Requests from Clients</h3>
+
+<!-- <h3 class = 'text-center m-2'>Hairstyle Requests from Clients</h3>
 <p class = "text-center m-4" style = "font-size:130%;">Clients everywhere are looking for stylists who can fulfil their hair needs. If you are that stylist, simply respond to the client’s request and connect directly with them.</p>
-<hr>
+<hr> -->
 
   <% @requests.each do |request| %>
   <%= render(:partial => 'index_requests', :html => {:multiport => true}, :locals => {:request => request})%>
