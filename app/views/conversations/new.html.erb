@@ -1,19 +1,1 @@
-<div class = 'container'>
 
-    <div id = "conversation">
-      <div id = "conversation-header" class = "text-center">
-        <h4> <strong><%= current_user.username %></strong> chatting to <strong><%= @stylist.username %></strong></h4>
-      </div>
-
-      <div id = "conversation-body">
-
-      </div>
-
-      <div id = "personal_message">
-        <%= form_for @personal_message do |f| %>
-          <%= hidden_field_tag 'conversation_id' %>
-      </div>
-
-    </div>
-
-</div>
