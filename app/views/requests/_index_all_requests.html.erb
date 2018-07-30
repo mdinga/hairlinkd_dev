@@ -1,0 +1,12 @@
+
+<h3 class = 'text-center m-2'>Hairstyle Requests from Clients</h3>
+<p class = "text-center m-4" style = "font-size:130%;">Clients everywhere are looking for stylists who can fulfil their hair needs. If you are that stylist, simply respond to the client’s request and connect directly with them.</p>
+<hr>
+
+  <% @requests.each do |request| %>
+  <%= render(:partial => 'index_requests', :html => {:multiport => true}, :locals => {:request => request})%>
+    <div class = "m-3 text-center">
+      <%= button_to("Respond to Request", "#", method: :get, class: "btn btn-sm") %>
+    </div>
+    <hr>
+  <% end %>

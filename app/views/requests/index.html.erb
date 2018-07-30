@@ -1,22 +1,17 @@
 <div class = 'container'>
 
-  <div class = "m-1">
-    <%= button_to("<< Back to Profile", client_path(current_user), method: :get, class: "btn btn-sm") %>
-  </div>
+  <% if current_user.has_role? :def_client %>
 
-  <h3 class = 'text-center' style = "text-decoration:underline;"> Hairstyle Requests By: <%= current_user.username.capitalize %></h3>
-  <hr>
+    <%= render(:partial => 'index_clients_requests', :html => {:multiport => true}) %>
 
-  <% if @requests.count > 0 %>
-    <% @requests.each do |request| %>
-    <%= render(:partial => 'index_requests', :html => {:multiport => true}, :locals => {:request => request})%>
-      <hr>
-    <% end %>
-  <% else %>
-    <p style = "font-size:120%"> Describle the hairstyle that you require. We will make the stylists in your area aware of your request and they can communicate directly with you. All your requests will be kepts here.</p>
-      <div class = "m-3 text-center">
-        <%= button_to("Create Request", new_request_path, method: :get, class: "btn btn-sm") %>
-      </div>
+    <% else %>
+
+    <%= render(:partial => 'index_all_requests', :html => {:multiport => true}) %>
+
   <% end %>
+
+
+
+
 
 </div>

@@ -7,4 +7,6 @@ class Request < ApplicationRecord
 
   #validates :city_id, :presence => true
 
+  scope :recent_first, lambda{order("created_at DESC")}
+
 end

@@ -4,7 +4,12 @@ class RequestsController < ApplicationController
   before_action :get_services, :only => [:new, :create, :edit, :update]
 
   def index
+
+    if current_user.has_role? :def_client
       @requests = current_user.requests
+    else
+      @requests = Request.recent_first
+    end
   end
 
   def show
