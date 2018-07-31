@@ -18,13 +18,14 @@
                       <ul class = 'dropdown-menu' aria-labelledby = "navbarDropdownClient">
                         <li><%= link_to("My Profile", client_path(current_user.id), class: "dropdown-item") %>
                         <li><%= link_to("Edit Profile", edit_client_path(current_user.id), class: "dropdown-item") %>
+                        <li><%= link_to("Delete Profile", delete_client_path(current_user.id), class: "dropdown-item", style: "color:red;") %>
                         <!-- <li><%= link_to("Change Password", client_access_password_form_path, class: "dropdown-item") %> -->
                       </ul><!-- dropdown-menu -->
                   </li><!-- nav-item -->
 
 
                     <li><%= link_to("Stylists", stylists_path, class: 'nav-item nav-link')%></li>
-                    <li><%= link_to("Gallery", index_styles_clients_path, class: 'nav-item nav-link') %></li>
+                    <li><%= link_to("Gallery", "#", class: 'nav-item nav-link') %></li>
                     <li><%= link_to("Forum", '#', class: 'nav-item nav-link') %></li>
                     <li><%= link_to("Contact Us", '#', class: 'nav-item nav-link') %></li>
                     <li><%= link_to("Logout", client_access_logout_path, class: 'nav-item nav-link') %></li>

@@ -14,8 +14,4 @@
   <%= render(:partial => 'show_client', :html => {:multiport => true}, :locals => {:client => @client})%>
 </div>
 
-<div class = "text-center m-4" >
-  <%= button_to "Delete Profile", delete_client_path(@client), method: :get, class: "btn btn-danger btn-sm" %>
-</div>
-
 </div>

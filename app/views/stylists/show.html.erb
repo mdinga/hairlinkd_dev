@@ -14,11 +14,5 @@
     </div>
 
 
-<% if current_user.has_role? :def_stylist %>
-  <div class = "text-center mt-5">
-      <%= button_to("Delete Profile", delete_stylist_path(@stylist), method: :get, class: "btn btn-danger btn-sm m-4")%>
-  </div>
-<% end %>
-
 
 </div>

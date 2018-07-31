@@ -16,13 +16,19 @@
             <%= button_to("Edit", edit_request_path(request), method: :get, class: "btn btn-sm m-1") %>
             <%= button_to("Delete", request_path(request), method: :delete, class: "btn btn-sm m-1") %>
           </div>
+          <div class = 'text-center'>
+            <p><strong>You have <%= pluralize(request.responses.count, 'response')%></strong></p>
+            <% if request.responses.count > 0 %>
+              <%= link_to("View Responses", responses_path(:request_id => request.id), method: :get, class: "btn btn-sm m-1") %>
+            <% end %>
+          </div>
         <% end %>
 
         <% unless current_user.has_role? :def_client %>
 
             <% if request.responses.find{|r| r[:stylist_id] == current_user.id} %>
               <div class = "m-3 text-center">
-                <p> You have already responded to this request</p>
+                <p> You have responded to this request</p>
                 <%= link_to("View Your Response", response_path(request.responses.find{|r| r[:stylist_id] == current_user.id}), method: :get, class: "btn btn-sm") %>
               </div>
             <% else %>

@@ -2,15 +2,15 @@
   <%= button_to("<< Back to Profile", client_path(current_user), method: :get, class: "btn btn-sm") %>
 </div>
 
-<h3 class = 'text-center m-2' style = "text-decoration:underline;"> Your Hairstyle Requests</h3>
+<h3 class = 'text-center m-2'> Your Hairstyle Requests</h3>
 <hr>
 
-<% if @requests.count > 0 %>
-  <% @requests.each do |request| %>
-  <%= render(:partial => 'index_requests', :html => {:multiport => true}, :locals => {:request => request})%>
-    <hr>
-  <% end %>
-<% else %>
+  <% if @requests.count > 0 %>
+      <% @requests.each do |request| %>
+      <%= render(:partial => 'index_requests', :html => {:multiport => true}, :locals => {:request => request})%>
+        <hr>
+      <% end %>
+  <% else %>
 
       <div class="jumbotron p-4 mt-3 mb-3">
         <div class="text-center">

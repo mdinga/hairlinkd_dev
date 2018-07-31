@@ -1,2 +1,27 @@
-<h1>Responses#edit</h1>
-<p>Find me in app/views/responses/edit.html.erb</p>
+<div class = "container">
+
+  <div class = "m-3">
+    <%= button_to("<< Back to Requests", requests_path, method: :get, class: "btn btn-sm") %>
+  </div>
+
+  <div class = "m-3">
+    <%= render(:partial => 'requests/show_request', :hmtl => {:multiport => true}, :locals => {:request => @request}) %>
+  </div>
+
+
+<h4 class = 'text-center'>Edit your Response</h4>
+
+  <%= form_for(@response) do |r| %>
+
+      <%= error_messages_for(r.object) %>
+
+  <div class = 'form-group'>
+
+      <%= render(:partial => 'response_form', :hmtl => {:multiport => true}, :locals => {:r => r}) %>
+
+    <div class = "text-center m-4">
+      <%= r.submit "Edit Response", class: "btn btn-sm" %>
+    </div>
+
+  <% end %>
+</div>

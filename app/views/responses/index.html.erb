@@ -1,2 +1,18 @@
-<h1>Responses#index</h1>
-<p>Find me in app/views/responses/index.html.erb</p>
+<div class = "container">
+
+  <div class = "m-3">
+    <%= button_to("<< Back to Requests", requests_path, method: :get, class: "btn btn-sm") %>
+  </div>
+
+  <div>
+      <%= render(:partial => 'requests/show_request', :hmtl => {:multiport => true}, :locals => {:request => @request}) %>
+  </div><!-- m-3 -->
+  <hr>
+
+    <div>
+      <h3 class = "text-center">Response from Stylists</h3>
+        <% @responses.each do |responses| %>
+          <%= render(:partial => 'index_responses', :hmtl => {:multiport => true}, :locals => {:responses => responses}) %>
+        <% end %>
+    </div><!-- text-center -->
+</div><!-- container -->

@@ -1,4 +1,9 @@
 <div class = "container">
+  
+  <div class = "m-3">
+    <%= button_to("<< Back to Requests", requests_path, method: :get, class: "btn btn-sm") %>
+  </div>
+
   <div>
       <%= render(:partial => 'requests/show_request', :hmtl => {:multiport => true}, :locals => {:request => @request}) %>
   </div><!-- m-3 -->

@@ -15,17 +15,9 @@
 
       <%= error_messages_for(r.object) %>
 
-      <div class = 'form-group'>
-        <fieldset >
-          <div class ='form-group'>
-            <label class = 'form-control-label'><strong>Respond with a Message:</strong></label>
-            <%= r.text_area :message, class: 'form-control' %>
-          </div>
-            <%= r.hidden_field :stylist_id, class: 'form-control' %>
-            <%= r.hidden_field :request_id, class: 'form-control' %>
+  <div class = 'form-group'>
 
-        </fieldset>
-      </div>
+      <%= render(:partial => 'response_form', :hmtl => {:multiport => true}, :locals => {:r => r}) %>
 
     <div class = "text-center m-4">
       <%= r.submit "Submit Response", class: "btn btn-sm" %>

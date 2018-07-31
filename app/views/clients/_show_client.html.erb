@@ -1,5 +1,5 @@
 
-  <div class = 'client_divs'>
+  <div>
     <div class = 'row'>
 
       <div class = "col-sm-4 text-center" style = "padding: 3px;">
@@ -11,28 +11,28 @@
         <table class = "table table-sm  text-center table-hover mt-4">
           <thead>
             <tr>
-              <th>Create New</th>
-              <th>View</th>
+              <th>Menu</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><%= link_to('Request a Hairstyle:', new_request_path)%> </td>
-              <td><%= link_to('View', requests_path)%> <span class = "badge badge-primary badge-pill bg-primary "> <%= @client.requests.count %> </span> / <%= link_to('Responses', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> 0 </span></td>
+              <td>Hairstyle Requests:</td>
+              <td><%= link_to('Create', new_request_path)%> - <%= link_to('View', requests_path)%> <span class = "badge badge-primary badge-pill bg-primary "> <%= @client.requests.count %> </span></td>
+            </tr>
+            <tr>
+              <td>Responses to Requests:</td>
+              <td><%= link_to('View', requests_path)%> <span class = "badge badge-primary badge-pill bg-primary ">  </span></td>
             </tr>
             <tr>
               <td>Appointments:</td>
-              <td><%= link_to('View', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> 0 </span> / <%= link_to('Create', '#')%></td>
+              <td> <%= link_to('Create', '#')%> - <%= link_to('View', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> 0 </span></td>
             </tr>
             <tr>
               <td>Messages:</td>
-              <td><%= link_to('View', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> 0 </span> / <%= link_to('Create', '#')%></td>
+              <td><%= link_to('Create', '#')%> / <%= link_to('View', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> 0 </span></td>
             </tr>
-            <tr>
-              <td>Reviews:</td>
-              <td><%= link_to('View', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> <%= @client.ratings.count %> </span> / <%= link_to('Create', '#')%></td>
-            </tr>
-                </tbody>
+          </tbody>
         </table>
         </div><!-- col-sm-8 -->
 
@@ -42,18 +42,24 @@
 
 <hr>
 
-<div class = "container client_divs">
-  <h5 class = "text-center m-3" style = "text-decoration:underline;">Stylists You Like</h5>
+<div class = "container text-center">
+
     <% if @client.stylists.count < 1 %>
-        <div class = "text-center pb-3">
-        <p>There are no Stylists that you like yet!!</p>
-        <p>All the Stylists that you like will appear here</p>
-        <p>Check out the Stylists</p>
+
+        <div class="jumbotron p-4 mt-3 mb-3">
+          <div>
+            <h1 class="display-4">Stylists You Like</h1>
+            <hr class="my-4">
+            <p class="lead">Browse through profiles of various stylists registered. The ones you like will appear here.</p>
+            <p class="lead">There are no stylists that you like yet!!.</p>
+          </div>
+        </div>
+
         <%= button_to "View Stylists", stylists_path, method: :get, class: "btn btn-sm"%>
       </div>
 
     <% else %>
-
+    <h5 class = "m-3" style = "text-decoration:underline;">Stylists You Like</h5>
       <div class = 'card-group'>
           <% @client.stylists.each do |stylist|%>
           <div class = 'card-body' style = 'width:auto;'>
@@ -68,21 +74,28 @@
         <%= button_to "View Stylists", stylists_path, method: :get, class: "btn btn-sm"%>
       </div>
     <% end %>
+    <hr>
 </div>
 
-<div class = "container client_divs" style = "border-bottom: 1px solid black;">
-  <h5 class = "text-center m-3" style = "text-decoration:underline;">Hairstyles You Like</h5>
+<div class = "container text-center m-3" style = "border-bottom: 1px solid black;">
+
       <% if @client.styles.count < 1 %>
 
-          <div class = "text-center pb-3">
-            <p>There are no Hairstyles that you like yet!!</p>
-            <p>All the Hairstyles that you like for the gallery will appear here</p>
-            <p>Check out the gallery now</p>
-            <%= button_to "View Gallery", index_styles_clients_path, method: :get, class: "btn btn-sm"%>
+            <div class="jumbotron p-4 mt-3 mb-3">
+              <div>
+                <h1 class="display-4">Hairstyles You Like</h1>
+                <hr class="my-4">
+                <p class="lead">All the Hairstyles that you like for the gallery will appear here</p>
+                <p class="lead">Check out the gallery now!!</p>
+              </div>
+            </div>
+            <%= button_to "View Gallery", '#', method: :get, class: "btn btn-sm"%>
           </div>
 
-      <% else %>
 
+
+      <% else %>
+      <h5 class = "m-3" style = "text-decoration:underline;">Hairstyles You Like</h5>
         <div class = 'card-group'>
           <% @client.styles.each do |style|%>
           <div class = 'card-body' style = 'width:auto;'>
@@ -95,9 +108,8 @@
           <% end %>
       </div><!--card-group-->
       <div class = 'text-center m-3'>
-        <%= button_to "View Gallery", index_styles_clients_path, method: :get, class: "btn btn-sm"%>
+        <%= button_to "View Gallery", index_styles_clients_path, method: :get, class: "btn btn-sm mb-1"%>
       </div>
-
     <% end %>
 
 

@@ -7,6 +7,7 @@ class RequestsController < ApplicationController
 
     if current_user.has_role? :def_client
       @requests = current_user.requests
+
     else
       @requests = Request.recent_first
     end
@@ -14,7 +15,7 @@ class RequestsController < ApplicationController
   end
 
   def show
-    @request = Request.find(:request_id)
+    @request = Request.find(params[:request_id])
   end
 
   def new
@@ -27,7 +28,7 @@ class RequestsController < ApplicationController
 
     if @request.save
       flash[:notice] ="Your request created and sent the stylists in your area"
-      redirect_to client_path(current_user)
+      redirect_to requests_path
     else
       flash[:notice] ="Your request was not successful"
       render 'new'

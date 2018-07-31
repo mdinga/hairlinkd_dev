@@ -1,0 +1,8 @@
+<div class = 'container'>
+
+  <p style = "font-style:oblique;"> <strong><%= responses.stylist.username.capitalize %></strong>: <%= responses.created_at.strftime("%B %d, %Y (%H:%M)") %></p>
+  <p> <%= responses.message %></p>
+  <p class = 'text-center'> To view <%= responses.stylist.username.capitalize%>'s profile and send a message <%= link_to("(Click Here)", stylist_path(responses.stylist))%></p>
+
+<hr>
+</div>
