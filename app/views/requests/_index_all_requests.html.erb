@@ -7,9 +7,7 @@
 
 
   <% @requests.each do |request| %>
-  <%= render(:partial => 'index_requests', :html => {:multiport => true}, :locals => {:request => request})%>
-    <div class = "m-3 text-center">
-      <%= button_to("Respond to Request", new_response_path(:request_id => @request.id), method: :get, class: "btn btn-sm") %>
-    </div>
+
+    <%= render(:partial => 'index_requests', :html => {:multiport => true}, :locals => {:request => request})%>
     <hr>
   <% end %>

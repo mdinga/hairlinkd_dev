@@ -1,2 +1,35 @@
-<h1>Responses#new</h1>
-<p>Find me in app/views/responses/new.html.erb</p>
+<div class = "container">
+
+<div class = "m-3">
+  <%= button_to("<< Back to Requests", requests_path, method: :get, class: "btn btn-sm") %>
+</div>
+
+<div class = "m-3">
+  <%= render(:partial => 'requests/show_request', :hmtl => {:multiport => true}, :locals => {:request => @request}) %>
+</div>
+
+
+<h4 class = 'text-center'>Respond to Requests</h4>
+
+  <%= form_for(@response) do |r| %>
+
+      <%= error_messages_for(r.object) %>
+
+      <div class = 'form-group'>
+        <fieldset >
+          <div class ='form-group'>
+            <label class = 'form-control-label'><strong>Respond with a Message:</strong></label>
+            <%= r.text_area :message, class: 'form-control' %>
+          </div>
+            <%= r.hidden_field :stylist_id, class: 'form-control' %>
+            <%= r.hidden_field :request_id, class: 'form-control' %>
+
+        </fieldset>
+      </div>
+
+    <div class = "text-center m-4">
+      <%= r.submit "Submit Response", class: "btn btn-sm" %>
+    </div>
+
+  <% end %>
+</div>

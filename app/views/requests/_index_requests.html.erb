@@ -1,10 +1,10 @@
 <div class = "container">
   <div class="media">
     <%= image_tag request.image.url(:display).to_s, class: "align-self-start mr-3", style: "width:20%;" %>
-      <div class="media-body">
+        <div class="media-body">
         <p style = "font-style:oblique;"> <%= request.client.username %>: <%= request.created_at.strftime("%B %d, %Y") %></p>
-        <h5 class="mt-0"><%= request.title %></h5>
 
+          <h5 class="mt-0"> <- <%= request.title %></h5>
           <p> <strong>Hairstyle:</strong> <%= request.service.name %></p>
           <p> <strong>Details:</strong> <%= request.description %></p>
           <p> <strong>Budget Range:</strong> <%= request.budget %></p>
@@ -17,6 +17,23 @@
             <%= button_to("Delete", request_path(request), method: :delete, class: "btn btn-sm m-1") %>
           </div>
         <% end %>
+
+        <% unless current_user.has_role? :def_client %>
+
+            <% if request.responses.find{|r| r[:stylist_id] == current_user.id} %>
+              <div class = "m-3 text-center">
+                <p> You have already responded to this request</p>
+                <%= link_to("View Your Response", response_path(request.responses.find{|r| r[:stylist_id] == current_user.id}), method: :get, class: "btn btn-sm") %>
+              </div>
+            <% else %>
+                <div class = "m-3 text-center">
+                  <%= link_to("Respond to Request", new_response_path(:request_id => request.id), method: :get, class: "btn btn-sm") %>
+                </div>
+            <% end %>
+
+
+
+          <% end %>
 
       </div>
   </div>

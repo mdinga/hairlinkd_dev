@@ -1,5 +1,7 @@
 class Request < ApplicationRecord
 
+
+
   belongs_to :client
   belongs_to :city
   belongs_to :service

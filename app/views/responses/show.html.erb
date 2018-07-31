@@ -1,2 +1,15 @@
-<h1>Responses#show</h1>
-<p>Find me in app/views/responses/show.html.erb</p>
+<div class = "container">
+  <div>
+      <%= render(:partial => 'requests/show_request', :hmtl => {:multiport => true}, :locals => {:request => @request}) %>
+  </div><!-- m-3 -->
+  <hr style = 'color:red;'>
+
+    <div>
+      <h3>Your Response</h3>
+        <p><%= @response.stylist.username %>: <%= @response.message %><p>
+          <div class = "btn-group text-center">
+              <%= link_to("Edit Response", edit_response_path(@response, :request_id => @request.id), method: :get, class: "btn btn-sm m-1") %>
+              <%= link_to("Delete Response", response_path(@response), method: :delete, class: "btn btn-sm m-1") %>
+          </div>
+    </div><!-- text-center -->
+</div><!-- container -->

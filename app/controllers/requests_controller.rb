@@ -10,9 +10,11 @@ class RequestsController < ApplicationController
     else
       @requests = Request.recent_first
     end
+
   end
 
   def show
+    @request = Request.find(:request_id)
   end
 
   def new

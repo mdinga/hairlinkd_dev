@@ -1,0 +1,12 @@
+<div class="media mt-2">
+  <%= image_tag @request.image.url(:display).to_s, class: "align-self-start mr-3", style: "width:20%;" %>
+      <div class="media-body">
+      <p style = "font-style:oblique;"> <%= @request.client.username %>: <%= @request.created_at.strftime("%B %d, %Y") %></p>
+
+        <h5 class="mt-0"> <- <%= @request.title %></h5>
+        <p> <strong>Hairstyle:</strong> <%= @request.service.name %></p>
+        <p> <strong>Details:</strong> <%= @request.description %></p>
+        <p> <strong>Budget Range:</strong> <%= @request.budget %></p>
+        <p> <strong>City:</strong> <%= @request.city.city %></p>
+
+  </div><!-- media -->

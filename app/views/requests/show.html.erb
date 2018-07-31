@@ -1,2 +1,8 @@
-<h1>Requests#show</h1>
-<p>Find me in app/views/requests/show.html.erb</p>
+<div class = "container">
+
+  <div>
+    <%= render(:partial => 'show_request', :hmtl => {:multiport => true}, :locals => {:request => @request}) %>
+  </div><!-- m-3 -->
+
+
+</div><!-- container -->
