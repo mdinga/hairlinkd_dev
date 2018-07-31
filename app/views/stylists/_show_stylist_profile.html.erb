@@ -25,15 +25,6 @@
           <%= link_to("Send Message", "#", class: 'm-2',  style: 'color:#D4AF37; font-weight: bold;')%>
         <% end %>
 
-      <!-- <div class = "breadcrumb bg-inverse text-center">
-
-          <a href="#" id ="about-link" class = "breadcrumb-item text-secondary">About Me </a>
-          <a href="#" id ="portfolio-link" class = "breadcrumb-item text-secondary">My Portfolio</a>
-          <a href="#" id ="reviews-link" class = "breadcrumb-item text-secondary">My Reviews</a>
-          <a href="#" id ="contacts-link" class = "breadcrumb-item text-secondary">My Contacts</a>
-          <a href="#" id ="calendar-link" class = "breadcrumb-item text-secondary">My Calendar</a>
-
-      </div> -->
 
     </div><!--col-sm-8-->
   </div><!--row-->
@@ -127,7 +118,7 @@
       <div>
         <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>
           <% if @portfolio.count < 8 %>
-            <%= button_to(" + Add Item", new_portfolio_path(:stylist_id => @stylist.id), method: :get, class: "btn btn-hl btn-sm text-center")%>
+            <%= button_to(" + Add Item", new_portfolio_path(:stylist_id => @stylist.id), method: :get, class: "btn btn-hl btn-sm text-center mb-3")%>
           <% end %>
         <% end %>
       </div>
@@ -135,9 +126,13 @@
 
       <% if @portfolio.count < 1 %>
 
-      <div class = "text-center pb-3">
-        <p>You currently have no items on your portfolio</p>
-        <p>Show off your skills by uploading your best work here. The more details the better.</p>
+
+      <div class="jumbotron text-center p-3">
+        <h1 class="display-4">Create Your Portfolio</h1>
+        <p class="lead">Show off your skills by uploading your best work here. The more details the better.</p>
+        <hr class="my-4">
+        <p>You currently have no items on your portfolio.</p>
+
       </div>
 
       <% else %>
@@ -170,10 +165,13 @@
   <h4 class = "text-center">My Reviews</h4><hr>
     <% if @rating.count < 1 %>
 
-    <div class = "text-center pb-3">
-      <p>You currently have no reviews</p>
-      <p>Your reviews and ratings submitted by your clients will appear here. The higher your ratings, the more you stand out.</p>
-    </div>
+      <div class="jumbotron text-center p-3">
+        <h1 class="display-4">View Your Reviews</h1>
+        <p class="lead">Your reviews and ratings submitted by your clients will appear here. The higher your ratings, the more you stand out.</p>
+        <hr class="my-4">
+        <p>You currently have no reviews.</p>
+      </div>
+
 
     <% else %>
           <% @rating.each do |rating| %>

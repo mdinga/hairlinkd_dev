@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180728180933) do
+ActiveRecord::Schema.define(version: 20180730180841) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -254,6 +254,16 @@ ActiveRecord::Schema.define(version: 20180728180933) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id", "city_id", "service_id"], name: "index_requests_on_client_id_and_city_id_and_service_id"
+  end
+
+  create_table "responses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "stylist_id"
+    t.integer "request_id"
+    t.text "message", limit: 255
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_responses_on_request_id"
+    t.index ["stylist_id"], name: "index_responses_on_stylist_id"
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

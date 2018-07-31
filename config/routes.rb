@@ -1,7 +1,6 @@
 
 Rails.application.routes.draw do
 
-
   #root 'home#index'
   root 'home#index'
 
@@ -147,23 +146,10 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :conversations do
-        member do
-          get :delete
-        end
-      end
-
-      resources :personal_messages do
-        member do
-          get :delete
-        end
-      end
-
-      resources :requests do
-        member do
-          get :delete
-        end
-      end
+      resources :conversations
+      resources :personal_messages
+      resources :requests
+      resources :responses
 
 end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

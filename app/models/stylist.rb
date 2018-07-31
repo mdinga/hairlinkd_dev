@@ -8,6 +8,7 @@ class Stylist < ApplicationRecord
   has_many :ratings, :dependent => :destroy
   has_many :clients, :through => :ratings
   has_many :portfolios, :dependent => :destroy
+  has_many :responses, :dependent => :destroy
   has_and_belongs_to_many :hairstyles
   has_and_belongs_to_many :services
   has_and_belongs_to_many :cities
