@@ -3,18 +3,18 @@
 <section class="mb-0 background_home" style = "background-image: url(/assets/background/Salon-Pic-1.jpg);">
 
     <div class = 'container text-center info_paragraph' style = "padding-top:10vh; padding-bottom:10vh;">
-      <h3> Our Goal</h3>
-          <p>Finding that perfect stylist does not have to be a struggle!!</p>
-          <p>Lets help you browse through hundreds of stylists out there, to find the most ideal stylist for your desired hairstyle. </p>
+      <!-- <h3> Our Goal</h3> -->
+          <h2 class = "mb-5">Finding that perfect stylist does not have to be a struggle anymore!!</h2>
+          <p>We'll help you browse through hundreds of stylists out there, to find the most ideal stylist for your desired hairstyle. </p>
           <hr>
 
           <p>Register now and start your search!!</p>
           <div>
             <div style="float:left;">
-              <%= button_to "Register as a Client", new_client_path, class: "btn btn-secondary ", style: "display: inline-block;",:method => :get %>
+              <%= button_to "Register as a Client", new_client_path, class: "btn btn-secondary ", id: "client_register_div_one", style: "display: inline-block;",:method => :get %>
             </div>
             <div style="float:right;">
-              <%= button_to("Register as a Stylist", new_stylist_path, class: "btn btn-secondary", style: "display: inline-block;", :method => :get) %>
+              <%= button_to("Register as a Stylist", new_stylist_path, class: "btn btn-secondary", id: "stylist_register_div_one", style: "display: inline-block;", :method => :get) %>
             </div>
             <div style="clear:both;"></div>
           </div>
@@ -24,6 +24,28 @@
 
 <section>
   <div class = "container-fluid row" style = "margin:30px 0px 30px;">
+
+    <sub-section class = " col col-md-6 text-center" style = "font-size:1.4em;">
+
+              <div class = "m-3">
+                <img src="/assets/web-deco/Icon-1.png" />
+              </div>
+
+              <div>
+                <h2 style = 'text-decoration:underline; margin-bottom:15px;'>Hairlinkd for Stylists</h2>
+                <p>Showcase your skills and talents<p><hr>
+                <p>Access a wider customer base<p><hr>
+                <p>Gain popularity through reviews<p><hr>
+                <p>Build credibility and a strong following<p><hr>
+              </div>
+
+                <div>
+                  <p><strong>Check it Out Now</strong></p>
+                  <%= button_to("Register as a Stylist", new_stylist_path, class: "btn btn-block", id: "client_register_div_two", style: "display: inline-block;", :method => :get) %>
+                </div>
+
+      </sub-section>
+
     <sub-section class = " col col-md-6 text-center" style = "font-size:1.4em;">
 
         <div class = "m-3">
@@ -40,32 +62,11 @@
         <hr>
 
           <div>
-            <p>Check it Out Now</p>
-            <%= button_to "Register as a Client", new_client_path, class: "btn btn-block btn-secondary ", style: "display: inline-block;",:method => :get %>
+            <p><strong>Check it Out Now</strong></p>
+            <%= button_to "Register as a Client", new_client_path, class: "btn btn-block", id: "stylist_register_div_two", style: "display: inline-block;",:method => :get %>
           </div><!--card-footer-->
     </sub-section>
 
-    <sub-section class = " col col-md-6 text-center" style = "font-size:1.4em;">
-
-
-              <div class = "m-3">
-                <img src="/assets/web-deco/Icon-1.png" />
-              </div>
-
-              <div>
-                <h2 style = 'text-decoration:underline; margin-bottom:15px;'>Hairlinkd for Stylists</h2>
-                <p>Showcase your skills and talents<p><hr>
-                <p>Access a wider customer base<p><hr>
-                <p>Gain popularity through reviews<p><hr>
-                <p>Build credibility and a strong following<p><hr>
-              </div>
-
-                <div>
-                  <p>Check it Out Now</p>
-                  <%= button_to("Register as a Stylist", new_stylist_path, class: "btn btn-block btn-secondary", style: "display: inline-block;", :method => :get) %>
-                </div>
-
-      </sub-section>
   </div>
 </section>
 
