@@ -1,1 +1,27 @@
+<div class = "container">
+  <%= link_to("<< Back to Stylist", stylist_path(@receiver.operator), class: ' btn btn-sm m-2')%>
 
+  <div class = "text-center">
+    <h3> New message to: <%= @receiver.operator.username %></h3>
+  </div>
+  <div class = "conversation-body">
+
+    <%= form_for @personal_message do |f| %>
+
+    <%= error_messages_for(f.object) %>
+
+    <%= hidden_field_tag 'receiver_id', @receiver.id %>
+
+    <div class = "form-group">
+      <%= f.text_area :body, class: "form-control" %>
+    </div><!-- form-group -->
+
+    <div class = "text-center">
+      <%= f.submit "Send", class: "btn btn-md" %>
+    </div><!-- form-group -->
+
+    <% end %>
+
+  </div><!-- conversation_body -->
+
+</div><!-- container -->

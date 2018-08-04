@@ -1,6 +1,8 @@
 
 Rails.application.routes.draw do
 
+
+
   #root 'home#index'
   root 'home#index'
 
@@ -146,8 +148,10 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :conversations
-      resources :personal_messages
+      resources :conversations, only: [:index, :show]
+      resources :personal_messages, only: [:new, :create]
+      resources :users, only: [:index]
+
       resources :requests
       resources :responses
 

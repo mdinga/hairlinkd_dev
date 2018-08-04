@@ -21,16 +21,16 @@
               <td><%= link_to('Create', new_request_path)%> - <%= link_to('View', requests_path)%> <span class = "badge badge-primary badge-pill bg-primary "> <%= @client.requests.count %> </span></td>
             </tr>
             <tr>
-              <td>Responses to Requests:</td>
-              <td><%= link_to('View', requests_path)%> <span class = "badge badge-primary badge-pill bg-primary ">  </span></td>
-            </tr>
-            <tr>
               <td>Appointments:</td>
               <td> <%= link_to('Create', '#')%> - <%= link_to('View', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> 0 </span></td>
             </tr>
             <tr>
+              <td>Responses to Requests:</td>
+              <td><%= link_to('View', requests_path)%> <span class = "badge badge-primary badge-pill bg-primary "> 0 </span></td>
+            </tr>
+            <tr>
               <td>Messages:</td>
-              <td><%= link_to('Create', '#')%> / <%= link_to('View', '#')%> <span class = "badge badge-primary badge-pill bg-primary "> 0 </span></td>
+              <td><%= link_to('View', conversations_path)%> <span class = "badge badge-primary badge-pill bg-primary "> 0 </span></td>
             </tr>
           </tbody>
         </table>

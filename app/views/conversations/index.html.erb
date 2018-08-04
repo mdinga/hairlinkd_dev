@@ -1,0 +1,14 @@
+<div class = "container">
+
+  <% if current_user.has_role? :def_client %>
+    <%= link_to("<< Back to Profile", client_path(current_user), class: "btn btn-sm mt-2")%>
+  <% else current_user.has_role? :def_stylist %>
+    <%= link_to("<< Back to Profile", stylist_path(current_user), class: "btn btn-sm mt-2")%>
+  <% end %>
+
+  <div id = "conversations-body">
+    <h2 class = "text-center">Inbox</h2>
+    <hr><hr>
+    <%= render @conversations %>
+  </div>
+</div>

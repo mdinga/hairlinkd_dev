@@ -179,8 +179,16 @@ $gold: #D4AF37;
 
 }
 
-#conversation-body{
-  border: 1px solid grey;
+#conversations-body, #conversation-main{
+  border: 2px solid #D3D3D3;
+  border-radius:5px;
   background-color: #DCDCDC;
   margin: 20px;
+  padding: 15px;
+}
+
+#conversation-body {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 2em;
 }

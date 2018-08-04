@@ -1,1 +1,9 @@
+<div>
+    <p>Chatting with: <strong><%= conversation.with(current_user.user).operator.username %></strong></p>
 
+    <em>- <%= conversation.personal_messages.last.body.truncate(50) %>....</em>
+    <br>
+
+    <span><%= link_to("View Messages", conversation_path(conversation))%></span>
+    <hr>
+</div>

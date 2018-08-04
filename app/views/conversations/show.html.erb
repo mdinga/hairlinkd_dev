@@ -1,1 +1,26 @@
 
+<div class = "container">
+  <%= link_to("Inbox", conversations_path, class: ' btn btn-sm m-2')%>
+  <h3>Chatting with: <%= @conversation.with(current_user.user).operator.username %></h3>
+
+  <div id = "conversation-main">
+    <div id = "conversation-body">
+
+      <%= render @conversation.personal_messages %>
+
+    </div><!-- conversation-body -->
+    <div>
+    <%= form_for @personal_message do |f| %>
+      <%= hidden_field_tag "conversation_id", @conversation.id %>
+      <div class = "form-group">
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+
+      <div class = "text-center">
+        <%= f.submit "Send", class: "btn btn-md" %>
+      </div>
+    <% end %>
+  </div><!-- form-group -->
+  </div><!-- conversation-main -->
+
+</div><!-- container -->
