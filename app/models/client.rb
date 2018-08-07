@@ -9,7 +9,6 @@ class Client < ApplicationRecord
   has_and_belongs_to_many :cities
   has_and_belongs_to_many :areas
   mount_uploader :picture, PictureUploader
-  has_many :personal_messages, as: :chatter, :dependent => :destroy
   has_and_belongs_to_many :styles, :join_table => "fav_styles"
   has_and_belongs_to_many :stylists, :join_table => "fav_stylists"
   has_many :requests, :dependent => :destroy

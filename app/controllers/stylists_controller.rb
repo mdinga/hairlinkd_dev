@@ -62,8 +62,9 @@ helper_method :sort_criteria, :sort_direction
     @stylist = Stylist.find(params[:id])
 
 
-    if session[:stylist_id]
-      session[:stylist_id] = nil
+    if current_user.has_role? :def_stylist
+      session[:user_id] = nil
+      @stylist.destroy
       flash[:notice] = "Stylist deleted successfully."
       redirect_to (root_path)
 

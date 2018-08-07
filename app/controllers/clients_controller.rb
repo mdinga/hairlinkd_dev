@@ -57,8 +57,8 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
 
     if current_user.has_role? :def_client
+        session[:user_id] = nil
         @client.destroy
-        session[:client_id] = nil
         flash[:notice] = "Your profile has been deleted and you have been logged out"
         redirect_to(root_path)
       elsif current_user.has_role? :def_admin
