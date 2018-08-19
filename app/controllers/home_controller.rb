@@ -3,7 +3,9 @@ class HomeController < ApplicationController
   layout :resolve_layout
 
   def index
-    @stylist = Stylist.top_rating.only_3
+    @stylist_3 = Stylist.top_rating.only_3
+    @stylist_count = Stylist.all.count
+    @portfolio_count = Portfolio.all.count
   end
 
   def construction
