@@ -96,27 +96,44 @@ $gold: #D4AF37;
     color:#FFFAF0;
 }
 
-.background_home_two {
-
-    background-image: url(/assets/background/background_stylist.jpg);
-    /* Set a specific height */
-    height: 100%;
-    width: 100%;
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-
-}
+// .background_home_two {
+//
+//     background-image: url(/assets/background/stylist_chair1.jpg);
+//     /* Set a specific height */
+//     // height: 600%;
+//     // width: 100%;
+//
+//     /* Create the parallax scrolling effect */
+//     // background-attachment: fixed;
+//     background-position: right;
+//     background-repeat: no-repeat;
+//     // background-size: cover auto;
+//     // padding-top: 20px;
+//     // padding-bottom: 20px;
+//
+// }
 
 .background_home_three {
     background-color:black;
     color:$gold;
     padding: 20px 0px 20px 0px;
+    margin-top:30px;
+}
+
+// .background_home_four {
+//     background-image: url(/assets/background/client_info.jpg);
+//
+//     // height: 600px;
+//     // width: auto;
+//     // background-attachment: fixed;
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     // background-size: cover auto;
+//     border-radius:300px;
+// }
+
+.empty{
+  height:600px;
 }
 
 .register_form{
