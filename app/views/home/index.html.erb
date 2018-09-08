@@ -93,21 +93,29 @@
     </div>  <!-- row -->
   </div>  <!-- container -->
 
-<section style = "background-image: url(/assets/web-deco/contact_us.jpg); color:white">
+  <section class="background_home_three text-center">
+            <div>
+                  <h2>CLIENT SITE LAUNCH: <span style = "text-decoration:underline;">15 October 2018</span></h2>
+
+                    <h4 class = "m-4">Keep up to date with the developments and be one of the first clients to use Hairlinkd</h4>
+                      <%= button_to("SIGN UP NOW!", new_client_path, class: "btn btn-gold", id: "client_register_div_two", style: "display: inline-block;", :method => :get) %>
+            </div>
+  </section>
+
+
+<section style = "background-image: url(/assets/web-deco/contact_us1.jpg);">
   <div class = "container text-center p-5">
     <div style ='width:100%; padding:10px;'>
       <h2>Lets Keep In Touch</h2>
     </div>
 
 
-  <div style = "font-size:1.4em">
-
-        <p>We would love to here from you.</p>
-        <p>Whether its an issue you have, or you just want to say hello!!</p>
-        <p>Drop us a message and we'll come back to you</p>
-        <%= button_to("Contact Us", new_contact_form_path, method: :get, class: "btn btn-danger")%>
-
+    <div style = "font-size:1.4em">
+          <p>We would love to here from you.</p>
+          <p>Whether its an issue you have, or you just want to say hello!!</p>
+          <p>Drop us a message and we'll come back to you</p>
+          <%= button_to("Contact Us", new_contact_form_path, method: :get, class: "btn btn-danger")%>
+    </div>
   </div>
 
-  </div>
 </section>
