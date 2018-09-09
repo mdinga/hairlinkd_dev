@@ -52,6 +52,13 @@
   </div>
 <% end %>
 
+<div>
+    <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>
+        <%= button_to "Complete Your Profile", edit_stylist_path(current_user.id), method: :get, class: "btn btn-gold btn-block", style: "font-weight:bold;"%>
+        <hr>
+    <% end %>
+</div>
+
                                                                   <!-- About Me Section -->
 
   <div id = "about_me" class = "stylist_info" style ="display:block;">

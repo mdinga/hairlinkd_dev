@@ -1,10 +1,16 @@
 <div class = "container">
-  <div class="media">
-    <%= image_tag request.image.url(:display).to_s, class: "align-self-start mr-3", style: "width:20%;" %>
-        <div class="media-body">
+  <!-- <div class="media"> -->
+  <div class = "row">
+    <div class = "col col-md-6 text-center">
+      <%= image_tag request.image.url(:display).to_s, class: "align-self-start mr-3" %>
+      <!-- <%= image_tag request.image.url(:display).to_s, class: "align-self-start mr-3", style: "width:20%;" %> -->
+    </div><!-- col -->
+
+    <div class = "col col-md-6">
+        <!-- <div class="media-body"> -->
         <p style = "font-style:oblique;"> <strong><%= request.client.username %></strong>: <%= request.created_at.strftime("%B %d, %Y (%H:%M)") %></p>
 
-          <h5 class="mt-0"> <- <%= request.title %></h5>
+          <h5 class="mt-0"><%= request.title %></h5>
           <p> <strong>Hairstyle:</strong> <%= request.service.name %></p>
           <p> <strong>Details:</strong> <%= request.description %></p>
           <p> <strong>Budget Range:</strong> <%= request.budget %></p>
@@ -36,11 +42,13 @@
                   <%= link_to("Respond to Request", new_response_path(:request_id => request.id), method: :get, class: "btn btn-sm") %>
                 </div>
             <% end %>
-
-
-
           <% end %>
 
-      </div>
-  </div>
+      <!-- </div> media body-->
+    </div><!-- col -->
+
+
+
+
+    </div><!-- row -->
 </div>
