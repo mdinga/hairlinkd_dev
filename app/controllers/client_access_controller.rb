@@ -33,7 +33,8 @@ class ClientAccessController < ApplicationController
 
   def logout
     #current_user.remove_role :log_client
-    session[:client_id] = nil
+    current_user = nil
+    session[:user_id] = nil
     flash[:notice] = "You have been logged out"
     redirect_to(root_path)
   end

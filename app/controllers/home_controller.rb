@@ -17,7 +17,7 @@ private
 
     case action_name
       when 'index'
-        'home'
+        'application'
       when 'construction'
         'construction'
       end

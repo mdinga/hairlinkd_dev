@@ -36,6 +36,7 @@ class AdminAccessController < ApplicationController
   def logout
       #current_user.remove_role :log_admin
       session[:user_id] = nil
+      current_user = nil
       redirect_to(admin_access_login_path)
   end
 

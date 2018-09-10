@@ -1,0 +1,25 @@
+<body>
+  <nav class="navbar navbar-light nav-menu navbar-expand-md sticky-top bg-light">
+    <div class="container">
+      <div class = "navbar-brand"><img src="/assets/Logo_Side.png" style = "width: 250px;" alt ="hairlinkd logo"/></div>
+
+      <button class = 'navbar-toggler' id = 'collapse_btn' type = 'button' data-toggle = 'collapse'
+        data-target = '#homeToggler' aria-controls="homeToggler"
+        aria-expanded ='false' aria-label="Toggle navigation">
+        <span class = 'navbar-toggler-icon'></span>
+      </button>
+
+        <div class = 'collapse navbar-collapse justify-content-end' id = 'homeToggler'>
+          <div class="nav navbar-nav ">
+            <%= link_to("Client Login", client_access_login_path, class: "nav-item nav-link") %>
+            <%= link_to("Stylist Login", stylist_access_stylist_login_path, class: "nav-item nav-link") %>
+            <%= link_to("Register as Client", new_client_path, class: "nav-item nav-link", id: "client_register_link_one") %>
+            <%= link_to("Register as Stylist", new_stylist_path, class: "nav-item nav-link", id: "stylist_register_link_one") %>
+
+          </div><!--nav navbar-->
+
+        </div>
+        <!-- <div class="nav navbar-nav"><img src="/assets/web-deco/SA_flag.png" style = "width: 50px;" alt ="hairlinkd logo"/></div> -->
+      </div><!--container-->
+    </nav>
+</body>

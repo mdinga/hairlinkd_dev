@@ -31,6 +31,7 @@ end
 
   def stylist_logout
       #current_user.remove_role :log_stylist
+      current_user = nil
       session[:user_id] = nil
       flash[:notice] = "You have been logged out"
       redirect_to(root_path)

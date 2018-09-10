@@ -29,15 +29,19 @@
 
 </head>
 
-  <body>
+        <% unless current_user.nil?  %>
 
-        <% if  (current_user.has_role? :def_stylist) %>
-          <%= render 'layouts/stylist_menu'%>
-        <% elsif (current_user.has_role? :def_client) %>
-          <%= render 'layouts/client_menu'%>
-        <% elsif (current_user.has_role? :def_admin) %>
-          <%= render 'layouts/admin'%>
-        <% end %>
+          <% if  (current_user.has_role? :def_stylist) %>
+            <%= render 'layouts/stylist_menu'%>
+          <% elsif (current_user.has_role? :def_client) %>
+            <%= render 'layouts/client_menu'%>
+          <% elsif (current_user.has_role? :def_admin) %>
+            <%= render 'layouts/admin'%>
+          <% end %>
+
+          <% else %>
+            <%= render 'layouts/home' %>
+          <% end %>
 
         <% if !flash[:notice].blank? %>
           <div class="notice">
@@ -46,7 +50,11 @@
         <% end %>
 
     <%= yield %>
-  </body>
 
 
+    <footer>
+      <div class = "text-center" style "background-color:grey;">
+        &copy; 2018 Hairlinkd (Pty) Ltd. All Rights Reserved. <span><img style='width:25px;' src = "/assets/web-deco/SA_flag.png"/></span>
+      </div>
+    </footer>
 </html>
