@@ -15,7 +15,7 @@
         (<%= a.name %>)
         <% end %><br /></p>
 
-      <p class = "badge badge-primary badge-pill bg-warning " style = "color:black"><%= stylist.overall_rating %> </p> (<%= pluralize(stylist.ratings.count, 'Review') %>)
+      <p class = "badge badge-primary badge-pill bg-warning " style = "color:black;"><%= stylist.overall_rating %> </p> (<%= pluralize(stylist.ratings.count, 'Review') %>)
       <p>Likes: <%= stylist.clients.count %></p>
 
 
@@ -115,11 +115,11 @@
           </tr>
           <tr>
             <th>Facebook Page:</th>
-            <td><%= stylist.facebook_link %></td>
+            <td><%=link_to stylist.facebook_link, url_for(stylist.facebook_link), target: "_blank" %></td>
           </tr>
           <tr>
             <th>Instagram Page:</th>
-            <td><%= stylist.instagram_link %></td>
+            <td><%= link_to stylist.instagram_link, url_for(stylist.instagram_link), target: "_blank" %></td>
           </tr>
         </table>
   </div>
