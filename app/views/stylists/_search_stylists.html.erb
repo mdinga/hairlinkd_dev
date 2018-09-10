@@ -9,7 +9,7 @@
           </h6>
       </div><!-- id = "searchName" -->
 
-      <div id="searchFunction" class="collapse show" aria-labelledby="searchName" data-parent="#accordion">
+      <div id="searchFunction" class="collapse hidden" aria-labelledby="searchName" data-parent="#accordion">
           <%= form_tag(path_to_stylist('#'), method: :get, :id => "stylist_search") do %>
             <%= hidden_field_tag :direction, params[:direction] %>
             <%= hidden_field_tag :sort, params[:sort] %>
@@ -29,7 +29,7 @@
       </h6>
     </div><!-- id = "filterRating" -->
 
-    <div id="filterFunction" class="collapse show" aria-labelledby="filterRating" data-parent="#accordion">
+    <div id="filterFunction" class="collapse hidden" aria-labelledby="filterRating" data-parent="#accordion">
         <p style = "font-size:15px;"><%= link_to sortable "overall_rating", "Rating" %></p>
     </div><!-- class =searchFunction  -->
   </div><!--form group-->
@@ -43,7 +43,7 @@
       </h6>
     </div>   <!-- id = searchCity -->
 
-    <div id="cityFunction" class="collapse show" aria-labelledby="searchCity" data-parent="#accordion">
+    <div id="cityFunction" class="collapse hidden" aria-labelledby="searchCity" data-parent="#accordion">
       <p style = "font-size:15px;"><%= link_to "All Cities", path_to_stylist('#') %> (<%= @stylist_all.count%>)<p>
       <% @cities.uniq.each do |c| %>
               <p style = "font-size:15px;"><%= link_to c, path_to_stylist(:place => c) %> (<%= @cities.count(c)%>)</p>
@@ -60,7 +60,7 @@
       </h6>
     </div>   <!-- id = searchArea -->
 
-    <div id="areaFunction" class="collapse show" aria-labelledby="searchArea" data-parent="#accordion">
+    <div id="areaFunction" class="collapse hidden" aria-labelledby="searchArea" data-parent="#accordion">
       <p style = "font-size:15px;"><%= link_to "All Areas", path_to_stylist('#') %> (<%= @stylist_all.count%>)<p>
       <% @area.uniq.each do |a| %>
             <p style = "font-size:15px;"><%= link_to a, path_to_stylist(:sub_place => a) %> (<%= @area.count(a)%>)</p>
@@ -78,7 +78,7 @@
       </h6>
     </div>   <!-- id = searchArea -->
 
-    <div id="styleFunction" class="collapse show" aria-labelledby="searchStyle" data-parent="#accordion">
+    <div id="styleFunction" class="collapse hidden" aria-labelledby="searchStyle" data-parent="#accordion">
 
     </div><!-- class =areaFunction  -->
     </div><!--form group-->
