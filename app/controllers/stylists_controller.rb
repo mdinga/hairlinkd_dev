@@ -68,7 +68,8 @@ helper_method :sort_criteria, :sort_direction
       flash[:notice] = "Stylist deleted successfully."
       redirect_to (root_path)
 
-    elsif session[:admin_id]
+    elsif current_user.has_role? :def_admin
+      @stylist.destroy
       flash[:notice] = "That stylist was deleted successfully by Admin."
       redirect_to (stylists_path)
     end
