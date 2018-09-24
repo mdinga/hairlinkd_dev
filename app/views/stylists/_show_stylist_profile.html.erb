@@ -129,18 +129,14 @@
 
   <div id = "stylist_portfolio" class = "stylist_info" style ="display:block;">
     <h4 class = "text-center">My Porfolio</h4><hr>
-
+    <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>
       <div>
-        <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>
           <% if @portfolio.count < 8 %>
             <%= button_to(" + Add Item", new_portfolio_path(:stylist_id => @stylist.id), method: :get, class: "btn btn-hl btn-sm text-center mb-3")%>
           <% end %>
-        <% end %>
       </div>
 
-
       <% if @portfolio.count < 1 %>
-
 
       <div class="jumbotron text-center p-3">
         <h1 class="display-4">Create Your Portfolio</h1>
@@ -148,8 +144,6 @@
         <p>You can add up to 8 items</p>
         <p>THE EXAMPLE BELOW WILL NOT APPEAR ON YOUR PROFILE</p>
      </div>
-
-
 
        <div class = "card-body">
              <div class = "card" style = "width:200px;">
@@ -172,11 +166,12 @@
            </tr>
          </table>
 
-       </div>
+        </div>
        </div>
 
 
       <% else %>
+      <% end %>
 
       <div class = "card-group">
           <% @portfolio.each do |portfolio| %>
@@ -212,16 +207,17 @@
 <div id = "stylist_review" class = "stylist_info" style ="display:block; ">
   <h4 class = "text-center">My Reviews</h4><hr>
     <% if @rating.count < 1 %>
-
+      <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>
       <div class="jumbotron text-center p-3">
         <h1 class="display-4">View Your Reviews</h1>
         <p class="lead">Your reviews and ratings submitted by your clients will appear here. The higher your ratings, the more you stand out.</p>
         <hr class="my-4">
         <p>You currently have no reviews.</p>
       </div>
-
+    <% end %>
 
     <% else %>
+
           <% @rating.each do |rating| %>
             <%= render(:partial => 'ratings/index_stylist_ratings', :html => {:multiport => true}, :locals => {:rating => rating} ) %>
               <div class = "text-center">
