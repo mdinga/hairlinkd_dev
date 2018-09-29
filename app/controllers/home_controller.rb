@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     @stylist_3 = Stylist.top_rating.only_3
     @stylist_count = Stylist.all.count
     @portfolio_count = Portfolio.all.count
+    @last_stylist = Stylist.last(3)
   end
 
   def construction

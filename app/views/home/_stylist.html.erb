@@ -1,0 +1,21 @@
+
+ <div class = 'card-body'>
+   <div class = 'card' >
+
+     <div class="img-thumbnail rounded card-img">
+       <%= image_tag stylist.avatar.url(:thumb).to_s, :style => "width:150px;"%>
+     </div>
+
+     <p class = 'card-text'>
+       <strong><%= stylist.username %></strong><br />
+      <strong>City:</strong>
+      <%= stylist.cities[0].city %> <br />
+      <strong> Rating:</strong> <%=  stylist.overall_rating %> (<%= pluralize(stylist.ratings.count, 'Reviews') %>)
+     </p>
+
+    <div class = 'card-footer'>
+       <%= link_to("", stylist_path(stylist))%><br>
+    </div> <!--card-footer-->
+
+   </div> <!--card-->
+   </div><!--card body-->
