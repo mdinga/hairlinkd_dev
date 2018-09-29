@@ -7,9 +7,12 @@
      </div>
 
      <p class = 'card-text'>
-       <strong><%= stylist.username %></strong><br />
+       <strong><%= stylist.username %></strong> </br>
       <strong>City:</strong>
-      <%= stylist.cities[0].city %> <br />
+        <% stylist.cities.each do |c|%>
+        <%= c.city %> </br>
+        <% end %>
+
       <strong> Rating:</strong> <%=  stylist.overall_rating %> (<%= pluralize(stylist.ratings.count, 'Reviews') %>)
      </p>
 
