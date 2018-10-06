@@ -129,69 +129,25 @@
 
   <div id = "stylist_portfolio" class = "stylist_info" style ="display:block;">
     <h4 class = "text-center">My Porfolio</h4><hr>
-    <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>
+
+    <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id)%>
+
       <div>
           <% if @portfolio.count < 8 %>
             <%= button_to(" + Add Item", new_portfolio_path(:stylist_id => @stylist.id), method: :get, class: "btn btn-hl btn-sm text-center mb-3")%>
           <% end %>
       </div>
 
-      <% if @portfolio.count < 1 %>
-
-      <div class="jumbotron text-center p-3">
-        <h1 class="display-4">Create Your Portfolio</h1>
-        <p class="lead">Show off your skills by uploading your best work here. The more details the better.</p>
-        <p>You can add up to 8 items</p>
-        <p>THE EXAMPLE BELOW WILL NOT APPEAR ON YOUR PROFILE</p>
-     </div>
-
-       <div class = "card-body">
-             <div class = "card" style = "width:200px;">
-
-         <table>
-           <div style = "width:150px;"><img src="/assets/web-deco/Style_2.jpg" class = "pl-4"/></div>
-
-           <tr>
-             <th>Hairstyle:</th>
-             <td>Faux Loux</td>
-           </tr>
-
-           <tr>
-             <th>Category:</th>
-             <td>Natural Hairstyle</td>
-           </tr>
-           <tr>
-             <th>Details:</th>
-             <td>Contact me for the good prices and the best service</td>
-           </tr>
-         </table>
-
-        </div>
-       </div>
-
+        <% if @portfolio.count < 1 %>
+          <%= render(:partial => 'portfolio_eg', :html => {:multiport => true})%>
+        <% else %>
+          <%= render(:partial => 'show_portfolio', :html => {:multiport => true})%>
+        <% end %>
 
       <% else %>
+        <%= render(:partial => 'show_portfolio', :html => {:multiport => true})%>
       <% end %>
 
-      <div class = "card-group">
-          <% @portfolio.each do |portfolio| %>
-          <div class = 'card-body' style = 'width:auto;'>
-            <div class = 'card text-center' style = 'width:200px;'>
-              <%= render(:partial => 'portfolios/index_portfolio', :html => {:multiport => true}, :locals => {:portfolio => portfolio})%>
-
-              <div class = 'card-footer'>
-                <% if current_user.has_role? :def_stylist %>
-                  <%= link_to("Edit", edit_portfolio_path(portfolio))%> |
-                  <%= link_to("Delete", delete_portfolio_path(portfolio))%><br />
-                <% end %>
-              </div> <!--card-footer-->
-            </div> <!--card-->
-          </div><!--card-body-->
-
-          <% end %>
-    </div><!--card group-->
-
-    <% end %>
     <div>
       <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>
         <% if @portfolio.count < 8 %>
