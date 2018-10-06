@@ -12,7 +12,7 @@
         <%= image_tag stylist.avatar.url(:thumb).to_s, :style => "width:150px;"%>
       </div>
 
-      <p class = 'card-text'> <strong> Rating:</strong> <%=  stylist.overall_rating %> (<%= pluralize(stylist.ratings.count, 'Reviews') %>) <br />
+      <p class = 'card-text'> <strong> Rating:</strong> <%=  stylist.overall_rating %> (<%= pluralize(stylist.ratings.count, 'Review') %>) <br />
        <strong>City:</strong>
        <% stylist.cities.each do |c|  %>
        <%= c.city %>

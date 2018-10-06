@@ -1,156 +1,18 @@
 <!-- All HTML for the front page comes here-->
 
-<section class="background_home_one">
+<%= render(:partial => 'intro_div') %>
 
-    <div class = 'container text-center info_paragraph' style = "padding-top:10vh; padding-bottom:10vh;">
-      <!-- <h3> Our Goal</h3> -->
-          <h2 class = "mb-5">Finding that perfect stylist does not have to be a struggle anymore!!</h2>
-          <p>We'll help you browse through hundreds of stylists out there, to find the most ideal stylist for your desired hairstyle. </p>
-          <hr>
+<%= render(:partial => 'stylist_div') %>
 
-          <p>Register now and start your search!!</p>
-          <div>
-            <div style="float:left;">
-              <%= button_to "Register as a Client", new_client_path, class: "btn btn-secondary ", id: "client_register_div_one", style: "display: inline-block;",:method => :get %>
-            </div>
-            <div style="float:right;">
-              <%= button_to("Register as a Stylist", new_stylist_path, class: "btn btn-secondary", id: "stylist_register_div_one", style: "display: inline-block;", :method => :get) %>
-            </div>
-            <div style="clear:both;"></div>
-          </div>
-    </div>
+<%= render(:partial => 'stylist_current') %>
 
-</section>
+<%= render(:partial => 'client_div') %>
 
-  <section class="background_home_two">
-    <div class = "container">
-      <div class = "row">
-        <sub-section class = " col col-md-6 text-center" style = "font-size:1.4em;">
-              <div class = "m-3">
-                <img src="/assets/web-deco/Icon-1.png" />
-              </div>
+<%= render(:partial => 'client_current') %>
 
-              <div>
-                <h2 style = 'text-decoration:underline; margin-bottom:15px;'>Hairlinkd for Stylists</h2>
-                <p>Connect with clients who are looking for your skills <p><hr>
-                <p>Showcase your skills and standout from the rest<p><hr>
-                <p>Build credibility and a strong following<p><hr>
-                <p>Gain popularity through reviews<p><hr>
-                <p>Grow your customer base<p><hr>
+<%= render(:partial => 'contact') %>
 
 
-              </div>
-
-              <div>
-                <p><strong>Check it Out Now</strong></p>
-                <%= button_to("Register as a Stylist", new_stylist_path, class: "btn btn-lg", id: "client_register_div_two", style: "display: inline-block;", :method => :get) %>
-              </div>
-          </sub-section>
-
-          <sub-section class = "col col-md-6">
-              <img src="/assets/background/stylist_chair1.jpg" />
-          </sub-section>
-        </div>  <!-- row -->
-      </div>  <!-- container -->
-    </section>
-
-    <section class="background_home_three text-center">
-
-              <div class = "mt-4">
-                <h3>LATEST STYLISTS TO SIGN UP</h3>
-                <h3><i class = "glyphicon glyphicon-download"></i></h3>
-              </div>
-
-              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-
-                <div class="carousel-inner">
-
-                  <% @last_stylist.each do |stylist| %>
-                    <div class="carousel-item <%= 'active' if stylist == @last_stylist[0] %>">
-                      <%= render(:partial => 'stylist', :html => {:multiport => true}, :locals => {:stylist => stylist}) %>
-                    </div>
-                    <% end %>
-
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true" style= "text-color:black;"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-            </div>
-            </div>
-
-            <div class = "mt-3">
-              <h2>FREE FOR FIRST 100 STYLISTS!!!</h2>
-                <h4 style = 'margin-bottom:20px;'>Registered Stylists: <%= @stylist_count %></h4>
-              <%= button_to("SIGN UP AS A STYLIST!!", new_stylist_path, class: "btn btn-gold", id: "client_register_div_two", style: "display: inline-block;", :method => :get) %>
-            </div>
-    </section>
-
-  <div class = "container">
-    <div class = "row" style = "margin:30px 0px 30px;">
-
-    <sub-section class = "col col-md-6 text-center">
-        <img src="/assets/background/client_info.jpg" />
-    </sub-section>
-
-      <sub-section class = " col col-md-6 text-center" style = "font-size:1.4em;">
-          <div>
-            <img style = "border-radius:20px;" src="/assets/web-deco/Icon-2.png" />
-          </div>
-
-          <div>
-            <h2 style = 'text-decoration:underline; margin-bottom:15px;'>Hairlinkd for Clients</h2>
-            <p>Reach out to stylists with your hair requests</p><hr>
-            <p>Browse various stylists' profiles</p><hr>
-            <p>Read and submit reviews</p><hr>
-            <p>View stylist's gallery</p><hr>
-            <p>Follow your favourites</p>
-          </div>
-          <hr>
-
-            <div>
-              <p><strong>Check it Out Now</strong></p>
-              <%= button_to "Register as a Client", new_client_path, class: "btn btn-lg", id: "stylist_register_div_two", style: "display: inline-block;",:method => :get %>
-            </div><!--card-footer-->
-      </sub-section>
-
-    </div>  <!-- row -->
-  </div>  <!-- container -->
-
-  <section class="background_home_three text-center">
-            <div>
-                  <h2>CLIENT SITE LAUNCH: <span style = "text-decoration:underline;">Coming Soon</span></h2>
-
-                    <h4 class = "m-4">Keep up to date with the developments and be one of the first clients to use Hairlinkd</h4>
-                      <%= button_to("SIGN UP NOW!", new_client_path, class: "btn btn-gold", id: "client_register_div_two", style: "display: inline-block;", :method => :get) %>
-            </div>
-  </section>
-
-
-<section style = "background-image: url(/assets/web-deco/contact_us1.jpg);">
-  <div class = "container text-center p-5">
-    <div style ='width:100%; padding:10px;'>
-      <h2>Lets Keep In Touch</h2>
-    </div>
-
-
-    <div style = "font-size:1.4em">
-          <p>We would love to here from you.</p>
-          <p>Whether its an issue you have, or you just want to say hello!!</p>
-          <p>Drop us a message and we'll come back to you</p>
-          <%= button_to("Contact Us", new_contact_form_path, method: :get, class: "btn btn-danger")%>
-    </div>
-  </div>
-
-</section>
 
 <footer>
   <div class = "text-center fixed-bottom mt-5" style = "background-color:black; color:white;">

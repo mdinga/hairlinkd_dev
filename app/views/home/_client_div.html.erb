@@ -1,0 +1,30 @@
+<div class = "container">
+  <div class = "row" style = "margin:30px 0px 30px;">
+
+  <sub-section class = "col col-md-6 text-center">
+      <img src="/assets/background/client_info.jpg" />
+  </sub-section>
+
+    <sub-section class = " col col-md-6 text-center" style = "font-size:1.4em;">
+        <div>
+          <img style = "border-radius:20px;" src="/assets/web-deco/Icon-2.png" />
+        </div>
+
+        <div>
+          <h2 style = 'text-decoration:underline; margin-bottom:15px;'>Hairlinkd for Clients</h2>
+          <p>Reach out to stylists with your hair requests</p><hr>
+          <p>Browse various stylists' profiles</p><hr>
+          <p>Read and submit reviews</p><hr>
+          <p>View stylist's gallery</p><hr>
+          <p>Follow your favourites</p>
+        </div>
+        <hr>
+
+          <div>
+            <p><strong>Check it Out Now</strong></p>
+            <%= button_to "Register as a Client", new_client_path, class: "btn btn-lg", id: "stylist_register_div_two", style: "display: inline-block;",:method => :get %>
+          </div><!--card-footer-->
+    </sub-section>
+
+  </div>  <!-- row -->
+</div>  <!-- container -->

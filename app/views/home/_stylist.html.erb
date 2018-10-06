@@ -6,14 +6,16 @@
        <%= image_tag stylist.avatar.url(:thumb).to_s, :style => "width:150px;"%>
      </div>
 
-     <p class = 'card-text'>
+     <p class = 'card-text' style = 'color:black;'>
        <strong><%= stylist.username %></strong> </br>
-      <strong>City:</strong>
-        <% stylist.cities.each do |c|%>
-        <%= c.city %> </br>
-        <% end %>
 
-      <strong> Rating:</strong> <%=  stylist.overall_rating %> (<%= pluralize(stylist.ratings.count, 'Reviews') %>)
+       <strong>City:</strong>
+        <% stylist.cities.each do |c|%>
+        <%= c.city %>
+        <% end %>
+      </br>
+
+      <strong> Rating:</strong> <%=  stylist.overall_rating %> (<%= pluralize(stylist.ratings.count, 'Review') %>)
      </p>
 
     <div class = 'card-footer'>

@@ -46,6 +46,7 @@ class Stylist < ApplicationRecord
 
 # Call backs
   before_save :downcase_email
+  before_save :capitalize_username
   after_create :create_user
 
 # General funtions

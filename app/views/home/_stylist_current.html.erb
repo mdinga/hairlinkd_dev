@@ -1,0 +1,39 @@
+<section class="background_home_three text-center">
+
+          <div class = "mt-4">
+            <h3>LATEST STYLISTS TO SIGN UP</h3>
+            <h3><i class = "glyphicon glyphicon-download"></i></h3>
+          </div>
+
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+
+              <% @last_stylist.each do |stylist| %>
+                <div class="carousel-item <%= 'active' if stylist == @last_stylist[0] %>">
+                  <%= render(:partial => 'stylist', :html => {:multiport => true}, :locals => {:stylist => stylist}) %>
+                </div>
+                <% end %>
+
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true" style= "text-color:black;"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+        </div>
+        </div>
+
+        <div class = "mt-3">
+          <h2>FREE FOR FIRST 100 STYLISTS!!!</h2>
+            <h4 style = 'margin-bottom:20px;'>Registered Stylists: <%= @stylist_count %></h4>
+          <%= button_to("SIGN UP AS A STYLIST!!", new_stylist_path, class: "btn btn-gold", id: "client_register_div_two", style: "display: inline-block;", :method => :get) %>
+        </div>
+</section>
