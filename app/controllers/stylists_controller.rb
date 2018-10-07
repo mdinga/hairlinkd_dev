@@ -18,6 +18,7 @@ helper_method :sort_criteria, :sort_direction
     @rating = @stylist.ratings
     @portfolio = @stylist.portfolios
     services_array
+    set_booleans
   end
 
   def new
@@ -120,5 +121,28 @@ helper_method :sort_criteria, :sort_direction
       end
     @cats = @services_cat.uniq
   end
+
+  def set_booleans
+    @bool_profile = false
+    @bool_city = false
+    @bool_services = false
+    @bool_about = true
+    @bool_contact = true
+    @bool_portfolio = false
+    @profile_complete = false
+
+      @bool_profile = true if @stylist.avatar.nil? == true
+      @bool_city = true if @stylist.city_ids.empty? == false
+      @bool_services= true if @stylist.service_ids.empty? == false
+      @bool_about = false if @stylist.about_me.nil?  || @stylist.about_me.empty?
+      @bool_contact = false if @stylist.phone.nil? || @stylist.phone.empty?
+      @bool_portfolio = true if @portfolio.count > 0
+
+      if  @bool_city == true && @bool_services == true && @bool_about == false && @bool_contact == false && @bool_portfolio == true
+        @profile_complete = true
+      end
+  end
+
+
 
 end

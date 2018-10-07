@@ -48,16 +48,14 @@
         <i class = "glyphicon glyphicon-thumbs-down"></i> Unlike
       <% end %>
     </div>
-
-  </div>
 <% end %>
+<hr>
 
-<div>
-    <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>
-        <%= button_to "Complete Your Profile", edit_stylist_path(current_user.id), method: :get, class: "btn btn-gold btn-block", style: "font-weight:bold;"%>
-        <hr>
-    <% end %>
-</div>
+  <!-- Edit or Complete Your Profile -->
+
+  <div>
+    <%= render(:partial => 'complete_your_profile', :html => {:multiport => true})%>
+  </div>
 
                                                                   <!-- About Me Section -->
 
@@ -144,9 +142,9 @@
           <%= render(:partial => 'show_portfolio', :html => {:multiport => true})%>
         <% end %>
 
-      <% else %>
-        <%= render(:partial => 'show_portfolio', :html => {:multiport => true})%>
-      <% end %>
+        <% else %>
+          <%= render(:partial => 'show_portfolio', :html => {:multiport => true})%>
+        <% end %>
 
     <div>
       <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>

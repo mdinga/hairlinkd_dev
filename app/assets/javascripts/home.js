@@ -1,39 +1,30 @@
-$ (document).ready(function(){
+// jQuery(function(){
+//   var areas;
+//   areas = $('#stylist_area').html();
+//   return $('#stylist_city').change(function(){
+//     var city, options;
+//     city = $('#stylist_city :selected').text();
+//     options = $(city).filter("optgroup[label= " + city +"]").html();
+//     console.log(options);
+//       if (options){
+//         $('#stylist_area').html(options);
+//
+//       } else {
+//         $('#stylist_area').empty();
+//
+//       };
+//   });
+// });
 
-  /* Search Function for Stylists, default is collapse*/
-  /*$('#searchFunction').collapse("hide");
-  $('#filterFunction').collapse("hide");
-  $('#cityFunction').collapse("hide");
-  $('#areaFunction').collapse("hide");
-  $('#styleFunction').collapse("hide");*/
-/*
-  $("#about-link").click(function(){
-    $("#about_me").show("fast");
-    $("#contact_me").hide("fast");
-    $("#stylist_review").hide("fast");
-    $("#stylist_portfolio").hide("fast");
-  });
 
-  $("#contacts-link").click(function(){
-    $("#contact_me").show("fast");
-    $("#about_me").hide("fast");
-    $("#stylist_review").hide("fast");
-    $("#stylist_portfolio").hide("fast");
-  });
-
-  $("#reviews-link").click(function(){
-    $("#stylist_review").show("fast");
-    $("#about_me").hide("fast");
-    $("#contact_me").hide("fast");
-    $("#stylist_portfolio").hide("fast");
-  });
-
-  $("#portfolio-link").click(function(){
-    $("#stylist_portfolio").show("fast");
-    $("#about_me").hide("fast");
-    $("#contact_me").hide("fast");
-    $("#stylist_review").hide("fast");
-  });
-*/
-
-});
+// jQuery ->
+//   areas = $('#stylist_area').html()
+//
+//   $('#stylist_city').change ->
+//     city = $('#stylist_city :selected').text()
+//     options = $(areas).filter("optgroup[label='#{city}'']").html()
+//
+//     if options
+//       $('#stylist_area').html(options)
+//     else
+//       $('#stylist_area').empty()

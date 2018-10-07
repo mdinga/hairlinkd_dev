@@ -27,14 +27,14 @@
       <%= s.text_field :email, class: 'form-control' %>
     </div>
 
-    <div class ='form-group'>
+    <div id  = "stylist_city" class ='form-group'>
       <label class = 'form-control-label'>City:</label>
-      <%= s.collection_select :city_ids, City.all, :id, :city, :prompt => true, :include_blank => true, class: 'form-control' %>
+          <%= s.collection_select :city_ids, City.all, :id, :city, :prompt => true, :include_blank => true, class: 'form-control' %>
     </div>
 
-    <div class ='form-group'>
+    <div id = "stylist_area" class ='form-group'>
       <label class = 'form-control-label'>Area:</label>
-      <%= s.grouped_collection_select :area_ids, City.all, :areas, :city, :id, :name, :prompt => true, :include_blank => true, class: 'form-control' %>
+          <%= s.grouped_collection_select :area_ids, City.all, :areas, :city, :id, :name, :prompt => true, :include_blank => true, class: 'form-control' %>
     </div>
 
   </fieldset>
@@ -70,7 +70,7 @@
   </fieldset>
 
   <fieldset>
-    <legend>Get Hold of Me</legend>
+    <legend>Contacts</legend>
 
     <div class ='form-group'>
       <label class = 'form-control-label'>Salon Name:</label>

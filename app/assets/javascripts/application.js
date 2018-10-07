@@ -18,11 +18,3 @@
 // require turbolinks
 //= require_tree .
 //= require home
-
-
-$(function(){
-  $(".ajax_search a").live("click", function(){
-    $.getScript(this.href);
-    return false;
-  });
-});
