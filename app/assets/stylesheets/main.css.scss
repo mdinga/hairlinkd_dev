@@ -194,6 +194,10 @@ span.status.false{
   background: red;
   color: red;
 }
+// For stylist dropdown search bar
+[data-toggle~="collapse"] {
+    cursor: pointer;
+}
 
 /*Stylist Show Pagination CSS*/
 .apple_pagination {

@@ -37,7 +37,7 @@ end
 
 
 def searchable_stylists
-  @stylist = Stylist.search(params[:search]).find_city(params[:place]).find_area(params[:sub_place]).order(sort_criteria + " " + sort_direction).paginate(:per_page => 2, :page => params[:page])
+  @stylist = Stylist.search(params[:search]).find_city(params[:place]).find_area(params[:sub_place]).order(sort_criteria + " " + sort_direction).paginate(:per_page => 12, :page => params[:page])
   @stylist_all = Stylist.all
 
   @cities =[]
