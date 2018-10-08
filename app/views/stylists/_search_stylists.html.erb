@@ -4,8 +4,8 @@
   <!-- __________________________________First search function i.e. searching by name___________________________________________ -->
     <div class="form-group">
       <div id = "searchName">
-          <h6 data-toggle = "collapse" data-target = "#searchFunction" aria-expanded="true" aria-controls="searchFunction">
-            Search By Name: <span><i class = "glyphicon glyphicon-chevron-down" style = 'font-size:10px;'></i></span>
+          <h6 data-toggle = "collapse" data-target = "#searchFunction" href="#searchFunction" aria-expanded="true" aria-controls="searchFunction">
+            Search By Username: <span><i class = "glyphicon glyphicon-chevron-down" style = 'font-size:10px;'></i></span>
           </h6>
       </div><!-- id = "searchName" -->
 
@@ -14,7 +14,7 @@
             <%= hidden_field_tag :direction, params[:direction] %>
             <%= hidden_field_tag :sort, params[:sort] %>
             <%= text_field_tag :search, params[:search], class: 'form-control' %>
-            <%= submit_tag 'Search', :name => nil, class: 'btn btn-secondary mt-2' %>
+            <%= submit_tag 'Search', :username => nil, class: 'btn btn-secondary mt-2' %>
           <% end %>
       </div><!-- class =searchFunction  -->
     </div><!-- class = form-group -->
@@ -24,7 +24,7 @@
 
   <div class = "form group .ajax_search">
     <div id = "filterRating">
-      <h6 data-toggle = "collapse" data-target = "#filterFunction" aria-expanded="true" aria-controls="filterFunction">
+      <h6 data-toggle = "collapse" data-target = "#filterFunction" href="#filterFunction" aria-expanded="true" aria-controls="filterFunction">
         Sort by: <span><i class = "glyphicon glyphicon-chevron-down" style = 'font-size:10px;'></i></span>
       </h6>
     </div><!-- id = "filterRating" -->
@@ -38,7 +38,7 @@
 
   <div class = "form group .ajax_search">
     <div id = "searchCity">
-      <h6 data-toggle = "collapse" data-target = "#cityFunction" aria-expanded="true" aria-controls="cityFunction">
+      <h6 data-toggle = "collapse" data-target = "#cityFunction" href="#cityFunction" aria-expanded="true" aria-controls="cityFunction">
         Search by City: <span><i class = "glyphicon glyphicon-chevron-down" style = 'font-size:10px;'></i></span>
       </h6>
     </div>   <!-- id = searchCity -->
@@ -55,7 +55,7 @@
 
   <div class = "form group .ajax_search">
     <div id = "searchArea">
-      <h6 data-toggle = "collapse" data-target = "#areaFunction" aria-expanded="true" aria-controls="areaFunction">
+      <h6 data-toggle = "collapse" data-target = "#areaFunction" href="#areaFunction" aria-expanded="true" aria-controls="areaFunction">
         Search by Area: <span><i class = "glyphicon glyphicon-chevron-down" style = 'font-size:10px;'></i></span>
       </h6>
     </div>   <!-- id = searchArea -->
@@ -73,7 +73,7 @@
 
   <div class = "form group .ajax_search">
     <div id = "searchStyle">
-      <h6 data-toggle = "collapse" data-target = "#styleFunction" aria-expanded="true" aria-controls="styleFunction">
+      <h6 data-toggle = "collapse" data-target = "#styleFunction" href="#styleFunction" aria-expanded="true" aria-controls="styleFunction">
         Search by Hairstyle: <span><i class = "glyphicon glyphicon-chevron-down" style = 'font-size:10px;'></i></span>
       </h6>
     </div>   <!-- id = searchArea -->
