@@ -33,7 +33,7 @@
     </div>
 
     <div id = "stylist_area" class ='form-group'>
-      <label class = 'form-control-label'>Area:</label>
+      <label class = 'form-control-label'>Suburb:</label>
           <%= s.grouped_collection_select :area_ids, City.all, :areas, :city, :id, :name, :prompt => true, :include_blank => true, class: 'form-control' %>
     </div>
 
