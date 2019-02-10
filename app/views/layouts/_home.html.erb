@@ -10,13 +10,31 @@
       </button>
 
         <div class = 'collapse navbar-collapse justify-content-end' id = 'homeToggler'>
-          <div class="nav navbar-nav ">
-            <%= link_to("Client Login", client_access_login_path, class: "nav-item nav-link") %>
-            <%= link_to("Stylist Login", stylist_access_stylist_login_path, class: "nav-item nav-link") %>
-            <%= link_to("Register as Client", new_client_path, class: "nav-item nav-link", id: "client_register_link_one") %>
-            <%= link_to("Register as Stylist", new_stylist_path, class: "nav-item nav-link", id: "stylist_register_link_one") %>
+          <ul class="nav navbar-nav"  >
+            <li class = "dropdown mr-5">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" style= "color: black;">Login</a>
+              <ul class = "dropdown-menu">
+                <li><%= link_to("Client Login", client_access_login_path, class: "nav-item nav-link") %></li>
+                <li><%= link_to("Stylist Login", stylist_access_stylist_login_path, class: "nav-item nav-link") %></li>
+              </ul>
+            </li>
 
-          </div><!--nav navbar-->
+            <li class = "dropdown mr-5">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" style= "color: black;">Register</a>
+              <ul class = "dropdown-menu">
+                <li><%= link_to("Register as Client", new_client_path, class: "nav-item nav-link", id: "client_register_link_one") %></li>
+                <li><%= link_to("Register as Stylist", new_stylist_path, class: "nav-item nav-link", id: "stylist_register_link_one") %></li>
+              </ul>
+            </li>
+
+            <li class = "mr-5" ><a href="#" style= "color: black;">About Us</a></li>
+            <li class = "mr-5" ><a href="#" style= "color: black;">Contact Us</a></li>
+
+
+
+
+
+          </ul><!--nav navbar-->
 
         </div>
         <!-- <div class="nav navbar-nav"><img src="/assets/web-deco/SA_flag.png" style = "width: 50px;" alt ="hairlinkd logo"/></div> -->

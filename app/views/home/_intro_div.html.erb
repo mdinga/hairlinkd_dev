@@ -1,20 +1,42 @@
-<section class="background_home_one">
-    <div class = 'container text-center info_paragraph' style = "padding-top:10vh; padding-bottom:10vh;">
-      <!-- <h3> Our Goal</h3> -->
-          <h2 class = "mb-5">Finding that perfect hairstylist does not have to be a struggle!!</h2>
-          <!-- <p>We'll help you browse through hundreds of stylists out there, to find the most ideal stylist for your desired hairstyle. </p> -->
-          <p>Browse through profiles of the best hairstylists in your area and connect directly</p>
-          <hr>
+<div class="#">
+  <section class="background_home_one">
 
-          <p>Register now and start your search!!</p>
-          <div>
-            <div style="float:left;">
-              <%= button_to "Register as a Client", new_client_path, class: "btn btn-secondary ", id: "client_register_div_one", style: "display: inline-block;",:method => :get %>
-            </div>
-            <div style="float:right;">
-              <%= button_to("Register as a Stylist", new_stylist_path, class: "btn btn-secondary", id: "stylist_register_div_one", style: "display: inline-block;", :method => :get) %>
-            </div>
-            <div style="clear:both;"></div>
+
+        <div class="container">
+          <div class = "row justify-content-end">
+              <div class="col-8">
+                <div class="jumbotron jumbotron-fluid jumbo_1">
+                  <h3>With thousands of hair stylists out there, have you found your one?</h3>
+                </div>
+              </div>
           </div>
-    </div>
-</section>
+        </div>
+
+
+      <!-- <div class = 'container text-center info_paragraph' style = "position:absolute; top:215px; left:0px;">
+        <div class="row">
+          <div class="col-md-6" style = "min-height:1px;">
+
+          </div>
+          <div class="col md-6">
+              <div class="jumbotron" style="background-color:black; opacity:0.9; filter: alpha(opacity=100); letter-spacing:2px;">
+                <h2>Find Your Perfect Hairstylist</h2>
+                <p>Whatever your needs!</p>
+                <p>Wherever your are!</p>
+
+
+                <!-- <p>Register now and start your search!!</p>
+                <div>
+                  <div style="float:left;">
+                    <%= button_to "Register as a Client", new_client_path, class: "btn btn-secondary ", id: "client_register_div_one", style: "display: inline-block;",:method => :get %>
+                  </div>
+                  <div style="float:right;">
+                    <%= button_to("Register as a Stylist", new_stylist_path, class: "btn btn-secondary", id: "stylist_register_div_one", style: "display: inline-block;", :method => :get) %>
+                  </div>
+                  <div style="clear:both;"></div>
+                </div> -->
+
+
+
+  </section>
+</div>
