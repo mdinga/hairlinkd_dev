@@ -1,5 +1,5 @@
-<section style = "background-image: url(/assets/web-deco/contact_us1.jpg);">
-  <div class = "container text-center p-5">
+<section>
+  <div class = "container text-center p-5 lead">
     <div style ='width:100%; padding:10px;'>
       <h2>Lets Keep In Touch</h2>
     </div>
@@ -9,7 +9,24 @@
           <p>We would love to here from you.</p>
           <p>Whether its an issue you have, or you just want to say hello!!</p>
           <p>Drop us a message and we'll come back to you</p>
-          <%= button_to("Contact Us", new_contact_form_path, method: :get, class: "btn btn-danger")%>
+          <%= button_to("Contact Us", new_contact_form_path, method: :get, class: "btn")%>
     </div>
+
+    <div class = "row d-flex justify-content-center mt-5">
+
+      <div class="m-2">
+        <%= link_to (image_tag asset_path 'web-deco/facebook_icon1.jpg'), "https://www.facebook.com/hairlinkd/" %>
+      </div>
+
+      <div class="m-2">
+        <%= image_tag asset_path 'web-deco/twitter_icon1.jpg' %>
+      </div>
+
+      <div class="m-2">
+        <%= image_tag asset_path 'web-deco/insta_icon1.jpg' %>
+      </div>
+
+    </div>
+
   </div>
   </section>

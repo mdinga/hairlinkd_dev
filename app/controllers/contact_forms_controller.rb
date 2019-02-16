@@ -1,6 +1,6 @@
 class ContactFormsController < ApplicationController
 
-  layout 'home'
+  layout 'menu'
 
   def index
   end

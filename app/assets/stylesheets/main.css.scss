@@ -80,11 +80,10 @@ $gold: #D4AF37;
 
 }
 
-.background_home_one {
+#background_home_one {
     // padding-top: 40vh;
-    background-image: url(/assets/background/background1.4.jpg);
+    background-image: url(/assets/background/background1.6.jpg);
     background-size: cover;
-
     display:block;
 
     /* Set a specific height */
@@ -92,25 +91,23 @@ $gold: #D4AF37;
     // background-attachment: fixed;
     // background-position: center;
     // background-repeat: no-repeat;
-
     // color:#FFFAF0;
 }
 
-.jumbo_1{
-  color:white;
-  letter-spacing: 2px;
-  line-height:1.5;
+#jumbo_1{
   margin-top: 30vh;
   margin-bottom: 30vh;
   padding:40px;
   border: 1px solid white;
-  background-color:black;
-
-
+  color:white;
+  letter-spacing: 2px;
+  line-height:1.5;
+  background: rgba(54, 25, 25, .00004);
 
 }
 
- .background_home_two {
+
+ #background_home_two {
 
     // background-image: url(/assets/background/happy_client.jpg);
     background-image: url(/assets/background/happy_client2.jpg);
@@ -120,33 +117,25 @@ $gold: #D4AF37;
 
      /* Create the parallax scrolling effect */
       background-attachment: fixed;
-     background-position: right;
-     background-repeat: no-repeat;
-      background-size: cover auto;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
       padding-top: 20px;
       padding-bottom: 20px;
-      border: 5px solid black;
+      //border: 1px solid black;
 
  }
 
-.background_home_three {
-    background-color:black;
-    color:$gold;
-    padding: 20px 0px 20px 0px;
-    margin-top:30px;
-}
 
-// .background_home_four {
-//     background-image: url(/assets/background/client_info.jpg);
-//
-//     // height: 600px;
-//     // width: auto;
-//     // background-attachment: fixed;
-//     background-position: center;
-//     background-repeat: no-repeat;
-//     // background-size: cover auto;
-//     border-radius:300px;
-// }
+#background_home_four {
+    background-image: url(/assets/background/happy_client4.jpg);
+    height: 100%;
+    width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 .empty{
   height:600px;
