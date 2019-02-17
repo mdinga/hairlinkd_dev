@@ -1,43 +1,43 @@
-<body>
-  <nav class="navbar navbar-light nav-menu navbar-expand-md sticky-top bg-light">
-    <div class="container">
-      <div class = "navbar-brand"><img src="/assets/Logo_Side.png" style = "width: 250px;" alt ="hairlinkd logo"/></div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <a class="navbar-brand ml-2" href="#"><img src="/assets/Logo_Side.png" style = "width: 250px;" alt ="hairlinkd logo"/></a>
 
-      <button class = 'navbar-toggler' id = 'collapse_btn' type = 'button' data-toggle = 'collapse'
-        data-target = '#homeToggler' aria-controls="homeToggler"
-        aria-expanded ='false' aria-label="Toggle navigation">
-        <span class = 'navbar-toggler-icon'></span>
-      </button>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-        <div class = 'collapse navbar-collapse justify-content-end' id = 'homeToggler'>
-          <ul class="nav navbar-nav"  >
-            <li class = "dropdown mr-5">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" style= "color: black;">Login</a>
-              <ul class = "dropdown-menu">
-                <li><%= link_to("Client Login", client_access_login_path, class: "nav-item nav-link") %></li>
-                <li><%= link_to("Stylist Login", stylist_access_stylist_login_path, class: "nav-item nav-link") %></li>
-              </ul>
-            </li>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+    <ul class="navbar-nav">
 
-            <li class = "dropdown mr-5">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" style= "color: black;">Register</a>
-              <ul class = "dropdown-menu">
-                <li><%= link_to("Register as Client", new_client_path, class: "nav-item nav-link", id: "client_register_link_one") %></li>
-                <li><%= link_to("Register as Stylist", new_stylist_path, class: "nav-item nav-link", id: "stylist_register_link_one") %></li>
-              </ul>
-            </li>
-
-            <li class = "mr-5" ><a href="#" style= "color: black;">About Us</a></li>
-            <li class = "mr-5" ><a href="#" style= "color: black;">Contact Us</a></li>
-
-
-
-
-
-          </ul><!--nav navbar-->
-
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id = "navbarDropdownLoginLink" role = "button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style= "color: black;">Login</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownLoginLink">
+          <%= link_to("Client Login", client_access_login_path, class: "dropdown-item") %>
+          <%= link_to("Stylist Login", stylist_access_stylist_login_path, class: "dropdown-item") %>
         </div>
-        <!-- <div class="nav navbar-nav"><img src="/assets/web-deco/SA_flag.png" style = "width: 50px;" alt ="hairlinkd logo"/></div> -->
-      </div><!--container-->
-    </nav>
-</body>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarSignUPLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style= "color: black;">
+          Sign Up
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarSignUPLink">
+          <%= link_to("Sign Up as a Client", new_client_path, class: "dropdown-item", id: "client_register_link_one") %>
+          <%= link_to("Sign Up as a Stylist", new_stylist_path, class: "dropdown-item", id: "stylist_register_link_one") %>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact Us</a>
+      </li>
+
+
+
+    </ul>
+  </div>
+
+
+</nav>

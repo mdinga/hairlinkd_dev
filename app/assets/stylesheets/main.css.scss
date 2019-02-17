@@ -33,10 +33,6 @@ $gold: #D4AF37;
   color: $dark_brown;
 }
 
-//Nav Bar CSS
-
-
-
 .hairlinkd_logo{
   font-size: 2em;
   font-weight: bold;
@@ -116,7 +112,7 @@ $gold: #D4AF37;
       width: 100%;
 
      /* Create the parallax scrolling effect */
-      background-attachment: fixed;
+      //background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -131,7 +127,7 @@ $gold: #D4AF37;
     background-image: url(/assets/background/happy_client4.jpg);
     height: 100%;
     width: 100%;
-    background-attachment: fixed;
+    //background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
