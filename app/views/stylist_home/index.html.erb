@@ -1,4 +1,16 @@
-<h1>StylistHome#index</h1>
-<p>Find me in app/views/stylist_home/index.html.erb</p>
+<!-- All HTML for the front page comes here-->
+
+<%= render(:partial => 'intro_div') %>
+<%= render(:partial => 'stylist_div_one') %>
+<%= render(:partial => 'stylist_div_two') %>
+<%= render(:partial => 'stylist_div_three') %>
+<%= render(:partial => 'stylist_div_four') %>
+<%= render(:partial => 'stylist_div_five') %>
 
 <%= button_to "Home Page", root_path, class: "btn", id: "stylist_page_button", style: "display: inline-block;",:method => :get %>
+
+<footer>
+  <div class = "text-center mt-5" style = "background-color:black; color:white;">
+    &copy; 2019 Hairlinkd (Pty) Ltd. All Rights Reserved. <span><img style='width:25px;' src = "/assets/web-deco/SA_flag.png"/></span>
+  </div>
+</footer>

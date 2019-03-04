@@ -104,9 +104,8 @@ $gold: #D4AF37;
 
 
  #background_home_two {
-
     // background-image: url(/assets/background/happy_client.jpg);
-    background-image: url(/assets/background/happy_client2.jpg);
+      background-image: url(/assets/background/happy_client2.jpg);
      /* Set a specific height */
       height: 100%;
       width: 100%;
@@ -119,7 +118,6 @@ $gold: #D4AF37;
       padding-top: 20px;
       padding-bottom: 20px;
       //border: 1px solid black;
-
  }
 
 
@@ -147,6 +145,30 @@ $gold: #D4AF37;
 
 
 /* Stylist SASS*/
+
+#background_stylist_one{
+  background-image: url(/assets/background/gold_hair.jpg);
+  background-size: cover;
+  display:block;
+}
+
+#background_stylist_two{
+  background-image: url(/assets/background/scissor.jpg);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  display:block;
+}
+
+#background_stylist_four{
+  background-image: url(/assets/background/salon.jpg);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  display:block;
+}
+
+
 
 .background_stylist{
     height: auto;
