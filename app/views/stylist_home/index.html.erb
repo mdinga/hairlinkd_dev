@@ -6,8 +6,12 @@
 <%= render(:partial => 'stylist_div_three') %>
 <%= render(:partial => 'stylist_div_four') %>
 <%= render(:partial => 'stylist_div_five') %>
+<%= render(:partial => 'home/contact') %>
 
-<%= button_to "Home Page", root_path, class: "btn", id: "stylist_page_button", style: "display: inline-block;",:method => :get %>
+<div class="text-center">
+  <%= button_to "Home Page", root_path, class: "btn", id: "stylist_page_button", style: "display: inline-block;",:method => :get %>
+</div>
+
 
 <footer>
   <div class = "text-center mt-5" style = "background-color:black; color:white;">
