@@ -1,9 +1,9 @@
 
 Rails.application.routes.draw do
 
-  #root 'home#index'
-  root 'home#construction'
-  get 'home', :to => 'home#index'
+  root 'home#index'
+  #root 'home#construction'
+  #get 'home', :to => 'home#index'
   get 'stylist_home/index'
 
   get 'alog', :to => 'admin_access#menu'
