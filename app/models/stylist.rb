@@ -10,7 +10,6 @@ class Stylist < ApplicationRecord
   has_many :portfolios, :dependent => :destroy
   has_many :responses, :dependent => :destroy
   has_and_belongs_to_many :hairstyles
-  has_and_belongs_to_many :services
   has_and_belongs_to_many :cities
   has_and_belongs_to_many :areas
   mount_uploader :avatar, AvatarUploader

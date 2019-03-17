@@ -1,6 +1,6 @@
 class HairstylesController < ApplicationController
 
-  layout "admin"
+  layout "application"
 
   def index
     @hairstyle = Hairstyle.order(params[:sort])

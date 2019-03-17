@@ -4,7 +4,6 @@ class Request < ApplicationRecord
 
   belongs_to :client
   belongs_to :city
-  belongs_to :service
   has_many :responses, :dependent => :destroy
   mount_uploader :image, ImageUploader
 

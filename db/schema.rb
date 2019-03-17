@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180730180841) do
+ActiveRecord::Schema.define(version: 20190316183056) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -178,9 +178,16 @@ ActiveRecord::Schema.define(version: 20180730180841) do
     t.index ["stylist_id", "client_id"], name: "index_fav_stylists_on_stylist_id_and_client_id"
   end
 
+  create_table "hairstyle_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "hairstyles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "hairstyle"
-    t.string "style_category"
+    t.integer "hairstyle_category_id"
     t.text "style_description", limit: 255
   end
 
