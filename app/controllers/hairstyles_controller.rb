@@ -1,9 +1,11 @@
 class HairstylesController < ApplicationController
+helper_method :sort_column, :sort_direction #To have access to these methods on the application helper
 
   layout "application"
 
   def index
-    @hairstyle = Hairstyle.order(params[:sort])
+    @hairstyle = Hairstyle.order(sort_column+" "+sort_direction)
+    @categories = HairstyleCategory.alphabetical
   end
 
   def show
@@ -12,14 +14,14 @@ class HairstylesController < ApplicationController
 
   def new
     @hairstyle = Hairstyle.new
-    get_style_names
-    get_style_cats
+    @categories = HairstyleCategory.alphabetical
+
   end
 
   def create
-    @hairstyle = Hairstyle.create(hairstyle_params)
-    get_style_names
-    get_style_cats
+    @hairstyle = Hairstyle.new(hairstyle_params)
+    @categories = HairstyleCategory.alphabetical
+
 
     if @hairstyle.save
       flash[:notice] = "Hairstyle Created Successfully"
@@ -32,15 +34,13 @@ class HairstylesController < ApplicationController
 
   def edit
     @hairstyle = Hairstyle.find(params[:id])
-    get_style_names
-    get_style_cats
+    @categories = HairstyleCategory.all
   end
 
 
   def update
     @hairstyle = Hairstyle.find(params[:id])
-    get_style_names
-    get_style_cats
+    @categories = HairstyleCategory.alphabetical
 
     if @hairstyle.update_attributes(hairstyle_params)
       flash[:notice] = "Hairstyle Updated Successfully"
@@ -63,24 +63,17 @@ class HairstylesController < ApplicationController
   end
 
   private
-
   def hairstyle_params
-    params.require(:hairstyle).permit(:hairstyle, :style_category, :style_description)
+    params.require(:hairstyle).permit(:hairstyle_category_id, :hairstyle, :style_description)
   end
 
-  def get_style_names
-    @style_name = []
-    @file_dir = File.join(File.dirname(__FILE__), '..', '..', 'lib', 'styles', 'style_names.txt')
-    @file = File.open(@file_dir, 'r')
-    @file.each_line{|line| @style_name.push line.chomp}
-
+  def sort_column
+    Hairstyle.column_names.include?(params[:sort]) ?  params[:sort] : "hairstyle"
   end
 
-  def get_style_cats
-    @style_cat = []
-    @file_dir = File.join(File.dirname(__FILE__), '..', '..', 'lib', 'styles', 'style_categories.txt')
-    @file = File.open(@file_dir, 'r')
-    @file.each_line{|line| @style_cat.push line.chomp}
+  def sort_direction
+    %w[asc dec].include?(params[:direction]) ? params[:direction] : "asc"
+
   end
 
 

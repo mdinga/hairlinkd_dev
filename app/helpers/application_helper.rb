@@ -4,10 +4,10 @@ module ApplicationHelper
     render(:partial => 'application/error_messages', :locals => {:object => object})
   end
 
-  def sortable (criteria, title = nil)
-    title ||= criteria.titleize
-    direction = criteria == sort_criteria && sort_direction == 'ASC' ? 'DESC' : "ASC"
-    link_to title, params.merge(:sort => criteria, :direction => direction, :page => nil).permit(:search, :sort, :direction, :page)
+  def sortable (column, title = nil)
+    title ||= column.titleize
+    direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
+    link_to title, :sort => column, :direction => direction
   end
 
   def status_tag(boolean, options={})

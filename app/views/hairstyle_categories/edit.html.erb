@@ -1,0 +1,19 @@
+<div class="container">
+  <%= link_to("<< Back to Hairstyles", hairstyles_path) %>
+
+  <div>
+    <h2>Edit a Category</h2>
+
+    <%= form_for(@category) do |c| %>
+
+      <%= render(:partial => 'category_form', :locals => {:c => c}) %>
+
+      <br />
+
+      <div>
+        <%= c.submit "Edit Category", class: "btn" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

@@ -1,17 +1,19 @@
-<%= link_to("<< Back to Hairstyles", hairstyles_path) %>
+<div class="container">
+  <%= link_to("<< Back to Hairstyles", hairstyles_path) %>
 
-<div>
-  <h2>Add Hairstyle Name</h2>
+  <div>
+    <h2>Add Hairstyle Name</h2>
 
-  <%= form_for(@hairstyle) do |h| %>
+    <%= form_for(@hairstyle) do |h| %>
 
-    <%= render(:partial => 'hairstyle_form', :locals => {:h => h}) %>
+      <%= render(:partial => 'hairstyle_form', :locals => {:h => h}) %>
 
-    <br />
+      <br />
 
-    <div>
-      <%= h.submit("Add Hairstyle Name") %>
-    </div>
+      <div>
+        <%= h.submit "Add Hairstyle Name", class: "btn" %>
+      </div>
 
-  <% end %>
+    <% end %>
+  </div>
 </div>

@@ -100,6 +100,11 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :hairstyle_categories do
+        member do
+          get :delete
+        end
+      end
 
       resources :hairstyles do
         member do

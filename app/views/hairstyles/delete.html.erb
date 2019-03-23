@@ -1,17 +1,19 @@
-<%= link_to("<< Back to Hairstyles", hairstyles_path) %>
-
-<div>
-  <h2>Delete Hairstyle</h2>
-
-  <%= form_for(@hairstyle, :method => 'delete') do |f| %>
-
-    <p>Are you sure you want to permanently delete this hairstyle?</p>
+<div class="container">
+  <%= link_to("<< Back to Hairstyles", hairstyles_path) %>
 
 
+    <h2>Delete Hairstyle</h2>
 
-    <div>
-      <%= f.submit("Delete Hairstyle") %>
-    </div>
+    <%= form_for(@hairstyle, :method => 'delete') do |f| %>
 
-  <% end %>
+      <p>Are you sure you want to permanently delete this hairstyle?</p>
+
+
+
+      <div>
+        <%= f.submit("Delete Hairstyle") %>
+      </div>
+
+    <% end %>
+
 </div>

@@ -1,2 +1,32 @@
-<h1>Hairstyle#show</h1>
-<p>Find me in app/views/hairstyle/show.html.erb</p>
+<div class="container">
+
+  <%= link_to("<< Back to Hairstyles", hairstyles_path) %>
+
+  <div>
+    <h2>Details of Hairstyles</h2>
+  </div>
+
+  <div>
+    <%= link_to("Edit", edit_hairstyle_path(@hairstyle))%>,
+    <%= link_to("Delete", delete_hairstyle_path(@hairstyle))%><br /><br />
+  </div>
+
+
+
+      <table class = 'table'>
+        <tr>
+          <th>Hairstyle:</th>
+          <td><%= @hairstyle.hairstyle %></td>
+        </tr>
+
+        <tr>
+          <th>Category:</th>
+          <td><%= @hairstyle.hairstyle_category.name %></td>
+        </tr>
+
+        <tr>
+          <th>Description:</th>
+          <td><%= @hairstyle.style_description %></td>
+        </tr>
+      </table>
+</div>

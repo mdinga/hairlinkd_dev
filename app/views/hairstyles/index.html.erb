@@ -1,27 +1,49 @@
-<h2>Hairstyle Names</h2>
-<%= link_to("Add a Hairstyle Name", new_hairstyle_path)%>
+<div class="container">
+
+  <div class="text-center">
+    <h2>Categories and Hairstyles</h2>
+  </div>
+
+  <div class="">
+    <h3>Categories</h3>
+      <% @categories.each do |c| %>
+        <span class = "badge badge-dark p-3 badge-pill m-1"> <%= link_to c.name, hairstyle_category_path(c), style: "color:white;"%> </span>
+
+      <% end %>
+      <p><%= link_to("Add a Category", new_hairstyle_category_path)%></p>
+  </div>
+
 <hr>
 
-<div class = "container">
-<table class = 'table table-hover'>
+<div class="">
 
-  <tr>
-    <th><%= link_to "Hairstyle", :sort => "hairstyle" %></th>
-    <th><%= link_to "Category", :sort => "style_category" %></th>
-    <th>Action </th>
-  </tr>
-<% @hairstyle.each do |h| %>
-  <tr>
-    <td><%= h.hairstyle %></td>
-    <td><%= h.style_category %></td>
+  <h3>Hairstyles</h3>
+  <p><%= link_to("Add a Hairstyle", new_hairstyle_path)%></p>
 
-    <td><%= link_to("View", hairstyle_path(h))%>
-    <%= link_to("Edit", edit_hairstyle_path(h))%>
-    <%= link_to("Delete", delete_hairstyle_path(h))%></td>
-  </tr>
-  <% end %>
-</table>
-</div><!--container-->
-<%= link_to("Add a Hairstyle Name", new_hairstyle_path)%>
+
+  <table class = 'table table-hover'>
+
+    <tr>
+      <th><%= sortable "hairstyle_category_id", "Category" %>
+      <th><%= sortable "hairstyle" %></th>
+      <th>Action </th>
+    </tr>
+
+
+  <% @hairstyle.each do |h| %>
+    <tr>
+      <td><%= h.hairstyle_category.name %></td>
+      <td><%= h.hairstyle %></td>
+
+      <td><%= link_to("View", hairstyle_path(h))%>
+      <%= link_to("Edit", edit_hairstyle_path(h))%>
+      <%= link_to("Delete", delete_hairstyle_path(h))%></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+
+
 
 </div>
