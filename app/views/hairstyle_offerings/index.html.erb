@@ -1,0 +1,24 @@
+<div class="container">
+
+
+  <table class = "table">
+
+      <tr>
+        <th>Category</th>
+        <th>Hairstyle</th>
+        <th>Top Hairstyle?</th>
+        <th>Update Top Hairstyle</th>
+      </tr>
+
+    <% @offerings.each do |o| %>
+      <tr>
+        <td><%= o.hairstyle.category %></td>
+        <td><%= o.hairstyle.name %></td>
+        <td><%= o.top_style ? "Yes" : "No" %></td>      <!-- This will be removed -->
+        <td><%= link_to("Select/Deselect as Top Style", hairstyle_offering_path(o), :method => :patch) %></td>
+      </tr>
+
+  <% end %>
+  </table>
+
+</div>

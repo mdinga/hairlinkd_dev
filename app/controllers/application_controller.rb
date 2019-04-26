@@ -4,22 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :path_to_stylist
 def current_user
 
-# @current_user =
-#     if session[:admin_id]
-#       @current_admin_user = Admin.find(session[:admin_id])
-#       @current_admin_user if @current_admin_user.has_role?(:def_admin)
-#     elsif session[:stylist_id]
-#       @current_stylist_user = Stylist.find(session[:stylist_id])
-#       @current_stylist_user if @current_stylist_user.has_role?(:def_stylist)
-#     elsif session[:client_id]
-#       @current_client_user = Client.find(session[:client_id])
-#       @current_client_user if @current_client_user.has_role?(:def_client)
-#     else
-#        nil
-#    end
-# end
-
-
+# function to identify the current user
     if session[:user_id]
       @user = User.find(session[:user_id])
         @current_user =
@@ -34,7 +19,9 @@ def current_user
           end
         end
 end
+#---------------------------------------------------------------------------------------
 
+# Function to search for stylists in the stylists gallery (currently inactive)
 
 def searchable_stylists
   @stylist = Stylist.search(params[:search]).find_city(params[:place]).find_area(params[:sub_place]).order(sort_criteria + " " + sort_direction).paginate(:per_page => 12, :page => params[:page])
@@ -55,6 +42,8 @@ def searchable_stylists
     end
  end
 
+
+# Function to sort the stylist gallery by rating and by decending or accending (currently inactive)
    def sort_criteria
      Stylist.column_names.include?(params[:sort]) ? params[:sort] : "overall_rating"
    end
@@ -66,6 +55,33 @@ def searchable_stylists
    def path_to_stylist(arg)
        stylists_path(arg)
    end
+
+#---------------------------------------------------------------------------------------------------
+
+#functions for the Hairstyle Matching Algorithm (used for the Hairstyle Request controller and HairstyleMatch Controller)
+
+def create_hairstyle_match
+  #@request = HairstyleRequest.find(params[:hairstyle_request_id])
+  @offerings = []
+  @offerings = HairstyleOffering.where(:hairstyle_id => @request.hairstyle)
+
+  @offerings.each do |o|
+    HairstyleMatch.create(:hairstyle_request => @request, :hairstyle_offering => o)
+  end
+
+  def update_hairstyle_match
+    @match.destroy_all
+    @offerings = []
+    @offerings = HairstyleOffering.where(:hairstyle_id => @request.hairstyle)
+
+    @offerings.each do |o|
+      HairstyleMatch.create(:hairstyle_request => @request, :hairstyle_offering => o)
+    end
+  end
+
+
+end
+
 
 
 end

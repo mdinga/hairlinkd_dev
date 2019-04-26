@@ -57,42 +57,46 @@
     <%= render(:partial => 'complete_your_profile', :html => {:multiport => true})%>
   </div>
 
-                                                                  <!-- About Me Section -->
+                                                                  <!-- Hairstyles I Offer -->
 
   <div id = "about_me" class = "stylist_info" style ="display:block;">
-    <h4 class = "text-center">About Me</h4><hr>
-        <div class = "row">
-          <div class = "col-md-2"><strong>Services I Offer:</strong></div>
-            <div class = "col-md-10">
+    <h4 class = "text-center">Hairstyles I Offer</h4>
+    <p class = "text-center" style = "font-style: italic;"><span style = "color:#D4AF37;"><i class = "glyphicon glyphicon-star"></i></span> = I'm a master at this</p>
 
-              <% if @cats %>
-                <% @cats.each do |c| %>
-                    <p> <%= c %> -
-                       <% @stylist.services.with_category(c).each do |s| %>
-                          <span class = "badge badge-dark p-1 badge-pill m-1"><%= s.name %></span>
-                       <% end %>
-                      </p>
+
+
+          <% @cat.each do |c| %>
+            <p><strong><%= c %>: </strong>
+              <% stylist.hairstyles.where(:category => c).each do |h| %>
+                 <%= h.name %>
+                 <span><% if stylist.hairstyle_offerings.where(:hairstyle => h).first.top_style%><span style = "color:#D4AF37;"><i class = "glyphicon glyphicon-star"></i></span><% end %></span> |
                 <% end %>
-              <% end %>
+            </p>
+          <% end %>
+
+          <div class = "row mt-2">
+            <div class = "col-md-2"><strong>More About Me:</strong></div>
+              <div class = "col-md-10 ">
+                <blockquote><%= stylist.about_me %></blockquote>
+            </div>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-xs-6">
+              <%= button_to "Edit Hairstyles", edit_stylist_path(stylist), :method => :get, :class => "btn btn-block"%>
+            </div>
+            <div class="col-xs-6">
+              <div class="col-xs-6 ml-2">
+                <%= button_to "Select Best Hairstyles", hairstyle_offerings_path, :method => :get, :class => "btn btn-block"%>
+              </div>
+
+            </div>
 
           </div>
-        </div>
+    </div>
+    <hr>
 
-        <div class = "row mt-2">
-          <div class = "col-md-2"><strong>House Calls:</strong></div>
-            <div class = "col-md-10">
-              <%= stylist.house_calls ? 'Yes' : 'No' %>
-          </div>
-        </div>
-
-        <div class = "row mt-2">
-          <div class = "col-md-2"><strong>More About Me:</strong></div>
-            <div class = "col-md-10 ">
-              <blockquote><%= stylist.about_me %></blockquote>
-          </div>
-        </div>
-  </div>
-                                                                  <!-- End of About Me Section -->
+                                                                  <!-- Hairstyles I Offer -->
 
                                                                   <!-- Contact Me Section -->
 
@@ -119,6 +123,10 @@
             <th>Instagram Page:</th>
             <td><%= link_to stylist.instagram_link, url_for(stylist.instagram_link), target: "_blank" %></td>
           </tr>
+          <tr>
+            <th>House Calls:</th>
+            <td><%= stylist.house_calls ? 'Yes' : 'No' %></td>
+          </tr>
         </table>
   </div>
 
@@ -139,7 +147,7 @@
         <% if @portfolio.count < 1 %>
           <%= render(:partial => 'portfolio_eg', :html => {:multiport => true})%>
         <% else %>
-          <%= render(:partial => 'show_portfolio', :html => {:multiport => true})%>
+          <%= '#'%>
         <% end %>
 
         <% else %>

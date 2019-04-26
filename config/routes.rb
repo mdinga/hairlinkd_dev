@@ -39,6 +39,8 @@ Rails.application.routes.draw do
           post :create_stylist_rating
           get :new_portfolio
           post :create_portfolio
+          get :edit_offering
+          patch :update_offering
         end
       end
 
@@ -100,11 +102,6 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :hairstyle_categories do
-        member do
-          get :delete
-        end
-      end
 
       resources :hairstyles do
         member do
@@ -112,7 +109,19 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :services do
+      resources :hairstyle_offerings do
+        member do
+          get :delete
+        end
+      end
+
+      resources :hairstyle_requests do
+        member do
+          get :delete
+        end
+      end
+
+      resources :hairstyle_matches do
         member do
           get :delete
         end

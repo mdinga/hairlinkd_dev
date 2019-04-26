@@ -20,12 +20,7 @@
     </div>
 
     <div class = "col col-sm-2">
-      <p><%=link_to "About You:", edit_stylist_path(current_user.id), style: "color:black;"%>
-      <%= status_tag(@bool_about) %></p>
-    </div>
-
-    <div class = "col col-sm-2">
-      <p><%=link_to "Contacts:", edit_stylist_path(current_user.id), style: "color:black;"%>
+      <p><%=link_to "My Best Hairstyles", hairstyle_offerings_path(:stylist_id => @stylist.id), style: "color:black;"%>
       <%= status_tag(@bool_contact) %></p>
     </div>
 

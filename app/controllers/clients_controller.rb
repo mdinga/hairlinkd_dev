@@ -13,7 +13,7 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
-
+    @matches = HairstyleMatch.where(:hairstyle_request => @client.hairstyle_request)
   end
 
   def new

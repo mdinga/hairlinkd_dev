@@ -40,15 +40,15 @@
   </fieldset>
 
   <fieldset>
-    <legend>My Services</legend>
+    <legend>My Hairstyles</legend>
 
     <div class ='form-group'>
-      <label class = 'form-control-label'>I Offer The Following <strong>Services</strong>:</label>
+      <label class = 'form-control-label'>I Offer The Following <strong>Hairstyles</strong>:</label>
         <div class = " bg-light p-2">
 
-          <% @serv_cat.each do |cat| %>
-            <p><strong><%= cat %>: </strong><%= s.collection_check_boxes :service_ids, Service.with_category(cat), :id, :name   do |h| %>
-            <span style = "margin-right: 2px;">| <%= h.check_box %></span> <%= h.label %>
+          <% @category.each do |c| %>
+            <p><strong><%= c %>:</strong><%= s.collection_check_boxes :hairstyle_ids, Hairstyle.where(:category => c), :id, :name do |h|%>
+            <span style = "margin_right:2px;">| <%= h.check_box %></span> <%= h.label %>
             <% end %></p>
           <% end %>
 
@@ -65,6 +65,8 @@
       <label class = 'form-control-label'>More About Me (And Other Services):</label>
       <%= s.text_area :about_me, placeholder: "Anything else that you want us to know about you", class: 'form-control' %>
     </div>
+
+
 
     <hr>
   </fieldset>

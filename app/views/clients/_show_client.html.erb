@@ -18,7 +18,7 @@
           <tbody>
             <tr>
               <td>Hairstyle Requests:</td>
-              <td><%= link_to('Create', new_request_path)%> - <%= link_to('View', requests_path)%> <span class = "badge badge-primary badge-pill bg-primary "> <%= @client.requests.count %> </span></td>
+              <td><%= link_to('Create', new_hairstyle_request_path(:client_id => @client.id))%></td>
             </tr>
             <tr>
               <td>Appointments:</td>
@@ -38,9 +38,42 @@
 
     </div><!-- row -->
   </div><!-- client_divs -->
-
-
 <hr>
+
+<!-- ========================== End of Client Menu Section ============================ -->
+
+<!-- --------------------------------Start of Hairstyle Request Section------------------------------- -->
+<div class="text-center">
+  <h3>Your Requested Hairstyle:</h3>
+  <%= render(:partial => 'hairstyle_requests/show_request', :html => {:multiport => true}, :locals => {:request => @client.hairstyle_request})%>
+</div>
+<hr>
+
+<!-- ========================== End of  Hairstyle Request Section ============================ -->
+
+
+<div class="text-center">
+  <h3>Recommended Stylists</h3>
+    <% if @matches.count > 0 %>
+      <%= render(:partial => 'hairstyle_matches/indexed_match', :html => {:multiport => true}, :locals => {:matches => @matches, :hairstyle_request_id => @client.hairstyle_request.id })%>
+
+    <% else %>
+
+          <% if @client.hairstyle_request %>
+            <h5>There are no matches for your request now</h5>
+          <%= link_to 'Find Your Stylists', hairstyle_matches_path(:hairstyle_request_id => @client.hairstyle_request.id), :method => :post %>
+          <% else %>
+            <h5>Please Request a Hairstyle to Activate Recommended Stylists</h5>
+          <% end %>
+
+
+    <% end %>
+</div>
+<hr>
+
+
+
+
 
 <div class = "container text-center">
 

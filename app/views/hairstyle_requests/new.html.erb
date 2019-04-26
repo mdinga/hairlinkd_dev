@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Create Request</h2>
+
+  <div>
+    <%= form_for(@request) do |r| %>
+
+        <%= render(:partial => 'hairstyle_form', :locals => {:r => r}) %>
+
+      <div>
+        <%= r.submit("Create Request") %>
+      </div>
+
+    <% end %>
+  </div>
+
+</div>

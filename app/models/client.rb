@@ -3,12 +3,14 @@ class Client < ApplicationRecord
 
   has_secure_password
 
+  mount_uploader :picture, PictureUploader
   has_one :user, as: :operator, :dependent => :destroy
   has_many :ratings, :dependent => :destroy
   has_many :stylists, :through => :ratings
   has_and_belongs_to_many :cities
   has_and_belongs_to_many :areas
-  mount_uploader :picture, PictureUploader
+  has_one :hairstyle_request
+  has_one :hairstyle, :through => :hairstyle_requests
   has_and_belongs_to_many :styles, :join_table => "fav_styles"
   has_and_belongs_to_many :stylists, :join_table => "fav_stylists"
   has_many :requests, :dependent => :destroy

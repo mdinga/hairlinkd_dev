@@ -1,13 +1,8 @@
 class StylistsController < ApplicationController
 
   layout :resolve_layout
-
-  before_action :get_service_cat, :only => [:edit, :update, :show]
-
-
-    #after_action :assign_role, :only => :create
-
-helper_method :sort_criteria, :sort_direction
+  helper_method :sort_criteria, :sort_direction
+  before_action :get_category, :only => [:edit, :update]
 
   def index
     searchable_stylists
@@ -17,8 +12,9 @@ helper_method :sort_criteria, :sort_direction
     @stylist = Stylist.find(params[:id])
     @rating = @stylist.ratings
     @portfolio = @stylist.portfolios
-    services_array
-    set_booleans
+    get_stylist_categories
+    @ha
+
   end
 
   def new
@@ -31,7 +27,7 @@ helper_method :sort_criteria, :sort_direction
 
     if @stylist.save
       flash[:notice] = "Profile Created Successfully, Please Log In"
-      RegisterMailer.new_stylist(@stylist).deliver_now
+      #RegisterMailer.new_stylist(@stylist).deliver_now
       redirect_to (stylist_access_stylist_login_path)
     else
       render ('new')
@@ -41,12 +37,11 @@ helper_method :sort_criteria, :sort_direction
   def edit
     @stylist = Stylist.find(params[:id])
     @city = City.all
-  end
+    end
 
   def update
     @stylist = Stylist.find(params[:id])
     @city = City.all
-
       if  @stylist.update_attributes(stylist_params)
         flash[:notice] = "Stylist updated created successfully."
         redirect_to(stylist_path(@stylist))
@@ -91,7 +86,7 @@ helper_method :sort_criteria, :sort_direction
   end
 
   def stylist_params
-    params.require(:stylist).permit(:avatar, :username, :name, :surname, :phone, :email, :city_ids, :area_ids, :address, :house_calls, :salon, :about_me, :password, :password_confirmation, :nickname, :facebook_link, :instagram_link, service_ids:[])
+    params.require(:stylist).permit(:avatar, :username, :name, :surname, :phone, :email, :city_ids, :area_ids, :address, :house_calls, :salon, :about_me, :password, :password_confirmation, :nickname, :facebook_link, :instagram_link, hairstyle_ids:[])
   end
 
   def ratings_params
@@ -102,25 +97,35 @@ helper_method :sort_criteria, :sort_direction
     params.require(:portfolio).permit(:image, :stylist_id, :service_id, :details)
   end
 
+  def offering_params
+    params.require(:hairstyle_offering).permit(:top_style)
+  end
+
   def assign_role
     @stylist.update_attributes(:role => 'stylist')
   end
 
-  def get_service_cat
-    @serv_cat = []
-    @file_dir = File.join(File.dirname(__FILE__), '..', '..', 'lib', 'services', 'categories.txt')
-    @file = File.open(@file_dir, 'r')
-    @file.each_line{|line| @serv_cat.push line.chomp}
+  def get_category
+    @style = Hairstyle.all
+    @all_category = []
+    @style.each do |s|
+      @all_category << s.category
+    end
+    @category = @all_category.uniq
   end
 
-
-  def services_array
-    @services_cat = Array.new
-      @stylist.services.each do |s|
-        @services_cat << s.category
-      end
-    @cats = @services_cat.uniq
+  def get_stylist_categories
+    @style_cat = []
+    @stylist.hairstyles.each do |h|
+      @style_cat << h.category
+    end
+    @cat = @style_cat.uniq
   end
+
+  def get_hair_from_cat(cat)
+    @hairstyles = @stylist.hairstyle_offerings.map{|o| o.hairstyle.name if o.hairstyle.catergory == cat}  
+  end
+
 
   def set_booleans
     @bool_profile = false

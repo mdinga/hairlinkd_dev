@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190316183056) do
+ActiveRecord::Schema.define(version: 20190408094848) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -185,9 +185,43 @@ ActiveRecord::Schema.define(version: 20190316183056) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "hairstyle_matches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "hairstyle_request_id"
+    t.integer "hairstyle_offering_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hairstyle_request_id", "hairstyle_offering_id"], name: "my_index"
+  end
+
+  create_table "hairstyle_offerings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "stylist_id"
+    t.integer "hairstyle_id"
+    t.boolean "top_style", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stylist_id", "hairstyle_id"], name: "index_hairstyle_offerings_on_stylist_id_and_hairstyle_id"
+  end
+
+  create_table "hairstyle_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "client_id"
+    t.integer "hairstyle_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id", "hairstyle_id"], name: "index_hairstyle_requests_on_client_id_and_hairstyle_id"
+  end
+
+  create_table "hairstyle_services", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "stylist_id"
+    t.integer "hairstyle_id"
+    t.boolean "top_style", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stylist_id", "hairstyle_id"], name: "index_hairstyle_services_on_stylist_id_and_hairstyle_id"
+  end
+
   create_table "hairstyles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "hairstyle"
-    t.integer "hairstyle_category_id"
+    t.string "name"
+    t.string "category"
     t.text "style_description", limit: 255
   end
 
@@ -307,6 +341,15 @@ ActiveRecord::Schema.define(version: 20190316183056) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["stylist_id", "client_id", "service_id"], name: "index_styles_on_stylist_id_and_client_id_and_service_id"
+  end
+
+  create_table "stylist_hairstyles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "stylist_id"
+    t.integer "hairstyle_id"
+    t.boolean "top_style", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stylist_id", "hairstyle_id"], name: "index_stylist_hairstyles_on_stylist_id_and_hairstyle_id"
   end
 
   create_table "stylists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

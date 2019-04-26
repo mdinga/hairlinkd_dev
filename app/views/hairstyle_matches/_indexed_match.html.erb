@@ -1,0 +1,19 @@
+
+
+
+      <table class = "table">
+          <tr>
+            <th>#</th>
+            <th>Hairstyle</th>
+            <th>Recommended Stylists</th>
+            <th>Action</th>
+          </tr>
+            <% matches.each do |m| %>
+          <tr>
+            <td><%=  %></td>
+            <td><%= m.hairstyle_request.hairstyle.name %></td>
+            <td><%= m.hairstyle_offering.stylist.username %></td>
+            <td><%= link_to 'Change Request', edit_hairstyle_request_path(m.hairstyle_request) %>, <%= link_to 'Delete Request', '#'%></td>
+          </tr>
+            <% end %>
+      </table>

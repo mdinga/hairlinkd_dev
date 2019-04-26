@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>Create Request</h2>
+
+  <div>
+    <%= form_for(@request) do |r| %>
+
+    <div class ='form-group' >
+      <fieldset>
+
+        <div class="form-group">
+          <label class ="form-control-label"><strong>Client</strong></label>
+          <%= r.text_field :client_id, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <label class ="form-control-label"><strong>Hairstyle</strong></label>
+          <%= r.select :hairstyle_id, @hairstyles.map{|h| [h.name, h.id]}, class: 'form-control' %>
+        </div>
+
+      </fieldset>
+    </div>
+
+      <div>
+        <%= r.submit("Create Request") %>
+      </div>
+
+    <% end %>
+  </div>
+
+</div>

@@ -1,0 +1,29 @@
+
+
+  <div class="row">
+
+  <% if request %>
+
+  <div class="col-sm-6">
+    <p><strong>Hairstyle: </strong><%= request.hairstyle.name%> </p>
+    <p><%= link_to "Change Request", edit_hairstyle_request_path(request)%>, <%= link_to "Delete Request", hairstyle_request_path(request), :method => :delete %></p>
+  </div>
+
+  <div class="col-sm-6">
+    <p><strong>Location: </strong></p>
+    <p><%= link_to "Change Location", edit_hairstyle_request_path(request)%></p>
+  </div>
+
+  <% else %>
+  <div class="text-center col-sm-12">
+    <p>Your have not made a request yet. Create one now.</p>
+    <p><%= link_to "Create Request", new_hairstyle_request_path(:client_id => @client.id) %></p>
+  </div>
+
+
+  <% end %>
+
+
+
+
+  </div>

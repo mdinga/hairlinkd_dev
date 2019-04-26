@@ -5,7 +5,8 @@ helper_method :sort_column, :sort_direction #To have access to these methods on 
 
   def index
     @hairstyle = Hairstyle.order(sort_column+" "+sort_direction)
-    @categories = HairstyleCategory.alphabetical
+    get_category
+
   end
 
   def show
@@ -14,14 +15,11 @@ helper_method :sort_column, :sort_direction #To have access to these methods on 
 
   def new
     @hairstyle = Hairstyle.new
-    @categories = HairstyleCategory.alphabetical
 
   end
 
   def create
     @hairstyle = Hairstyle.new(hairstyle_params)
-    @categories = HairstyleCategory.alphabetical
-
 
     if @hairstyle.save
       flash[:notice] = "Hairstyle Created Successfully"
@@ -34,13 +32,11 @@ helper_method :sort_column, :sort_direction #To have access to these methods on 
 
   def edit
     @hairstyle = Hairstyle.find(params[:id])
-    @categories = HairstyleCategory.all
   end
 
 
   def update
     @hairstyle = Hairstyle.find(params[:id])
-    @categories = HairstyleCategory.alphabetical
 
     if @hairstyle.update_attributes(hairstyle_params)
       flash[:notice] = "Hairstyle Updated Successfully"
@@ -64,17 +60,15 @@ helper_method :sort_column, :sort_direction #To have access to these methods on 
 
   private
   def hairstyle_params
-    params.require(:hairstyle).permit(:hairstyle_category_id, :hairstyle, :style_description)
+    params.require(:hairstyle).permit(:name, :category, :hairstyle, :style_description)
   end
 
   def sort_column
-    Hairstyle.column_names.include?(params[:sort]) ?  params[:sort] : "hairstyle"
+    Hairstyle.column_names.include?(params[:sort]) ?  params[:sort] : "name"
   end
 
   def sort_direction
     %w[asc dec].include?(params[:direction]) ? params[:direction] : "asc"
-
   end
-
 
 end
