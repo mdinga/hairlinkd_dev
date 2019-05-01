@@ -1,0 +1,56 @@
+<div id = "contact_me" class = "stylist_info" style ="display:block;">
+  <h4 class = "text-center">My Contacts</h4>
+
+  <table>
+    <% if stylist.salon.present? %>
+      <tr>
+        <th>Salon Name:</th>
+        <td><%= stylist.salon %></td>
+      </tr>
+    <% end %>
+
+    <% if stylist.address.present? %>
+      <tr>
+        <th>Address:</th>
+        <td><%= stylist.address %> [<%= stylist.longitude %>, <%= stylist.latitude %>]</td>
+      </tr>
+    <% end %>
+
+    <% if stylist.phone.present? %>
+    <tr>
+      <th>Phone:</th>
+      <td><%= stylist.phone %></td>
+    </tr>
+    <% end %>
+
+    <% if stylist.email.present? %>
+      <tr>
+        <th>Email:</th>
+        <td><%= stylist.email %></td>
+      </tr>
+    <% end %>
+
+    <% if stylist.facebook_link.present? %>
+      <tr>
+        <th>Facebook Page:</th>
+        <td><%=link_to stylist.facebook_link, url_for(stylist.facebook_link), target: "_blank" %></td>
+      </tr>
+    <% end %>
+
+    <% if stylist.instagram_link.present? %>
+      <tr>
+        <th>Instagram Page:</th>
+        <td><%= link_to stylist.instagram_link, url_for(stylist.instagram_link), target: "_blank" %></td>
+      </tr>
+    <% end %>
+      <tr>
+        <th>House Calls:</th>
+        <td><%= stylist.house_calls ? 'Yes' : 'No' %></td>
+      </tr>
+  </table>
+
+  <div class = "mt-5">
+  <%= button_to "Update Contact Details", edit_stylist_path(stylist), :method => :get, :class => "btn"%>
+  </div>
+</div>
+<hr>

@@ -12,6 +12,13 @@ def up
     t.float "overall_rating", :default => 0.0, :precision => 1
     t.boolean "house_calls", :default => false
     t.text "about_me", :limit =>500
+    t.string "street"
+    t.string "area"
+    t.string "city"
+    t.string "code"
+    t.string "country"
+    t.float "latitude"
+    t.float "longitude"
     t.string "phone"
     t.string "email"
     t.string "facebook_link"
@@ -25,7 +32,7 @@ def up
 
     t.timestamps
   end
-  
+
 
 end
 

@@ -1,0 +1,34 @@
+<div id = "edit_basic_details">
+  <fieldset>
+    <legend class = "text-center">Basic Details</legend>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'><strong>Load Profile Picture:</strong></label>
+       <br /><%= s.file_field(:avatar) %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Username:</label>
+      <%= s.text_field :username, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Name:</label>
+      <%= s.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Surname:</label>
+      <%= s.text_field :surname, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Email:</label>
+      <%= s.text_field :email, class: 'form-control' %>
+    </div>
+
+  </fieldset>
+  <div class = "text-center mb-2"><%= s.submit 'Update My Profile', class: 'btn btn-hl btn-sm'  %></div>
+
+</div>
+<hr>

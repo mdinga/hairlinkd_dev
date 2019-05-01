@@ -174,11 +174,11 @@ $gold: #D4AF37;
 .background_stylist{
     height: auto;
     background-image: url(/assets/background/background_4.jpg);
-    //background-color:black;
-    border: 2px groove black;
-    border-radius: 2px;
     background-size: cover;
-    margin-bottom: 10px;
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
 }
 
 .stylist_info{

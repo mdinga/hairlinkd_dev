@@ -1,6 +1,9 @@
 class Client < ApplicationRecord
   rolify :role_cname => 'DefClient'
 
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
+
   has_secure_password
 
   mount_uploader :picture, PictureUploader
@@ -48,6 +51,10 @@ def send_password_reset
   self.password_reset_sent_at = Time.zone.now
   self.save!
   PasswordMailer.reset_password_client(self).deliver_now
+end
+
+def address
+  [street, city, code].compact.join(", ")
 end
 
 

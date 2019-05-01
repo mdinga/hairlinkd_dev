@@ -86,7 +86,7 @@ class StylistsController < ApplicationController
   end
 
   def stylist_params
-    params.require(:stylist).permit(:avatar, :username, :name, :surname, :phone, :email, :city_ids, :area_ids, :address, :house_calls, :salon, :about_me, :password, :password_confirmation, :nickname, :facebook_link, :instagram_link, hairstyle_ids:[])
+    params.require(:stylist).permit(:avatar, :username, :name, :surname, :phone, :email, :street, :area, :city, :code, :country, :house_calls, :salon, :about_me, :password, :password_confirmation, :nickname, :facebook_link, :instagram_link, hairstyle_ids:[])
   end
 
   def ratings_params
@@ -123,7 +123,7 @@ class StylistsController < ApplicationController
   end
 
   def get_hair_from_cat(cat)
-    @hairstyles = @stylist.hairstyle_offerings.map{|o| o.hairstyle.name if o.hairstyle.catergory == cat}  
+    @hairstyles = @stylist.hairstyle_offerings.map{|o| o.hairstyle.name if o.hairstyle.catergory == cat}
   end
 
 

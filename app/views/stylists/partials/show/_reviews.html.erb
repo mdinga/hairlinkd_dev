@@ -1,0 +1,24 @@
+<div id = "stylist_review" class = "stylist_info" style ="display:block; ">
+  <h4 class = "text-center">My Reviews</h4><hr>
+    <% if @rating.count < 1 %>
+      <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>
+      <div class="jumbotron text-center p-3">
+        <h1 class="display-4">View Your Reviews</h1>
+        <p class="lead">Your reviews and ratings submitted by your clients will appear here. The higher your ratings, the more you stand out.</p>
+        <hr class="my-4">
+        <p>You currently have no reviews.</p>
+      </div>
+    <% end %>
+
+    <% else %>
+
+          <% @rating.each do |rating| %>
+            <%= render(:partial => 'ratings/index_stylist_ratings', :html => {:multiport => true}, :locals => {:rating => rating} ) %>
+              <div class = "text-center">
+                <%= link_to("View Complete Review", rating_path(rating, :stylist_id => rating.stylist.id, :client_id => rating.client.id))%> <!--view this particular rating -->
+              </div>
+            <hr>
+          <% end %>
+      </div>
+
+    <% end %>

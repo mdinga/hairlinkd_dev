@@ -1,6 +1,8 @@
 class Stylist < ApplicationRecord
   rolify :role_cname => 'DefStylist'
 
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
 
   has_secure_password
 
@@ -80,6 +82,15 @@ end
       all
     end
   end
+
+  def address
+    [street, area, city, code, country].compact.join(", ")
+  end
+
+  def address_changed?
+    street_changed? || area_changed? || city_changed? || code_changed? || country_changed?
+  end
+
 
 
 

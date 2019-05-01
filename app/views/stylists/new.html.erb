@@ -12,11 +12,11 @@
     <%= form_for(@stylist) do |s| %>
       <%= error_messages_for(s.object) %>
       <form>
-        <%= render(:partial => 'stylist_register', :html => {:multiport => true}, :locals => {:s => s}) %>
+          <%= render(:partial => 'stylists/partials/new/stylist_register', :html => {:multiport => true}, :locals => {:s => s}) %>
 
-         <div class = 'text-center m-3'>
-           <%= s.submit("Create Profile", class: 'btn btn-hl') %>
-         </div>
+           <div class = 'text-center m-3'>
+             <%= s.submit("Create Profile", class: 'btn btn-hl') %>
+           </div>
 
       </form>
     <% end %>

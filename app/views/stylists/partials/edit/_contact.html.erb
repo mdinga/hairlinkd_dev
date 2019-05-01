@@ -1,0 +1,64 @@
+<div class="edit_stylist_contact_details">
+  <fieldset>
+    <legend class = "text-center">Get Hold of Me</legend>
+
+    <h5>Address:</h5>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Street:</label>
+        <%= s.text_field :street, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Area:</label>
+        <%= s.text_field :area, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>City/Town:</label>
+        <%= s.text_field :city, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Code:</label>
+        <%= s.text_field :code, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Country:</label>
+        <%= s.text_field :country, class: 'form-control' %>
+    </div>
+
+    <hr>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Salon Name<span style = "font-style:italic;" >(optional)</span></label>
+        <%= s.text_field :salon, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Cellphone:</label>
+        <%= s.text_field :phone, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>I do House Calls <span style = "font-style:italic;" >(select if 'yes')</span>:</label>
+        <br /><%= s.check_box :house_calls %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Facebook:</label>
+        <%= s.text_field :facebook_link, class: 'form-control' %>
+    </div>
+
+    <div class ='form-group'>
+      <label class = 'form-control-label'>Instagram:</label>
+        <%= s.text_field :instagram_link, class: 'form-control' %>
+    </div>
+
+
+  </fieldset>
+  <div class = "text-center mb-2"><%= s.submit 'Update My Profile', class: 'btn btn-hl btn-sm'  %></div>
+
+</div>
+<hr>

@@ -43,6 +43,8 @@ gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'b
 gem 'will_paginate'
 gem 'rolify', '~> 5.2'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
+gem 'geocoder'
+gem 'certified'
 
 
 

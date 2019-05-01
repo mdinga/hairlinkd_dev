@@ -80,6 +80,11 @@ ActiveRecord::Schema.define(version: 20190408094848) do
     t.string "name"
     t.string "surname"
     t.string "email"
+    t.string "street"
+    t.string "city"
+    t.string "code"
+    t.float "latitude", limit: 24
+    t.float "longitude", limit: 24
     t.string "password_digest"
     t.string "role"
     t.string "picture"
@@ -361,6 +366,13 @@ ActiveRecord::Schema.define(version: 20190408094848) do
     t.float "overall_rating", limit: 24, default: 0.0
     t.boolean "house_calls", default: false
     t.text "about_me"
+    t.string "street"
+    t.string "area"
+    t.string "city"
+    t.string "code"
+    t.string "country"
+    t.float "latitude", limit: 24
+    t.float "longitude", limit: 24
     t.string "phone"
     t.string "email"
     t.string "facebook_link"

@@ -1,0 +1,25 @@
+
+  <div id = "stylist_portfolio" class = "stylist_info" style ="display:block;">
+    <h4 class = "text-center">My Porfolio</h4>
+
+    <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id)%>
+
+        <% if @portfolio.count < 1 %>
+          <%# <%= render(:partial => 'portfolio_eg', :html => {:multiport => true})%> %>
+          <!-- need to decide if I still need this -->
+        <% else %>
+          <%= '#'%>
+        <% end %>
+
+        <% else %>
+          <%= render(:partial => 'show_portfolio', :html => {:multiport => true})%>
+        <% end %>
+
+    <div>
+      <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>
+        <% if @portfolio.count < 8 %>
+          <%= button_to(" + Add Item to Portfolio", new_portfolio_path(:stylist_id => @stylist.id), method: :get, class: "btn text-center mb-3")%>
+        <% end %>
+      <% end %>
+    </div>
+  </div><!--stylist portfolio-->

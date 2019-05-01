@@ -4,13 +4,11 @@
   <h2 class = 'text-center'>Edit Your Profile</h2>
 
   <%= form_for(@stylist) do |s| %>
-
-    <%= render(:partial => 'stylist_form', :html => {:multiport => true}, :locals => {:s => s}) %>
-
-    <div class = "text-center mb-2"><%= s.submit 'Update My Profile', class: 'btn btn-hl btn-sm'  %></div>
-
-
-
-
+  <div class="register_form">
+    <%= render(:partial => 'stylists/partials/edit/basic_details', :html => {:multiport => true}, :locals => {:s => s}) %>
+    <%= render(:partial => 'stylists/partials/edit/hairstyle', :html => {:multiport => true}, :locals => {:s => s}) %>
+    <%= render(:partial => 'stylists/partials/edit/contact', :html => {:multiport => true}, :locals => {:s => s}) %>
+  </div>
   <% end %>
 </div>
+<hr>

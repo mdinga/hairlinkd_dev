@@ -1,0 +1,55 @@
+<div class = "row background_stylist">
+
+  <div class = "col-sm-4 offset-sm-2 text-center" style = "padding: 3px;">
+    <%= image_tag stylist.avatar.url(:thumb).to_s, class: "#" %>
+      <div class="#">
+        <%= link_to "(Edit Basic Details)", edit_stylist_path(current_user.id), id: 'basic_details_edit', style: 'color:#D4AF37;'%>
+      </div>
+  </div><!--col-sm-4-->
+
+  <div class = "col-sm-4 text-center mt-3" style = "color: white">
+    <h5 class = "mt-2"><%= @stylist.username%></h5>
+
+    <p><% stylist.cities.each do |c|%>
+    <%= c.city %>
+    <% end %>
+
+    <% stylist.areas.each do |a| %>
+      (<%= a.name %>)
+      <% end %><br /></p>
+
+    <p class = "badge badge-primary badge-pill bg-warning " style = "color:black;"><%= stylist.overall_rating %> </p> (<%= pluralize(stylist.ratings.count, 'Review') %>)
+    <p>Likes: <%= stylist.clients.count %></p>
+
+
+    <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>
+      <%= link_to conversations_path, class: 'm-2',  style: 'color:#D4AF37; font-weight: bold;' do %>Inbox <i class="glyphicon glyphicon-envelope"></i><% end %>
+
+    <% end %>
+
+    <% unless (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>
+      <%= link_to new_personal_message_path(receiver_id: @stylist.user), class: 'm-2',  style: 'color:#D4AF37; font-weight: bold;' do %> Send Message <i class="glyphicon glyphicon-envelope"></i><% end %>
+    <% end %>
+
+      <% if current_user.has_role? :def_client %>
+        <%= link_to new_rating_path(:client_id => current_user.id, :stylist_id => @stylist.id), class: 'm-2',  style: 'color:#D4AF37; font-weight: bold;' do %>Submit Review  <i class="glyphicon glyphicon-star"></i><% end %>
+        <%= link_to '#', class: 'm-2',  style: 'color:#D4AF37; font-weight: bold;' do %>Book Appointment <i class="glyphicon glyphicon-book"></i><% end %>
+      <% end %>
+
+
+  </div><!--col-sm-8-->
+</div><!--row-->
+
+<% if current_user.has_role? :def_client %>
+  <div class = "row">
+
+    <%= button_to create_fav_stylists_client_path(current_user, :stylist_id => @stylist.id), class: "btn btn-sm like m-2" do %>
+      <i class = "glyphicon glyphicon-thumbs-up"></i> Like
+    <% end %>
+
+      <%= button_to destroy_fav_stylists_client_path(current_user, :stylist_id => @stylist.id), method: :delete, class: "btn btn-sm unlike m-2", style: "display: inline-block;" do %>
+        <i class = "glyphicon glyphicon-thumbs-down"></i> Unlike
+      <% end %>
+    </div>
+<% end %>
+<hr>
