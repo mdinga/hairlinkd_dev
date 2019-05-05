@@ -41,5 +41,5 @@ set :ssh_options, paranoid: false
 # set :ssh_options, verify_host_key: :secure
 
 #these following files or directories will not be deployed. i.e. they belong to public
-append :linked_files, "config/database.yml", "config/secrets.yml", "config/application.yml"
+append :linked_files, "config/database.yml", "config/secrets.yml", "config/application.yml", "config/initializers/geocoder.rb"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
