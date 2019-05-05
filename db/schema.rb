@@ -37,18 +37,21 @@ ActiveRecord::Schema.define(version: 20190408094848) do
     t.string "name"
     t.index ["city_id"], name: "index_areas_on_city_id"
   end
+  # to be deleted
 
   create_table "areas_clients", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "area_id"
     t.integer "client_id"
     t.index ["area_id", "client_id"], name: "index_areas_clients_on_area_id_and_client_id"
   end
+  #to be deleted
 
   create_table "areas_stylists", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "area_id"
     t.integer "stylist_id"
     t.index ["area_id", "stylist_id"], name: "index_areas_stylists_on_area_id_and_stylist_id"
   end
+  #to be deleted
 
   create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "image"
@@ -63,17 +66,21 @@ ActiveRecord::Schema.define(version: 20190408094848) do
     t.string "city"
   end
 
+  #to be deleted
+
   create_table "cities_clients", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "city_id"
     t.integer "client_id"
     t.index ["city_id", "client_id"], name: "index_cities_clients_on_city_id_and_client_id"
   end
+  #to be deleted
 
   create_table "cities_stylists", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "city_id"
     t.integer "stylist_id"
     t.index ["city_id", "stylist_id"], name: "index_cities_stylists_on_city_id_and_stylist_id"
   end
+    #to be deleted
 
   create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "username", limit: 20
@@ -102,12 +109,15 @@ ActiveRecord::Schema.define(version: 20190408094848) do
     t.index ["client_id"], name: "index_clients_def_clients_on_client_id"
     t.index ["def_client_id"], name: "index_clients_def_clients_on_def_client_id"
   end
+  #to be deleted
 
   create_table "clients_services", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "client_id"
     t.integer "service_id"
     t.index ["client_id", "service_id"], name: "index_clients_services_on_client_id_and_service_id"
   end
+
+    #to be deleted
 
   create_table "contact_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -137,6 +147,7 @@ ActiveRecord::Schema.define(version: 20190408094848) do
     t.index ["name"], name: "index_def_admins_on_name"
     t.index ["resource_type", "resource_id"], name: "index_def_admins_on_resource_type_and_resource_id"
   end
+
 
   create_table "def_clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
