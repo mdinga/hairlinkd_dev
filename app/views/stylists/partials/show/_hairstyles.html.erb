@@ -2,32 +2,46 @@
 
 <div id = "about_me" class = "stylist_info" style ="display:block;">
   <h4 class = "text-center">My Hairstyles</h4>
-    <p class = "text-center" style = "font-style: italic;"><span style = "color:#D4AF37;"><i class = "glyphicon glyphicon-star"></i></span> = I'm a master at this</p>
-      <% @cat.each do |c| %>
-        <p><strong><%= c %>: </strong> |
-          <% stylist.hairstyles.where(:category => c).each do |h| %>
-            <%= h.name %>
-            <span><% if stylist.hairstyle_offerings.where(:hairstyle => h).first.top_style%><span style = "color:#D4AF37;"><i class = "glyphicon glyphicon-star"></i></span><% end %></span> |
-          <% end %>
-        </p>
-      <% end %>
 
-  <div class = "row mt-2">
-    <div class = "col-md-2"><strong>More About Me:</strong></div>
-      <div class = "col-md-10 ">
-        <blockquote><%= stylist.about_me %></blockquote>
-      </div>
+  <% if stylist.hairstyles == nil || stylist.hairstyles == [] %>
+    <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>
+    <div class="jumbotron text-center p-3">
+      <h1 class="display-4">List Your Hairstyles</h1>
+      <p class="lead">List the hairstyles you offer here. Select from the list provided and indicate the ones that you are really good at.</p>
+      <hr class="my-4">
+      <p>You currently have no hairstyles listed.</p>
+    </div>
+    <% end %>
+
+  <% else %>
+
+  <p class = "text-center" style = "font-style: italic;"><span style = "color:#D4AF37;"><i class = "glyphicon glyphicon-star"></i></span> = I'm a master at this</p>
+    <% @cat.each do |c| %>
+      <p><strong><%= c %>: </strong> |
+        <% stylist.hairstyles.where(:category => c).each do |h| %>
+          <%= h.name %>
+          <span><% if stylist.hairstyle_offerings.where(:hairstyle => h).first.top_style%><span style = "color:#D4AF37;"><i class = "glyphicon glyphicon-star"></i></span><% end %></span> |
+        <% end %>
+      </p>
+    <% end %>
+
+    <div class = "row mt-2">
+      <div class = "col-md-2"><strong>More About Me:</strong></div>
+        <div class = "col-md-10 ">
+          <blockquote><%= stylist.about_me %></blockquote>
+        </div>
+    </div>
+
+
+    </div>
+
+  <% end %>
+
+  <div class="text-center">
+    <%= button_to "Update Hairstyles", edit_stylist_path(stylist), :method => :get, :class => "btn m-1", :style => "disply: inline-block;"%>
+    <%= button_to "Select Best Hairstyles", hairstyle_offerings_path, :method => :get, :class => "btn m-1", :style => "disply: inline-block;"%>
   </div>
 
-  <div class="row mt-5 text-center">
-    <div class="col-xs-6">
-      <%= button_to "Update Hairstyles", edit_stylist_path(stylist), :method => :get, :class => "btn"%>
-    </div>
-    <div class="col-xs-6">
-      <div class="col-xs-6 ml-2">
-        <%= button_to "Select Best Hairstyles", hairstyle_offerings_path, :method => :get, :class => "btn"%>
-      </div>
-    </div>
-  </div>
-</div>
+
+
 <hr>

@@ -45,6 +45,8 @@ gem 'rolify', '~> 5.2'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'geocoder'
 gem 'certified'
+gem 'gmaps4rails'
+gem 'underscore-rails'
 
 
 

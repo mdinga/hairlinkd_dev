@@ -1,55 +1,102 @@
 <div id = "contact_me" class = "stylist_info" style ="display:block;">
-  <h4 class = "text-center">My Contacts</h4>
+  <h4 class = "text-center">My Contact Details</h4>
 
-  <table>
-    <% if stylist.salon.present? %>
-      <tr>
-        <th>Salon Name:</th>
-        <td><%= stylist.salon %></td>
-      </tr>
+  <% if stylist.address.blank? && stylist.phone.blank? %>
+    <% if (current_user.has_role? :def_stylist) && (current_user.id == @stylist.id) %>
+    <div class="jumbotron text-center p-3">
+      <h1 class="display-4">Update Your Contact/Location Details</h1>
+      <p class="lead">Make it easier for clients to locate and contact you. The more the details, the easier it will be to find you.</p>
+      <hr class="my-4">
+      <p>You have not loaded your location and contact details.</p>
+    </div>
     <% end %>
 
-    <% if stylist.address.present? %>
-      <tr>
-        <th>Address:</th>
-        <td><%= stylist.address %> [<%= stylist.longitude %>, <%= stylist.latitude %>]</td>
-      </tr>
-    <% end %>
+  <% else %>
 
-    <% if stylist.phone.present? %>
-    <tr>
-      <th>Phone:</th>
-      <td><%= stylist.phone %></td>
-    </tr>
-    <% end %>
+  <div class="row mt-5">
 
-    <% if stylist.email.present? %>
-      <tr>
-        <th>Email:</th>
-        <td><%= stylist.email %></td>
-      </tr>
-    <% end %>
+    <div class="col-md-6">
+      <table class = "table table-hover">
+        <% if stylist.salon.present? %>
+          <tr>
+            <th>Salon Name:</th>
+            <td><%= stylist.salon %></td>
+          </tr>
+        <% end %>
 
-    <% if stylist.facebook_link.present? %>
-      <tr>
-        <th>Facebook Page:</th>
-        <td><%=link_to stylist.facebook_link, url_for(stylist.facebook_link), target: "_blank" %></td>
-      </tr>
-    <% end %>
+        <% if stylist.address.present? %>
+          <tr>
+            <th>Address:</th>
+              <td><%= stylist.address %></td>
+          </tr>
+        <% end %>
 
-    <% if stylist.instagram_link.present? %>
-      <tr>
-        <th>Instagram Page:</th>
-        <td><%= link_to stylist.instagram_link, url_for(stylist.instagram_link), target: "_blank" %></td>
-      </tr>
-    <% end %>
-      <tr>
-        <th>House Calls:</th>
-        <td><%= stylist.house_calls ? 'Yes' : 'No' %></td>
-      </tr>
-  </table>
+        <% if stylist.phone.present? %>
+        <tr>
+          <th>Phone:</th>
+          <td><%= stylist.phone %></td>
+        </tr>
+        <% end %>
 
-  <div class = "mt-5">
+        <% if stylist.email.present? %>
+          <tr>
+            <th>Email:</th>
+            <td><%= stylist.email %></td>
+          </tr>
+        <% end %>
+
+        <% if stylist.facebook_link.present? %>
+          <tr>
+            <th>Facebook Page:</th>
+            <td><%=link_to stylist.facebook_link, url_for(stylist.facebook_link), target: "_blank" %></td>
+          </tr>
+        <% end %>
+
+        <% if stylist.instagram_link.present? %>
+          <tr>
+            <th>Instagram Page:</th>
+            <td><%= link_to stylist.instagram_link, url_for(stylist.instagram_link), target: "_blank" %></td>
+          </tr>
+        <% end %>
+          <tr>
+            <th>House Calls:</th>
+            <td><%= stylist.house_calls ? 'Yes' : 'No' %></td>
+          </tr>
+      </table>
+    </div>
+    <div class="col-md-6">
+
+      <div style='width: 400px;'>
+        <div id="map" style='width: 400px; height: 300px;'></div>
+      </div>
+
+      <script type="text/javascript">
+      handler = Gmaps.build('Google');
+      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        markers = handler.addMarkers([
+          {
+            "lat": <%= stylist.latitude%>,
+            "lng": <%= stylist.longitude%>,
+            "picture": {
+              "width":  10,
+              "height": 10
+            },
+            "infowindow": "SJSU"
+          }
+        ]);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+      </script>
+
+
+    </div>
+  </div>
+
+
+  <% end %>
+
+  <div class = "mt-5 text-center">
   <%= button_to "Update Contact Details", edit_stylist_path(stylist), :method => :get, :class => "btn"%>
   </div>
 </div>
